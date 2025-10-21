@@ -34,22 +34,12 @@ const Contact = () => {
   ];
 
   return (
-    <Box 
-      id="contacto" 
-      py={20}
-      bg="gradient-to-b from-black to-gray-900"
-      position="relative"
-      overflow="hidden"
-    >
-
+    <Box id="contacto" py={20}>
       <Flex
-        position="relative"
         z={10}
-        maxW="7xl"
+        maxW="5xl"
         mx="auto"
         px={4}
-        sm={6}
-        lg={8}
         flexDirection={"column"}
         alignItems={"center"}
       >
@@ -65,14 +55,13 @@ const Contact = () => {
             Contacto
           </Heading>
           <Text fontSize="lg" maxW="3xl" mx="auto">
-            ¿Listo para llevar tu marca deportiva al siguiente nivel? Contáctanos y comencemos a trabajar juntos.
+            ¿Listo para llevar tu marca deportiva al siguiente nivel?
           </Text>
+
         </MotionBox>
 
         <Flex
-        justifyContent={'space-around'} 
-        maxW="5xl"
-        mx="auto"
+        justifyContent={'space-between'} 
         gap={8}
           >
             {contactMethods.map((method, index) => (
@@ -83,37 +72,38 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              bg='gradient-to-br from-gray-800 to-gray-900'
-              border='border-orange-500/20'
-              hover={{
-                borderColor: 'orange-500/50',
-                shadow: 'shadow-xl shadow-orange-500/20',
+              border='1px solid  orange'
+              _hover={{
+                boxShadow: "0px 10px 15px rgba(255, 165, 0, 0.5)",
                 cursor: 'pointer'
               }}
-              rounded='rounded-2xl'
-              p='p-8'
+              borderRadius='lg'
+              py={'40px'}
+              px={'120px'}
               textAlign='text-center'
+              bgGradient="linear(to-br, gray.800, gray.900)"
             >
               <Flex 
-                bg='gradient-to-br from-orange-600 to-orange-500'
-                w="16"
-                h="16"
-                rounded="xl"
-                flex="flex"
-                items="items-center"
-                justify="justify-center"
-                mx="mx-auto"
-                mb="mb-4"
-                shadow="shadow-lg shadow-orange-500/50"
+                w={16}
+                h={16}
+                justify="center"
+                alignItems="center"
+                mx="auto"
+                mb={8}
+                borderRadius='lg'
+                boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+                bgGradient="linear(to-br, orange.600, orange.500)"
               >
-                <method.icon 
-                w="16"
-                h="16"
-                color="white"
-                />
+                <method.icon size={'30px'} color="white"/>
               </Flex>
+              <Flex
+                flexDirection="column"
+                alignItems="center"
+                textAlign="center"
+              >
               <Heading fontSize="xl" fontWeight="bold" mb={2} color="white">{method.title}</Heading>
-              <Text fontSize="lg" color="orange-500">{method.value}</Text>
+              <Text fontSize="lg" color= "white">{method.value}</Text>
+              </Flex>
             </MotionBox>
           ))}
         </Flex>

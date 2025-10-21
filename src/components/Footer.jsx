@@ -1,16 +1,25 @@
 import React from 'react';
-import { Box, Flex, Text, Link, HStack, Icon } from '@chakra-ui/react';
-import { FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { Box, Flex, Text, Link, HStack, Icon, Image } from '@chakra-ui/react';
+import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+import logo_vertical from '../assets/logo_vertical.png';
+import '../components/Footer.css';
 
 const Footer = () => {
   return (
-    <Box bg="black" py={10} px={{ base: 6, md: 20 }}>
+    <Box 
+    className='footer_cont'
+    py={'60px'} 
+    px={{ base: 6, md: 20 }} 
+    mt={20}
+    bgGradient="linear(to-br,  gray.900, black)"
+    >
       <Flex
         direction={{ base: 'column', md: 'row' }}
         align="center"
         justify="space-between"
         gap={6}
       >
+        <Image src={logo_vertical} alt="Logo" width={'70px'} />
         <Text color="whiteAlpha.700" fontSize="sm" textAlign="center">
           © {new Date().getFullYear()} LED SPORTS. Todos los derechos reservados.
         </Text>
@@ -19,8 +28,8 @@ const Footer = () => {
           <Link href="https://www.instagram.com" isExternal>
             <Icon as={FaInstagram} color="orange.400" boxSize={5} _hover={{ color: 'white' }} />
           </Link>
-          <Link href="https://www.facebook.com" isExternal>
-            <Icon as={FaFacebook} color="orange.400" boxSize={5} _hover={{ color: 'white' }} />
+          <Link href="https://www.tiktok.com" isExternal>
+            <Icon as={FaTiktok} color="orange.400" boxSize={5} _hover={{ color: 'white' }} />
           </Link>
           <Link href="https://wa.me/5491122334455" isExternal>
             <Icon as={FaWhatsapp} color="orange.400" boxSize={5} _hover={{ color: 'white' }} />
