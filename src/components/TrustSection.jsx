@@ -10,7 +10,6 @@ import {
   List,
   ListItem,
   ListIcon,   
-  Divider,
   IconButton,
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
@@ -21,6 +20,7 @@ import mainero from '../assets/mainero.png';
 import luiszarate from '../assets/luiszarate.png';
 import '../components/TrustSection.css';
 import { GoCheckCircleFill } from 'react-icons/go';
+import Estadisticas from './Estadisticas'
 
 const MotionBox = motion(Box);
 
@@ -221,27 +221,12 @@ const TrustSection = () => {
           Confían en <Text as="span" color="orange.400">Nosotros</Text>
         </Heading>
 
-        <Box position="relative" w="full">
+        <Flex position="relative" w="full">
           <IconButton
             aria-label="Anterior"
             icon={<ChevronLeftIcon />}
             onClick={scrollLeft}
-            position="absolute"
             left='-150px'
-            top="50%"
-            transform="translateY(-50%)"
-            zIndex={2}
-            colorScheme="orange"
-            variant="solid"
-            size="sm"
-            opacity={visible ? 1 : 0.85}
-          />
-          <IconButton
-            aria-label="Siguiente"
-            icon={<ChevronRightIcon />}
-            onClick={scrollRight}
-            position="absolute"
-            right='-150px'
             top="50%"
             transform="translateY(-50%)"
             zIndex={2}
@@ -262,7 +247,7 @@ const TrustSection = () => {
             onMouseUp={endMouseDrag}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
+            onTouchEnd={onTouchEnd} 
             onClickCapture={onClickCapture}
             cursor={isDragging ? 'grabbing' : 'grab'}
             sx={{
@@ -366,58 +351,23 @@ const TrustSection = () => {
               </MotionBox>
             ))}
           </SimpleGrid>
-        </Box>
-      </VStack>
-      <MotionBox
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        mt={20}
-      >
-        <Flex
-          direction="row"
-          alignItems="center"
-          justifyContent="center"
-          gap={6}
-          bg="linear-gradient(to right, rgba(255, 165, 0, 0.1), rgba(255, 165, 0, 0.2))"
-          border="1px solid rgba(255, 165, 0, 0.3)"
-          borderRadius="full"
-          boxShadow="0 10px 30px rgba(0,0,0,0.45),0 0 30px rgba(255, 166, 0, 0.32)"
-          px={6}
-          py={4}
-          w="full"
-          maxW="600px"
-          transition="all 1s"
-        >
-          <Flex
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Heading as="h2" fontSize={{ base: "3xl", md: "4xl" }} color="orange.500" fontWeight="bold">50+</Heading>
-            <Text fontSize="sm" color="gray.400">Deportistas</Text>
-          </Flex>
-          <Divider borderColor="orange.500/30" orientation="vertical" h="12" />
-          <Flex
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Heading as="h2" fontSize={{ base: "3xl", md: "4xl" }} color="orange.500" fontWeight="bold">7mil+</Heading>
-            <Text fontSize="sm" color="gray.400">Seguidores</Text>
-          </Flex>
-          <Divider borderColor="orange.500/30" orientation="vertical" h="12" />
-          <Flex
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Heading as="h2" fontSize={{ base: "3xl", md: "4xl" }} color="orange.500" fontWeight="bold">99%</Heading>
-            <Text fontSize="sm" color="gray.400">Satisfacción</Text>
-          </Flex>
+          <IconButton
+            aria-label="Siguiente"
+            icon={<ChevronRightIcon />}
+            onClick={scrollRight}
+            position="absolute"
+            right='-150px'
+            top="50%"
+            transform="translateY(-50%)"
+            zIndex={2}
+            colorScheme="orange"
+            variant="solid"
+            size="sm"
+            opacity={visible ? 1 : 0.85}
+          />
         </Flex>
-      </MotionBox>
+        <Estadisticas/>
+      </VStack>
     </Flex>
   );
 };

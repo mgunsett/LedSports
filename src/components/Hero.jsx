@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <Flex
       id="home"
-      minH="100vh"
+      minH={{ base: '150vh', md: '100vh' }}
       align="center"
       justify="center"
       direction={{ base: 'column', md: 'row' }}
@@ -30,17 +30,18 @@ const Hero = () => {
       px={{ base: 6, md: 20 }}
       pt={{ base: 20, md: 0 }}
       overflow="hidden"
+      mt={{ base: '30px', md: 0 }}
     >
-      {/* Texto principal */}
+      {/* Texto principal */} 
       <VStack
         align={{ base: 'center', md: 'start' }}
         spacing={6}
         maxW="600px"
-        textAlign={{ base: 'center', md: 'left' }}
+        textAlign={{ base: 'start', md: 'left' }}
       >
         <MotionHeading
           as="h1"
-          fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }}
+          fontSize={{ base: '5xl', md: '5xl', lg: '6xl' }}
           fontWeight="bold"
           color="white"
           lineHeight="shorter"
@@ -48,7 +49,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Potenciamos tu <Text as="span" color="orange.400">Marca Deportiva</Text>
+          Potenciamos tu <Text fontSize={{ base: '5xl', md: '5xl', lg: '6xl' }} as="span" color="orange.400">Marca Deportiva</Text>
         </MotionHeading>
 
         <MotionText
@@ -80,7 +81,7 @@ const Hero = () => {
                 WebkitBoxShadow: '0px 0px 12px 1px rgba(245,160,15,0.56)',
                 MozBoxShadow: '0px 0px 12px 1px rgba(245,160,15,0.56)',
             }}
-            px={8}
+            px={{ base: '20', md: '8' }}
             py={6}
             borderRadius="full"
             onClick={() => {
@@ -110,8 +111,8 @@ const Hero = () => {
           objectFit="contain"
           draggable="false"
           position="absolute"
-          top="10px"
-          right={'170px'}
+          top={{ base: '50px', md: '10px' }}
+          right={{ base: '-50px', md: '170px' }}
           zIndex="0"
           opacity="0.5"
         />
@@ -134,16 +135,18 @@ const Hero = () => {
         <MotionBox
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -bottom-6 -right-6 bg-gradient-to-br from-orange-600 to-orange-500 rounded-2xl p-6 shadow-xl"
             >
               <Box 
                 position="absolute" 
                 bottom="-6" 
                 right="-8" 
                 bg="orange.500" 
-                p="20px" 
+                p={{ base: '12px', md: '20px' }}
                 textAlign="center"
                 borderRadius="2xl"
+                boxShadow="0px 0px 12px 1px rgba(245,160,15,0.56)"
+                opacity="0.9"
+                mr={{ base: '12px', md: 0 }}
                 >
                 <Text fontSize="4xl" fontWeight="bold" color="white">50+</Text>
                 <Text fontSize="sm" color="white/90">Deportistas Activos</Text>
