@@ -3,8 +3,6 @@ import {
   Box,
   Heading,
   Image,
-  SimpleGrid,
-  VStack,
   Text,
   Flex,
   List,
@@ -28,35 +26,77 @@ const brands = [
   {
     img: lukaromero,
     name: 'Luka Romero',
-    item1: 'lorem ipsum dolor sit amet',
-    item2: 'lorem ipsum dolor sit amet',
-    item3: 'lorem ipsum dolor sit amet',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
   },
   {
     img: ricardoade,
     name: 'Ricardo Adebayo',
-    item1: ' lorem ipsum dolor sit amet',
-    item2: 'lorem ipsum dolor sit amet',
-    item3: 'lorem ipsum dolor sit amet',
+    item1: ' lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
   },
   {
     img: mainero,
     name: 'Mainero',
-    item1: 'lorem ipsum dolor sit amet',
-    item2: 'lorem ipsum dolor sit amet',
-    item3: 'lorem ipsum dolor sit amet',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
   },
   {
     img: luiszarate,
     name: 'Luis Zarate',
-    item1: 'lorem ipsum dolor sit amet',
-    item2: 'lorem ipsum dolor sit amet',
-    item3: 'lorem ipsum dolor sit amet',
+    item1: 'lorem ipsum dolor ',
   },
+   {
+    img: mainero,
+    name: 'Mainero',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
+  },
+  {
+    img: luiszarate,
+    name: 'Luis Zarate',
+    item1: 'lorem ipsum dolor ',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
+  },
+  {
+    img: mainero,
+    name: 'Mainero',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
+  },
+  {
+    img: luiszarate,
+    name: 'Luis Zarate',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
+  },
+   {
+    img: mainero,
+    name: 'Mainero',
+    item1: 'lorem ipsum dolor ',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
+  },
+  {
+    img: luiszarate,
+    name: 'Luis Zarate',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+    item3: 'lorem ipsum dolor',
+  },
+  
 ];
 
 const TrustSection = () => {
-  const [visible, setVisible] = useState(false);
+
+const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,25 +106,28 @@ const TrustSection = () => {
         setVisible(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const containerRef = useRef(null);
+  const containerRef = useRef(null); 
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollAmount = 700;
   const animationRef = useRef(null);
 
+  // Estados para drag/swipe
   const [isDragging, setIsDragging] = useState(false);
   const startXRef = useRef(0);
   const startScrollLeftRef = useRef(0);
   const hasDraggedRef = useRef(false);
 
+  // Animación personalizada de scroll con duración controlable
   const animateScrollTo = (target, duration = 700) => {
     if (!containerRef.current) return;
 
+    // Cancelar animación previa si existe
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
@@ -94,16 +137,18 @@ const TrustSection = () => {
     const change = target - start;
     const startTime = performance.now();
 
+    // Easing: easeInOutQuad
     const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
     const step = (now) => {
+      // Detener si el usuario está arrastrando
       if (isDragging || !containerRef.current) return;
       const elapsed = now - startTime;
       const t = Math.min(elapsed / duration, 1);
       const eased = easeInOutQuad(t);
       containerRef.current.scrollLeft = start + change * eased;
       if (t < 1) {
-        animationRef.current = requestAnimationFrame(step);
+        animationRef.current = requestAnimationFrame(step); 
       } else {
         animationRef.current = null;
       }
@@ -112,6 +157,7 @@ const TrustSection = () => {
     animationRef.current = requestAnimationFrame(step);
   };
 
+  // Evitar que el scroll programático se vaya fuera de los límites
   const clampToBounds = (val) => {
     const el = containerRef.current;
     if (!el) return val;
@@ -119,32 +165,37 @@ const TrustSection = () => {
     return Math.min(Math.max(0, val), max);
   };
 
+  // Función para desplazar a la izquierda
   const scrollLeft = () => {
-    setScrollPosition((prev) => clampToBounds(prev - scrollAmount));
+    setScrollPosition((prevPosition) => clampToBounds(prevPosition - scrollAmount));   
   };
 
+  // Función para desplazar a la derecha
   const scrollRight = () => {
-    setScrollPosition((prev) => clampToBounds(prev + scrollAmount));
+    setScrollPosition((prevPosition) => clampToBounds(prevPosition + scrollAmount));
   };
 
   useEffect(() => {
-    if (containerRef.current) {
-      animateScrollTo(scrollPosition, 900);
+    if (containerRef.current) {  // Acceder al contenedor de forma directa
+      animateScrollTo(scrollPosition, 900); // Ajusta 700ms a tu gusto (ej. 600-900)
     }
   }, [scrollPosition]);
 
+  // Limpiar animación al desmontar
   useEffect(() => {
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
   }, []);
 
+  // Handlers de drag (mouse)
   const onMouseDown = (e) => {
     if (!containerRef.current) return;
     setIsDragging(true);
     hasDraggedRef.current = false;
     startXRef.current = e.pageX - containerRef.current.offsetLeft;
     startScrollLeftRef.current = containerRef.current.scrollLeft;
+    // Cancelar animación si el usuario comienza a arrastrar
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
@@ -155,16 +206,18 @@ const TrustSection = () => {
     if (!isDragging || !containerRef.current) return;
     e.preventDefault();
     const x = e.pageX - containerRef.current.offsetLeft;
-    const walk = x - startXRef.current;
-    if (Math.abs(walk) > 3) hasDraggedRef.current = true;
+    const walk = x - startXRef.current; // distancia arrastrada
+    if (Math.abs(walk) > 3) hasDraggedRef.current = true; // umbral pequeño
     containerRef.current.scrollLeft = startScrollLeftRef.current - walk;
   };
 
   const endMouseDrag = () => {
     if (!isDragging) return;
     setIsDragging(false);
+    // No hacemos nada más; hasDraggedRef se usa para bloquear clics si hubo arrastre
   };
 
+  // Handlers de touch (mobile)
   const onTouchStart = (e) => {
     if (!containerRef.current) return;
     setIsDragging(true);
@@ -172,6 +225,7 @@ const TrustSection = () => {
     const touch = e.touches[0];
     startXRef.current = touch.pageX - containerRef.current.offsetLeft;
     startScrollLeftRef.current = containerRef.current.scrollLeft;
+    // Cancelar animación si el usuario comienza a arrastrar con touch
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
@@ -192,71 +246,87 @@ const TrustSection = () => {
     setIsDragging(false);
   };
 
+  // Bloquear clics cuando se arrastró para evitar navegaciones accidentales
   const onClickCapture = (e) => {
     if (hasDraggedRef.current) {
       e.preventDefault();
       e.stopPropagation();
+      // Reset para permitir próximos clics
       hasDraggedRef.current = false;
     }
   };
 
   return (
     <Flex
-      id="trust"
-      bg="black"
-      py={{ base: 20, md: 28 }}
-      px={{ base: 6, md: 20 }}
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      gap={16}
+    direction={'column'}
+    alignItems={'center'}
+    justifyContent={'center'}
+    gap={6}
+    mb={20}
     >
-      <VStack spacing={12}>
-        <Heading
-          as="h2"
-          fontSize={{ base: '3xl', md: '4xl' }}
-          color="white"
-          textAlign="center"
+       
+    <Heading 
+    as="h2" 
+    fontSize={{ base: "3xl", md: "4xl" }} 
+    color="white" 
+    fontWeight="bold"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+    gap={2}
+    >
+      Ya confian   
+      <Text color="orange.500" fontWeight="bold">en nosotros</Text>
+    </Heading>
+    <IconButton
+          aria-label="Scroll Left"
+          icon={<ChevronLeftIcon />}
+          onClick={scrollLeft}
+          position="absolute"
+          left="130px"
+          top="70%"
+          zIndex="1"
+          fontSize="2xl"
+          color={'white'}
+          backgroundColor="rgba(0,0,0,0.3)"
+          _hover={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        />
+    <Flex
+    className={`scrollCards ${visible ? 'reveal--visible' : ''}`}
+    position="relative" 
+    alignItems="center" 
+    justifyContent="center"
+    overflowY="hidden"
+    maxW="75%"
+    minW="75%"
+    margin={'auto'}
+    >
+        <Flex
+          ref={containerRef}
+          overflowX="auto" // Scroll horizontal del carrusel
+          overflowY="hidden" // Evita scroll vertical dentro del carrusel
+          gap={2}
+          padding={2}
+          margin={'auto'}
+          maxW="100%"
+          minW="100%"
+          cursor={isDragging ? 'grabbing' : 'grab'}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={endMouseDrag}
+          onMouseLeave={endMouseDrag}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onClickCapture={onClickCapture}
+          sx={{
+            '&::-webkit-scrollbar': { display: 'none' },
+            '-ms-overflow-style': 'none',
+            'scrollbar-width': 'none',
+            'user-select': 'none',
+          }}
         >
-          Confían en <Text as="span" color="orange.400">Nosotros</Text>
-        </Heading>
-
-        <Flex position="relative" w="full">
-          <IconButton
-            aria-label="Anterior"
-            icon={<ChevronLeftIcon />}
-            onClick={scrollLeft}
-            left='-150px'
-            top="50%"
-            transform="translateY(-50%)"
-            zIndex={2}
-            colorScheme="orange"
-            variant="solid"
-            size="sm"
-            opacity={visible ? 1 : 0.85}
-          />
-          <SimpleGrid
-            ref={containerRef}
-            gridAutoFlow="column"
-            gridAutoColumns={{ base: '50%', sm: '33.33%', md: '25%' }}
-            columnGap={8}
-            overflowX="auto"
-            onMouseDown={onMouseDown}
-            onMouseMove={onMouseMove}
-            onMouseLeave={endMouseDrag}
-            onMouseUp={endMouseDrag}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd} 
-            onClickCapture={onClickCapture}
-            cursor={isDragging ? 'grabbing' : 'grab'}
-            sx={{
-              '&::-webkit-scrollbar': { display: 'none' },
-              '-ms-overflow-style': 'none',
-              'scrollbar-width': 'none',
-            }}
-          >
-            {brands.map((logo, i) => (
+          {brands.map((logo, i) => (
               <MotionBox
                 key={i}
                 role="group"
@@ -272,21 +342,23 @@ const TrustSection = () => {
                   direction="column"
                   alignItems="center"
                   justifyContent="center"
-                  gap={4}
+                  gap={8}
                   transition="all 0.8s"
+                  
                 >
                   <Image
                     className='image_brand'
                     src={logo.img}
                     alt={`Logo ${i}`}
                     maxH="370px"
-                    mx="auto"
+                    mx="60px"
+                    maxW="370px"
+                    overflow="hidden"
                     filter="grayscale(100%) brightness(0.9)"
                     transition="all 0.8s"
                     _groupHover={{
                       filter: 'grayscale(0%) brightness(1)',
                       transform: 'scale(1.05)',
-                      cursor: 'pointer',
                     }}
                   />
                 </Flex>
@@ -298,7 +370,8 @@ const TrustSection = () => {
                   gap={3}
                   p={4}
                   position={'relative'}
-                  w={{ base: '100%', md: '100%' }}
+                  margin={'auto'}
+                  w={{ base: '100%', md: '70%' }}
                   bg={'linear-gradient(135deg, rgba(17,17,17,0.75) 0%, rgba(30,30,30,0.75) 100%)'}
                   backdropFilter={'blur(8px)'}
                   border={'1px solid rgba(255,165,0,0.35)'}
@@ -319,12 +392,12 @@ const TrustSection = () => {
                     filter: 'blur(10px)',
                     zIndex: -1,
                   }}
-                  _groupHover={{ maxHeight: '420px', opacity: 1, transform: 'translateY(0)', mt: 3, pointerEvents: 'auto' }}
+                  _groupHover={{  maxHeight: '180px', opacity: 1, transform: 'translateY(0)', mt: 3, pointerEvents: 'auto' }}
                 >
                   <Text
                     as="span"
                     color="white"
-                    fontSize={{ base: 'lg', md: '2xl' }}
+                    fontSize={{ base: 'lg', md: 'xl' }}
                     textAlign="center"
                     mt={4}
                   >
@@ -333,7 +406,7 @@ const TrustSection = () => {
                   <Text as="span" color="orange.300" fontSize="sm" fontWeight="bold" letterSpacing="wide">
                     Highlights
                   </Text>
-                  <List spacing={3}>
+                  <List spacing={2}>
                     <ListItem color={'gray.200'} display={'flex'} alignItems={'center'}>
                       <ListIcon as={GoCheckCircleFill} color='orange.400' />
                       {logo.item1}
@@ -350,26 +423,38 @@ const TrustSection = () => {
                 </Flex>
               </MotionBox>
             ))}
-          </SimpleGrid>
-          <IconButton
-            aria-label="Siguiente"
-            icon={<ChevronRightIcon />}
-            onClick={scrollRight}
-            position="absolute"
-            right='-150px'
-            top="50%"
-            transform="translateY(-50%)"
-            zIndex={2}
-            colorScheme="orange"
-            variant="solid"
-            size="sm"
-            opacity={visible ? 1 : 0.85}
-          />
-        </Flex>
+    </Flex>
+    </Flex>
+    <IconButton
+          aria-label="Scroll Right"
+          icon={<ChevronRightIcon />}
+          onClick={scrollRight}
+          position="absolute"
+          right="80px"
+          top="70%"
+          zIndex="1"
+          fontSize="2xl"
+          color={'white'}
+          backgroundColor="rgba(0,0,0,0.3)"
+          _hover={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        />
         <Estadisticas/>
-      </VStack>
     </Flex>
   );
-};
-
+} 
 export default TrustSection;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
