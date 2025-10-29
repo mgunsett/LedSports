@@ -1,140 +1,175 @@
 import React from 'react';
 import {
   Box,
-  SimpleGrid,
   Heading,
   Text,
-  VStack,
-  Icon,
-  Card,
-  CardBody,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  List,
-  ListItem,
-  ListIcon,
+  Flex,
+  Image,
+  Button,
 } from '@chakra-ui/react';
-import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
-import { FaBullhorn, FaChartLine, FaUsers, FaCamera } from 'react-icons/fa';
-import { GoCheckCircleFill } from "react-icons/go";
+import service1 from '../assets/service1.png';
+import service3 from '../assets/service3.png';
+import service4 from '../assets/service4.png';
+import '../components/Service.css';
 
 const MotionBox = motion(Box);
 
-const services = [
-  {
-    icon: FaBullhorn,
-    title: 'Gestión de Redes',
-    desc: 'Creamos estrategias que potencian tu presencia digital con contenido relevante y creativo.',
-  },
-  {
-    icon: FaChartLine,
-    title: 'Publicidad Digital',
-    desc: 'Optimizamos tus campañas en Meta y Google para maximizar tu retorno de inversión.',
-  },
-  {
-    icon: FaUsers,
-    title: 'Branding Deportivo',
-    desc: 'Diseñamos la identidad visual y conceptual de tu marca o institución deportiva.',
-  },
-  {
-    icon: FaCamera,
-    title: 'Producción de Contenido',
-    desc: 'Fotografía y video profesional para comunicar tu marca con calidad y estilo.',
-  },
-];
 
 const Services = () => {
   return (
-    <Box id="services" bg="blackAlpha.900" py={{ base: 20, md: 28 }} px={{ base: 6, md: 20 }}>
-      <VStack spacing={12}>
-        <Heading
-          as="h2"
-          fontSize={{ base: '3xl', md: '4xl' }}
-          color="white"
-          textAlign="center"
-        >
-          Nuestros <Text as="span" color="orange.400">Servicios</Text>
-        </Heading>
-
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 2 }} spacing={6}>
-          {services.map((service, i) => (
-            <MotionBox
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              w="100%"
+    <Box id="services" bg="blackAlpha.100" py={{ base: 20, md: 28 }} px={{ base: 6, md: '170px' }}>
+        <Flex
+          direction="row"
+          alignItems="center"
+          justifyContent="space-evenly"
+          px={{ base: 6, md: 20 }}
+          py={10}
+          >
+          <Flex 
+          width="400px" 
+          h="500px" 
+          direction="column" 
+          alignItems="start" 
+          justifyContent="start"
+          p={10}
+          gap={4}
+          >
+            <Heading
+              as="h2"
+              fontSize={{ base: '3xl', md: '4xl' }}
+              color="white"
+              textAlign="start"
+              lineHeight={1}
             >
-              <Card
-                bg="blackAlpha.700"
-                border="1px solid"
-                borderColor="whiteAlpha.200"
-                _hover={{ 
-                  transform: 'scale(1.05)', 
-                  borderColor: 'orange.400',
-                  boxShadow: '0px 10px 15px 1px rgba(117,86,32,0.75)',
-                  WebkitBoxShadow: '0px 10px 15px 1px rgba(117,86,32,0.75)',
-                  MozBoxShadow: '0px 10px 15px 1px rgba(117,86,32,0.75)',
-                 }}
-                transition="all 0.3s ease"
-                borderRadius="2xl"
-                textAlign="center"
-                py={12}
-                w="100%"
-                h="100%"
-              >
-                <CardBody>
-                  <Icon as={service.icon} boxSize={10} color="orange.400" mb={4} />
-                  <Heading as="h3" fontSize="xl" color="white" mb={2}>
-                    {service.title}
-                  </Heading>
-                  <Accordion variant="custom" allowMultiple mt={8}>
-                    <AccordionItem>
-                    {({ isExpanded }) => (
-                    <>
-                    <Text color="whiteAlpha.700" w={550}>
-                      <AccordionButton>
-                        <Box as='span' flex='1' textAlign='left'>
-                          {service.desc}
-                        </Box>
-                        {isExpanded ? (
-                            <MinusIcon fontSize='12px' />
-                          ) : (
-                            <AddIcon fontSize='12px' />
-                          )}
-                      </AccordionButton>
-                      
-                    </Text>
-                    <AccordionPanel>
-                      <List spacing={3}>
-                        <ListItem>
-                          <ListIcon as={GoCheckCircleFill} color='green.500' />
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                        </ListItem>
-                        <ListItem>
-                          <ListIcon as={GoCheckCircleFill} color='green.500' />
-                          Assumenda, quia temporibus eveniet a libero incidunt suscipit
-                        </ListItem>
-                        <ListItem>
-                          <ListIcon as={GoCheckCircleFill} color='green.500' />
-                          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
-                        </ListItem>
-                      </List>
-                    </AccordionPanel>
-                    </>
-                    )}
-                    </AccordionItem>
-                  </Accordion>
-                </CardBody>
-              </Card>
-            </MotionBox>
-          ))}
-        </SimpleGrid>
-      </VStack>
+              Nuestros <Text fontSize="45px" color="orange.400">Servicios</Text>
+            </Heading>
+            <Text
+              fontSize="20px"
+              color="white"
+              lineHeight={1.7}
+            >
+              Llevamos la imagen más allá: creamos contenido visual de calidad para deportistas, 
+              clubes, ligas, agencias, marcas y eventos que buscan conectar y destacar.
+            </Text>
+          </Flex>
+          <Flex
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          gap={-10}
+          maxW="100%"
+          h="700px"
+          overflow="hidden"
+          ml={10}
+          >
+              <Image
+                className="service-image"
+                src={service3}
+                alt="services"
+                boxSize="700px"
+                objectFit="contain"
+                mx={'-150px'}
+              />
+              <Image
+                className="service-image"
+                src={service1}
+                alt="services"
+                boxSize="850px"
+                objectFit="contain"
+                mx={'-250px'}  
+              />
+              <Image
+                className="service-image"
+                src={service4}
+                alt="services"
+                boxSize="700px"
+                objectFit="contain"
+                mx={'-150px'}
+              />
+          </Flex>
+      </Flex>
+      <Flex
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+      gap={20}
+      my={10}
+      mx={10}
+      >
+        <Button
+          colorScheme="orange"
+          size="lg"
+          variant="outline"
+          transition="all 0.3s ease-in-out"
+          py={10}
+          px={20}
+          boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+          _hover={{
+            bg: "orange.400",
+            color: "white",
+            border: "none",
+            transform: "scale(1.1)",
+            boxShadow: "0px 10px 15px rgba(255, 165, 0, 0.5)",
+          }}
+        >
+          AGENTES
+        </Button>
+        <Button
+          colorScheme="orange"
+          size="lg"
+          variant="outline"
+          transition="all 0.3s ease-in-out"
+          py={10}
+          px={20}
+          boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+          _hover={{
+            bg: "orange.400",
+            color: "white",
+            border: "none",
+            transform: "scale(1.1)",
+            boxShadow: "0px 10px 15px rgba(255, 165, 0, 0.5)",
+          }}
+        >
+          EVENTOS
+        </Button>
+        <Button
+          colorScheme="orange"
+          size="lg"
+          variant="outline"
+          transition="all 0.3s ease-in-out"
+          py={10}
+          px={20}
+          boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+          _hover={{
+            bg: "orange.400",
+            color: "white",
+            border: "none",
+            transform: "scale(1.1)",
+            boxShadow: "0px 10px 15px rgba(255, 165, 0, 0.5)",
+          }}
+        >
+          MARCAS
+        </Button>
+        <Button
+          colorScheme="orange"
+          size="lg"
+          variant="outline"
+          transition="all 0.3s ease-in-out"
+          py={10}
+          px={20}
+          boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+          _hover={{
+            bg: "orange.400",
+            color: "white",
+            border: "none",
+            transform: "scale(1.1)",
+            boxShadow: "0px 10px 15px rgba(255, 165, 0, 0.5)",
+          }}
+        >
+          DEPORTISTAS
+        </Button>
+      </Flex>
     </Box>
   );
 };
