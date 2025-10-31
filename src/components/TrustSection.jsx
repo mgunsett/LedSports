@@ -18,7 +18,8 @@ import mainero from '../assets/mainero.png';
 import luiszarate from '../assets/luiszarate.png';
 import '../components/TrustSection.css';
 import { GoCheckCircleFill } from 'react-icons/go';
-import Estadisticas from './Estadisticas'
+import Estadisticas from './Estadisticas';
+
 
 const MotionBox = motion(Box);
 

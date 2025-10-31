@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Flex, Text, Link, HStack, Icon, Image } from '@chakra-ui/react';
 import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import logo_vertical from '../assets/logo_vertical.png';
-import '../components/Footer.css';
+
 
 const Footer = () => {
   return (
@@ -10,7 +10,6 @@ const Footer = () => {
     className='footer_cont'
     py={'60px'} 
     px={{ base: 6, md: 20 }} 
-    mt={20}
     bgGradient="linear(to-br,  gray.900, black)"
     >
       <Flex

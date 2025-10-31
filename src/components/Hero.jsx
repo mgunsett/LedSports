@@ -16,7 +16,6 @@ import { GoArrowRight } from "react-icons/go";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
 
 const Hero = () => {
   return (
@@ -49,21 +48,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Potenciamos tu <Text fontSize={{ base: '5xl', md: '5xl', lg: '6xl' }} as="span" color="orange.400">Marca Deportiva</Text>
+          Potenciamos tu <Text fontSize={{ base: '5xl', md: '5xl', lg: '7xl' }} as="span" color="orange.400">Marca Deportiva</Text>
         </MotionHeading>
-
-        <MotionText
-          fontSize={{ base: 'md', md: 'lg' }}
-          color="whiteAlpha.800"
-          maxW="480px"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          Estrategias visuales para profesionalizar la imagen de cada jugador, destacando su trayectoria, 
-          logros y valores. Contenidos de calidad, diseños gráficos personalizados, producciones fotográficas y audiovisuales, 
-          y gestión estratégica de redes sociales que refuerza su marca personal.
-        </MotionText>
 
         <MotionBox
           initial={{ opacity: 0 }}
@@ -98,8 +84,7 @@ const Hero = () => {
 
       {/* Imagen o Ilustración */}
       <MotionBox
-        mt={{ base: 10, md: 0 }}
-       
+        mt={{ base: 10, md: 0 }}  
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}

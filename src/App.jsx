@@ -1,15 +1,8 @@
 // App.jsx
 import React, { useEffect } from 'react';
-import { ChakraProvider, Box } from '@chakra-ui/react';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Services from '@/components/Services';
-import TrustSection from '@/components/TrustSection';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import { Toaster } from '@/components/ui/toaster';
+import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@/theme';
+import { MainRouters } from './Routers';
 
 function App() {
   useEffect(() => {
@@ -27,16 +20,7 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Box minH="100vh" bg="black" color="white" overflowX="hidden">
-        <Navbar />
-        <Hero />
-        <About />
-        <Services />
-        <TrustSection />
-        <Contact />
-        <Footer />
-        <Toaster />
-      </Box>
+      <MainRouters />
     </ChakraProvider>
   );
 }

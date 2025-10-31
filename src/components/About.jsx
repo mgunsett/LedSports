@@ -52,7 +52,7 @@ const About = () => {
         align={{ base: 'center', md: 'start' }}
         spacing={5}
         textAlign={{ base: 'center', md: 'left' }}
-        maxW="500px"
+        maxW="400px"
       >
         <MotionHeading
           fontSize={{ base: '2xl', md: '4xl' }}
@@ -69,7 +69,7 @@ const About = () => {
 
         <MotionText
           color="whiteAlpha.800"
-          fontSize={{ base: 'md', md: 'lg' }}
+          fontSize={{ base: 'md', md: 'xl' }}
           lineHeight="taller"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,19 +77,6 @@ const About = () => {
           viewport={{ once: true }}
         >
           Somos una agencia de marketing deportivo, que nos encargamos de crear & potenciar la marca de deportistas y entidades deportivas, a través de la profesionalización de sus redes sociales.
-        </MotionText>
-
-        <MotionText
-          color="whiteAlpha.700"
-          fontSize={{ base: 'sm', md: 'md' }}
-          maxW="600px"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Nuestro equipo combina creatividad, estrategia y tecnología para generar 
-          campañas efectivas que impulsan resultados medibles y duraderos.
         </MotionText>
       </VStack>
     </Flex>

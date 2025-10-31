@@ -16,6 +16,7 @@ import {
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { motion } from 'framer-motion';
 import logo_horizontal from '../assets/logo_horizontal.png';
+import { Link as RouterLink } from 'react-router-dom';
 
 // Motion wrapper
 const MotionBox = motion(Box);
@@ -60,6 +61,7 @@ const Navbar = () => {
         mx="auto"
       >
         {/* Logo */}
+        <RouterLink to="/">
         <Image
           src={logo_horizontal}
           alt="Marketing Deportivo"
@@ -70,6 +72,7 @@ const Navbar = () => {
           cursor="pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         />  
+        </RouterLink>
 
         {/* Menú Desktop */}
         <Flex
