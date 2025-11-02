@@ -6,12 +6,14 @@ import { Eventos } from "../Pages/Eventos";
 import { Marcas } from "../Pages/Marcas";     
 import { Deportistas } from "../Pages/Deportistas";     
 import Footer from "../components/Footer";     
+import { ScrollToTop } from "./ScrollToTop";     
       
 
 export const MainRouters = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

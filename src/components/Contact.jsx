@@ -50,6 +50,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           mb={16}
           textAlign="center"
+          color="white"
         >
           <Heading fontSize={"4xl"} md={"5xl"} fontWeight="bold" mb={4}>
             Contacto
