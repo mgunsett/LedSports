@@ -22,7 +22,7 @@ export const Agentes = () => {
             flexDirection="column"
             minHeight="100vh"
             pt={60}
-            pb={'400px'}
+            pb={'100px'}
         >
             <Flex 
             justifyContent="start"
