@@ -29,52 +29,48 @@ const brands = [
     name: 'Luka Romero',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
-    item3: 'lorem ipsum dolor',
   },
   {
     img: ricardoade,
     name: 'Ricardo Adebayo',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
-    item3: 'lorem ipsum dolor',
   },
   {
     img: mainero,
     name: 'Mainero',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
-    item3: 'lorem ipsum dolor',
   },
   {
     img: luiszarate,
     name: 'Luis Zarate',
     item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
   },
   {
     img: lukaromero,
     name: 'Luka Romero',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
-    item3: 'lorem ipsum dolor',
   },
   {
     img: ricardoade,
     name: 'Ricardo Adebayo',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
-    item3: 'lorem ipsum dolor',
   },
   {
     img: mainero,
     name: 'Mainero',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
-    item3: 'lorem ipsum dolor',
   },
   {
     img: luiszarate,
     name: 'Luis Zarate',
     item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
   },
 ];
 
@@ -204,7 +200,13 @@ const TrustSection = () => {
   };
 
   return (
-    <Flex direction="column" alignItems="center" justifyContent="center" gap={6} mb={20}>
+    <Flex 
+    direction="column" 
+    alignItems="center" 
+    justifyContent="center" 
+    gap={6} 
+    mb={20}
+    >
       <Heading
         as="h2"
         fontSize={{ base: '3xl', md: '4xl' }}
@@ -228,7 +230,7 @@ const TrustSection = () => {
         maxW="100%"
         minW="75%"
         margin="auto"
-        mb="200px"
+        mb="100px"
         position="relative"
       >
         <IconButton
@@ -240,7 +242,7 @@ const TrustSection = () => {
           top="50%"
           transform="translateY(-50%)"
           zIndex="2"
-          fontSize="2xl"
+          fontSize="40px"
           color="white"
           backgroundColor="rgba(0,0,0,0.3)"
           _hover={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
@@ -287,7 +289,6 @@ const TrustSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                position="relative"
                 overflow="visible"
               >
                 <Flex
@@ -302,11 +303,11 @@ const TrustSection = () => {
                   sx={{
                     '&:hover .image_brand': {
                       filter: 'grayscale(0%) brightness(1)',
-                      transform: 'scale(1.05)',
+                      transform: 'translateY(-20px) scale(1.05)',
                     },
                     '&:hover #brand_info': {
                       opacity: 1,
-                      transform: 'translate(-50%, 0)',
+                      transform: 'translate(50%, -30px) ',
                       pointerEvents: 'auto',
                     },
                   }}
@@ -315,7 +316,7 @@ const TrustSection = () => {
                     className="image_brand"
                     src={logo.img}
                     alt={`Logo ${i}`}
-                    maxH="370px"
+                    maxH="450px"
                     maxW="370px"
                     borderRadius="8px"
                     filter="grayscale(100%) brightness(0.9)"
@@ -331,23 +332,23 @@ const TrustSection = () => {
                     gap={3}
                     p={4}
                     position="absolute"
-                    bottom="0"
-                    left="50%"
-                    transform="translate(-50%, 20px)"
+                    bottom="-20px"
+                    left="-40%"
+                    transform="translate(50%, 30px)"
                     w="90%"
-                    bg="linear-gradient(135deg, rgba(17,17,17,0.85) 0%, rgba(30,30,30,0.85) 100%)"
-                    backdropFilter="blur(8px)"
-                    borderRadius="8px"
+                    bg="linear-gradient(135deg, rgba(158, 156, 156, 0.68) 0%, rgba(30, 30, 30, 0.45) 100%)"
+                    backdropFilter="blur(2px)"
+                    borderRadius="5px"
                     boxShadow="0 10px 15px rgba(0,0,0,0.45), 0 0 15px rgba(255,255,255,0.25)"
                     opacity={0}
                     pointerEvents="none"
                     transition="opacity 0.8s ease, transform 0.8s ease"
-                    zIndex="5"
+                    fontFamily={'Stack Sans Headline, sans-serif'}
                   >
                     <Text as="span" color="white" fontSize={{ base: 'lg', md: 'xl' }}>
                       {logo.name}
                     </Text>
-                    <Text as="span" color="orange.300" fontSize="sm" fontWeight="bold" letterSpacing="wide">
+                    <Text as="span" color="orange.300" fontSize="sm" fontWeight="bold" letterSpacing="wide" alignItems="start">
                       Highlights
                     </Text>
                     <List spacing={2}>
@@ -383,7 +384,7 @@ const TrustSection = () => {
           top="50%"
           transform="translateY(-50%)"
           zIndex="2"
-          fontSize="2xl"
+          fontSize="40px"
           color="white"
           backgroundColor="rgba(0,0,0,0.3)"
           _hover={{ backgroundColor: 'rgba(0,0,0,0.5)' }}

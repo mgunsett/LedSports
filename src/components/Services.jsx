@@ -34,7 +34,7 @@ const Services = () => {
           justifyContent="space-evenly"
           px={{ base: 6, md: 20 }}
           py={10}
-          >
+        >
           <Flex 
           width="400px" 
           h="500px" 
@@ -64,39 +64,48 @@ const Services = () => {
           </Flex>
           <Flex
           direction="row"
-          alignItems="start"
+          alignItems="center"
           justifyContent="center"
-          gap={-10}
-          maxW="100%"
-          h="700px"
-          overflow="hidden"
-          ml={10}
+          h="750px"
+          w="50%"
+          p={10}
           >
               <Image
-                className="service-image"
                 src={service3}
                 alt="services"
-                boxSize="600px"
+                w="500px"
+                h="500px"
                 objectFit="contain"
-                mx={'-150px'}
-                p={0}
+                transition="all 0.4s ease-in-out"
+                _hover={{
+                  filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
+                  transform: "scale(1.05) translateX(15px)",
+                }}
               />
               <Image
-                className="service-image"
                 src={service1}
                 alt="services"
-                boxSize="750px"
+                w="650px"
+                h="650px" 
                 objectFit="contain"
-                mx={'-250px'}  
-                mt={-20}
+                alignSelf={'flex-start'}
+                transition="all 0.4s ease-in-out"
+                _hover={{
+                  filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
+                  transform: "scale(1.05)",
+                }}
               />
               <Image
-                className="service-image"
                 src={service4}
                 alt="services"
-                boxSize="600px"
+                w="500px"
+                h="500px"
                 objectFit="contain"
-                mx={'-150px'}
+                transition="all 0.4s ease-in-out"
+                _hover={{
+                  filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
+                  transform: "scale(1.05) translateX(-15px)",
+                }}
               />
           </Flex>
       </Flex>

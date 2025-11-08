@@ -123,6 +123,7 @@ export const Marcas = () => {
                 <MotionBox
                     w={{ base: "100%", md: "48%" }}
                     p={10}
+                    pr={4}
                     border="1px solid"
                     borderColor="orange.400"
                     borderRadius="md"
@@ -144,6 +145,7 @@ export const Marcas = () => {
                 <MotionBox
                     w={{ base: "100%", md: "48%" }}
                     p={10}
+                    pl={4}
                     border="1px solid"
                     borderColor="orange.400"
                     borderRadius="md"
@@ -164,6 +166,7 @@ export const Marcas = () => {
                 <MotionBox 
                     w={{ base: "100%", md: "48%" }}
                     p={10}
+                    pr={4}
                     border="1px solid"
                     borderColor="orange.400"
                     borderRadius="md"
@@ -184,6 +187,7 @@ export const Marcas = () => {
                 <MotionBox
                     w={{ base: "100%", md: "48%" }}
                     p={10}
+                    pl={4}
                     border="1px solid"
                     borderColor="orange.400"
                     borderRadius="md"
