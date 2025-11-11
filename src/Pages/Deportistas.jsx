@@ -1,10 +1,19 @@
-import { Flex, Heading, Text, Box } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import "./Deportistas.css";
+import deportistas_gestion360 from "../assets/deportistas_gestion360.png";
+import deportistas_logos from "../assets/deportistas_logos.png";
+import deportistas_matchday from "../assets/deportistas_matchday.png";
+import deportistas_postpartido from "../assets/deportistas_postpartido.png";
+import deportistas_aniversario from "../assets/deportistas_aniversario.png";
+import deportistas_perfil from "../assets/deportistas_perfil.png";
+import deportistas_perfil2 from "../assets/deportistas_perfil2.png";
 
 const MotionFlex = motion(Flex);
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionBox = motion(Box);
+const MotionImage = motion(Image);
 
 export const Deportistas = () => {
     return (
@@ -101,59 +110,317 @@ export const Deportistas = () => {
                 TESTIMONIOS
                 </Text>
             </MotionFlex>
+            <MotionFlex
+                justifyContent="center"
+                alignItems="center"
+                flexDirection="column"
+                my={20}
+                w={{ base: "100%", md: "50%" }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.8 }}
+            >
+                <Text textAlign="center" fontSize="3xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" color="white" mt={20}>
+                    Así potenciamos <Text as='mark' p={'3px'} bg="orange.400" color="white" mx={1}>tú marca</Text>
+                </Text>
                 <MotionFlex
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection="column"
-                    my={20}
-                    w={{ base: "100%", md: "50%" }}
+                    w={{ base: "100%", md: "100%" }}
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9, duration: 0.8 }}
+                    my={'150px'}
+                    position="relative"
                 >
-                    <Text textAlign="center" fontSize="3xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" color="white" mt={20}>
-                        Así potenciamos <Text as='mark' p={'3px'} bg="orange.400" color="white" mx={1}>tú marca</Text>
-                    </Text>
-                    <MotionFlex
-                        w={{ base: "100%", md: "100%" }}
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.9, duration: 0.8 }}
-                        my={'150px'}
-                        position="relative"
+                    <MotionBox
+                        fontSize="6xl"
+                        fontWeight="bold"
+                        fontFamily="Stack Sans Headline, sans-serif"
+                        color="orange.400"
+                        w={{ base: "100%", md: "700px" }}
+                        position="absolute"
+                        left={-11}
+                        top={-10}
                     >
-                        <MotionBox
-                            fontSize="6xl"
-                            fontWeight="bold"
+                        <Text
+                            fontSize="80px"
+                            fontWeight="800"
                             fontFamily="Stack Sans Headline, sans-serif"
                             color="orange.400"
-                            w={{ base: "100%", md: "700px" }}
-                            position="absolute"
-                            left={-11}
-                            top={-10}
-                        >
-                            <Text
-                                fontSize="80px"
-                                fontWeight="800"
-                                fontFamily="Stack Sans Headline, sans-serif"
-                                color="orange.400"
-                                lineHeight="shorter"
-                            >Plan de Marketing</Text>
-                        </MotionBox>
-                        <MotionText
-                            fontSize="xl"
-                            fontFamily="Stack Sans Headline, sans-serif"
-                            color="white"
-                            position="absolute"
-                            w="800px"
-                            left={10}
-                            top={10}
-                            textAlign="end"
-                        >
-                            Diseñamos el plan de marketing y comunicación adaptado a tu persona para generar el contenido adecuado para potenciar tu marca persona.
-                        </MotionText>
-                    </MotionFlex>
+                            lineHeight="shorter"
+                        >Plan de Marketing</Text>
+                    </MotionBox>
+                    <MotionText
+                        fontSize="xl"
+                        fontFamily="Stack Sans Headline, sans-serif"
+                        color="white"
+                        position="absolute"
+                        w="800px"
+                        left={10}
+                        top={10}
+                        textAlign="end"
+                    >
+                        Diseñamos el plan de marketing y comunicación adaptado a tu persona para generar el contenido adecuado para potenciar tu marca persona.
+                    </MotionText>
                 </MotionFlex>
+            </MotionFlex>
+            <Flex
+                className="bordersBox"
+                w={{ base: "100%", md: "70%" }}
+                h="500px"
+                justifyContent="space-around"
+                alignItems="center"
+                gap={20 }
+                fontFamily="Stack Sans Headline, sans-serif"
+                color="white"
+                p={10}
+            >
+                <MotionFlex
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    justifyContent="start"
+                    alignItems="start"
+                    flexDirection="column"
+                    gap={2}
+                    alignSelf="start"
+                    w="500px"
+                >
+                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Gestión 360º
+                    </Text>
+                    <Text fontSize="2xl">
+                        Generamos contenido adaptado para todas las redes sociales existentes.
+                    </Text>
+                </MotionFlex>
+                <MotionImage 
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                viewport={{ once: true }}
+                src={deportistas_gestion360}
+                alt="deportistas_gestion360" 
+                w="500px" 
+                h="500px" 
+                objectFit="contain" 
+                /> 
+            </Flex>
+            <Flex
+                className="bordersBox2"
+                w={{ base: "100%", md: "70%" }}
+                h="500px"
+                justifyContent="space-around"
+                alignItems="center"
+                gap={20 }
+                fontFamily="Stack Sans Headline, sans-serif"
+                color="white"
+                p={10}
+            >
+                <MotionImage 
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                viewport={{ once: true }}
+                src={deportistas_logos}
+                alt="deportistas_logos" 
+                w="500px" 
+                h="500px" 
+                objectFit="contain" 
+                filter="drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.59))"
+                /> 
+                <MotionFlex
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    justifyContent="start"
+                    alignItems="end"
+                    flexDirection="column"
+                    gap={2}
+                    alignSelf="start"
+                    w="500px"
+                >
+                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Logos
+                    </Text>
+                    <Text fontSize="2xl" textAlign="end">
+                        El Logo es el principal diferenciador de una marca, es por ello que crearemos el tuyo propio para identificar todo tu contenido.
+                    </Text>
+                </MotionFlex>
+            </Flex>
+            <Flex
+                className="bordersBox"
+                w={{ base: "100%", md: "70%" }}
+                h="750px"
+                justifyContent="space-around"
+                alignItems="center"
+                gap={20}
+                fontFamily="Stack Sans Headline, sans-serif"
+                color="white"
+                p={20}
+            >
+                <MotionFlex
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    justifyContent="start"
+                    alignItems="start"
+                    flexDirection="column"
+                    gap={2}
+                    alignSelf="start"
+                    w="400px"
+                >
+                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Matchday
+                    </Text>
+                    <Text fontSize="2xl">
+                        Anuncia tu próximo partido con el equipo de la mejor manera a través de placas estáticas o animadas.
+                    </Text>
+                </MotionFlex>
+                <MotionImage 
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                viewport={{ once: true }}
+                src={deportistas_matchday}
+                alt="deportistas_matchday" 
+                w="600px" 
+                h="650px" 
+                objectFit="contain" 
+                /> 
+            </Flex>
+            <Flex
+                className="bordersBox2"
+                w={{ base: "100%", md: "70%" }}
+                h="800px"
+                justifyContent="space-around"
+                alignItems="center"
+                gap={20}
+                fontFamily="Stack Sans Headline, sans-serif"
+                color="white"
+                p={10}
+            >
+                <MotionImage 
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                viewport={{ once: true }}
+                src={deportistas_postpartido}
+                alt="deportistas_postpartido" 
+                w="600px" 
+                h="650px" 
+                objectFit="contain" 
+                filter="drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.59))"
+                /> 
+                <MotionFlex
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    justifyContent="start"
+                    alignItems="end"
+                    flexDirection="column"
+                    gap={2}
+                    alignSelf="start"
+                    w="400px"
+                >
+                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Publicaciones Post Partido
+                    </Text>
+                    <Text fontSize="2xl" textAlign="end">
+                        Comunica tus sensaciones luego de disputar un encuentro de la manera más profesional a través de imágenes o videos.
+                    </Text>
+                </MotionFlex>
+            </Flex>
+            <Flex
+                className="bordersBox"
+                w={{ base: "100%", md: "70%" }}
+                h="750px"
+                justifyContent="space-around"
+                alignItems="center"
+                gap={20}
+                fontFamily="Stack Sans Headline, sans-serif"
+                color="white"
+                p={20}
+            >
+                <MotionFlex
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    justifyContent="start"
+                    alignItems="start"
+                    flexDirection="column"
+                    gap={2}
+                    alignSelf="start"
+                    w="400px"
+                >
+                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Conmemorativas
+                    </Text>
+                    <Text fontSize="2xl">
+                        Recorda esas fechas que son importantes en tu carrera o saluda a los clubes anteriores o actual por su aniversario, también a través de contenido en imágenes o videos.
+                    </Text>
+                </MotionFlex>
+                <MotionImage 
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                viewport={{ once: true }}
+                src={deportistas_aniversario}
+                alt="deportistas_aniversario" 
+                w="600px" 
+                h="650px" 
+                objectFit="contain" 
+                /> 
+            </Flex>
+            <Flex
+                className="bordersBox2"
+                w={{ base: "100%", md: "70%" }}
+                h="800px"
+                justifyContent="space-around"
+                alignItems="center"
+                gap={20}
+                fontFamily="Stack Sans Headline, sans-serif"
+                color="white"
+                p={10}
+            >   
+                
+                <MotionImage 
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                viewport={{ once: true }}
+                src={deportistas_perfil}
+                alt="deportistas_perfil" 
+                w="600px" 
+                h="650px"   
+                objectFit="contain" 
+                filter="drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.59))"
+                /> 
+                <MotionFlex
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    justifyContent="start"
+                    alignItems="end"
+                    flexDirection="column"
+                    gap={2}
+                    alignSelf="start"
+                    w="400px"
+                >
+                    <Text textAlign="center" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Optimización de Perfil
+                    </Text>
+                    <Text fontSize="2xl" textAlign="end">
+                        Biografia, Portada principal y destacadas: Organizamos y tu perfil generando el copy para tu biografia, 
+                        diseñando tu portada principal para dar la bienvenida e historias destacadas de Instagram por etapas de tu carrera 
+                        (clubes, selecciones, eventos o hitos). Cada portada cuenta parte de tu recorrido, manteniendo una estética visual uniforme y profesional.
+                    </Text>
+                </MotionFlex>
+            </Flex>
         </Flex>
     );
 };

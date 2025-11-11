@@ -7,12 +7,13 @@ import {
   Button,
   VStack,
   Image,
+  Link,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import logo_vertical from '../assets/logo_vertical.png';
 import fondo_luz from '../assets/fondo_luz.png';
 import { GoArrowRight } from "react-icons/go";
-
+import { Link as RouterLink } from 'react-router-dom';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -55,12 +56,13 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-        >
+        > 
+        <Link href="#servicesButton">
           <Button
             size="lg"
             colorScheme="orange"
             bg="orange.500"
-
+            fontFamily="Stack Sans Headline, sans-serif"
             _hover={{ 
                 transform: 'scale(1.05)',
                 boxShadow: '0px 0px 12px 1px rgba(245,160,15,0.56)',
@@ -76,9 +78,10 @@ const Hero = () => {
             }}
             transition="all 0.3s ease-in-out"
           >
-            Contactanos &nbsp;&nbsp; <GoArrowRight />
+            Servicios &nbsp;&nbsp; <GoArrowRight />
                       {/* ESPACIO */}
           </Button>
+        </Link>
         </MotionBox>
       </VStack>
 

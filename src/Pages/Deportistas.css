@@ -1,0 +1,21 @@
+.bordersBox {
+  border-top: 2px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 2px solid transparent;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(80deg, black, orange) border-box;
+  border-top-right-radius: 120px;
+  border-bottom-right-radius: 120px;
+}
+
+.bordersBox2 {
+    border-top: 4px solid transparent;
+    border-left: 4px solid transparent;
+    border-bottom: 2px solid transparent;
+    background:
+      linear-gradient(#000000, #000000) padding-box,
+      linear-gradient(80deg, orange, black) border-box;
+    border-top-left-radius: 120px;
+    border-bottom-left-radius: 120px;
+}
