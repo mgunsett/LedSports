@@ -74,38 +74,42 @@ const Services = () => {
               <Image
                 src={service3}
                 alt="services"
-                w="500px"
-                h="500px"
+                w="450px"
+                h="450px"
                 objectFit="contain"
                 transition="all 0.4s ease-in-out"
                 _hover={{
                   filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
                   transform: "scale(1.05) translateX(15px)",
+                  mr: '-15px',
                 }}
               />
               <Image
                 src={service1}
                 alt="services"
-                w="650px"
-                h="650px" 
+                w="600px"
+                h="600px" 
                 objectFit="contain"
-                alignSelf={'flex-start'}
                 transition="all 0.4s ease-in-out"
                 _hover={{
                   filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
                   transform: "scale(1.05)",
+                  ml: '-15px',
+                  mr: '-15px'
                 }}
               />
               <Image
                 src={service4}
                 alt="services"
-                w="500px"
-                h="500px"
+                w="450px"
+                h="450px"
                 objectFit="contain"
                 transition="all 0.4s ease-in-out"
                 _hover={{
                   filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
                   transform: "scale(1.05) translateX(-15px)",
+                  ml: '-15px',
+                
                 }}
               />
           </Flex>

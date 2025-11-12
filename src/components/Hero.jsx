@@ -100,7 +100,7 @@ const Hero = () => {
           draggable="false"
           position="absolute"
           top={{ base: '50px', md: '10px' }}
-          right={{ base: '-50px', md: '170px' }}
+          right={{ base: '-50px', md: '180px' }}
           zIndex="0"
           opacity="0.5"
         />
@@ -120,7 +120,7 @@ const Hero = () => {
           draggable="false"
           zIndex="1"
         />
-        <MotionBox
+        {/* <MotionBox
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
@@ -139,7 +139,7 @@ const Hero = () => {
                 <Text fontSize="4xl" fontWeight="bold" color="white">50+</Text>
                 <Text fontSize="sm" color="white/90">Deportistas Activos</Text>
               </Box>
-            </MotionBox>
+            </MotionBox> */}
         </MotionBox>
     </Flex>
   );
