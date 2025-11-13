@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
 import { Link as RouterLink } from 'react-router-dom';
+import './Contact.css';
 
 
 const MotionBox = motion(Box);
@@ -42,15 +43,12 @@ const Contact = () => {
         justifyContent={'center'}
         flexDirection={"column"}
         alignItems={"center"}
-        border={"1px solid orange"}
-        borderRadius="xl"
-        boxShadow="0px 0px 12px 1px rgba(245,160,15,0.56)"
-        w={{ base: '500px', md: '40%' }}
+        borderTop={"1px solid orange"}
+        w={{ base: '500px', md: '60%' }}
         h={{ base: '500px', md: '400px' }}
         mx={'auto'}
         mt={40}
         mb={20}
-        bg="black.600"
       >
         <MotionBox
           initial={{ opacity: 0, y: 30 }}

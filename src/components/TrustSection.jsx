@@ -14,10 +14,23 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
 import { GoCheckCircleFill } from 'react-icons/go';
 
-import lukaromero from '../assets/lukaromero.png';
-import ricardoade from '../assets/ricardoade.png';
-import mainero from '../assets/mainero.png';
-import luiszarate from '../assets/luiszarate.png';
+import jugador_mainero from '../assets/jugador_mainero.png';
+import jugador_ade from '../assets/jugador_ade.png';
+import jugador_callejo from '../assets/jugador_callejo.png';
+import jugador_campisi from '../assets/jugador_campisi.png';
+import jugador_correa from '../assets/jugador_correa.png';
+import jugador_gonzapiovi from '../assets/jugador_gonzapiovi.png';
+import jugador_carmelo from '../assets/jugador_carmelo.png';
+import jugador_farias from '../assets/jugador_farias.png';
+import jugador_gonzasosa from '../assets/jugador_gonzasosa.png';
+import jugador_jonitorres from '../assets/jugador_jonitorres.png';
+import jugador_keki from '../assets/jugador_keki.png';
+import jugador_lotti from '../assets/jugador_lotti.png';
+import jugador_luka from '../assets/jugador_luka.png';
+import jugador_oroz from '../assets/jugador_oroz.png';
+import jugador_runi from '../assets/jugador_runi.png';
+import jugador_zuqi from '../assets/jugador_zuqi.png';
+
 import '../components/TrustSection.css';
 import Estadisticas from './Estadisticas';
 
@@ -25,38 +38,98 @@ const MotionBox = motion(Box);
 
 const brands = [
   {
-    img: lukaromero,
-    name: 'Luka Romero',
+    img: jugador_mainero,
+    name: 'Jugador Mainero',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
-    img: mainero,
-    name: 'Mainero',
+    img: jugador_ade,
+    name: 'Jugador Ade',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
-    img: lukaromero,
-    name: 'Luka Romero',
+    img: jugador_callejo,
+    name: 'Jugador Callejo',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
-    img: mainero,
-    name: 'Mainero',
+    img: jugador_campisi,
+    name: 'Jugador Campisi',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
-    img: lukaromero,
-    name: 'Luka Romero',
+    img: jugador_correa,
+    name: 'Jugador Correa',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
-    img: mainero,
-    name: 'Mainero',
+    img: jugador_gonzapiovi,
+    name: 'Jugador Gonzapiovi',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_carmelo,
+    name: 'Jugador Carmelo',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_farias,
+    name: 'Jugador Farias',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_gonzasosa,
+    name: 'Jugador Gonzasosa',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_jonitorres,
+    name: 'Jugador Jonitorres',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_keki,
+    name: 'Jugador Keki',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_lotti,
+    name: 'Jugador Lotti',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_luka,
+    name: 'Jugador Luka',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_oroz,
+    name: 'Jugador Oroz',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_runi,
+    name: 'Jugador Runi',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
+    img: jugador_zuqi,
+    name: 'Jugador Zuqi',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
@@ -287,8 +360,10 @@ const TrustSection = () => {
                   direction="column"
                   alignItems="center"
                   justifyContent="center"
+                  mt="50px"
                   mx="50px"
                   w="250px"
+                  h="400px"
                   transition="all 0.8s"
                   sx={{
                     '&:hover .image_brand': {
@@ -306,7 +381,7 @@ const TrustSection = () => {
                     className="image_brand"
                     src={logo.img}
                     alt={`Logo ${i}`}
-                    maxH="450px"
+                    maxH="350px"
                     maxW="370px"
                     borderRadius="8px"
                     filter="grayscale(100%) brightness(0.9)"
