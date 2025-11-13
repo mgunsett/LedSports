@@ -17,6 +17,7 @@ export const MainRouters = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home/:id" element={<Home />} />
         <Route path="/agentes" element={<Agentes />} />
         <Route path="/eventos" element={<Eventos />} />
         <Route path="/marcas" element={<Marcas />} />

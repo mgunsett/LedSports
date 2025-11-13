@@ -142,6 +142,27 @@ const Services = () => {
           mb={'120px'}
           mx={10}
         >
+          <Link to="/deportistas">
+            <Button
+              color="orange.400"
+              size="lg"
+              transition="all 0.3s ease-in-out"
+              py={12}
+              px={'85px'}
+              boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+              bgGradient="linear(to-br, gray.800, gray.900)"
+              _hover={{
+                bgGradient: "linear(to-br, gray.600, gray.700)",
+                transform: "scale(1.1)",
+              }}
+              _active={{
+                transform: "translateY(5px)",
+              }}
+              fontSize={{ base: 'lg', md: 'xl' }}
+            >
+              DEPORTISTAS
+            </Button>
+          </Link>
           <Link to="/agentes">
             <Button
               color="orange.400"
@@ -203,27 +224,6 @@ const Services = () => {
               }}
             >
               MARCAS
-            </Button>
-          </Link>
-          <Link to="/deportistas">
-            <Button
-              color="orange.400"
-              size="lg"
-              transition="all 0.3s ease-in-out"
-              py={10}
-              px={'80px'}
-              boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
-              bgGradient="linear(to-br, gray.800, gray.900)"
-              _hover={{
-                bgGradient: "linear(to-br, gray.600, gray.700)",
-                transform: "scale(1.1)",
-              }}
-              _active={{
-                transform: "translateY(5px)",
-
-              }}
-            >
-              DEPORTISTAS
             </Button>
           </Link>
         </Flex>

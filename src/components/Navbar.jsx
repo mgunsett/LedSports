@@ -35,7 +35,7 @@ const Navbar = () => {
   const navLinks = [
     { label: 'Inicio', href: '#home' },
     { label: 'Nosotros', href: '#about' },
-    { label: 'Servicios', href: '#services' },
+    { label: 'Servicios', href: '#servicesButton' },
     { label: 'Ya Confían', href: '#trust' },
     { label: 'Contacto', href: '#contact' },
   ];
@@ -84,7 +84,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={`/${link.href}`}
               color="whiteAlpha.900"
               _hover={{ color: 'orange.400', textDecoration: 'none' }}
               transition="color 0.2s"
@@ -115,7 +115,7 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={`/${link.href}`}
                   fontSize="lg"
                   _hover={{ color: 'orange.400' }}
                   onClick={onClose}

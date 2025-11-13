@@ -13,7 +13,9 @@ import deportistas_fotografia from "../assets/deportistas_fotografia.png";
 import deportistas_estadis from "../assets/deportistas_estadis.png";
 import deportistas_estadis2 from "../assets/deportistas_estadis2.png";
 import deportistas_carpetacom from "../assets/deportistas_carpetacom.png";
+import deportistas_planmark from "../assets/deportistas_planmark.png";
 import { BsChevronDoubleDown } from "react-icons/bs";
+import Contact from "../Components/Contact";
 
 const MotionFlex = motion(Flex);
 const MotionHeading = motion(Heading);
@@ -99,77 +101,60 @@ export const Deportistas = () => {
             <MotionFlex
                 justifyContent="center"
                 alignItems="center"
-                flexDirection="column"
-                my={10}
-                w={{ base: "100%", md: "50%" }} 
-                h="400px"
-                border="2px solid orange"
-                borderRadius="10px"
-                fontSize="2xl" 
-                fontWeight="bold" 
-                fontFamily="Stack Sans Headline, sans-serif" 
-                color="white"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-            >
-                <Text textAlign="center">
-                TESTIMONIOS
-                </Text>
-            </MotionFlex>
-            <MotionFlex
-                justifyContent="center"
-                alignItems="center"
-                flexDirection="column"
                 my={20}
-                w={{ base: "100%", md: "50%" }}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.8 }}
+                w={{ base: "100%", md: "70%" }}
             >
-                <Text textAlign="center" fontSize="3xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" color="white" mt={20}>
-                    Así potenciamos <Text as='mark' p={'3px'} bg="orange.400" color="white" mx={1}>tú marca</Text>
+                <Text textAlign="center" fontSize="6xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" color="white" mt={20}>
+                    Así potenciamos 
                 </Text>
-                <MotionFlex
-                    w={{ base: "100%", md: "100%" }}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9, duration: 0.8 }}
-                    my={'150px'}
-                    position="relative"
-                >
-                    <MotionBox
-                        fontSize="6xl"
-                        fontWeight="bold"
-                        fontFamily="Stack Sans Headline, sans-serif"
-                        color="orange.400"
-                        w={{ base: "100%", md: "700px" }}
-                        position="absolute"
-                        left={-11}
-                        top={-10}
-                    >
-                        <Text
-                            fontSize="80px"
-                            fontWeight="800"
-                            fontFamily="Stack Sans Headline, sans-serif"
-                            color="orange.400"
-                            lineHeight="shorter"
-                        >Plan de Marketing</Text>
-                    </MotionBox>
-                    <MotionText
-                        fontSize="xl"
-                        fontFamily="Stack Sans Headline, sans-serif"
-                        color="white"
-                        position="absolute"
-                        w="800px"
-                        left={10}
-                        top={10}
-                        textAlign="end"
-                    >
-                        Diseñamos el plan de marketing y comunicación adaptado a tu persona para generar el contenido adecuado para potenciar tu marca persona.
-                    </MotionText>
-                </MotionFlex>
+                <Text color="orange.400" fontSize="6xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" mt={20}>Tú marca</Text>
             </MotionFlex>
+            <Flex
+                className="bordersBox2"
+                w={{ base: "100%", md: "70%" }}
+                h="500px"
+                justifyContent="space-around"
+                alignItems="center"
+                gap={20 }
+                fontFamily="Stack Sans Headline, sans-serif"
+                color="white"
+                p={10}
+            >
+                <MotionImage 
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                viewport={{ once: true }}
+                src={deportistas_planmark}
+                alt="deportistas_planmark" 
+                w="500px" 
+                h="500px" 
+                objectFit="contain" 
+                filter="drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.59))"
+                /> 
+                <MotionFlex
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    justifyContent="start"
+                    alignItems="end"
+                    flexDirection="column"
+                    gap={2}
+                    alignSelf="start"
+                    w="500px"
+                >
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Plan de Marketing
+                    </Text>
+                    <Text fontSize="xl" textAlign="end">
+                        Diseñamos el plan de marketing y comunicación adaptado a tu persona para generar el contenido adecuado para potenciar tu marca persona.
+                    </Text>
+                </MotionFlex>
+            </Flex>
             <Flex
                 className="bordersBox"
                 w={{ base: "100%", md: "70%" }}
@@ -193,7 +178,7 @@ export const Deportistas = () => {
                     alignSelf="start"
                     w="500px"
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Gestión 360º
                     </Text>
                     <Text fontSize="xl">
@@ -247,7 +232,7 @@ export const Deportistas = () => {
                     alignSelf="start"
                     w="500px"
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Logos
                     </Text>
                     <Text fontSize="xl" textAlign="end">
@@ -278,7 +263,7 @@ export const Deportistas = () => {
                     alignSelf="start"
                     w="400px"
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Matchday
                     </Text>
                     <Text fontSize="xl">
@@ -332,7 +317,7 @@ export const Deportistas = () => {
                     alignSelf="start"
                     w="400px"
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Publicaciones Post Partido
                     </Text>
                     <Text fontSize="xl" textAlign="end">
@@ -363,7 +348,7 @@ export const Deportistas = () => {
                     alignSelf="start"
                     w="400px"
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Conmemorativas
                     </Text>
                     <Text fontSize="xl">
@@ -453,7 +438,7 @@ export const Deportistas = () => {
                     w="400px"
                     pt={10}
                 >
-                    <Text textAlign="center" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="center" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Optimización de Perfil
                     </Text>
                     <Text fontSize="xl" textAlign="end" >
@@ -486,7 +471,7 @@ export const Deportistas = () => {
                     alignSelf="start"
                     w="400px"
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Fotografia y filmación
                     </Text>
                     <Text fontSize="xl">
@@ -561,7 +546,7 @@ export const Deportistas = () => {
                     mt={'180px'}
                     ml={'10px'}
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1}>
                         Estadísticas
                     </Text>
                     <Text fontSize="xl" textAlign="end">
@@ -593,7 +578,7 @@ export const Deportistas = () => {
                     alignSelf="start"
                     w="400px"
                 >
-                    <Text textAlign="start" fontSize="3xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Carpeta comercial
                     </Text>
                     <Text fontSize="xl">
@@ -625,6 +610,7 @@ export const Deportistas = () => {
             >
                 <BsChevronDoubleDown color="orange" />
             </MotionBox> 
+            <Contact/>
         </Flex>
     );
 };

@@ -189,11 +189,13 @@ const TrustSection = () => {
 
   return (
     <Flex 
+    id="trust"
     direction="column" 
     alignItems="center" 
     justifyContent="center" 
     gap={6} 
     mb={20}
+    mt={20}
     >
       <Heading
         as="h2"
