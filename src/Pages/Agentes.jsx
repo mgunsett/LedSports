@@ -15,14 +15,15 @@ const MotionText = motion(Text);
 export const Agentes = () => {
     return (       
         <Flex
-            bg="blackAlpha.900"
+            bg="black"
             justifyContent="center"
             alignItems="center"
-            gap={20}
+            gap={{ base: 10, md: 20 }}
             flexDirection="column"
             minHeight="100vh"
-            pt={60}
-            pb={'100px'}
+            pt={{ base: 40, md: 60 }}
+            pb={{ base: '80px', md: '100px' }}
+            px={{ base: 4, md: 0 }}
         >
             <Flex 
             justifyContent="start"
@@ -30,12 +31,13 @@ export const Agentes = () => {
             gap={2}
             flexDirection="row"
             alignSelf="start"
-            pl={'400px'}
-            mb={10}
+            w="100%"
+            pl={{ base: 4, md: 16, lg: '400px' }}
+            mb={{ base: 6, md: 10 }}
             >
                 <MotionBox 
                 w={'2px'} 
-                h={'100px'} 
+                h={{ base: '70px', md: '100px' }} 
                 bg="orange.400" 
                 mr={2}
                 borderRadius="full"
@@ -71,9 +73,9 @@ export const Agentes = () => {
             <Flex
             justifyContent="center"
             alignItems="center"
-            gap={20}
+            gap={{ base: 8, md: 20 }}
             flexDirection={{ base: "column", md: "row" }}
-            mb={'200px'}
+            mb={{ base: 20, md: '200px' }}
             >   
                 <MotionImage
                     src={agentes2}
@@ -86,7 +88,7 @@ export const Agentes = () => {
                 />
                 <MotionFlex
                     justifyContent="start"
-                    alignItems="start"
+                    alignItems='start'
                     flexDirection="column"
                     gap={2}
                     w={{ base: "100%", md: "500px" }}
@@ -94,23 +96,34 @@ export const Agentes = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.8, duration: 1 }}
                     viewport={{ once: true }}
+                    p={{base: 6, md: 0}}
                 >
-                    <Text as='mark'  p={2} bg="orange.400" fontSize="2xl" fontWeight="bold" color="white">Impulsamos la imagen digital</Text>
+                    <Text 
+                    as='mark'
+                    mb={{base: 2, md: 0}} 
+                    p={{base: '1px', md: 2}} 
+                    bg="orange.400" 
+                    fontSize="2xl" 
+                    fontWeight="bold" 
+                    color="white"
+                    >
+                        Impulsamos la imagen digital
+                    </Text>
                     <Text fontSize="2xl" fontWeight="bold" color="white">de tus representados y tu agencia</Text>
                     <Text fontSize="xl" color="white"> Ofrecemos un servicio integral pensado para agentes, representantes y agencias deportivas que buscan potenciar la presencia digital tanto de los deportistas que forman parte de su equipo como de su propia marca institucional.</Text>
                 </MotionFlex>
             </Flex>
             <Box 
             bgGradient="linear(to-br,  gray.900, black)"
-            w="100%"
-            h="600px"
+            w={{ base: "100vw", md: "100%" }}
+            h={{ base: "auto", md: "600px" }}
             pt={0}
             >
             <Flex
             justifyContent="center"
             alignItems="center"
-            gap={'150px'}
-            flexDirection={{ base: "column", md: "row" }}
+            gap={{ base: 10, md: '150px' }}
+            flexDirection={{ base: "column-reverse", md: "row" }}
             >   
                 <MotionFlex
                     justifyContent="start"
@@ -124,22 +137,24 @@ export const Agentes = () => {
                     viewport={{ once: true }}
                     mt={-2}
                     lineHeight="35px"
+                    px={{ base: 6, md: 0 }}
+                    pb={{ base: 6, md: 0 }}
                 >
                     <Text fontSize="xl" color="white"> Entendemos que la comunicación es una herramienta clave dentro del deporte profesional. 
                     Por eso, desarrollamos estrategias visuales y de marketing que permiten
-                    <Text as='mark' p={'3px'} bg="orange.400" color="white"> profesionalizar la imagen de cada jugador</Text> destacando su trayectoria, logros y valores a través de 
-                    <Text as='mark' p={'3px'} bg="orange.400" color="white">contenidos de calidad</Text>, diseños 
-                    <Text as='mark' p={'3px'} bg="orange.400" color="white">gráficos personalizados</Text>, <Text as='mark' p={'3px'} bg="orange.400" color="white">producciones fotográficas y audiovisuales</Text>, y una gestión estratégica de redes sociales que refuerza su marca personal.</Text>
+                    <Text as='mark' p={{base: '1px', md: '3px'}} bg="orange.400" color="white"> profesionalizar la imagen de cada jugador</Text> destacando su trayectoria, logros y valores a través de 
+                    <Text as='mark' p={{base: '1px', md: '3px'}} bg="orange.400" color="white">contenidos de calidad</Text>, diseños 
+                    <Text as='mark' p={{base: '1px', md: '3px'}} bg="orange.400" color="white">gráficos personalizados</Text>, <Text as='mark' p={{base: '1px', md: '3px'}} bg="orange.400" color="white">producciones fotográficas y audiovisuales</Text>, y una gestión estratégica de redes sociales que refuerza su marca personal.</Text>
                 </MotionFlex>
                 <MotionImage
                     src={agentes}
                     alt="agentes"
-                    w={{ base: "100%", md: "450px" }}
+                    w={{ base: "80%", md: "450px" }}
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y:0 }}
                     transition={{ delay: 0.3, duration: 1 }}
                     viewport={{ once: true }}
-                    mt={-20}
+                    mt={{ base: -20, md: -20 }}
                     boxShadow="0px 0px 12px 1px rgba(245,160,15,0.86)" 
                 />
             </Flex>
@@ -147,9 +162,9 @@ export const Agentes = () => {
             <Flex
             justifyContent="center"
             alignItems="center"
-            gap={'150px'}
+            gap={{ base: 10, md: '150px' }}
             flexDirection={{ base: "column", md: "row" }}
-            mt={'180px'}
+            mt={{ base: 12, md: '180px' }}
             >   
                 <MotionImage
                     src={agentes1}
@@ -171,15 +186,16 @@ export const Agentes = () => {
                     transition={{ delay: 0.3, duration: 1 }}
                     viewport={{ once: true }}
                     mt={2}
-                    lineHeight="38px"
+                    lineHeight={{ base: "30px", md: "38px" }}
+                    px={{ base: 4, md: 0 }}
                 >
                     <Text fontSize="xl" color="white">A su vez, trabajamos junto a las agencias para 
-                    <Text as='mark' p={'3px'} bg="orange.400" color="white"> fortalecer su identidad corporativa</Text> dentro del mercado deportivo, 
+                    <Text as='mark' p={{ base: '1px', md: '3px' }} bg="orange.400" color="white"> fortalecer su identidad corporativa</Text> dentro del mercado deportivo, 
                     generando una presencia sólida, moderna y diferenciada. Creamos 
-                    <Text as='mark' p={'3px'} bg="orange.400" color="white"> campañas personalizadas, planes de marketing</Text> y materiales visuales que consolidan
+                    <Text as='mark' p={{ base: '1px', md: '3px' }} bg="orange.400" color="white"> campañas personalizadas, planes de marketing</Text> y materiales visuales que consolidan
                     la imagen profesional de la representación, potenciando su alcance y su posicionamiento.
                     Cada servicio se adapta a las necesidades y objetivos de cada agente o agencia, ofreciendo
-                    <Text as='mark' p={'3px'} bg="orange.400" color="white"> presupuestos a medida</Text> y soluciones integrales orientadas a maximizar 
+                    <Text as='mark' p={{ base: '1px', md: '3px' }} bg="orange.400" color="white"> presupuestos a medida</Text> y soluciones integrales orientadas a maximizar 
                     el valor comunicacional de sus representados y de la marca que los respalda.
                     </Text>
                 </MotionFlex>
@@ -191,7 +207,8 @@ export const Agentes = () => {
             direction="row"
             alignItems="center"
             justifyContent="center"
-            fontSize={{ base: '50px', md: '100px' }}
+            fontSize={{ base: '60px', md: '100px' }}
+            mt={{ base: 4, md: 0}}
             >
                 <BsChevronDoubleDown color="orange" />
             </MotionBox>  
