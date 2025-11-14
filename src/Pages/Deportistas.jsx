@@ -15,7 +15,7 @@ import deportistas_estadis2 from "../assets/deportistas_estadis2.png";
 import deportistas_carpetacom from "../assets/deportistas_carpetacom.png";
 import deportistas_planmark from "../assets/deportistas_planmark.png";
 import { BsChevronDoubleDown } from "react-icons/bs";
-import Contact from "../Components/Contact";
+import Contact from "../components/Contact";
 
 const MotionFlex = motion(Flex);
 const MotionHeading = motion(Heading);
