@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import eventos from "../assets/eventos.png";
 import "./Eventos.css";
 import { BsChevronDoubleDown } from "react-icons/bs";
-import Contact from "../Components/Contact";
+import Contact from "../components/Contact";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
