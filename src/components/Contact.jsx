@@ -44,7 +44,7 @@ const Contact = () => {
         flexDirection={"column"}
         alignItems={"center"}
         borderTop={"1px solid orange"}
-        w={{ base: '500px', md: '60%' }}
+        w={{ base: '100%', md: '60%' }}
         h={{ base: '500px', md: '400px' }}
         mx={'auto'}
         mt={40}
@@ -59,7 +59,7 @@ const Contact = () => {
           textAlign="center"
           color="white"
         >
-          <Heading as="h2" fontSize={"5xl"} md={"5xl"} fontWeight="bold" mb={4}>
+          <Heading as="h2" fontSize={{ base: '35px', md: '5xl' }} fontWeight="bold" mb={4}>
             Cont<Text as="span" color="orange.600">acto</Text>
           </Heading>
           <Text fontSize="xl" maxW="3xl" mx="auto">

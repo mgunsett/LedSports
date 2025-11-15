@@ -294,15 +294,15 @@ const TrustSection = () => {
     >
       <Heading
         as="h2"
-        fontSize={{ base: '3xl', md: '4xl' }}
+        fontSize={{ base: '3xl', md: '45px' }}
         color="white"
         fontWeight="bold"
         display="flex"
-        alignItems="center"
+        alignItems="end"
         justifyContent="center"
         gap={2}
       >
-        Ya confían <Text color="orange.500">en nosotros</Text>
+        Nos <Text color="orange.500" fontSize={{ base: '35px', md: '50px' }}>eligieron</Text>
       </Heading>
 
       <Flex

@@ -36,7 +36,7 @@ const Navbar = () => {
     { label: 'Inicio', href: '#home' },
     { label: 'Nosotros', href: '#about' },
     { label: 'Servicios', href: '#servicesButton' },
-    { label: 'Ya Confían', href: '#trust' },
+    { label: 'Nos eligieron', href: '#trust' },
     { label: 'Contacto', href: '#contact' },
   ];
 

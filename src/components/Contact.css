@@ -3,3 +3,10 @@
     background: linear-gradient(#000000, #000000) padding-box,
     linear-gradient(80deg, black, orange) border-box;        
 }
+
+/*@media (max-width: 500px) {
+    #contact {
+        border-bottom: ;      
+    }
+}
+*/

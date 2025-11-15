@@ -162,7 +162,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 10, md: 12 }}
               px='85px'
-              w={{ base: '160px', md: '85px'}}
+              w={{ base: '160px', md: '220px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
@@ -184,7 +184,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
               px={{ base: '60px', md: '85px' }}
-              w={{ base: '160px', md: '85px'}}
+              w={{ base: '160px', md: '150px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
@@ -206,7 +206,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
               px={{ base: '60px', md: '85px' }}
-              w={{ base: '160px', md: '85px'}}
+              w={{ base: '160px', md: '150px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
@@ -228,7 +228,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
               px={{ base: '60px', md: '85px' }}
-              w={{ base: '160px', md: '85px'}}
+              w={{ base: '160px', md: '150px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
