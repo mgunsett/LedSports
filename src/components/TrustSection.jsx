@@ -145,7 +145,7 @@ const TrustSection = () => {
 
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const scrollAmount = 700;
+  const [scrollAmount, setScrollAmount] = useState(0);
   const animationRef = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
@@ -187,6 +187,28 @@ const TrustSection = () => {
     const max = Math.max(0, el.scrollWidth - el.clientWidth);
     return Math.min(Math.max(0, val), max);
   };
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const measureCardWidth = () => {
+      if (!containerRef.current) return;
+      const el = containerRef.current;
+      const firstCard = el.querySelector('#brand');
+      if (!firstCard) return;
+
+      const rect = firstCard.getBoundingClientRect();
+      const styles = window.getComputedStyle(firstCard);
+      const marginLeft = parseFloat(styles.marginLeft) || 0;
+      const marginRight = parseFloat(styles.marginRight) || 0;
+      const totalWidth = rect.width + marginLeft + marginRight;
+      setScrollAmount(totalWidth);
+    };
+
+    measureCardWidth();
+    window.addEventListener('resize', measureCardWidth);
+    return () => window.removeEventListener('resize', measureCardWidth);
+  }, []);
 
   const scrollLeft = () => {
     setScrollPosition((prev) => clampToBounds(prev - scrollAmount));
@@ -291,9 +313,9 @@ const TrustSection = () => {
         overflowX="auto"
         overflowY="hidden"
         maxW="100%"
-        minW="75%"
+        minW={{ base: '100%', md: '75%' }}
         margin="auto"
-        mb="100px"
+        mb={{ base: '20px', md: '100px' }}
         position="relative"
       >
         <IconButton
@@ -301,7 +323,7 @@ const TrustSection = () => {
           icon={<ChevronLeftIcon />}
           onClick={scrollLeft}
           position="absolute"
-          left="130px"
+          left={{ base: '10px', md: '130px' }}
           top="50%"
           transform="translateY(-50%)"
           zIndex="2"
@@ -316,8 +338,8 @@ const TrustSection = () => {
           alignItems="center"
           justifyContent="center"
           overflow="hidden"
-          maxW="75%"
-          minW="75%"
+          maxW={{ base: '100%', md: '75%' }}
+          minW={{ base: '100%', md: '75%' }}
           margin="auto"
         >
           <Flex
@@ -361,8 +383,8 @@ const TrustSection = () => {
                   alignItems="center"
                   justifyContent="center"
                   mt="50px"
-                  mx="50px"
-                  w="250px"
+                  mx={{ base: '12px', md: '50px' }}
+                  w={{ base: '80vw', md: '250px' }}
                   h="400px"
                   transition="all 0.8s"
                   sx={{
@@ -381,8 +403,8 @@ const TrustSection = () => {
                     className="image_brand"
                     src={logo.img}
                     alt={`Logo ${i}`}
-                    maxH="350px"
-                    maxW="370px"
+                    maxH={{ base: '320px', md: '350px' }}
+                    maxW={{ base: '340px', md: '370px' }}
                     borderRadius="8px"
                     filter="grayscale(100%) brightness(0.9)"
                     transition="all 0.8s"
@@ -398,9 +420,9 @@ const TrustSection = () => {
                     p={4}
                     position="absolute"
                     bottom="-20px"
-                    left="-40%"
+                    left={{ base: '-16%', md: '-40%' }}
                     transform="translate(50%, 30px)"
-                    w="90%"
+                    w={{ base: '70%', md: '90%' }}
                     bg="linear-gradient(135deg, rgba(158, 156, 156, 0.68) 0%, rgba(30, 30, 30, 0.45) 100%)"
                     backdropFilter="blur(2px)"
                     borderRadius="5px"
@@ -445,7 +467,7 @@ const TrustSection = () => {
           icon={<ChevronRightIcon />}
           onClick={scrollRight}
           position="absolute"
-          right="80px"
+          right={{ base: '10px', md: '80px' }}
           top="50%"
           transform="translateY(-50%)"
           zIndex="2"
@@ -455,7 +477,6 @@ const TrustSection = () => {
           _hover={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
         />
       </Flex>
-
       <Estadisticas />
     </Flex>
   );

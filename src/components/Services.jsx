@@ -11,52 +11,50 @@ import { motion } from 'framer-motion';
 import service1 from '../assets/service1.png';
 import service3 from '../assets/service3.png';
 import service4 from '../assets/service4.png';
-import '../components/Service.css';
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-
 const MotionBox = motion(Box);
-
 
 const Services = () => {
   return (
-    <Box id="services" bg="blackAlpha.100" py={{ base: 20, md: 28 }} px={{ base: 6, md: '170px' }}>
+    <Box id="services" bg="blackAlpha.100" py={{ base: 10, md: 28 }} px={{ base: 2, md: '170px' }}>
       <MotionBox
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-      >
-        <Flex
-          direction="row"
+        >
+          <Flex
+          direction={{ base: "column", md: "row" }}
           alignItems="center"
           justifyContent="space-evenly"
-          px={{ base: 6, md: 20 }}
+          px={{ base: 2, md: 20 }}
           py={10}
         >
           <Flex 
-          width="400px" 
-          h="500px" 
+          width={{ base: "100%", md: "400px" }}
+          h={{ base: "200px", md: "500px" }}
           direction="column" 
-          alignItems="start" 
-          justifyContent="start"
-          p={10}
+          alignItems={{ base: "start", md: "start" }} 
+          justifyContent="center"
+          p={{ base: 4, md: 10 }}
           gap={4}
           >
             <Heading
               as="h2"
-              fontSize={{ base: '3xl', md: '4xl' }}
+              fontSize='4xl'
               color="white"
-              textAlign="start"
+              textAlign={{ base: "start", md: "start" }}
               lineHeight={1}
             >
               Nuestros <Text fontSize="45px" color="orange.400">Servicios</Text>
             </Heading>
             <Text
-              fontSize="20px"
+              fontSize='20px'
               color="white"
               lineHeight={1.7}
+              textAlign={{ base: "start", md: "start" }}
             >
               Llevamos la imagen más allá: creamos contenido visual de calidad para deportistas, 
               clubes, ligas, agencias, marcas y eventos que buscan conectar y destacar.
@@ -67,49 +65,63 @@ const Services = () => {
           direction="row"
           alignItems="center"
           justifyContent="center"
-          h="750px"
-          w="50%"
+          h={{ base: "400px", md: "750px" }}
+          w={{ base: "100%", md: "50%" }}
           p={10}
+          mt={{ base: 4, md: 0 }}
           >
               <Image
                 src={service3}
                 alt="services"
-                w="450px"
-                h="450px"
+                mr={{ base: '-15px', md: 0 }}
+                w={{ base: "210px", md: "450px" }}
+                h={{ base: "210px", md: "450px" }}
                 objectFit="contain"
                 transition="all 0.4s ease-in-out"
                 _hover={{
                   filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
-                  transform: "scale(1.05) translateX(15px)",
+                  transform: { base: "scale(1.2) translateX(15px)", md: "scale(1.05) translateX(15px)"},
                   mr: '-15px',
+                  zIndex: 2
+                }}
+                _active={{
+                  transform: { base: "scale(1.2) translateX(15px)", md: "none"},
                 }}
               />
               <Image
                 src={service1}
                 alt="services"
-                w="600px"
-                h="600px" 
+                zIndex={1}
+                w={{ base: "260px", md: "600px" }}
+                h={{ base: "260px", md: "600px" }} 
                 objectFit="contain"
                 transition="all 0.4s ease-in-out"
                 _hover={{
                   filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
-                  transform: "scale(1.05)",
+                  transform: { base: "scale(1.2)", md: "scale(1.05)"},
                   ml: '-15px',
                   mr: '-15px'
+                }}
+                _active={{
+                  transform: { base: "scale(1.2)", md: "none"},
                 }}
               />
               <Image
                 src={service4}
                 alt="services"
-                w="450px"
-                h="450px"
+                ml={{ base: '-15px', md: 0 }}
+                w={{ base: "210px", md: "450px" }}
+                h={{ base: "210px", md: "450px" }}
                 objectFit="contain"
                 transition="all 0.4s ease-in-out"
                 _hover={{
                   filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
-                  transform: "scale(1.05) translateX(-15px)",
+                  transform: { base: "scale(1.2) translateX(-15px)", md: "scale(1.05) translateX(-15px)"},
                   ml: '-15px',
-                
+                  zIndex: 2 
+                }}
+                _active={{
+                  transform: { base: "scale(1.2) translateX(-15px)", md: "none"},
                 }}
               />
           </Flex>
@@ -122,8 +134,8 @@ const Services = () => {
         direction="row"
         alignItems="center"
         justifyContent="center"
-        mb={'80px'}
-        fontSize={{ base: '50px', md: '100px' }}
+        mb={{ base: '50px', md: '80px' }}
+        fontSize={{ base: '60px', md: '100px' }}
       >
         <BsChevronDoubleDown color="orange" />
       </MotionBox>
@@ -137,19 +149,21 @@ const Services = () => {
           direction="row"
           alignItems="center"
           justifyContent="center"
-          gap={20}
+          flexWrap="wrap"
+          gap={{ base: 4, md: 20 }}
           mt={10}
-          mb={'120px'}
-          mx={10}
+          mb={{ base: '20px', md: '120px' }}
+          mx={{ base: 2, md: 10 }}
         >
           <Link to="/deportistas">
             <Button
               color="orange.400"
-              size="lg"
+              size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
-              py={12}
-              px={'85px'}
-              boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+              py={{ base: 10, md: 12 }}
+              px='85px'
+              w={{ base: '160px', md: '85px'}}
+              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
                 bgGradient: "linear(to-br, gray.600, gray.700)",
@@ -158,7 +172,7 @@ const Services = () => {
               _active={{
                 transform: "translateY(5px)",
               }}
-              fontSize={{ base: 'lg', md: 'xl' }}
+              fontSize={{ base: 'md', md: 'xl' }}
             >
               DEPORTISTAS
             </Button>
@@ -166,11 +180,12 @@ const Services = () => {
           <Link to="/agentes">
             <Button
               color="orange.400"
-              size="lg"
+              size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
-              py={10}
-              px={'80px'}
-              boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+              py={{ base: 8, md: 10 }}
+              px={{ base: '60px', md: '85px' }}
+              w={{ base: '160px', md: '85px'}}
+              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
                 bgGradient: "linear(to-br, gray.600, gray.700)",
@@ -187,11 +202,12 @@ const Services = () => {
           <Link to="/eventos">
             <Button
               color="orange.400"
-              size="lg"
+              size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
-              py={10}
-              px={'80px'}
-              boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+              py={{ base: 8, md: 10 }}
+              px={{ base: '60px', md: '85px' }}
+              w={{ base: '160px', md: '85px'}}
+              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
                 bgGradient: "linear(to-br, gray.600, gray.700)",
@@ -208,11 +224,12 @@ const Services = () => {
           <Link to="/marcas">
             <Button
               color="orange.400"
-              size="lg"
+              size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
-              py={10}
-              px={'80px'}
-              boxShadow="0px 10px 15px rgba(255, 165, 0, 0.5)"
+              py={{ base: 8, md: 10 }}
+              px={{ base: '60px', md: '85px' }}
+              w={{ base: '160px', md: '85px'}}
+              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
                 bgGradient: "linear(to-br, gray.600, gray.700)",
