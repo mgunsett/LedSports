@@ -32,7 +32,6 @@ import jugador_runi from '../assets/jugador_runi.png';
 import jugador_zuqi from '../assets/jugador_zuqi.png';
 
 import '../components/TrustSection.css';
-import Estadisticas from './Estadisticas';
 
 const MotionBox = motion(Box);
 
@@ -153,7 +152,7 @@ const TrustSection = () => {
   const startScrollLeftRef = useRef(0);
   const hasDraggedRef = useRef(false);
 
-  const animateScrollTo = (target, duration = 700) => {
+  const animateScrollTo = (target, duration = 500) => {
     if (!containerRef.current) return;
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
@@ -211,10 +210,31 @@ const TrustSection = () => {
   }, []);
 
   const scrollLeft = () => {
-    setScrollPosition((prev) => clampToBounds(prev - scrollAmount));
+    const el = containerRef.current;
+    if (!el) return;
+    const max = Math.max(0, el.scrollWidth - el.clientWidth);
+
+    setScrollPosition((prev) => {
+      const next = prev - scrollAmount;
+      if (next < 0) {
+        const lastIndex = Math.floor(max / scrollAmount) || 0;
+        return clampToBounds(lastIndex * scrollAmount);
+      }
+      return clampToBounds(next);
+    });
   };
   const scrollRight = () => {
-    setScrollPosition((prev) => clampToBounds(prev + scrollAmount));
+    const el = containerRef.current;
+    if (!el) return;
+    const max = Math.max(0, el.scrollWidth - el.clientWidth);
+
+    setScrollPosition((prev) => {
+      const next = prev + scrollAmount;
+      if (next > max) {
+        return 0;
+      }
+      return clampToBounds(next);
+    });
   };
 
   useEffect(() => {
@@ -372,7 +392,7 @@ const TrustSection = () => {
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.2 }}
                 viewport={{ once: true }}
                 overflow="visible"
               >
@@ -383,7 +403,7 @@ const TrustSection = () => {
                   alignItems="center"
                   justifyContent="center"
                   mt="50px"
-                  mx={{ base: '12px', md: '50px' }}
+                  mx={{ base: '-5px', md: '50px' }}
                   w={{ base: '80vw', md: '250px' }}
                   h="400px"
                   transition="all 0.8s"
@@ -477,7 +497,7 @@ const TrustSection = () => {
           _hover={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
         />
       </Flex>
-      <Estadisticas />
+      
     </Flex>
   );
 };

@@ -4,6 +4,7 @@ import {
   Heading,
   Text,
   Box,
+  Icon,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion'; 
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
@@ -14,7 +15,21 @@ import './Contact.css';
 
 const MotionBox = motion(Box);
 
-const Contact = () => {
+const Contact = ({ path }) => {
+
+  const contactText = {
+    home: 'Consulta por el Plan que más se ajuste a tus necesidades.',
+    deportistas: 'Consulta por nuestros packs.',
+    agentes: 'Solicita tu presupuesto a la medida de tu agencia.',
+  };
+
+  const currentPath = path || (typeof window !== 'undefined' ? window.location.pathname : '/');
+
+  let pageKey = 'home';
+  if (currentPath.includes('deportistas')) pageKey = 'deportistas';
+  if (currentPath.includes('agentes')) pageKey = 'agentes';
+
+  const selectedText = contactText[pageKey];
 
   const contactMethods = [
     {
@@ -22,12 +37,6 @@ const Contact = () => {
       title: 'WhatsApp',
       value: 'Contáctanos',
       href: 'https://wa.me/5493516666666',
-    },
-    {
-      icon: CiMail,
-      title: 'Email',
-      value: 'led@mail.com',
-      href: 'mailto:led@mail.com',
     },
     {
       icon: FaInstagram,
@@ -44,11 +53,11 @@ const Contact = () => {
         flexDirection={"column"}
         alignItems={"center"}
         borderTop={"1px solid orange"}
-        w={{ base: '100%', md: '60%' }}
-        h={{ base: '500px', md: '400px' }}
+        w={{ base: '80%', md: '60%' }}
+        h="400px"
         mx={'auto'}
         mt={40}
-        mb={20}
+        mb={{ base: 2, md: 20 }}
       >
         <MotionBox
           initial={{ opacity: 0, y: 30 }}
@@ -62,10 +71,9 @@ const Contact = () => {
           <Heading as="h2" fontSize={{ base: '35px', md: '5xl' }} fontWeight="bold" mb={4}>
             Cont<Text as="span" color="orange.600">acto</Text>
           </Heading>
-          <Text fontSize="xl" maxW="3xl" mx="auto">
-            Consultá por el Plan que más se ajuste a tus necesidades.
+          <Text fontSize="xl" maxW="2xl" mx="auto">
+            {selectedText}
           </Text>
-
         </MotionBox>
 
         <Flex
@@ -83,8 +91,8 @@ const Contact = () => {
             >
               <RouterLink to={method.href} target="_blank">
               <Flex 
-                w={'120px'}
-                h={'120px'}
+                w={{ base: '100px', md: '120px' }}
+                h={{ base: '70px', md: '120px' }}
                 justify="center"
                 alignItems="center"
                 mx="auto"
@@ -97,7 +105,7 @@ const Contact = () => {
                 transform: "scale(1.1)",
               }} 
               >
-                <method.icon size={'40px'} color="white"/>
+                <Icon as={method.icon} color="white" fontSize={{ base: '25px', md: '40px' }} />
               </Flex>
               </RouterLink>
             </MotionBox>

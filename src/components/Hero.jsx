@@ -28,15 +28,13 @@ const Hero = () => {
       direction={{ base: 'column', md: 'row' }}
       bgGradient="linear(to-b, blackAlpha.900, blackAlpha.800)"
       px={{ base: 6, md: 20 }}
-      pt={{ base: 20, md: 0 }}
       overflow="hidden"
-      mt={{ base: '30px', md: 0 }}
     >
       {/* Texto principal */} 
       <VStack
         align={{ base: 'center', md: 'start' }}
-        spacing={6}
-        maxW="600px"
+        spacing={4}
+        maxW={{ base: '300px', md: '600px' }}
         textAlign={{ base: 'start', md: 'left' }}
       >
         <MotionHeading
@@ -69,9 +67,9 @@ const Hero = () => {
                 WebkitBoxShadow: '0px 0px 12px 1px rgba(245,160,15,0.56)',
                 MozBoxShadow: '0px 0px 12px 1px rgba(245,160,15,0.56)',
             }}
-            px={{ base: '20', md: '8' }}
+            px={{ base: '100px', md: '8' }}
             py={6}
-            borderRadius="full"
+            borderRadius={{ base: 'xl', md: 'full' }}
             onClick={() => {
               const contactSection = document.getElementById('contact');
               if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -99,15 +97,14 @@ const Hero = () => {
           objectFit="contain"
           draggable="false"
           position="absolute"
-          top={{ base: '50px', md: '10px' }}
+          top={{ base: '498px', md: '10px' }}
           right={{ base: '-50px', md: '180px' }}
           zIndex="0"
           opacity="0.5"
         />
       </MotionBox>
        <MotionBox
-         mt={{ base: 10, md: 0 }}
-         ml={{ md: 20 }}
+         ml={{ base: 0, md: 20 }}
          initial={{ opacity: 0, x: 40 }}
          animate={{ opacity: 1, x: 0 }}
          transition={{ duration: 1 }}
@@ -115,7 +112,7 @@ const Hero = () => {
         <Image
           src={logo_vertical}
           alt="Marketing Deportivo"
-          boxSize={{ base: '300px', md: '450px', lg: '500px' }}
+          boxSize={{ base: '400px', md: '450px', lg: '500px' }}
           objectFit="contain"
           draggable="false"
           zIndex="1"

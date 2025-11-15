@@ -45,7 +45,7 @@ const Navbar = () => {
       position="fixed"
       top="0"
       left="0"
-      w="100%"
+      w="100vw"
       zIndex="100"
       transition="all 0.3s ease"
       backdropFilter={scrollY > 30 ? 'blur(6px)' : 'none'}
@@ -104,8 +104,6 @@ const Navbar = () => {
           onClick={onOpen}
         />
       </Flex>
-
-      {/* Drawer móvil (Chakra UI v2) */}
       <Drawer variant="custom" placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent bg="blackAlpha.900" color="white">

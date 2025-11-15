@@ -14,7 +14,7 @@ export const Home = () => {
             <About />
             <Services />
             <TrustSection />
-            <Contact />
+            <Contact path={window.location.pathname}/>
         </Box>
     )
 }
