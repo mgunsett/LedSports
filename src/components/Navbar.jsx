@@ -57,7 +57,7 @@ const Navbar = () => {
         align="center"
         justify="space-between"
         px={{ base: 4, md: 12 }}
-        maxW="1200px"
+        maxW={{ base: '100%', md: '75%' }}
         mx="auto"
       >
         {/* Logo */}
@@ -65,7 +65,7 @@ const Navbar = () => {
         <Image
           src={logo_horizontal}
           alt="Marketing Deportivo"
-          boxSize={{ base: '77px', md: '80px', lg: '100px' }}
+          boxSize={{ base: '77px', md: '80px', lg: '80px' }}
           objectFit="contain"
           draggable="false"
           zIndex="1"
@@ -88,6 +88,7 @@ const Navbar = () => {
               color="whiteAlpha.900"
               _hover={{ color: 'orange.400', textDecoration: 'none' }}
               transition="color 0.2s"
+              fontSize={{ base: '10px', md: '15px' }}
             >
               {link.label}
             </Link>
@@ -102,12 +103,20 @@ const Navbar = () => {
           color="white"
           display={{ base: 'flex', md: 'none' }}
           onClick={onOpen}
+          _hover={{ color: 'orange.400' }}
+          transition="color 0.2s"
+          _active={{ color: 'orange.400' }}
         />
       </Flex>
-      <Drawer variant="custom" placement="right" onClose={onClose} isOpen={isOpen}>
+      <Drawer 
+      variant="custom" 
+      placement="right" 
+      onClose={onClose}
+      isOpen={isOpen}
+      >
         <DrawerOverlay />
         <DrawerContent bg="blackAlpha.900" color="white">
-          <DrawerCloseButton />
+          <DrawerCloseButton  _hover={{ color: 'red' }}/>
           <DrawerBody>
             <VStack spacing={6} mt={16}> 
               {navLinks.map((link) => (

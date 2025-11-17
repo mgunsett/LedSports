@@ -18,19 +18,20 @@ const About = () => {
   return (
     <Flex
       id="about"
-      direction={{ base: 'column', md: 'row' }}
+      direction={{ base: 'column-reverse', md: 'row' }}
       align="center"
       justify={{ base: 'center', md: 'space-evenly' }}
-      py={{ base: 16, md: 24 }}
+      py={{ base: 0, md: 10 }}
       px={{ base: 6, md: 20 }}
-      gap={2}
+      gap={{ base: 10, md: 2 }}
+      mb={{ base: 12, md: 0 }}
       bg="black"
       overflow="hidden"
     >
       {/* Imagen de apoyo */}
       <MotionBox
         w="100%"
-        maxW={{ base: '320px', md: '480px' }}
+        maxW={{ base: '320px', md: '400px' }}
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
@@ -43,19 +44,20 @@ const About = () => {
           objectFit="cover"
           boxShadow="xl"
           w="100%"
-          maxW={{ base: '320px', md: '480px' }}
+          maxW={{ base: '320px', md: '400px' }}
         />
       </MotionBox>
 
       {/* Texto de descripción */}
       <VStack
-        align={{ base: 'center', md: 'start' }}
-        spacing={5}
-        textAlign={{ base: 'center', md: 'left' }}
-        maxW="400px"
+        align={{ base: 'flex-end', md: 'start' }}
+        spacing={{ base: 3,  md: 5 }}
+        textAlign={{ base: 'end', md: 'left' }}
+        maxW="350px"
+        w="92%"
       >
         <MotionHeading
-          fontSize={{ base: '2xl', md: '4xl' }}
+          fontSize={{ base: '4xl', md: '3xl' }}
           fontWeight="bold"
           color="white"
           lineHeight="shorter"
@@ -64,13 +66,12 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Sobre <Text as="span" color="orange.400">LED</Text>SPORTS
+          <Text fontSize={{ base: '4xl', md: '3xl' }}>Sobre </Text><Text as="span" fontFamily="Stack Sans Headline, sans-serif" color="orange.400">LED</Text>SPORTS
         </MotionHeading>
-
         <MotionText
           color="whiteAlpha.800"
-          fontSize={{ base: 'md', md: 'xl' }}
-          lineHeight="taller"
+          fontSize='20px'
+          lineHeight={{ base: 1.5 , md: 1.7 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}

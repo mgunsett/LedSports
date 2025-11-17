@@ -18,7 +18,7 @@ const Footer = () => {
         justify="space-between"
         gap={6}
       >
-        <Image src={logo_vertical} alt="Logo" width={'70px'} />
+        <Image src={logo_vertical} alt="Logo" width={{ base: '70px', md: '60px' }} />
         <Flex
           direction={'column'}
           alignItems={'center'}
@@ -26,10 +26,10 @@ const Footer = () => {
           mt={{ base: 4, md: 2 }}
           color="whiteAlpha.700"
         >
-          <Text fontSize="sm" textAlign="center">
+          <Text fontSize="12px" textAlign="center">
             © {new Date().getFullYear()} LED SPORTS. Todos los derechos reservados.
           </Text>
-          <Flex direction={'row'} alignItems={'center'} gap={2}>
+          <Flex direction={'row'} alignItems={'center'} gap={2} fontSize="12px">
             <Text>
               Desarrollo Web -
             </Text>
@@ -48,15 +48,15 @@ const Footer = () => {
             </Link>
           </Flex>
         </Flex> 
-        <HStack spacing={8}>
+        <HStack spacing={{ base: 8, md: 6}}>
           <Link href="https://www.instagram.com/_ledsports/" isExternal>
-            <Icon as={FaInstagram} color="orange.400" boxSize={6} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
+            <Icon as={FaInstagram} color="orange.400" boxSize={{ base: 6, md: '20px'}} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
           </Link>
           <Link href="https://www.tiktok.com/@ledsports" isExternal>
-            <Icon as={FaTiktok} color="orange.400" boxSize={6} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
+            <Icon as={FaTiktok} color="orange.400" boxSize={{ base: 6, md: '20px'}} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
           </Link>
           <Link href="https://wa.me/5493516666666" isExternal>
-            <Icon as={FaWhatsapp} color="orange.400" boxSize={6} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
+            <Icon as={FaWhatsapp} color="orange.400" boxSize={{ base: 6, md: '20px'}} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
           </Link>
         </HStack>
       </Flex>

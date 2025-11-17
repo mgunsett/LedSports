@@ -22,24 +22,28 @@ const Hero = () => {
   return (
     <Flex
       id="home"
-      minH={{ base: '150vh', md: '100vh' }}
+      minH={{ base: '110vh', md: '100vh' }}
+      minW={{ base: '100%', md: '75%' }}
       align="center"
       justify="center"
       direction={{ base: 'column', md: 'row' }}
       bgGradient="linear(to-b, blackAlpha.900, blackAlpha.800)"
-      px={{ base: 6, md: 20 }}
+      px={{ base: 2, md: 20 }}
+      pt={{ base: 40, md: 0 }}
+      pb={{ base: 20, md: 0 }}
       overflow="hidden"
+      gap={{ base: 2, md: 6}}
     >
       {/* Texto principal */} 
       <VStack
         align={{ base: 'center', md: 'start' }}
         spacing={4}
-        maxW={{ base: '300px', md: '600px' }}
+        maxW={{ base: '300px', md: '500px' }}
         textAlign={{ base: 'start', md: 'left' }}
       >
         <MotionHeading
           as="h1"
-          fontSize={{ base: '5xl', md: '5xl', lg: '6xl' }}
+          fontSize={{ base: '5xl', md: '40px', lg: '40px' }}
           fontWeight="bold"
           color="white"
           lineHeight="shorter"
@@ -47,17 +51,19 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Potenciamos tu <Text fontSize={{ base: '5xl', md: '5xl', lg: '7xl' }} as="span" color="orange.400">Marca Deportiva</Text>
+          Potenciamos tu <br /> <Text fontSize={{ base: '5xl', md: '50px', lg: '50px' }} as="span" color="orange.400">Marca Deportiva</Text>
         </MotionHeading>
 
         <MotionBox
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
+
+          w="100%"
         > 
         <Link href="#servicesButton">
           <Button
-            size="lg"
+            size={{ base: 'lg', md: 'md' }}
             colorScheme="orange"
             bg="orange.500"
             fontFamily="Stack Sans Headline, sans-serif"
@@ -67,7 +73,8 @@ const Hero = () => {
                 WebkitBoxShadow: '0px 0px 12px 1px rgba(245,160,15,0.56)',
                 MozBoxShadow: '0px 0px 12px 1px rgba(245,160,15,0.56)',
             }}
-            px={{ base: '100px', md: '8' }}
+            w={{ base: '100%', md: 'auto' }}
+            px={{ base: 20, md: 8 }}
             py={6}
             borderRadius={{ base: 'xl', md: 'full' }}
             onClick={() => {
@@ -93,12 +100,12 @@ const Hero = () => {
         <Image
           src={fondo_luz}
           alt="Marketing Deportivo"
-          boxSize={{ base: '300px', md: '450px', lg: '600px' }}
+          boxSize={{ base: '300px', md: '450px', lg: '500px' }}
           objectFit="contain"
           draggable="false"
           position="absolute"
-          top={{ base: '498px', md: '10px' }}
-          right={{ base: '-50px', md: '180px' }}
+          top={{ base: '460px', md: '10px' }}
+          right={{ base: '-50px', md: '80px' }}
           zIndex="0"
           opacity="0.5"
         />
@@ -112,7 +119,7 @@ const Hero = () => {
         <Image
           src={logo_vertical}
           alt="Marketing Deportivo"
-          boxSize={{ base: '400px', md: '450px', lg: '500px' }}
+          boxSize={{ base: '400px', md: '380px', lg: '400px' }}
           objectFit="contain"
           draggable="false"
           zIndex="1"

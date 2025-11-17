@@ -366,7 +366,7 @@ const TrustSection = () => {
             ref={containerRef}
             overflowX="auto"
             overflowY="hidden"
-            gap={6}
+            gap={8}
             padding={2}
             margin="auto"
             maxW="100%"
@@ -403,9 +403,9 @@ const TrustSection = () => {
                   alignItems="center"
                   justifyContent="center"
                   mt="50px"
-                  mx={{ base: '-5px', md: '50px' }}
-                  w={{ base: '80vw', md: '250px' }}
-                  h="400px"
+                  mx={{ base: '-5px', md: '20px' }}
+                  w={{ base: '80vw', md: '230px' }}
+                  h="350px"
                   transition="all 0.8s"
                   sx={{
                     '&:hover .image_brand': {
@@ -423,8 +423,8 @@ const TrustSection = () => {
                     className="image_brand"
                     src={logo.img}
                     alt={`Logo ${i}`}
-                    maxH={{ base: '320px', md: '350px' }}
-                    maxW={{ base: '340px', md: '370px' }}
+                    maxH={{ base: '320px', md: '280px' }}
+                    maxW={{ base: '340px', md: '300px' }}
                     borderRadius="8px"
                     filter="grayscale(100%) brightness(0.9)"
                     transition="all 0.8s"
@@ -452,13 +452,13 @@ const TrustSection = () => {
                     transition="opacity 0.8s ease, transform 0.8s ease"
                     fontFamily={'Stack Sans Headline, sans-serif'}
                   >
-                    <Text as="span" color="white" fontSize={{ base: 'lg', md: 'xl' }}>
+                    <Text as="span" color="white" fontSize={{ base: 'lg', md: 'md'}}>
                       {logo.name}
                     </Text>
                     <Text as="span" color="orange.300" fontSize="sm" fontWeight="bold" letterSpacing="wide" alignItems="start">
                       Highlights
                     </Text>
-                    <List spacing={2}>
+                    <List spacing={2} fontSize={{ base: 'sm', md: 'sm'}}>
                       {logo.item1 && (
                         <ListItem color="gray.200" display="flex" alignItems="center">
                           <ListIcon as={GoCheckCircleFill} color="orange.400" /> {logo.item1}

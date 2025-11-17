@@ -68,10 +68,10 @@ const Contact = ({ path }) => {
           textAlign="center"
           color="white"
         >
-          <Heading as="h2" fontSize={{ base: '35px', md: '5xl' }} fontWeight="bold" mb={4}>
+          <Heading as="h2" fontSize={{ base: '35px', md: '4xl' }} fontWeight="bold" mb={4}>
             Cont<Text as="span" color="orange.600">acto</Text>
           </Heading>
-          <Text fontSize="xl" maxW="2xl" mx="auto">
+          <Text fontSize="md" maxW="2xl" mx="auto">
             {selectedText}
           </Text>
         </MotionBox>
@@ -91,8 +91,8 @@ const Contact = ({ path }) => {
             >
               <RouterLink to={method.href} target="_blank">
               <Flex 
-                w={{ base: '100px', md: '120px' }}
-                h={{ base: '70px', md: '120px' }}
+                w={{ base: '100px', md: '80px' }}
+                h={{ base: '70px', md: '80px' }}
                 justify="center"
                 alignItems="center"
                 mx="auto"
@@ -105,7 +105,7 @@ const Contact = ({ path }) => {
                 transform: "scale(1.1)",
               }} 
               >
-                <Icon as={method.icon} color="white" fontSize={{ base: '25px', md: '40px' }} />
+                <Icon as={method.icon} color="white" fontSize={{ base: '25px', md: '30px' }} />
               </Flex>
               </RouterLink>
             </MotionBox>

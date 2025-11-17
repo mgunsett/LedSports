@@ -5,6 +5,7 @@ import { Agentes } from "../Pages/Agentes";
 import { Eventos } from "../Pages/Eventos";     
 import { Marcas } from "../Pages/Marcas";     
 import { Deportistas } from "../Pages/Deportistas";     
+import { EntidadesDeportivas } from "../Pages/EntidadesDeportivas";
 import Footer from "../components/Footer";     
 import { ScrollToTop } from "./ScrollToTop";     
       
@@ -22,6 +23,7 @@ export const MainRouters = () => {
         <Route path="/eventos" element={<Eventos />} />
         <Route path="/marcas" element={<Marcas />} />
         <Route path="/deportistas" element={<Deportistas />} />
+        <Route path="/entidades-deportivas" element={<EntidadesDeportivas />} />
       </Routes>
       <Footer />
     </BrowserRouter>
