@@ -45,7 +45,7 @@ const Navbar = () => {
       position="fixed"
       top="0"
       left="0"
-      w="100vw"
+      w="100%"
       zIndex="100"
       transition="all 0.3s ease"
       backdropFilter={scrollY > 30 ? 'blur(6px)' : 'none'}

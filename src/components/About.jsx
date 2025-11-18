@@ -51,10 +51,10 @@ const About = () => {
       {/* Texto de descripción */}
       <VStack
         align={{ base: 'flex-end', md: 'start' }}
-        spacing={{ base: 3,  md: 5 }}
+        spacing={{ base: 2,  md: 5 }}
         textAlign={{ base: 'end', md: 'left' }}
         maxW="350px"
-        w="92%"
+        w="95%"
       >
         <MotionHeading
           fontSize={{ base: '4xl', md: '3xl' }}

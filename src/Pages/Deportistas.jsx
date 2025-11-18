@@ -13,7 +13,7 @@ import deportistas_fotografia from "../assets/deportistas_fotografia.png";
 import deportistas_estadis from "../assets/deportistas_estadis.png";
 import deportistas_estadis2 from "../assets/deportistas_estadis2.png";
 import deportistas_carpetacom from "../assets/deportistas_carpetacom.png";
-import deportistas_planmark from "../assets/deportistas_planmark.png";
+import deportistas_planmkt from "../assets/deportistas_planmkt.png";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import Contact from "../components/Contact";
 
@@ -110,7 +110,7 @@ export const Deportistas = () => {
                 <Text textAlign="center" fontSize="6xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" color="white" mt={20}>
                     Así potenciamos 
                 </Text>
-                <Text color="orange.400" fontSize="6xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" mt={20}>Tú marca</Text>
+                <Text color="orange.400" fontSize="6xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" mt={20}>&nbsp;tu marca</Text>
             </MotionFlex>
             <Flex
                 className="bordersBox2"
@@ -128,8 +128,8 @@ export const Deportistas = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
                 viewport={{ once: true }}
-                src={deportistas_planmark}
-                alt="deportistas_planmark" 
+                src={deportistas_planmkt}
+                alt="deportistas_planmkt" 
                 w="500px" 
                 h="500px" 
                 objectFit="contain" 

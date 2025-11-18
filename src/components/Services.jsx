@@ -29,23 +29,24 @@ const Services = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
+      >
+        <Flex
+        direction={{ base: "column", md: "row" }}
+        alignItems="center"
+        justifyContent="space-evenly"
+        px={{ base: 2, md: 20 }}
+        pt={6}
+        gap={10}
         >
           <Flex
-          direction={{ base: "column", md: "row" }}
-          alignItems="center"
-          justifyContent="space-evenly"
-          px={{ base: 2, md: 20 }}
-          pt={6}
-          gap={20}
-          >
-          <Flex 
-          width={{ base: "100%", md: "350px" }}
-          h={{ base: "200px", md: "400px" }}
-          direction="column" 
-          alignItems={{ base: "start", md: "start" }} 
-          justifyContent="center"
-          p={{ base: 4, md: 10 }}
-          gap={4}
+            width={{ base: "100%", md: "350px" }}
+            h={{ base: "200px", md: "400px" }}
+            direction="column"
+            alignItems={{ base: "start", md: "start" }}
+            justifyContent="center"
+            p={{ base: 4, md: 2 }}
+            pr={{ base: 4, md: 10 }}
+            gap={2}
           >
             <Heading
               as="h2"
@@ -62,19 +63,18 @@ const Services = () => {
               lineHeight={1.7}
               textAlign={{ base: "start", md: "start" }}
             >
-              Llevamos la imagen más allá: creamos contenido visual de calidad para deportistas, 
+              Llevamos la imagen más allá: <br />creamos contenido visual de calidad para deportistas,
               clubes, ligas, agencias, marcas y eventos que buscan conectar y destacar.
             </Text>
           </Flex>
           <Flex
-          id="servicesButton"
-          direction="row"
-          alignItems="center"
-          justifyContent="center"
-          h={{ base: "400px", md: "750px" }}
-          w={{ base: "100%", md: "50%" }}
-          p={10}
-          mt={{ base: 4, md: 0 }}
+            id="servicesButton"
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+            h={{ base: "400px", md: "750px" }}
+            w={{ base: "100%", md: "50%" }}
+            p={10}
           >
               <Image
                 src={service3}
@@ -156,7 +156,7 @@ const Services = () => {
           alignItems="center"
           justifyContent="center"
           flexWrap="wrap"
-          gap={{ base: '14px', md: 8 }}
+          gap={{ base: '12px', md: 8 }}
           mt={10}
           mb={{ base: '20px', md: '120px' }}
           mx={{ base: '20px'  , md: 10 }}
@@ -168,7 +168,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 10, md: 12 }}
               px='80px'
-              w={{ base: '330px', md: '220px'}}
+              w={{ base: '290px', md: '220px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
@@ -191,7 +191,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
               px={{ base: '60px', md: '80px' }}
-              w={{ base: '160px', md: '10px'}}
+              w={{ base: '140px', md: '150px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
@@ -215,7 +215,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
               px={{ base: '60px', md: '80px' }}
-              w={{ base: '160px', md: '150px'}}
+              w={{ base: '140px', md: '150px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
@@ -239,7 +239,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
               px={{ base: '60px', md: '80px' }}
-              w={{ base: '160px', md: '150px'}}
+              w={{ base: '140px', md: '150px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{
@@ -263,7 +263,7 @@ const Services = () => {
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
               px={{ base: '60px', md: '80px' }}
-              w={{ base: '160px', md: '150px'}}
+              w={{ base: '140px', md: '150px'}}
               boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
               bgGradient="linear(to-br, gray.800, gray.900)"
               _hover={{

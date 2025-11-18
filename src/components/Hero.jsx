@@ -32,7 +32,7 @@ const Hero = () => {
       pt={{ base: 40, md: 0 }}
       pb={{ base: 20, md: 0 }}
       overflow="hidden"
-      gap={{ base: 2, md: 6}}
+      gap={{ base: 2, md: 6 }}
     >
       {/* Texto principal */} 
       <VStack
@@ -43,7 +43,7 @@ const Hero = () => {
       >
         <MotionHeading
           as="h1"
-          fontSize={{ base: '5xl', md: '40px', lg: '40px' }}
+          fontSize={{ base: '43px', md: '40px', lg: '40px' }}
           fontWeight="bold"
           color="white"
           lineHeight="shorter"
@@ -51,7 +51,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Potenciamos tu <br /> <Text fontSize={{ base: '5xl', md: '50px', lg: '50px' }} as="span" color="orange.400">Marca Deportiva</Text>
+          Potenciamos tu <Text fontSize={{ base: '47px', md: '40px', lg: '50px' }}  as="span" color="orange.400">Marca Deportiva</Text>
         </MotionHeading>
 
         <MotionBox
@@ -124,26 +124,6 @@ const Hero = () => {
           draggable="false"
           zIndex="1"
         />
-        {/* <MotionBox
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
-              <Box 
-                position="absolute" 
-                bottom="-6" 
-                right="-8" 
-                bg="orange.500" 
-                p={{ base: '12px', md: '20px' }}
-                textAlign="center"
-                borderRadius="2xl"
-                boxShadow="0px 0px 12px 1px rgba(245,160,15,0.56)"
-                opacity="0.9"
-                mr={{ base: '12px', md: 0 }}
-                >
-                <Text fontSize="4xl" fontWeight="bold" color="white">50+</Text>
-                <Text fontSize="sm" color="white/90">Deportistas Activos</Text>
-              </Box>
-            </MotionBox> */}
         </MotionBox>
     </Flex>
   );

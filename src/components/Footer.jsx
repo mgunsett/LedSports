@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Flex, Text, Link, HStack, Icon, Image } from '@chakra-ui/react';
 import { FaInstagram, FaTiktok, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
 import logo_vertical from '../assets/logo_vertical.png';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -16,9 +17,17 @@ const Footer = () => {
         direction={{ base: 'column', md: 'row' }}
         align="center"
         justify="space-between"
-        gap={6}
+        gap={{ base: 12, md: 6 }}
       >
-        <Image src={logo_vertical} alt="Logo" width={{ base: '70px', md: '60px' }} />
+        <Link href="/" >
+        <Image 
+          src={logo_vertical} 
+          alt="Logo" 
+          width={{ base: '80px', md: '60px' }} 
+          transition="all 0.4s ease"
+          _hover={{ transform: 'scale(1.1)' }}
+        />
+        </Link>
         <Flex
           direction={'column'}
           alignItems={'center'}

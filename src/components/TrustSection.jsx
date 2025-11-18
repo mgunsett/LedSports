@@ -404,8 +404,8 @@ const TrustSection = () => {
                   justifyContent="center"
                   mt="50px"
                   mx={{ base: '-5px', md: '20px' }}
-                  w={{ base: '80vw', md: '230px' }}
-                  h="350px"
+                  w={{ base: '320px', md: '230px' }}
+                  h="300px"
                   transition="all 0.8s"
                   sx={{
                     '&:hover .image_brand': {
@@ -423,8 +423,8 @@ const TrustSection = () => {
                     className="image_brand"
                     src={logo.img}
                     alt={`Logo ${i}`}
-                    maxH={{ base: '320px', md: '280px' }}
-                    maxW={{ base: '340px', md: '300px' }}
+                    maxH={{ base: '300px', md: '280px' }}
+                    maxW={{ base: '320px', md: '300px' }}
                     borderRadius="8px"
                     filter="grayscale(100%) brightness(0.9)"
                     transition="all 0.8s"
@@ -440,9 +440,10 @@ const TrustSection = () => {
                     p={4}
                     position="absolute"
                     bottom="-20px"
-                    left={{ base: '-16%', md: '-40%' }}
+                    left={{ base: '-5%', md: '-40%' }}
                     transform="translate(50%, 30px)"
-                    w={{ base: '70%', md: '90%' }}
+                    w={{ base: '60%', md: '90%' }}
+                    h={{ base: '40%', md: '40%' }}
                     bg="linear-gradient(135deg, rgba(158, 156, 156, 0.68) 0%, rgba(30, 30, 30, 0.45) 100%)"
                     backdropFilter="blur(2px)"
                     borderRadius="5px"
@@ -452,7 +453,7 @@ const TrustSection = () => {
                     transition="opacity 0.8s ease, transform 0.8s ease"
                     fontFamily={'Stack Sans Headline, sans-serif'}
                   >
-                    <Text as="span" color="white" fontSize={{ base: 'lg', md: 'md'}}>
+                    <Text as="span" color="white" fontSize={{ base: 'md', md: 'md'}}>
                       {logo.name}
                     </Text>
                     <Text as="span" color="orange.300" fontSize="sm" fontWeight="bold" letterSpacing="wide" alignItems="start">
