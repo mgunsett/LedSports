@@ -163,7 +163,7 @@ const Services = () => {
         >
           <Link to="/deportistas">
             <Button
-              color="orange.400"
+              color="white"
               size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
               py={{ base: 10, md: 12 }}
@@ -186,7 +186,7 @@ const Services = () => {
           </Link>
           <Link to="/entidades-deportivas">
             <Button
-              color="orange.400"
+              color="white"
               size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
@@ -210,7 +210,7 @@ const Services = () => {
           </Link>
           <Link to="/agentes">
             <Button
-              color="orange.400"
+              color="white"
               size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
@@ -234,7 +234,7 @@ const Services = () => {
           </Link>
           <Link to="/eventos">
             <Button
-              color="orange.400"
+              color="white"
               size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}
@@ -258,7 +258,7 @@ const Services = () => {
           </Link>
           <Link to="/marcas">
             <Button
-              color="orange.400"
+              color="white"
               size={{ base: 'md', md: 'lg' }}
               transition="all 0.3s ease-in-out"
               py={{ base: 8, md: 10 }}

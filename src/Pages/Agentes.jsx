@@ -47,18 +47,18 @@ export const Agentes = () => {
                 transition={{ duration: 0.8 }}   
                 ></MotionBox>
                 <MotionHeading
-                as="h1"
-                    fontSize={{ base: '5xl', md: '5xl', lg: '5xl' }}
+                    as="h1"
+                    fontSize="5xl"
                     fontWeight="bold"
-                color="white"
-                lineHeight="shorter"
-                initial={{ opacity: 0, x: -40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}             
+                    color="white"
+                    lineHeight="shorter"
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}             
                 >
                     Agen
                         <MotionText 
-                        fontSize={{ base: '5xl', md: '5xl', lg: '5xl' }} 
+                        fontSize="5xl"  
                         as="span" 
                         color="orange.400"
                         initial={{ opacity: 0, x: -20 }}

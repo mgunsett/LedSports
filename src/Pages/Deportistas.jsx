@@ -1,10 +1,14 @@
-import { Flex, Heading, Text, Box, Image } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Image, AspectRatio } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import "./Deportistas.css";
+
 import deportistas_gestion360 from "../assets/deportistas_gestion360.png";
 import deportistas_logos from "../assets/deportistas_logos.png";
-import deportistas_matchday from "../assets/deportistas_matchday.png";
+import deportistas_prematch from "../assets/deportistas_prematch.png";
+import deportistas_prematch1 from "../assets/deportistas_prematch1.png";
+import deportistas_prematch2 from "../assets/deportistas_prematch2.png";
 import deportistas_postpartido from "../assets/deportistas_postpartido.png";
+import deportistas_video from "../assets/deportistas_video.mp4";
 import deportistas_aniversario from "../assets/deportistas_aniversario.png";
 import deportistas_perfil from "../assets/deportistas_perfil.png";
 import deportistas_perfil3 from "../assets/deportistas_perfil3.png";
@@ -26,13 +30,13 @@ const MotionImage = motion(Image);
 export const Deportistas = () => {
     return (
         <Flex 
-        bg="black" 
-        minHeight="100vh" 
-        minWidth="70vw"
-        pt={60}
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
+            bg="black"
+            minHeight="100vh"
+            minWidth="70vw"
+            pt={60}
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
         >
             <Flex 
                 justifyContent="start"
@@ -40,12 +44,12 @@ export const Deportistas = () => {
                 gap={2}
                 flexDirection="row"
                 alignSelf="start"
-                pl={'400px'}
-                mb={10}
+                pl={{ base: 4, md: 16, lg: '250px' }}
+                mb={{ base: 6, md: 10 }}
             >
                 <MotionBox
                     w={'2px'}
-                    h={'100px'}
+                    h={{ base: '70px', md: '80px' }} 
                     bg="orange.400"
                     mr={2}
                     borderRadius="full"
@@ -57,7 +61,7 @@ export const Deportistas = () => {
                 ></MotionBox>
                 <MotionHeading
                     as="h1"
-                    fontSize={{ base: '5xl', md: '5xl', lg: '6xl' }}
+                    fontSize="5xl"
                     fontWeight="bold"
                     color="white"
                     lineHeight="shorter"
@@ -67,7 +71,7 @@ export const Deportistas = () => {
                 >
                     Depor
                     <MotionText
-                        fontSize={{ base: '5xl', md: '5xl', lg: '6xl' }}
+                        fontSize='5xl'
                         as="span"
                         color="orange.400"
                         initial={{ opacity: 0, x: -20 }}
@@ -82,9 +86,10 @@ export const Deportistas = () => {
                 justifyContent="center"
                 alignItems="center"
                 flexDirection="column"
-                my={20}
-                w={{ base: "100%", md: "50%" }}
-                fontSize="2xl" 
+                px={{ base: 4, md: 0 }}
+                my={{ base: 12, md: 16 }}
+                w={{ base: "90%", md: "50%" }}
+                fontSize={{ base: "lg", md: "xl" }}
                 fontWeight="bold" 
                 fontFamily="Stack Sans Headline, sans-serif" 
                 color="white"
@@ -92,33 +97,48 @@ export const Deportistas = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.8 }}
             >
-                <Text textAlign="center">
+                <Text textAlign={{ base: "start", md: "center" }}>
                 Desde nuestros inicios en 2020, hemos trabajado en la marca personal de más de 
                 <Text as='mark' p={'3px'} bg="orange.400" color="white" mx={1}>350 deportistas</Text> que confiaron en nosotros.
                 A ellos los acompañamos en las principales competiciones de América y el mundo.
                 </Text>
             </MotionFlex>
             <MotionFlex
-                justifyContent="center"
-                alignItems="center"
-                my={20}
+                justifyContent='center'
+                alignItems='center'
+                flexDirection={{ base: "column", md: "row" }}
+                my={{ base: 12, md: 20 }}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.8 }}
-                w={{ base: "100%", md: "70%" }}
+                w={{ base: "90%", md: "70%" }}
             >
-                <Text textAlign="center" fontSize="6xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" color="white" mt={20}>
+                <Text 
+                    textAlign="center"
+                    fontSize={{ base: "4xl", md: "5xl" }} 
+                    fontWeight="bold" 
+                    fontFamily="Stack Sans Headline, sans-serif" 
+                    color="white" 
+                    mt={{ base: 4, md: 20 }}
+                >
                     Así potenciamos 
                 </Text>
-                <Text color="orange.400" fontSize="6xl" fontWeight="bold" fontFamily="Stack Sans Headline, sans-serif" mt={20}>&nbsp;tu marca</Text>
+                <Text 
+                    color="orange.400" 
+                    fontSize="5xl" 
+                    fontWeight="bold" 
+                    fontFamily="Stack Sans Headline, sans-serif" 
+                    mt={{ base: -2, md: 20 }}
+                >
+                   <Text display={{ base: "none", md: "inline" }}> &nbsp;</Text>tu marca
+                </Text>
             </MotionFlex>
             <Flex
                 className="bordersBox2"
                 w={{ base: "100%", md: "70%" }}
-                h="500px"
+                h="400px"
                 justifyContent="space-around"
                 alignItems="center"
-                gap={20 }
                 fontFamily="Stack Sans Headline, sans-serif"
                 color="white"
                 p={10}
@@ -130,8 +150,8 @@ export const Deportistas = () => {
                 viewport={{ once: true }}
                 src={deportistas_planmkt}
                 alt="deportistas_planmkt" 
-                w="500px" 
-                h="500px" 
+                w="300px" 
+                h="300px" 
                 objectFit="contain" 
                 filter="drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.59))"
                 /> 
@@ -145,12 +165,12 @@ export const Deportistas = () => {
                     flexDirection="column"
                     gap={2}
                     alignSelf="start"
-                    w="500px"
+                    w="300px"
                 >
-                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Plan de Marketing
                     </Text>
-                    <Text fontSize="xl" textAlign="end">
+                    <Text fontSize={{ base: "sm", md: "md" }} textAlign="end">
                         Diseñamos el plan de marketing y comunicación adaptado a tu persona para generar el contenido adecuado para potenciar tu marca persona.
                     </Text>
                 </MotionFlex>
@@ -158,10 +178,9 @@ export const Deportistas = () => {
             <Flex
                 className="bordersBox"
                 w={{ base: "100%", md: "70%" }}
-                h="500px"
+                h="400px"
                 justifyContent="space-around"
                 alignItems="center"
-                gap={20 }
                 fontFamily="Stack Sans Headline, sans-serif"
                 color="white"
                 p={10}
@@ -176,12 +195,12 @@ export const Deportistas = () => {
                     flexDirection="column"
                     gap={2}
                     alignSelf="start"
-                    w="500px"
+                    w="300px"
                 >
-                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Gestión 360º
                     </Text>
-                    <Text fontSize="xl">
+                    <Text fontSize={{ base: "sm", md: "md" }}>
                         Generamos contenido adaptado para todas las redes sociales existentes.
                     </Text>
                 </MotionFlex>
@@ -192,18 +211,17 @@ export const Deportistas = () => {
                 viewport={{ once: true }}
                 src={deportistas_gestion360}
                 alt="deportistas_gestion360" 
-                w="500px" 
-                h="500px" 
+                w="350px" 
+                h="350px" 
                 objectFit="contain" 
                 /> 
             </Flex>
             <Flex
                 className="bordersBox2"
                 w={{ base: "100%", md: "70%" }}
-                h="500px"
+                h="400px"
                 justifyContent="space-around"
                 alignItems="center"
-                gap={20 }
                 fontFamily="Stack Sans Headline, sans-serif"
                 color="white"
                 p={10}
@@ -215,8 +233,8 @@ export const Deportistas = () => {
                 viewport={{ once: true }}
                 src={deportistas_logos}
                 alt="deportistas_logos" 
-                w="500px" 
-                h="500px" 
+                w="350px" 
+                h="350px" 
                 objectFit="contain" 
                 filter="drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.59))"
                 /> 
@@ -230,12 +248,12 @@ export const Deportistas = () => {
                     flexDirection="column"
                     gap={2}
                     alignSelf="start"
-                    w="500px"
+                    w="300px"
                 >
-                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Logos
                     </Text>
-                    <Text fontSize="xl" textAlign="end">
+                    <Text fontSize={{ base: "sm", md: "md" }} textAlign="end">
                         El Logo es el principal diferenciador de una marca, es por ello que crearemos el tuyo propio para identificar todo tu contenido.
                     </Text>
                 </MotionFlex>
@@ -243,10 +261,9 @@ export const Deportistas = () => {
             <Flex
                 className="bordersBox"
                 w={{ base: "100%", md: "70%" }}
-                h="750px"
+                h="500px"
                 justifyContent="space-around"
                 alignItems="center"
-                gap={20}
                 fontFamily="Stack Sans Headline, sans-serif"
                 color="white"
                 p={20}
@@ -261,34 +278,70 @@ export const Deportistas = () => {
                     flexDirection="column"
                     gap={2}
                     alignSelf="start"
-                    w="400px"
+                    w="300px"
                 >
-                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                    <Text textAlign="start" fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
                         Matchday
                     </Text>
-                    <Text fontSize="xl">
+                    <Text fontSize={{ base: "sm", md: "md" }}>
                         Anuncia tu próximo partido con el equipo de la mejor manera a través de placas estáticas o animadas.
                     </Text>
                 </MotionFlex>
-                <MotionImage 
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                viewport={{ once: true }}
-                src={deportistas_matchday}
-                alt="deportistas_matchday" 
-                w="600px" 
-                h="650px" 
-                objectFit="contain" 
-                /> 
+                <Flex
+                    justifyContent="center"
+                    alignItems="flex-start"
+                    gap={4}
+                    w="400px"
+                >
+                    <Image
+                        src={deportistas_prematch}
+                        alt="deportistas_prematch"
+                        w="200px"
+                        h="250px"
+                        objectFit="contain"
+                        transition="all 0.5s ease-in-out"
+                        _hover={{
+                            transform: "scale(1.1)",
+                            filter: "drop-shadow(0px 0px 5px rgba(209, 121, 21, 0.77))",
+                            mx: 2,
+                        }}
+                    />
+                    <Image
+                        src={deportistas_prematch1}
+                        alt="deportistas_prematch1"
+                        w="200px"
+                        h="250px"
+                        objectFit="contain"
+                        transition="all 0.5s ease-in-out"
+                        _hover={{
+                            transform: "scale(1.1)",
+                            filter: "drop-shadow(0px 0px 5px rgba(209, 121, 21, 0.77))",
+                            mx: 2,
+                        }}
+                    />
+                    <Image
+                        src={deportistas_prematch2}
+                        alt="deportistas_prematch2"
+                        w="200px"
+                        h="250px"
+                        objectFit="contain"
+                        transition="all 0.5s ease-in-out"
+                        _hover={{
+                            transform: "scale(1.1)",
+                            filter: "drop-shadow(0px 0px 5px rgba(209, 121, 21, 0.77))",
+                            mx: 2,
+                        }}
+                    />
+                </Flex>
             </Flex>
             <Flex
                 className="bordersBox2"
                 w={{ base: "100%", md: "70%" }}
-                h="800px"
+                h="600px"
                 justifyContent="space-around"
                 alignItems="center"
-                gap={20}
+                flexDirection={{ base: "column", md: "row" }}
+                gap={6}
                 fontFamily="Stack Sans Headline, sans-serif"
                 color="white"
                 p={10}
@@ -300,8 +353,8 @@ export const Deportistas = () => {
                 viewport={{ once: true }}
                 src={deportistas_postpartido}
                 alt="deportistas_postpartido" 
-                w="600px" 
-                h="650px" 
+                w="400px" 
+                h="500px" 
                 objectFit="contain" 
                 filter="drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.59))"
                 /> 
@@ -315,12 +368,15 @@ export const Deportistas = () => {
                     flexDirection="column"
                     gap={2}
                     alignSelf="start"
-                    w="400px"
+                    w="300px"
                 >
-                    <Text textAlign="start" fontSize="4xl" fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
-                        Publicaciones Post Partido
+                    <Text textAlign="end" fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} mt={20}>
+                        Publicaciones
                     </Text>
-                    <Text fontSize="xl" textAlign="end">
+                    <Text textAlign="end" fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold"  as='mark' p={'3px'} bg="orange.400" color="white" mx={1} >
+                        Post Partido
+                    </Text>
+                    <Text fontSize={{ base: "sm", md: "md" }} textAlign="end">
                         Comunica tus sensaciones luego de disputar un encuentro de la manera más profesional a través de imágenes o videos.
                     </Text>
                 </MotionFlex>
