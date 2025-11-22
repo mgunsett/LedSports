@@ -179,7 +179,7 @@ export const Marcas = () => {
                             inset="-4px"
                             bgGradient="linear(to-r, orange.400, orange.500, orange.400)"
                             borderRadius="2xl"
-                            opacity={0.5}
+                            opacity={0.2}
                             filter="blur(8px)"
                             transition="opacity 0.5s"
                             _groupHover={{
@@ -194,7 +194,7 @@ export const Marcas = () => {
                             borderColor="orange.400"
                             borderRadius="2xl"
                             p={12}
-                            textAlign="center"
+                            textAlign="center"  
                         >
                             <Box maxW="4xl" mx="auto">
                                 <Flex justify="center" mb={6}>

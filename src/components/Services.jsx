@@ -40,7 +40,7 @@ const Services = () => {
         >
           <Flex
             width={{ base: "100%", md: "350px" }}
-            h={{ base: "200px", md: "400px" }}
+            h={{ base: "150px", md: "400px" }}
             direction="column"
             alignItems={{ base: "start", md: "start" }}
             justifyContent="center"
@@ -58,7 +58,7 @@ const Services = () => {
               Nuestros <Text fontSize={{ base: '45px', md: '40px' }} color="orange.400">Servicios</Text>
             </Heading>
             <Text
-              fontSize={{ base: '20px', md: '18px' }}
+              fontSize={{ base: '15px', md: '18px' }}
               color="white"
               lineHeight={1.7}
               textAlign={{ base: "start", md: "start" }}

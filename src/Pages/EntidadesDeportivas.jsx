@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import entidades_deportivas from "../assets/entidades_deportivas.png";
 import Contact from "../components/Contact";
+import PlanMkt from "../components/PlanMkt";
 
 
 const MotionBox = motion(Box);
@@ -34,7 +35,7 @@ export const EntidadesDeportivas= () => {
       >
         <MotionBox
           w="2px"
-          h={{ base: '70px', md: '80px' }} 
+          h={{ base: '110px', md: '80px' }} 
           bg="orange.400"
           mr={2}
           borderRadius="full"
@@ -43,24 +44,31 @@ export const EntidadesDeportivas= () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         />
-        <MotionBox
+        <MotionFlex
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
+          as="h1"
+          flexDirection={{ base: "column", md: "row" }}
         >
           <Heading
-            as="h1"
             fontSize={{ base: '5xl', md: '5xl', lg: '5xl' }}
             fontWeight="bold"
             color="white"
             lineHeight="shorter"
           >
             Entidades&nbsp;
-            <Text as="span" color="orange.400">
-              Deportivas
-            </Text>
           </Heading>
-        </MotionBox>
+          <Text
+            color="orange.400"
+            fontSize={{ base: '5xl', md: '5xl', lg: '5xl' }}
+            fontWeight="bold"
+            lineHeight="shorter"
+            mt={{ base: -2, md: 0 }}
+          >
+            Deportivas
+          </Text>
+        </MotionFlex>
       </Flex>
 
       {/* Layout Vertical con Imagen Izquierda */}
@@ -72,8 +80,8 @@ export const EntidadesDeportivas= () => {
       >
         {/* Sección 1: Imagen + Feature Principal */}
         <MotionFlex
-          gap={8}
-          flexDirection={{ base: "column", md: "row" }}
+          gap={{ base: 20, md: 8 }}
+          flexDirection={{ base: "column-reverse", md: "row" }}
           alignItems="stretch"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -87,28 +95,36 @@ export const EntidadesDeportivas= () => {
               w="100%"
               h={{ base: "300px", md: "100%" }}
               objectFit="cover"
-              initial={{ scale: 1.2 }}
+              initial={{ scale: 1.5 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 1.5 }}
+              transition={{ duration: 1.2 }}
               flex="1"
               position="relative"
               overflow="hidden"
             />
-          
-
-          {/* Texto Principal */}
-          <Flex
+          {/* BOX PRINCIPAL */}
+          <MotionFlex
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
             flex="1"
             flexDirection="column"
             justifyContent="center"
             gap={4}
             bg="gray.900"
             border="2px solid"
-            borderColor="gray.800"
+            borderColor="orange.400"
             borderRadius="2xl"
             p={8}
             position="relative"
             overflow="hidden"
+            
+            _hover={{
+                transform: "scale(1.02)",
+                boxShadow: "0px 0px 20px 2px rgba(245,160,15,0.4)"
+            }}
+            cursor="pointer"
+            role="group"
           >
             <Box
               position="absolute"
@@ -120,9 +136,16 @@ export const EntidadesDeportivas= () => {
               opacity={0.15}
               borderRadius="full"
               filter="blur(50px)"
+              transition="transform 0.7s"
+              _groupHover={{
+                  transform: "scale(1.5)",
+              }}
             />
             
-            <Box position="relative" zIndex={10}>
+            <Box 
+            position="relative" 
+            zIndex={10} 
+            >
               <Box w="64px" h="4px" bg="orange.400" mb={4} />
               <Heading
                 fontSize={{ base: "xl", md: "2xl" }}
@@ -137,118 +160,75 @@ export const EntidadesDeportivas= () => {
                 fortalecer su marca en el entorno digital y proyectar una imagen profesional, moderna y coherente con sus valores.
               </Text>
             </Box>
-          </Flex>
+          </MotionFlex>
         </MotionFlex>
 
-        {/* Sección 2: Estrategia */}
-        <MotionBox
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        {/* BOX 2 */}
+        <Flex
+          gap={6}
+          flexDirection={{ base: "column", md: "row" }}
         >
-          <Box
+          <MotionBox
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             bg="gray.900"
             border="2px solid"
-            borderColor="gray.800"
+            borderColor="orange.400"
             borderRadius="2xl"
-            p={8}
+            p={6}
+            textAlign={{ base: "start", md: "end" }}
+            w={{ base: "100%", md: "47%" }}
           >
-            <Text fontSize="lg" color="white" lineHeight="tall">
+            <Text fontSize="md" color="white" lineHeight="tall">
               Nuestro objetivo es acompañar a cada entidad en la construcción de una{" "}
-              <Text as="mark" bg="orange.400" color="white" px={1}>
+              <Text as= 'span' color="orange.400" px={1} fontSize={"lg"}>
                 estrategia de comunicación completa
               </Text>
               , que refleje su historia, su esencia y su visión de crecimiento.
             </Text>
-          </Box>
-        </MotionBox>
-
-        {/* Sección 3: Servicios en Columnas */}
-        <MotionFlex
-          gap={6}
-          flexDirection={{ base: "column", md: "row" }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <Box
-            flex="1"
+          </MotionBox>
+        
+          <MotionBox
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             bg="gray.900"
             border="2px solid"
-            borderColor="gray.800"
+            borderColor="orange.400"
             borderRadius="2xl"
             p={6}
+            textAlign="start"
+            w={{ base: "100%", md: "53%" }}
           >
             <Text fontSize="md" color="white" lineHeight="tall">
               Desarrollamos{" "}
-              <Text as="mark" bg="orange.400" color="white" px={1}>
+              <Text as="span" color="orange.400" px={1} fontSize={"lg"}>
                 diseños gráficos profesionales
               </Text>
               , realizamos{" "}
-              <Text as="mark" bg="orange.400" color="white" px={1}>
+              <Text as="span" color="orange.400" px={1} fontSize={"lg"}>
                 producciones fotográficas
               </Text>{" "}
               y{" "}
-              <Text as="mark" bg="orange.400" color="white" px={1}>
+              <Text as="span" color="orange.400" px={1} fontSize={"lg"}>
                 audiovisuales de alta calidad
               </Text>
               .
             </Text>
-          </Box>
-
-          <Box
-            flex="1"
-            bg="gray.900"
-            border="2px solid"
-            borderColor="gray.800"
-            borderRadius="2xl"
-            p={6}
-          >
             <Text fontSize="md" color="white" lineHeight="tall">
               Brindamos soporte en la{" "}
-              <Text as="mark" bg="orange.400" color="white" px={1}>
+              <Text as="span" color="orange.400" px={1} fontSize={"lg"}>
                 creación de plataformas digitales y sitios web
               </Text>{" "}
               que complementan la identidad visual de la institución.
             </Text>
-          </Box>
-        </MotionFlex>
+          </MotionBox>
+        </Flex>
 
-        {/* Sección 4: Marketing */}
-        <MotionBox
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Box
-            bg="gray.900"
-            border="2px solid"
-            borderColor="gray.800"
-            borderRadius="2xl"
-            p={8}
-          >
-            <Text fontSize="lg" color="white" lineHeight="tall" textAlign="center">
-              Además, elaboramos{" "}
-              <Text as="mark" bg="orange.400" color="white" px={1}>
-                planes de marketing deportivo personalizados
-              </Text>
-              , adaptados a la realidad y objetivos de cada organización. Diseñamos{" "}
-              <Text as="mark" bg="orange.400" color="white" px={1}>
-                campañas específicas y acciones estratégicas
-              </Text>{" "}
-              orientadas a potenciar la marca institucional al máximo, mejorar el posicionamiento, 
-              aumentar la visibilidad y fortalecer el vínculo con la comunidad, las marcas y los sponsors.
-            </Text>
-            <Text fontSize="lg" color="white" lineHeight="tall" textAlign="center" mt={4}>
-              Cada proyecto es único. Por eso, realizamos presupuestos a medida, ajustándonos a las necesidades, 
-              metas y posibilidades de cada institución deportiva. Nuestro compromiso es brindar soluciones integrales 
-              que eleven su comunicación y consoliden su identidad dentro y fuera del campo de juego.
-            </Text>
-          </Box>
-        </MotionBox>
+        {/* BOX 3 */}
+        <PlanMkt/>
       </Flex>
-
-      {/* Scroll Indicator */}
       <MotionBox
         animate={{ y: [0, -15, 0] }}
         transition={{ duration: 1, repeat: Infinity }}
@@ -260,6 +240,7 @@ export const EntidadesDeportivas= () => {
       >
         <BsChevronDoubleDown color="orange" />
       </MotionBox>
+      <Contact/>
     </Flex>
   );
 };

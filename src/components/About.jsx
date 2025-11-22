@@ -70,7 +70,7 @@ const About = () => {
         </MotionHeading>
         <MotionText
           color="whiteAlpha.800"
-          fontSize='20px'
+          fontSize={{ base: '15px', md: '20px' }}
           lineHeight={{ base: 1.5 , md: 1.7 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
