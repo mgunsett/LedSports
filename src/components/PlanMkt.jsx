@@ -47,7 +47,7 @@ export const PlanMkt = () => {
         >
           <Heading
             as="h2"
-            fontSize='3xl'
+            fontSize={{ base: '3xl', md: '6xl' }}
             fontWeight="bold"
             color="orange.400"
             mb={4}

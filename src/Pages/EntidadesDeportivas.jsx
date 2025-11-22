@@ -234,9 +234,9 @@ export const EntidadesDeportivas= () => {
         transition={{ duration: 1, repeat: Infinity }}
         display="flex"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="start"
         fontSize={{ base: '60px', md: '100px' }}
-        mt={{ base: 10, md: 20 }}
+        mt={{ base: 2, md: '-30px' }}
       >
         <BsChevronDoubleDown color="orange" />
       </MotionBox>

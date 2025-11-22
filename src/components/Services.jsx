@@ -33,13 +33,13 @@ const Services = () => {
         <Flex
         direction={{ base: "column", md: "row" }}
         alignItems="center"
-        justifyContent="space-evenly"
-        px={{ base: 2, md: 20 }}
+        justifyContent={{ base: "center", md: "space-evenly" }}
+        px={{ base: 2, md: 2 }}
         pt={6}
-        gap={10}
+        gap={{ base: 10, md: 20 }}
         >
           <Flex
-            width={{ base: "100%", md: "350px" }}
+            width={{ base: "100%", md: "310px" }}
             h={{ base: "150px", md: "400px" }}
             direction="column"
             alignItems={{ base: "start", md: "start" }}
@@ -72,8 +72,8 @@ const Services = () => {
             direction="row"
             alignItems="center"
             justifyContent="center"
-            h={{ base: "400px", md: "750px" }}
-            w={{ base: "100%", md: "50%" }}
+            h={{ base: "350px", md: "750px" }}
+            w={{ base: "100%", md: "40%"}}
             p={10}
           >
               <Image
