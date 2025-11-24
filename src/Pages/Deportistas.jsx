@@ -193,7 +193,7 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
                     p={{ base: 0, md: 2 }}
@@ -232,18 +232,18 @@ export const Deportistas = () => {
                 h="100%"
               >
                 <Box
-                  flex='2'
+                  flex={{ base: '1', md: '2' }}
                   bg="gray.900"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  p={6}
-                  minH={{ base: "200px", md: "220px" }}
+                  p={{ base: 12, md: 6 }}
+                  minH={{ base: "150px", md: "220px" }}
                 >
                   <Image
                     src= {deportistas_gestion360}
                     w="200px"
-                    h="150px"
+                    h="200px"
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -268,15 +268,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
                     Gestión 360º
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Generamos contenido adaptado para todas las redes sociales existentes.
                   </Text>
                 </Flex>
@@ -307,18 +307,19 @@ export const Deportistas = () => {
                 h="100%"
               >
                 <Box
-                  flex='2'
+                  flex={{ base: '1', md: '2' }}
                   bg="gray.900"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  p={6}
+                  p={{ base: 14, md: 6 }}
                   minH={{ base: "200px", md: "300px" }}
                 >
                   <Image
                     src= {deportistas_logos}
-                    w="250px"
-                    h="150px"
+                    w={{ base: "280px", md: "250px" }}
+                    h={{ base: "180px", md: "150px" }}
+                    objectFit="cover"
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -333,8 +334,6 @@ export const Deportistas = () => {
                       }}
                   />
                 </Box>
-
-                {/* Content Section */}
                 <Flex
                   flex='1'
                   flexDirection="column"
@@ -344,15 +343,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
                     Logos
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Creamos tu logo propio para identificar todo tu contenido profesionalmente.
                   </Text>
                 </Flex>
@@ -388,60 +387,60 @@ export const Deportistas = () => {
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  p={6}
+                  p={{ base: 20, md: 6 }}
                   minH={{ base: "150px", md: "200px" }}
                 >
                   <Image
                     src= {deportistas_prematch}
-                    w="120px"
-                    h="230px"
+                    w={{ base: "100px", md: "120px" }}
+                    h={{ base: "210px", md: "230px" }}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
                     borderRadius="md"
                     color="gray.500"
                     fontSize="sm"
-                    transitionDuration="0.3s"
+                    transitionDuration="0.6s"
                     _hover={{
-                        transform: "translateY(-8px)",
-                        borderColor: "orange.400",
-                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))"
+                        transform: {base:"scale(1.5)", md:"translateY(-8px)"},
+                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
+                        mr: {base: '-60px', md: 0}
                       }}
                   />
                   <Image
                       src={deportistas_prematch1}
-                      w="120px"
-                      h="230px"
+                      w={{ base: "100px", md: "120px" }}
+                      h={{ base: "210px", md: "230px" }}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
                       borderRadius="md"
                       color="gray.500"
                       fontSize="sm"
-                      transitionDuration="0.3s"
+                      transitionDuration="0.6s"
                       ml={2}
                       _hover={{
-                        transform: "translateY(-8px)",
-                        borderColor: "orange.400",
-                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                        transform: {base:"scale(1.5)", md:"translateY(-8px)"},
+                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
+                        mx: {base: '-60px', md: 0}
                       }}
                     />
                     <Image
                       src={deportistas_prematch2}
-                      w="120px"
-                      h="230px"
+                      w={{ base: "100px", md: "120px" }}
+                      h={{ base: "210px", md: "230px" }}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
                       borderRadius="md"
                       color="gray.500"
                       fontSize="sm"
-                      transitionDuration="0.3s"
+                      transitionDuration="0.6s"
                       ml={2}
                       _hover={{
-                        transform: "translateY(-8px)",
-                        borderColor: "orange.400",
-                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                        transform: {base:"scale(1.5)", md:"translateY(-8px)"},
+                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
+                        ml: {base: '-60px', md: 0}
                       }}
                     />
                 </Box>
@@ -456,15 +455,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
                     Matchday
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Anuncia tu próximo partido con placas estáticas o animadas de alta calidad
                   </Text>
                 </Flex>
@@ -509,12 +508,6 @@ export const Deportistas = () => {
                     loop
                     playsInline
                     controls={false}
-                    style={{
-                      width: "500px",
-                      height: "550px",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
                   />
                 </Box>
                 <Flex
