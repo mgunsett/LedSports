@@ -27,79 +27,6 @@ const MotionText = motion(Text);
 const MotionBox = motion(Box);
 
 export const Deportistas = () => {
-  const services = [
-    {
-      title: "Plan de Marketing",
-      description: "Diseñamos el plan de marketing y comunicación adaptado a tu persona para generar el contenido adecuado.",
-      featured: true,
-      image: deportistas_planmkt
-    },
-    {
-      title: "Gestión 360º",
-      description: "Generamos contenido adaptado para todas las redes sociales existentes.",
-      featured: false,
-      image: deportistas_gestion360
-    },
-    {
-      title: "Logos",
-      description: "Creamos tu logo propio para identificar todo tu contenido profesionalmente.",
-      featured: false,
-      image: deportistas_logos
-    },
-    {
-      title: "Video Matchday",
-      description: "Generamos videos profesionales para tus redes sociales.",
-      featured: true,
-      video: deportistas_video
-    },
-    {
-      title: "Matchday",
-      description: "Anuncia tu próximo partido con placas estáticas o animadas de alta calidad.",
-      featured: true,
-      image: deportistas_prematch,
-      image2: deportistas_prematch1,
-      image3: deportistas_prematch2
-    },
-    {
-      title: "Post Partido",
-      description: "Comunica tus sensaciones de manera profesional con imágenes o videos.",
-      featured: false,
-      image: deportistas_postpartido
-    },
-    {
-      title: "Conmemorativas",
-      description: "Contenido especial para fechas importantes y aniversarios de clubes.",
-      featured: false,
-      image: deportistas_aniversario
-    },
-    {
-      title: "Optimización de Perfil",
-      description: "Organizamos tu perfil con biografía, portada e historias destacadas profesionales.",
-      featured: true,
-      image: deportistas_perfil,
-      image2: deportistas_perfil3,
-      image3: deportistas_perfil4,
-    },
-    {
-      title: "Estadísticas",
-      description: "Análisis visual de tu rendimiento, progresos y logros deportivos.",
-      featured: true,
-      image: deportistas_estadis,
-      image2: deportistas_estadis2
-    },
-    {
-      title: "Fotografía",
-      description: "Fotógrafos y filmmakers en todo el mundo para contenido de alta calidad.",
-      featured: false,
-      image: deportistas_fotografia
-    },
-    {
-      title: "Carpeta Comercial",
-      description: "Destacamos tus beneficios para acercar tu imagen a marcas comerciales.",
-      featured: false,
-      image: deportistas_carpetacom
-    }
-  ];
 
   return (
     <Flex
@@ -117,14 +44,14 @@ export const Deportistas = () => {
         alignItems="start"
         gap={2}
         flexDirection="row"
-        alignSelf="start"
+        alignSelf='start'
         w="100%"
         pl={{ base: 4, md: 16, lg: "250px" }}
         mb={{ base: 6, md: 10 }}
       >
         <MotionBox
           w={"2px"}
-          h={{ base: "70px", md: "80px" }}
+          h={{ base: "60px", md: "80px" }}
           bg="orange.400"
           mr={2}
           borderRadius="full"
@@ -164,9 +91,9 @@ export const Deportistas = () => {
         flexDirection="column"
         px={{ base: 6, md: 0 }}
         my={{ base: 8, md: 16 }}
-        w={{ base: "90%", md: "60%" }}
-        fontSize={{ base: "lg", md: "xl" }}
-        fontWeight="bold"
+        w={{ base: "100%", md: "60%" }}
+        fontSize={{ base: "md", md: "xl" }}
+        fontWeight={{ base: "normal", md: "bold" }}
         color="white"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -186,35 +113,38 @@ export const Deportistas = () => {
         justifyContent="center"
         alignItems="center"
         flexDirection={{ base: "column", md: "row" }}
-        my={{ base: 8, md: 16 }}
+        my={{ base: 10, md: 16 }}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
-        gap={2}
       >
         <Text fontSize={{ base: "3xl", md: "5xl" }} fontWeight="bold" color="white" textAlign="center">
           Así potenciamos
         </Text>
-        <Text fontSize={{ base: "3xl", md: "5xl" }} fontWeight="bold" color="orange.400" textAlign="center">
+        <Text 
+          fontSize={{ base: "4xl", md: "5xl" }} 
+          fontWeight="bold" 
+          color="orange.400" 
+          textAlign="center" 
+          mt={{ base: -4, md: 0 }}
+        >
           tu marca
         </Text>
       </MotionFlex>
 
-      {/* Services Grid */}
-      <Box w="100%" maxW="1400px" px={{ base: 4, md: 8 }}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: 6, md: 8 }} mb={{ base: 16, md: 24 }}>
-          {services.map((service, index) => (
+      {/* Plan Mkt */}
+      <Box w="100%" maxW={{ base: "100%", md: "80%" }} px={{ base: 2, md: 8 }}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: 6, md: 8 }} mb={{ base: 10, md: 24 }}>
             <MotionBox
-              key={index}
               bg="zinc.900"
               border="1px solid"
               borderColor="gray.800"
               borderRadius="xl"
               overflow="hidden"
-              gridColumn={service.featured ? { base: "span 1", lg: "span 2" } : "span 1"}
+              gridColumn={{ base: "span 1", lg: "span 2" }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
               viewport={{ once: true }}
               _hover={{
                 transform: "translateY(-8px)",
@@ -224,24 +154,22 @@ export const Deportistas = () => {
               transitionDuration="0.3s"
             >
               <Flex
-                flexDirection={service.featured ? { base: "column", md: "row" } : "column"}
+                flexDirection={{ base: "column", md: "row" }}
                 h="100%"
               >
-                {/* Image Section */}
                 <Box
-                  flex={service.featured ? "2" : "1"}
+                  flex='1'
                   bg="gray.900"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  p={6}
-                  minH={{ base: "200px", md: service.featured ? "300px" : "250px" }}
+                  p={{ base: 10, md: 6 }}
+                  minH={{ base: "150px", md: "200px" }}
                 >
-                {service.image && (
                   <Image
-                    src={service.image}
-                    w="140px"
-                    h={service.featured ? "260px" : "200px"}
+                    src= {deportistas_planmkt}
+                    w={{ base: "180px", md: "250px" }}
+                    h={{ base: "150px", md: "210px" }}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -255,66 +183,9 @@ export const Deportistas = () => {
                         filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
                       }}
                   />
-                  )}
-                  {service.image2 && (
-                    <Image
-                      src={service.image2}
-                      w="140px"
-                      h={service.featured ? "260px" : "200px"}
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      borderRadius="md"
-                      color="gray.500"
-                      fontSize="sm"
-                      transitionDuration="0.3s"
-                      ml={2}
-                      _hover={{
-                        transform: "translateY(-8px)",
-                        borderColor: "orange.400",
-                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
-                      }}
-                    />
-                  )}
-                  {service.image3 && (
-                    <Image
-                      src={service.image3}
-                      w="140px"
-                      h={service.featured ? "260px" : "200px"}
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      borderRadius="md"
-                      color="gray.500"
-                      fontSize="sm"
-                      transitionDuration="0.3s"
-                      ml={2}
-                      _hover={{
-                        transform: "translateY(-8px)",
-                        borderColor: "orange.400",
-                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
-                      }}
-                    />
-                  )}    
-                  {service.video && (
-                    <iframe
-                      src={service.video}
-                      width='100%'
-                      height={service.featured ? "100%": "200px"}  
-                      controls='none'
-                      loop
-                      allowFullScreen
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      borderRadius="md"
-                    />
-                  )}
                 </Box>
-
-                {/* Content Section */}
                 <Flex
-                  flex={service.featured ? "1" : "auto"}
+                  flex='1'
                   flexDirection="column"
                   p={{ base: 6, md: 8 }}
                   gap={3}
@@ -322,25 +193,847 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "xl", md: service.featured ? "3xl" : "2xl" }}
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={{ base: 0, md: 2 }}
+                    alignSelf="start"
+                  >
+                    Plan de marketing
+                  </Text>
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
+                    Diseñamos el plan de marketing y comunicación adaptado a tu persona para generar el contenido adecuado.
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
+
+            {/* Gestion 360º */}
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 1" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "column" }}
+                h="100%"
+              >
+                <Box
+                  flex='2'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  p={6}
+                  minH={{ base: "200px", md: "220px" }}
+                >
+                  <Image
+                    src= {deportistas_gestion360}
+                    w="200px"
+                    h="150px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                  />
+                </Box>
+                <Flex
+                  flex='1'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                  h="100%"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
                     p={2}
                     alignSelf="start"
                   >
-                    {service.title}
+                    Gestión 360º
                   </Text>
                   <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
-                    {service.description}
+                    Generamos contenido adaptado para todas las redes sociales existentes.
                   </Text>
                 </Flex>
               </Flex>
             </MotionBox>
-          ))}
+
+            {/* Logos */}
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 1" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "column" }}
+                h="100%"
+              >
+                <Box
+                  flex='2'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  p={6}
+                  minH={{ base: "200px", md: "300px" }}
+                >
+                  <Image
+                    src= {deportistas_logos}
+                    w="250px"
+                    h="150px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))"
+                      }}
+                  />
+                </Box>
+
+                {/* Content Section */}
+                <Flex
+                  flex='1'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={2}
+                    alignSelf="start"
+                  >
+                    Logos
+                  </Text>
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    Creamos tu logo propio para identificar todo tu contenido profesionalmente.
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
+
+            {/* Matchday */}
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 2" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "row" }}
+                h="100%"
+              >
+                <Box
+                  flex='2'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  p={6}
+                  minH={{ base: "150px", md: "200px" }}
+                >
+                  <Image
+                    src= {deportistas_prematch}
+                    w="120px"
+                    h="230px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))"
+                      }}
+                  />
+                  <Image
+                      src={deportistas_prematch1}
+                      w="120px"
+                      h="230px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      borderRadius="md"
+                      color="gray.500"
+                      fontSize="sm"
+                      transitionDuration="0.3s"
+                      ml={2}
+                      _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                    />
+                    <Image
+                      src={deportistas_prematch2}
+                      w="120px"
+                      h="230px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      borderRadius="md"
+                      color="gray.500"
+                      fontSize="sm"
+                      transitionDuration="0.3s"
+                      ml={2}
+                      _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                    />
+                </Box>
+
+                {/* Content Section */}
+                <Flex
+                  flex='1'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={2}
+                    alignSelf="start"
+                  >
+                    Matchday
+                  </Text>
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    Anuncia tu próximo partido con placas estáticas o animadas de alta calidad
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
+             {/* Matchday */}
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 2" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "row" }}
+                h="100%"
+              >
+                <Box
+                  flex='2'
+                  bg="gray.900"
+                  position="relative"
+                  w="100%"
+                  minH={{ base: "150px", md: "200px" }}
+                  minW={{ base: "150px", md: "200px" }}
+                  overflow="hidden"
+                >
+                  <video
+                    src={deportistas_video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls={false}
+                    style={{
+                      width: "500px",
+                      height: "550px",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </Box>
+                <Flex
+                  flex='1'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={2}
+                    alignSelf="start"
+                  >
+                    Rells
+                  </Text>
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    Generamos videos profesionales para tus redes sociales.
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
+
+          {/* PostPartido */}
+          <MotionBox
+            bg="zinc.900"
+            border="1px solid"
+            borderColor="gray.800"
+            borderRadius="xl"
+            overflow="hidden"
+            gridColumn={{ base: "span 1", lg: "span 1" }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            viewport={{ once: true }}
+            _hover={{
+              transform: "translateY(-8px)",
+              borderColor: "orange.400",
+              boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+            }}
+            transitionDuration="0.3s"
+          >
+            <Flex
+              flexDirection={{ base: "column", md: "column" }}
+              h="100%"
+            >
+              <Box
+                flex='2'
+                bg="gray.900"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                p={6}
+                minH={{ base: "200px", md: "300px" }}
+                overflow="hidden"
+              >
+                <Image
+                  src={deportistas_postpartido}
+                  w="320px"
+                  h="320px"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  borderRadius="md"
+                  color="gray.500"
+                  fontSize="sm"
+                  transitionDuration="0.3s"
+                  _hover={{
+                    filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))"
+                  }}
+                />
+              </Box>
+              <Flex
+                flex='1'
+                flexDirection="column"
+                p={{ base: 6, md: 8 }}
+                gap={3}
+                justifyContent="center"
+              >
+                <Text
+                  as="h2"
+                  fontSize={{ base: "lg", md: "2xl" }}
+                  fontWeight="bold"
+                  color="orange.400"
+                  p={2}
+                  alignSelf="start"
+                >
+                  Post partido
+                </Text>
+                <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                 Comunica tus sensaciones de manera profesional con imágenes o videos.
+                </Text>
+              </Flex>
+            </Flex>
+          </MotionBox>
+          <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 3" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+              
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "row" }}
+                h="100%"
+              >
+                <Box
+                  flex='3'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  gap={2}
+                  p={10}
+                  minH={{ base: "150px", md: "200px" }}
+                >
+                  <Image
+                    src= {deportistas_perfil}
+                    w="320px"
+                    h="250px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
+                        cursor: 'zoom-in',
+                      }}
+                    _active={{
+                        position: "relative",
+                        w: "650px",
+                        h: "500px",
+                      }}
+                  />
+                  <Flex flexDirection="column" alignItems="center" gap={2}>
+                    <Image
+                      src={deportistas_perfil3}
+                      w="380px"
+                      h="150px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      borderRadius="md"
+                      color="gray.500"
+                      fontSize="sm"
+                      transitionDuration="0.3s"
+                      ml={2}
+                      _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                    />
+                    <Image
+                      src={deportistas_perfil4}
+                      w="380px"
+                      h="150px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      borderRadius="md"
+                      color="gray.500"
+                      fontSize="sm"
+                      transitionDuration="0.3s"
+                      ml={2}
+                      _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                    />
+                  </Flex>
+                  </Box>
+                  <Flex
+                    flex='1'
+                    flexDirection="column"
+                    p={{ base: 6, md: 8 }}
+                    gap={3}
+                    justifyContent="center"
+                  >
+                    <Text
+                      as="h2"
+                      fontSize={{ base: "lg", md:"2xl"}}
+                      fontWeight="bold"
+                      color="orange.400"
+                      p={2}
+                      alignSelf="start"
+                    >
+                      Optimización de Perfil
+                    </Text>
+                    <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                      Organizamos tu perfil con biografía, portada e historias destacadas profesionales.
+                    </Text>
+                  </Flex>
+                </Flex>
+            </MotionBox>
+
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 1" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "column" }}
+                h="100%"
+              >
+                <Box
+                  flex='2'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  p={10}
+                  minH={{ base: "200px", md: "220px" }}
+                >
+                  <Image
+                    src= {deportistas_aniversario}
+                    w="280px"
+                    h="300px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                  />
+                </Box>
+                <Flex
+                  flex='1'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                  h="100%"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={2}
+                    alignSelf="start"
+                  >
+                    Conmemorativas
+                  </Text>
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    Contenido especial para fechas importantes y aniversarios de clubes.
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
+
+            {/* Estadísticas */}
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 1" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "column" }}
+                h="100%"
+              >
+                <Box
+                  flex='2'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  p={8}
+                  pb={12}
+                  minH={{ base: "200px", md: "220px" }}
+                >
+                  <Image
+                    src= {deportistas_estadis}
+                    w="200px"
+                    h="360px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    mt={-4}
+                  />
+                </Box>
+                <Flex
+                  flex='1'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                  h="100%"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={2}
+                    alignSelf="start"
+                  >
+                    Estadísticas
+                  </Text>
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    Análisis visual de tu rendimiento, progresos y logros deportivos.
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
+
+            {/* Fotografia */}
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 1" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "column" }}
+                h="100%"
+              >
+                <Box
+                  flex='2'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  p={6}
+                  pb={12}
+                  minH={{ base: "200px", md: "220px" }}
+                >
+                  <Image
+                    src= {deportistas_fotografia}
+                    w="200px"
+                    h="150px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    
+                    _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                  />
+                </Box>
+                <Flex
+                  flex='1'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                  h="100%"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={2}
+                    alignSelf="start"
+                  >
+                    Fotografía
+                  </Text>
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    Fotógrafos y filmmakers en todo el mundo para contenido de alta calidad.
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
+
+            {/* Carpeta Comercial */}
+            <MotionBox
+              bg="zinc.900"
+              border="1px solid"
+              borderColor="gray.800"
+              borderRadius="xl"
+              overflow="hidden"
+              gridColumn={{ base: "span 1", lg: "span 3" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              _hover={{
+                transform: "translateY(-8px)",
+                borderColor: "orange.400",
+                boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
+              }}
+              transitionDuration="0.3s"
+            >
+              <Flex
+                flexDirection={{ base: "column", md: "row" }}
+                h="100%"
+              >
+                <Box
+                  flex='1'
+                  bg="gray.900"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  p={6}
+                  pb={12}
+                  minH={{ base: "200px", md: "220px" }}
+                >
+                  <Image
+                    src= {deportistas_carpetacom}
+                    w="150px"
+                    h="200px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="md"
+                    color="gray.500"
+                    fontSize="sm"
+                    transitionDuration="0.3s"
+                    
+                    _hover={{
+                        transform: "translateY(-8px)",
+                        borderColor: "orange.400",
+                        filter: "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))"
+                      }}
+                  />
+                </Box>
+                <Flex
+                  flex='2'
+                  flexDirection="column"
+                  p={{ base: 6, md: 8 }}
+                  gap={3}
+                  justifyContent="center"
+                  h="100%"
+                >
+                  <Text
+                    as="h2"
+                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontWeight="bold"
+                    color="orange.400"
+                    p={2}
+                    alignSelf="start"
+                  >
+                    Carpeta Comercial
+                  </Text>
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    Destacamos tus beneficios para acercar tu imagen a marcas comerciales.
+                  </Text>
+                </Flex>
+              </Flex>
+            </MotionBox>
         </SimpleGrid>
       </Box>
-
-      {/* Scroll Indicator */}
+   
       <MotionBox
         animate={{ y: [0, -15, 0] }}
         transition={{ duration: 1, repeat: Infinity }}
@@ -349,7 +1042,6 @@ export const Deportistas = () => {
       >
         <BsChevronDoubleDown color="orange" />
       </MotionBox>
-
       <Contact />
     </Flex>
   );
