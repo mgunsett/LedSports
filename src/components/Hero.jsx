@@ -100,12 +100,12 @@ const Hero = () => {
         <Image
           src={fondo_luz}
           alt="Marketing Deportivo"
-          boxSize={{ base: '300px', md: '450px', lg: '500px' }}
+          boxSize={{ base: '350px', md: '450px', lg: '500px' }}
           objectFit="contain"
           draggable="false"
           position="absolute"
-          top={{ base: '460px', md: '10px' }}
-          right={{ base: '-50px', md: '80px' }}
+          top={{ base: '380px', md: '10px' }}
+          right={{ base: '-80px', md: '80px' }}
           zIndex="0"
           opacity="0.5"
         />

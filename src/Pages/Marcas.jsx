@@ -66,20 +66,16 @@ export const Marcas = () => {
                     </MotionText>
                 </MotionHeading>
             </Flex>
-            
-               {/* Bento Grid Layout - OPCIÓN 2 */}
             <Flex
                 w={{ base: "100%", md: "68%" }}
                 flexDirection="column"
                 gap={6}
                 px={{ base: 4, md: 0 }}
             >
-                {/* Fila 1: Feature Card + Image Card */}
                 <Flex
                     gap={6}
                     flexDirection={{ base: "column", md: "row" }}
                 >
-                    {/* Large Feature Card */}
                     <MotionBox
                         flex="7"
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -102,8 +98,7 @@ export const Marcas = () => {
                                 borderColor: "orange.400",
                                 boxShadow: "0px 0px 20px 2px rgba(245,160,15,0.4)"
                             }}
-                        >
-                            {/* Animated Gradient Orb */}
+                            >
                             <Box
                                 position="absolute"
                                 top="-80px"
@@ -145,7 +140,6 @@ export const Marcas = () => {
                         </Box>
                     </MotionBox>
 
-                    {/* Image Card */}
                     <MotionBox
                         flex="5"
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -166,14 +160,12 @@ export const Marcas = () => {
                     </MotionBox>
                 </Flex>
 
-                {/* Full Width Description Card */}
                 <MotionBox
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <Box position="relative" role="group" cursor="pointer">
-                        {/* Glowing Border Effect */}
                         <Box
                             position="absolute"
                             inset="-4px"

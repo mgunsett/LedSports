@@ -244,6 +244,7 @@ export const Deportistas = () => {
                     src= {deportistas_gestion360}
                     w="200px"
                     h="200px"
+                    objectFit="contain"
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -444,8 +445,6 @@ export const Deportistas = () => {
                       }}
                     />
                 </Box>
-
-                {/* Content Section */}
                 <Flex
                   flex='1'
                   flexDirection="column"
@@ -469,7 +468,8 @@ export const Deportistas = () => {
                 </Flex>
               </Flex>
             </MotionBox>
-             {/* Matchday */}
+
+             {/* Matchday | Video */}
             <MotionBox
               bg="zinc.900"
               border="1px solid"
@@ -519,15 +519,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
                     Rells
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Generamos videos profesionales para tus redes sociales.
                   </Text>
                 </Flex>
@@ -552,6 +552,7 @@ export const Deportistas = () => {
               boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
             }}
             transitionDuration="0.3s"
+            position="relative"
           >
             <Flex
               flexDirection={{ base: "column", md: "column" }}
@@ -569,8 +570,9 @@ export const Deportistas = () => {
               >
                 <Image
                   src={deportistas_postpartido}
-                  w="320px"
-                  h="320px"
+                  w={{base: "250px", md: "320px"}}
+                  h={{base: "350px", md: "320px"}}
+                  objectFit="contain"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
@@ -579,8 +581,14 @@ export const Deportistas = () => {
                   fontSize="sm"
                   transitionDuration="0.3s"
                   _hover={{
-                    filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))"
+                    filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
+                    cursor: "zoom-in"
                   }}
+                  _active={{
+                        position: {base: "none", md: "relative"},
+                        w: {base: "none", md: "650px"},
+                        h: {base: "none", md: "500px"},
+                      }}
                 />
               </Box>
               <Flex
@@ -592,15 +600,15 @@ export const Deportistas = () => {
               >
                 <Text
                   as="h2"
-                  fontSize={{ base: "lg", md: "2xl" }}
+                  fontSize={{ base: "xl", md: "2xl" }}
                   fontWeight="bold"
                   color="orange.400"
-                  p={2}
+                  p={{ base: 0, md: 2 }}
                   alignSelf="start"
                 >
                   Post partido
                 </Text>
-                <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                  Comunica tus sensaciones de manera profesional con imágenes o videos.
                 </Text>
               </Flex>
@@ -623,7 +631,6 @@ export const Deportistas = () => {
                 boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
               }}
               transitionDuration="0.3s"
-              
             >
               <Flex
                 flexDirection={{ base: "column", md: "row" }}
@@ -635,14 +642,15 @@ export const Deportistas = () => {
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
+                  flexDirection={{ base: "column", md: "row" }}
                   gap={2}
                   p={10}
                   minH={{ base: "150px", md: "200px" }}
                 >
                   <Image
                     src= {deportistas_perfil}
-                    w="320px"
-                    h="250px"
+                    w={{ base: "250px", md: "320px" }}
+                    h={{ base: "250px", md: "250px" }}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -658,15 +666,15 @@ export const Deportistas = () => {
                       }}
                     _active={{
                         position: "relative",
-                        w: "650px",
-                        h: "500px",
+                        w: { base: "none", md: "500px" },
+                        h: { base: "none", md: "450px" },
                       }}
                   />
                   <Flex flexDirection="column" alignItems="center" gap={2}>
                     <Image
                       src={deportistas_perfil3}
-                      w="380px"
-                      h="150px"
+                      w={{ base: "300px", md: "380px" }}
+                      h={{ base: "120px", md: "150px" }}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
@@ -683,8 +691,8 @@ export const Deportistas = () => {
                     />
                     <Image
                       src={deportistas_perfil4}
-                      w="380px"
-                      h="150px"
+                      w={{ base: "300px", md: "380px" }}
+                      h={{ base: "120px", md: "150px" }}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
@@ -710,21 +718,22 @@ export const Deportistas = () => {
                   >
                     <Text
                       as="h2"
-                      fontSize={{ base: "lg", md:"2xl"}}
+                      fontSize={{ base: "xl", md:"2xl"}}
                       fontWeight="bold"
                       color="orange.400"
-                      p={2}
+                      p={{ base: 0, md: 2 }}
                       alignSelf="start"
                     >
                       Optimización de Perfil
                     </Text>
-                    <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                    <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                       Organizamos tu perfil con biografía, portada e historias destacadas profesionales.
                     </Text>
                   </Flex>
                 </Flex>
             </MotionBox>
 
+             {/* Conmemorativas */}
             <MotionBox
               bg="zinc.900"
               border="1px solid"
@@ -758,8 +767,8 @@ export const Deportistas = () => {
                 >
                   <Image
                     src= {deportistas_aniversario}
-                    w="280px"
-                    h="300px"
+                    w={{ base: "250px", md: "280px" }}
+                    h={{ base: "270px", md: "300px" }}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -784,15 +793,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
                     Conmemorativas
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Contenido especial para fechas importantes y aniversarios de clubes.
                   </Text>
                 </Flex>
@@ -834,8 +843,8 @@ export const Deportistas = () => {
                 >
                   <Image
                     src= {deportistas_estadis}
-                    w="200px"
-                    h="360px"
+                    w={{ base: "180px", md: "200px" }}
+                    h={{ base: "340px", md: "360px" }}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -856,15 +865,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
                     Estadísticas
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Análisis visual de tu rendimiento, progresos y logros deportivos.
                   </Text>
                 </Flex>
@@ -900,7 +909,7 @@ export const Deportistas = () => {
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  p={6}
+                  p={{ base: 12, md: 6 }}
                   pb={12}
                   minH={{ base: "200px", md: "220px" }}
                 >
@@ -933,15 +942,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
                     Fotografía
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Fotógrafos y filmmakers en todo el mundo para contenido de alta calidad.
                   </Text>
                 </Flex>
@@ -972,12 +981,12 @@ export const Deportistas = () => {
                 h="100%"
               >
                 <Box
-                  flex='1'
+                  flex={{ base: '2', md: '1' }}
                   bg="gray.900"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  p={6}
+                  p={{ base: 16, md: 6 }}
                   pb={12}
                   minH={{ base: "200px", md: "220px" }}
                 >
@@ -1001,7 +1010,7 @@ export const Deportistas = () => {
                   />
                 </Box>
                 <Flex
-                  flex='2'
+                  flex={{ base: '1', md: '2' }}
                   flexDirection="column"
                   p={{ base: 6, md: 8 }}
                   gap={3}
@@ -1010,15 +1019,15 @@ export const Deportistas = () => {
                 >
                   <Text
                     as="h2"
-                    fontSize={{ base: "lg", md:"2xl"}}
+                    fontSize={{ base: "xl", md:"2xl"}}
                     fontWeight="bold"
                     color="orange.400"
-                    p={2}
+                    p={{ base: 0, md: 2}}
                     alignSelf="start"
                   >
                     Carpeta Comercial
                   </Text>
-                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.300" lineHeight="tall">
+                  <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Destacamos tus beneficios para acercar tu imagen a marcas comerciales.
                   </Text>
                 </Flex>
