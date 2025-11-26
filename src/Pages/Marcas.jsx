@@ -209,10 +209,10 @@ export const Marcas = () => {
                     animate={{ y: [0, -15, 0] }}
                     transition={{ duration: 1, repeat: Infinity }}
                     display="flex"
-                    direction="row"
                     alignItems="center"
                     justifyContent="center"
-                    fontSize={{ base: '50px', md: '100px' }}
+                    fontSize={{ base: '50px', md: '80px' }}
+                    mt={{ base: 2, md: '50px' }}
                 >
                     <BsChevronDoubleDown color="orange" />
                 </MotionBox>

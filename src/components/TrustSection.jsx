@@ -5,14 +5,12 @@ import {
   Image,
   Text,
   Flex,
-  List,
-  ListItem,
-  ListIcon,
   IconButton,
+  Button,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
-import { GoCheckCircleFill } from 'react-icons/go';
 
 import jugador_mainero from '../assets/jugador_mainero.png';
 import jugador_ade from '../assets/jugador_ade.png';
@@ -31,6 +29,7 @@ import jugador_oroz from '../assets/jugador_oroz.png';
 import jugador_runi from '../assets/jugador_runi.png';
 import jugador_zuqi from '../assets/jugador_zuqi.png';
 
+import FichaJugador from './FichaJugador';
 import '../components/TrustSection.css';
 
 const MotionBox = motion(Box);
@@ -38,97 +37,240 @@ const MotionBox = motion(Box);
 const brands = [
   {
     img: jugador_mainero,
-    name: 'Jugador Mainero',
+    name: 'Juan Mainero',
+    Firstname: 'Juan',
+    Lastname: 'Mainero',
+    birthDate: '15/03/1995',
+    country: 'Argentina',
+    position: 'Extremo derecho',
+    club: 'Club Atlético Ejemplo',
+    number: '7',
+    height: '1,78 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_ade,
     name: 'Jugador Ade',
+    Firstname: 'Pedro',
+    Lastname: 'Ade',
+    fullName: 'Pedro Ade',
+    birthDate: '22/07/1994',
+    country: 'Brasil',
+    position: 'Delantero centro',
+    club: 'Futbol Club Demo',
+    number: '9',
+    height: '1,82 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_callejo,
     name: 'Jugador Callejo',
+    Firstname: 'Marcos',
+    Lastname: 'Callejo',
+    fullName: 'Marcos Callejo',
+    birthDate: '01/11/1993',
+    country: 'Uruguay',
+    position: 'Lateral izquierdo',
+    club: 'Club Deportivo Prueba',
+    number: '3',
+    height: '1,75 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_campisi,
     name: 'Jugador Campisi',
+    Firstname: 'Lucas',
+    Lastname: 'Campisi',
+    fullName: 'Lucas Campisi',
+    birthDate: '09/05/1996',
+    country: 'Argentina',
+    position: 'Mediocampista central',
+    club: 'Club Atlético Central',
+    number: '5',
+    height: '1,80 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_correa,
     name: 'Jugador Correa',
+    Firstname: 'Diego',
+    Lastname: 'Correa',
+    fullName: 'Diego Correa',
+    birthDate: '30/06/1992',
+    country: 'Chile',
+    position: 'Defensor central',
+    club: 'Unión Deportiva Modelo',
+    number: '2',
+    height: '1,85 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_gonzapiovi,
     name: 'Jugador Gonzapiovi',
+    Firstname: 'Gonzalo',
+    Lastname: 'Piovi',
+    fullName: 'Gonzalo Piovi',
+    birthDate: '05/02/1994',
+    country: 'Argentina',
+    position: 'Lateral / Central',
+    club: 'Racing Club (ejemplo)',
+    number: '33',
+    height: '1,84 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_carmelo,
     name: 'Jugador Carmelo',
+    Firstname: 'Carmelo',
+    Lastname: 'Díaz',
+    fullName: 'Carmelo Díaz',
+    birthDate: '18/09/1990',
+    country: 'Paraguay',
+    position: 'Delantero',
+    club: 'Club Guaraní (ejemplo)',
+    number: '11',
+    height: '1,79 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_farias,
-    name: 'Jugador Farias',
+    name: 'Facundo Farias',
+    Firstname: 'Facundo',
+    Lastname: 'Farias',
+    fullName: 'Facundo Farias',
+    birthDate: '02/12/1998',
+    country: 'Argentina',
+    position: 'Enganche',
+    club: 'Club Atlético Norte',
+    number: '10',
+    height: '1,76 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_gonzasosa,
-    name: 'Jugador Gonzasosa',
+    name: 'Gonzalo Sosa',
+    Firstname: 'Gonzalo',
+    Lastname: 'Sosa',
+    fullName: 'Gonzalo Sosa',
+    birthDate: '21/01/1997',
+    country: 'Argentina',
+    position: 'Volante ofensivo',
+    club: 'Club Deportivo Sur',
+    number: '20',
+    height: '1,74 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_jonitorres,
-    name: 'Jugador Jonitorres',
+    name: 'Jonatan Torres',
+    Firstname: 'Jonatan',
+    Lastname: 'Torres',
+    fullName: 'Jonatan Torres',
+    birthDate: '10/04/1995',
+    country: 'Colombia',
+    position: 'Extremo',
+    club: 'Club América (ejemplo)',
+    number: '17',
+    height: '1,81 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_keki,
-    name: 'Jugador Keki',
+    name: 'Keki Piovi',
+    Firstname: 'Keki',
+    Lastname: 'Piovi',
+    fullName: 'Keki Piovi',
+    birthDate: '29/08/1999',
+    country: 'Argentina',
+    position: 'Mediapunta',
+    club: 'Club del Sur',
+    number: '19',
+    height: '1,73 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_lotti,
-    name: 'Jugador Lotti',
+    name: 'Franco Lotti',
+    Firstname: 'Franco',
+    Lastname: 'Lotti',
+    fullName: 'Franco Lotti',
+    birthDate: '03/03/1994',
+    country: 'Argentina',
+    position: 'Delantero extremo',
+    club: 'Club Atlético Este',
+    number: '14',
+    height: '1,80 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_luka,
-    name: 'Jugador Luka',
+    name: 'Luka Romero',
+    Firstname: 'Luka',
+    Lastname: 'Romero',
+    fullName: 'Luka Romero',
+    birthDate: '26/01/2000',
+    country: 'Croacia',
+    position: 'Mediocampista mixto',
+    club: 'Dinamo FC (ejemplo)',
+    number: '8',
+    height: '1,83 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_oroz,
-    name: 'Jugador Oroz',
+    name: 'Ignacio Oroz', 
+    Firstname: 'Ignacio',
+    Lastname: 'Oroz',
+    fullName: 'Ignacio Oroz',
+    birthDate: '14/07/1993',
+    country: 'Argentina',
+    position: 'Mediocampista ofensivo',
+    club: 'Racing Club (ejemplo)',
+    number: '27',
+    height: '1,79 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_runi,
-    name: 'Jugador Runi',
+    name: 'Ramiro Runi',
+    Firstname: 'Ramiro',
+    Lastname: 'Runi',
+    fullName: 'Ramiro Runi',
+    birthDate: '19/10/1991',
+    country: 'Uruguay',
+    position: 'Defensor lateral',
+    club: 'Club Oriental',
+    number: '4',
+    height: '1,77 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_zuqi,
-    name: 'Jugador Zuqi',
+    name: 'Fernando Zuqi',
+    Firstname: 'Fernando',
+    Lastname: 'Zuqi',
+    fullName: 'Fernando Zuqi',
+    birthDate: '07/09/1996',
+    country: 'Chile',
+    position: 'Volante de contención',
+    club: 'Club Pacífico',
+    number: '6',
+    height: '1,81 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
@@ -136,6 +278,8 @@ const brands = [
 
 const TrustSection = () => {
   const [visible, setVisible] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
   useEffect(() => {
     const handleScroll = () => setVisible(window.scrollY > 100);
     window.addEventListener('scroll', handleScroll);
@@ -309,8 +453,8 @@ const TrustSection = () => {
     alignItems="center" 
     justifyContent="center" 
     gap={6} 
-    mb={20}
-    mt={20}
+    mb={'200px'}
+    mt={18}
     >
       <Heading
         as="h2"
@@ -436,14 +580,14 @@ const TrustSection = () => {
                     direction="column"
                     alignItems="flex-start"
                     justifyContent="center"
-                    gap={3}
+                    gap={2}
                     p={4}
                     position="absolute"
                     bottom="-20px"
                     left={{ base: '-5%', md: '-40%' }}
                     transform="translate(50%, 30px)"
                     w={{ base: '60%', md: '90%' }}
-                    h={{ base: '40%', md: '40%' }}
+                    h={{ base: '40%', md: '45%' }}
                     bg="linear-gradient(135deg, rgba(158, 156, 156, 0.68) 0%, rgba(30, 30, 30, 0.45) 100%)"
                     backdropFilter="blur(2px)"
                     borderRadius="5px"
@@ -459,23 +603,26 @@ const TrustSection = () => {
                     <Text as="span" color="orange.300" fontSize="sm" fontWeight="bold" letterSpacing="wide" alignItems="start">
                       Highlights
                     </Text>
-                    <List spacing={2} fontSize={{ base: 'sm', md: 'sm'}}>
-                      {logo.item1 && (
-                        <ListItem color="gray.200" display="flex" alignItems="center">
-                          <ListIcon as={GoCheckCircleFill} color="orange.400" /> {logo.item1}
-                        </ListItem>
-                      )}
-                      {logo.item2 && (
-                        <ListItem color="gray.200" display="flex" alignItems="center">
-                          <ListIcon as={GoCheckCircleFill} color="orange.400" /> {logo.item2}
-                        </ListItem>
-                      )}
-                      {logo.item3 && (
-                        <ListItem color="gray.200" display="flex" alignItems="center">
-                          <ListIcon as={GoCheckCircleFill} color="orange.400" /> {logo.item3}
-                        </ListItem>
-                      )}
-                    </List>
+                      <Button
+                        id="ficha_button"
+                        variant="outline"
+                        colorScheme="white"
+                        size="sm"
+                        mt={2}
+                        w="100%"
+                        onClick={() => {
+                          setJugadorSeleccionado(logo);
+                          onOpen();
+                        }}
+                        _hover={{
+                          backgroundColor: 'gray.700',
+                          borderColor: 'orange.400',
+                        }}
+                      >
+                        + Info
+                      </Button>
+                    
+                   
                   </Flex>
                 </Flex>
               </MotionBox>
@@ -498,7 +645,13 @@ const TrustSection = () => {
           _hover={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
         />
       </Flex>
-      
+      {jugadorSeleccionado && (
+        <FichaJugador
+          isOpen={isOpen}
+          onClose={onClose}
+          jugador={jugadorSeleccionado}
+        />
+      )}
     </Flex>
   );
 };

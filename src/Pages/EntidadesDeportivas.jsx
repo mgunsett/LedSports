@@ -20,7 +20,7 @@ export const EntidadesDeportivas= () => {
       flexDirection="column"
       gap={{ base: 10, md: 20 }}
       pt={{ base: 40, md: 60 }}
-      pb={{ base: '80px', md: '100px' }}
+      pb={{ base: '80px', md: '0' }}
       px={{ base: 4, md: 0 }}
     >
       {/* Hero Header */}
@@ -235,8 +235,9 @@ export const EntidadesDeportivas= () => {
         display="flex"
         alignItems="center"
         justifyContent="start"
-        fontSize={{ base: '60px', md: '100px' }}
-        mt={{ base: 2, md: '-30px' }}
+        fontSize={{ base: '60px', md: '80px' }}
+        mt={{ base: 2, md: '-80px' }}
+        h='0'      
       >
         <BsChevronDoubleDown color="orange" />
       </MotionBox>

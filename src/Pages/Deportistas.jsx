@@ -403,9 +403,9 @@ export const Deportistas = () => {
                     fontSize="sm"
                     transitionDuration="0.6s"
                     _hover={{
-                        transform: {base:"scale(1.5)", md:"translateY(-8px)"},
+                        transform:"scale(1.5)",
                         filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
-                        mr: {base: '-60px', md: 0}
+                        mr: {base: '-60px', md: '-50px'}
                       }}
                   />
                   <Image
@@ -421,9 +421,9 @@ export const Deportistas = () => {
                       transitionDuration="0.6s"
                       ml={2}
                       _hover={{
-                        transform: {base:"scale(1.5)", md:"translateY(-8px)"},
+                        transform:"scale(1.5)",
                         filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
-                        mx: {base: '-60px', md: 0}
+                        mx: {base: '-60px', md: '-50px'}
                       }}
                     />
                     <Image
@@ -439,9 +439,9 @@ export const Deportistas = () => {
                       transitionDuration="0.6s"
                       ml={2}
                       _hover={{
-                        transform: {base:"scale(1.5)", md:"translateY(-8px)"},
+                        transform: 'scale(1.5)',
                         filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
-                        ml: {base: '-60px', md: 0}
+                        ml: {base: '-60px', md: '-50px'}
                       }}
                     />
                 </Box>
@@ -614,6 +614,8 @@ export const Deportistas = () => {
               </Flex>
             </Flex>
           </MotionBox>
+
+          {/* Optimizacion de Perfil */}
           <MotionBox
               bg="zinc.900"
               border="1px solid"
@@ -666,7 +668,7 @@ export const Deportistas = () => {
                       }}
                     _active={{
                         position: "relative",
-                        w: { base: "none", md: "500px" },
+                        w: { base: "none", md: "550px" },
                         h: { base: "none", md: "450px" },
                       }}
                   />

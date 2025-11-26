@@ -8,7 +8,6 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion'; 
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
-import { CiMail } from "react-icons/ci";
 import { Link as RouterLink } from 'react-router-dom';
 import './Contact.css';
 
@@ -56,7 +55,7 @@ const Contact = ({ path }) => {
         w={{ base: '80%', md: '60%' }}
         h="400px"
         mx={'auto'}
-        mt={40}
+        mt={12}
         mb={{ base: 2, md: 20 }}
       >
         <MotionBox
