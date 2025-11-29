@@ -16,7 +16,7 @@ import {
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { motion } from 'framer-motion';
 import logo_horizontal from '../assets/logo_horizontal.png';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // Motion wrapper
 const MotionBox = motion(Box);
@@ -24,6 +24,7 @@ const MotionBox = motion(Box);
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrollY, setScrollY] = useState(0);
+  const navigate = useNavigate();
 
   // Detectar scroll para efecto blur
   useEffect(() => {
@@ -33,12 +34,66 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Inicio', href: '#home' },
+    { label: 'Inicio', href: '/' },
     { label: 'Nosotros', href: '#about' },
     { label: 'Servicios', href: '#servicesButton' },
-    { label: 'Nos eligieron', href: '#trust' },
+    { label: 'Nos eligieron', href: '/jugadores' },
     { label: 'Contacto', href: '#contact' },
   ];
+
+  const scrollToAbout = () => {
+    const element = document.getElementById('about');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToServices = () => {
+    const element = document.getElementById('servicesButton');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleNosotrosClick = () => {
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        scrollToAbout();
+      }, 100);
+    } else {
+      scrollToAbout();
+    }
+  };
+
+  const handleServiciosClick = () => {
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        scrollToServices();
+      }, 100);
+    } else {
+      scrollToServices();
+    }
+  };
+
+  const handleContactoClick = () => {
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        scrollToContact();
+      }, 100);
+    } else {
+      scrollToContact();
+    }
+  };
 
   return (
     <MotionBox
@@ -82,16 +137,52 @@ const Navbar = () => {
           fontWeight="medium"
         >
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={`/${link.href}`}
-              color="whiteAlpha.900"
-              _hover={{ color: 'orange.400', textDecoration: 'none' }}
-              transition="color 0.2s"
-              fontSize={{ base: '10px', md: '15px' }}
-            >
-              {link.label}
-            </Link>
+            link.label === 'Nosotros' ? (
+              <Link
+                key={link.href}
+                color="whiteAlpha.900"
+                _hover={{ color: 'orange.400', textDecoration: 'none' }}
+                transition="color 0.2s"
+                fontSize={{ base: '10px', md: '15px' }}
+                onClick={handleNosotrosClick}
+              >
+                {link.label}
+              </Link>
+            ) : link.label === 'Servicios' ? (
+              <Link
+                key={link.href}
+                color="whiteAlpha.900"
+                _hover={{ color: 'orange.400', textDecoration: 'none' }}
+                transition="color 0.2s"
+                fontSize={{ base: '10px', md: '15px' }}
+                onClick={handleServiciosClick}
+              >
+                {link.label}
+              </Link>
+            ) : link.label === 'Contacto' ? (
+              <Link
+                key={link.href}
+                color="whiteAlpha.900"
+                _hover={{ color: 'orange.400', textDecoration: 'none' }}
+                transition="color 0.2s"
+                fontSize={{ base: '10px', md: '15px' }}
+                onClick={handleContactoClick}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.href}
+                as={RouterLink}
+                to={link.href}
+                color="whiteAlpha.900"
+                _hover={{ color: 'orange.400', textDecoration: 'none' }}
+                transition="color 0.2s"
+                fontSize={{ base: '10px', md: '15px' }}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </Flex>
 
@@ -120,15 +211,54 @@ const Navbar = () => {
           <DrawerBody>
             <VStack spacing={6} mt={16}> 
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={`/${link.href}`}
-                  fontSize="lg"
-                  _hover={{ color: 'orange.400' }}
-                  onClick={onClose}
-                >
-                  {link.label}
-                </Link>
+                link.label === 'Nosotros' ? (
+                  <Link
+                    key={link.href}
+                    fontSize="lg"
+                    _hover={{ color: 'orange.400' }}
+                    onClick={() => {
+                      handleNosotrosClick();
+                      onClose();
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ) : link.label === 'Servicios' ? (
+                  <Link
+                    key={link.href}
+                    fontSize="lg"
+                    _hover={{ color: 'orange.400' }}
+                    onClick={() => {
+                      handleServiciosClick();
+                      onClose();
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ) : link.label === 'Contacto' ? (
+                  <Link
+                    key={link.href}
+                    fontSize="lg"
+                    _hover={{ color: 'orange.400' }}
+                    onClick={() => {
+                      handleContactoClick();
+                      onClose();
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.href}
+                    as={RouterLink}
+                    to={link.href}
+                    fontSize="lg"
+                    _hover={{ color: 'orange.400' }}
+                    onClick={onClose}
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </VStack>
           </DrawerBody>

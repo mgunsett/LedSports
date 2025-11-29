@@ -7,8 +7,6 @@ import Contact from "../components/Contact";
 const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
-const MotionFlex = motion(Flex);
-const MotionImage = motion(Image);
 
 export const Marcas = () => {
     return (
