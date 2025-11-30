@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
 
-export const TitleCards = ({ name, club, img, number }) => {
+export const TitleCards = ({ name, club, img, onClick }) => {
   
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-   <MotionBox
+    <MotionBox
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -20,25 +20,22 @@ export const TitleCards = ({ name, club, img, number }) => {
       overflow="hidden"
       borderRadius="xl"
       cursor="pointer"
+      onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       bg="black"
     >
-      {/* Background Image */}
-      <Box position="absolute" inset="0">
+      <Box position="absolute" inset="0" >
         <Image
-         src={img}
-         alt={name}
-         w="100%"
-         h="100%"
-         objectFit="cover"
-         objectPosition="center 0%"
-         opacity={isHovered ? 0.4 : 0.8}
-         transform={isHovered ? "scale(0.90)" : "scale(1)"}
-         transition="opacity 0.9s ease, transform 0.9s ease"
+          src={img}
+          alt={name}
+          w="110%"
+          h="110%"
+          objectFit="contain"
+          opacity={isHovered ? 0.4 : 0.9}
+          transform={isHovered ? "scale(0.90)" : "scale(1)"}
+          transition="opacity 0.9s ease, transform 0.9s ease, h 0.9s ease-in-out"
         />
-        
-        {/* Dual gradient overlay */}
         <Box
           position="absolute"
           inset="0"
@@ -47,7 +44,6 @@ export const TitleCards = ({ name, club, img, number }) => {
           mixBlendMode="multiply"
           transition="opacity 0.6s"
         />
-        
         <Box
           position="absolute"
           inset="0"
@@ -55,8 +51,6 @@ export const TitleCards = ({ name, club, img, number }) => {
           opacity={0.7}
         />
       </Box>
-
-      {/* Animated diagonal stripe */}
       <Box
         position="absolute"
         top="0"
@@ -67,8 +61,6 @@ export const TitleCards = ({ name, club, img, number }) => {
         boxShadow="0 0 30px rgba(251, 146, 60, 0.8)"
         transition="left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)"
       />
-
-      {/* Content container */}
       <Flex
         position="absolute"
         inset="0"
@@ -76,19 +68,16 @@ export const TitleCards = ({ name, club, img, number }) => {
         justify="space-between"
         p={6}
       >
-        <MotionBox/>
-        
-        {/* Bottom info section */}
+        <MotionBox />
         <Box>
-          {/* Club with sliding animation - hidden when not hovering */}
           <MotionBox
             initial={{ x: -100, opacity: 0 }}
-            animate={{ 
+            animate={{
               x: isHovered ? 0 : -100,
               opacity: isHovered ? 1 : 0
             }}
             transition={{ duration: 0.6 }}
-            mb={3}
+            mb={{ base: '5px', md: 3 }}
           >
             <Flex align="center" gap={2}>
               <Box
@@ -98,7 +87,7 @@ export const TitleCards = ({ name, club, img, number }) => {
               />
               <Text
                 color="orange.300"
-                fontSize="xs"
+                fontSize={{ base: "10px", md: "xs" }}
                 fontWeight="600"
                 letterSpacing="wide"
                 textTransform="uppercase"
@@ -107,8 +96,6 @@ export const TitleCards = ({ name, club, img, number }) => {
               </Text>
             </Flex>
           </MotionBox>
-          
-          {/* Name with staggered reveal */}
           <MotionBox
             initial={{ y: 0 }}
             animate={{ y: isHovered ? 0 : 20 }}
@@ -117,7 +104,7 @@ export const TitleCards = ({ name, club, img, number }) => {
             <Heading
               as="h3"
               color="white"
-              fontSize="2xl"
+              fontSize={{ base: "lg", md: "2xl" }}
               fontWeight="black"
               letterSpacing="tight"
               textShadow="0 4px 12px rgba(0,0,0,0.6)"
@@ -126,8 +113,6 @@ export const TitleCards = ({ name, club, img, number }) => {
               {name}
             </Heading>
           </MotionBox>
-
-          {/* Accent line */}
           <Box
             w={isHovered ? "100%" : "60px"}
             h="3px"
@@ -138,8 +123,6 @@ export const TitleCards = ({ name, club, img, number }) => {
           />
         </Box>
       </Flex>
-
-      {/* Border glow effect */}
       <Box
         position="absolute"
         inset="0"

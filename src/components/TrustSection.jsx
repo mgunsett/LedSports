@@ -7,7 +7,6 @@ import {
   Flex,
   IconButton,
   Button,
-  useDisclosure,
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
@@ -29,7 +28,6 @@ import jugador_oroz from '../assets/jugador_oroz.png';
 import jugador_runi from '../assets/jugador_runi.png';
 import jugador_zuqi from '../assets/jugador_zuqi.png';
 
-import FichaJugador from './FichaJugador';
 import '../components/TrustSection.css';
 
 const MotionBox = motion(Box);
@@ -278,8 +276,6 @@ const brands = [
 
 const TrustSection = () => {
   const [visible, setVisible] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
   useEffect(() => {
     const handleScroll = () => setVisible(window.scrollY > 100);
     window.addEventListener('scroll', handleScroll);
@@ -610,10 +606,6 @@ const TrustSection = () => {
                         size="sm"
                         mt={2}
                         w="100%"
-                        onClick={() => {
-                          setJugadorSeleccionado(logo);
-                          onOpen();
-                        }}
                         _hover={{
                           backgroundColor: 'gray.700',
                           borderColor: 'orange.400',
@@ -645,13 +637,6 @@ const TrustSection = () => {
           _hover={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
         />
       </Flex>
-      {jugadorSeleccionado && (
-        <FichaJugador
-          isOpen={isOpen}
-          onClose={onClose}
-          jugador={jugadorSeleccionado}
-        />
-      )}
     </Flex>
   );
 };
