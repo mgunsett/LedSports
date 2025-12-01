@@ -100,14 +100,16 @@ const Hero = () => {
         <Image
           src={fondo_luz}
           alt="Marketing Deportivo"
-          boxSize={{ base: '350px', md: '450px', lg: '500px' }}
+          boxSize={{ base: '300px', sm: '400px', md: '400px'}}
           objectFit="contain"
           draggable="false"
           position="absolute"
-          top={{ base: '380px', md: '10px' }}
-          right={{ base: '-80px', md: '80px' }}
+          top={{ base: '450px', md: '60px' }}
+          right={{ base: '0px',sm: '20px', md: '120px' }}
           zIndex="0"
           opacity="0.5"
+          w={"170px"}
+          h={"170px"}
         />
       </MotionBox>
        <MotionBox
