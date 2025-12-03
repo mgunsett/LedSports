@@ -469,16 +469,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                   id="stats"
                   flex="1"
                   overflowY="hidden"  
-                  // css={{
-                  //   '&::-webkit-scrollbar': { width: '6px' },
-                  //   '&::-webkit-scrollbar-track': {
-                  //     background: 'rgba(255,255,255,0.05)',
-                  //   },
-                  //   '&::-webkit-scrollbar-thumb': {
-                  //     background: 'rgba(251, 146, 60, 0.5)',
-                  //     borderRadius: '3px',
-                  //   },
-                  // }}
                 >
                   <Grid
                     templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }}
@@ -490,7 +480,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       p={4}
                       border="1px solid"
                       borderColor="whiteAlpha.200"
-                      // whileHover={{ scale: 1.02, y: -4 }}
                       transition={{ duration: 0.3 }}
                     >
                       <Text
@@ -528,7 +517,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       </Flex>
                     </MotionBox>
                     <MotionFlex
-                      // whileHover={{ scale: 1.02, y: -4 }}
                       transition={{ duration: 0.3 }}
                       flexDirection= 'column'
                       alignItems="center"
@@ -564,7 +552,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         borderRadius="lg"
                         border="1px solid"
                         borderColor="whiteAlpha.200"
-                        // whileHover={{ scale: 1.02, y: -4 }} 
                         transition={{ duration: 0.3 }}
                         w="60%"
                         h="150px"

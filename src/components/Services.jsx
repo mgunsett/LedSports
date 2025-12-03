@@ -162,123 +162,294 @@ const Services = () => {
           mx={{ base: '20px'  , md: 10 }}
         >
           <Link to="/deportistas">
-            <Button
-              color="white"
-              size={{ base: 'md', md: 'lg' }}
-              transition="all 0.3s ease-in-out"
-              py={{ base: 10, md: 12 }}
-              px='80px'
-              w={{ base: '290px', md: '220px'}}
-              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
-              bgGradient="linear(to-br, gray.800, gray.900)"
+            <Box
+              id='verMas'
+              onClick={() => navigate('/jugadores')}
+              position="relative"
+              px={8}
+              py={7}
+              bg="transparent"
+              borderWidth="1px"
+              borderColor="whiteAlpha.500"
+              borderRadius="lg"
+              overflow="hidden"
+              cursor="pointer"
+              w={{ base: '140px', md: '200px'}}
+              role="group"
+              transition="all 0.6s ease-out"
               _hover={{
-                bgGradient: "linear(to-br, gray.600, gray.700)",
-                transform: "scale(1.1)",
-                zIndex: 1
+                borderColor: 'orange.400',
+                transform: 'scale(1.02)',
+                color: 'white',
               }}
-              _active={{
-                transform: "translateY(5px)",
-              }}
-              fontSize={{ base: 'md', md: 'sm' }}
             >
-              DEPORTISTAS
-            </Button>
+              {/* Barra izquierda gruesa con animación mejorada */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                w='4px'
+                h='100%'
+                bg="orange.400"
+                boxShadow="0 0 20px rgba(251, 146, 60, 0.6)"
+                transition="all 0.3s ease-out"
+                _groupHover={{
+                  width: '10px',
+                }}
+              />
+
+              <Flex
+                position="relative"
+                align="center"
+                gap={3}
+              >
+                <Text
+                  color="orange.400"
+                  fontWeight="bold"
+                  fontSize="lg"
+                  letterSpacing="wide"
+                  _groupHover={{
+                    transform: 'translateX(20px)',
+                    color: 'white',
+                  }}
+                  transition="all 0.6s ease-out"
+                >
+                  Deportistas
+                </Text>
+              </Flex>
+            </Box>
           </Link>
           <Link to="/entidades-deportivas">
-            <Button
-              color="white"
-              size={{ base: 'md', md: 'lg' }}
-              transition="all 0.3s ease-in-out"
-              py={{ base: 8, md: 10 }}
-              px={{ base: '60px', md: '80px' }}
+            <Box
+              id='verMas'
+              onClick={() => navigate('/jugadores')}
+              position="relative"
+              px={8}
+              py={4}
+              bg="transparent"
+              borderWidth="1px"
+              borderColor="whiteAlpha.500"
+              borderRadius="lg"
+              overflow="hidden"
+              cursor="pointer"
               w={{ base: '140px', md: '150px'}}
-              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
-              bgGradient="linear(to-br, gray.800, gray.900)"
+              role="group"
+              transition="all 0.6s ease-out"
               _hover={{
-                bgGradient: "linear(to-br, gray.600, gray.700)",
-                transform: "scale(1.1)",
-                zIndex: 1
+                borderColor: 'orange.400',
+                transform: 'scale(1.02)',
+                color: 'white',
               }}
-              _active={{
-                transform: "translateY(5px)",
-
-              }}
-              fontSize={{ base: 'md', md: 'sm' }}
             >
-              ENTIDADES <br /> DEPORTIVAS
-            </Button>
+              {/* Barra izquierda gruesa con animación mejorada */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                w='4px'
+                h='100%'
+                bg="orange.400"
+                boxShadow="0 0 20px rgba(251, 146, 60, 0.6)"
+                transition="all 0.3s ease-out"
+                _groupHover={{
+                  width: '10px',
+                }}
+              />
+
+              <Flex
+                position="relative"
+                align="center"
+                gap={3}
+              >
+                <Text
+                  color="orange.400"
+                  fontWeight="bold"
+                  fontSize="lg"
+                  letterSpacing="wide"
+                  _groupHover={{
+                    transform: 'translateX(10px)',
+                    color: 'white',
+                  }}
+                  transition="all 0.6s ease-out"
+                >
+                  Entidades
+                </Text>
+              </Flex>
+            </Box>
           </Link>
           <Link to="/agentes">
-            <Button
-              color="white"
-              size={{ base: 'md', md: 'lg' }}
-              transition="all 0.3s ease-in-out"
-              py={{ base: 8, md: 10 }}
-              px={{ base: '60px', md: '80px' }}
+            <Box
+              id='verMas'
+              onClick={() => navigate('/jugadores')}
+              position="relative"
+              px={8}
+              py={4}
+              bg="transparent"
+              borderWidth="1px"
+              borderColor="whiteAlpha.500"
+              borderRadius="lg"
+              overflow="hidden"
+              cursor="pointer"
               w={{ base: '140px', md: '150px'}}
-              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
-              bgGradient="linear(to-br, gray.800, gray.900)"
+              role="group"
+              transition="all 0.6s ease-out"
               _hover={{
-                bgGradient: "linear(to-br, gray.600, gray.700)",
-                transform: "scale(1.1)",
-                zIndex: 1
+                borderColor: 'orange.400',
+                transform: 'scale(1.02)',
+                color: 'white',
               }}
-              _active={{
-                transform: "translateY(5px)",
-
-              }}
-              fontSize={{ base: 'md', md: 'sm' }}
             >
-              AGENTES
-            </Button>
+              {/* Barra izquierda gruesa con animación mejorada */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                w='4px'
+                h='100%'
+                bg="orange.400"
+                boxShadow="0 0 20px rgba(251, 146, 60, 0.6)"
+                transition="all 0.3s ease-out"
+                _groupHover={{
+                  width: '10px',
+                }}
+              />
+
+              <Flex
+                position="relative"
+                align="center"
+                gap={3}
+              >
+                <Text
+                  color="orange.400"
+                  fontWeight="bold"
+                  fontSize="lg"
+                  letterSpacing="wide"
+                  _groupHover={{
+                    transform: 'translateX(10px)',
+                    color: 'white',
+                  }}
+                  transition="all 0.6s ease-out"
+                >
+                  Agentes
+                </Text>
+              </Flex>
+            </Box>
           </Link>
           <Link to="/eventos">
-            <Button
-              color="white"
-              size={{ base: 'md', md: 'lg' }}
-              transition="all 0.3s ease-in-out"
-              py={{ base: 8, md: 10 }}
-              px={{ base: '60px', md: '80px' }}
+            <Box
+              id='verMas'
+              onClick={() => navigate('/jugadores')}
+              position="relative"
+              px={8}
+              py={4}
+              bg="transparent"
+              borderWidth="1px"
+              borderColor="whiteAlpha.500"
+              borderRadius="lg"
+              overflow="hidden"
+              cursor="pointer"
               w={{ base: '140px', md: '150px'}}
-              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
-              bgGradient="linear(to-br, gray.800, gray.900)"
+              role="group"
+              transition="all 0.6s ease-out"
               _hover={{
-                bgGradient: "linear(to-br, gray.600, gray.700)",
-                transform: "scale(1.1)",
-                zIndex: 1
+                borderColor: 'orange.400',
+                transform: 'scale(1.02)',
+                color: 'white',
               }}
-              _active={{
-                transform: "translateY(5px)",
-
-              }}
-              fontSize={{ base: 'md', md: 'sm' }}
             >
-              EVENTOS
-            </Button>
+              {/* Barra izquierda gruesa con animación mejorada */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                w='4px'
+                h='100%'
+                bg="orange.400"
+                boxShadow="0 0 20px rgba(251, 146, 60, 0.6)"
+                transition="all 0.3s ease-out"
+                _groupHover={{
+                  width: '10px',
+                }}
+              />
+
+              <Flex
+                position="relative"
+                align="center"
+                gap={3}
+              >
+                <Text
+                  color="orange.400"
+                  fontWeight="bold"
+                  fontSize="lg"
+                  letterSpacing="wide"
+                  _groupHover={{
+                    transform: 'translateX(10px)',
+                    color: 'white',
+                  }}
+                  transition="all 0.6s ease-out"
+                >
+                 Eventos
+                </Text>
+              </Flex>
+            </Box>
           </Link>
           <Link to="/marcas">
-            <Button
-              color="white"
-              size={{ base: 'md', md: 'lg' }}
-              transition="all 0.3s ease-in-out"
-              py={{ base: 8, md: 10 }}
-              px={{ base: '60px', md: '80px' }}
+            <Box
+              id='verMas'
+              onClick={() => navigate('/jugadores')}
+              position="relative"
+              px={8}
+              py={4}
+              bg="transparent"
+              borderWidth="1px"
+              borderColor="whiteAlpha.500"
+              borderRadius="lg"
+              overflow="hidden"
+              cursor="pointer"
               w={{ base: '140px', md: '150px'}}
-              boxShadow={{ base: '0px 4px 6px rgba(255, 165, 0, 0.5)', md: '0px 10px 15px rgba(255, 165, 0, 0.5)'}}
-              bgGradient="linear(to-br, gray.800, gray.900)"
+              role="group"
+              transition="all 0.6s ease-out"
               _hover={{
-                bgGradient: "linear(to-br, gray.600, gray.700)",
-                transform: "scale(1.1)",
-                zIndex: 1
+                borderColor: 'orange.400',
+                transform: 'scale(1.02)',
+                color: 'white',
               }}
-              _active={{
-                transform: "translateY(5px)",
-
-              }}
-              fontSize={{ base: 'md', md: 'sm' }}
             >
-              MARCAS
-            </Button>
+              {/* Barra izquierda gruesa con animación mejorada */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                w='4px'
+                h='100%'
+                bg="orange.400"
+                boxShadow="0 0 20px rgba(251, 146, 60, 0.6)"
+                transition="all 0.3s ease-out"
+                _groupHover={{
+                  width: '10px',
+                }}
+              />
+
+              <Flex
+                position="relative"
+                align="center"
+                gap={3}
+              >
+                <Text
+                  color="orange.400"
+                  fontWeight="bold"
+                  fontSize="lg"
+                  letterSpacing="wide"
+                  _groupHover={{
+                    transform: 'translateX(10px)',
+                    color: 'white',
+                  }}
+                  transition="all 0.6s ease-out"
+                >
+                  Marcas
+                </Text>
+              </Flex>
+            </Box>  
           </Link>
         </Flex>
       </MotionBox>

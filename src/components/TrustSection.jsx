@@ -6,10 +6,10 @@ import {
   Text,
   Flex,
   IconButton,
-  Button,
 } from '@chakra-ui/react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, ChevronRightIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 import jugador_mainero from '../assets/jugador_mainero.png';
 import jugador_ade from '../assets/jugador_ade.png';
@@ -31,109 +31,105 @@ import jugador_zuqi from '../assets/jugador_zuqi.png';
 import '../components/TrustSection.css';
 
 const MotionBox = motion(Box);
+const MotionFlex = motion(Flex);
+const MotionText = motion(Text);
 
 const brands = [
   {
     img: jugador_mainero,
-    name: 'Juan Mainero',
-    Firstname: 'Juan',
+    name: 'Guido Mainero',
+    Firstname: 'Guido',
     Lastname: 'Mainero',
-    birthDate: '15/03/1995',
-    country: 'Argentina',
+    birthDate: '23/03/1995',
+    country: 'Córdoba, Argentina',
     position: 'Extremo derecho',
-    club: 'Club Atlético Ejemplo',
+    club: 'Platense',
     number: '7',
-    height: '1,78 m',
+    height: '1,77 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_ade,
-    name: 'Jugador Ade',
-    Firstname: 'Pedro',
+    name: 'Ricardo Ade',
+    Firstname: 'Ricardo',
     Lastname: 'Ade',
-    fullName: 'Pedro Ade',
-    birthDate: '22/07/1994',
-    country: 'Brasil',
-    position: 'Delantero centro',
-    club: 'Futbol Club Demo',
-    number: '9',
-    height: '1,82 m',
+    birthDate: '21/05/1990',
+    country: 'San Marcos, Haití',
+    position: 'Defensor',
+    club: 'Liga de Quito',
+    number: '4',
+    height: '1,90 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_callejo,
-    name: 'Jugador Callejo',
-    Firstname: 'Marcos',
+    name: 'Facundo Callejo',
+    Firstname: 'Facundo',
     Lastname: 'Callejo',
-    fullName: 'Marcos Callejo',
-    birthDate: '01/11/1993',
-    country: 'Uruguay',
-    position: 'Lateral izquierdo',
-    club: 'Club Deportivo Prueba',
-    number: '3',
-    height: '1,75 m',
+    birthDate: '02/07/1992',
+    country: 'Tandil, Argentina',
+    position: 'Delantero',
+    club: 'Cusco FC',
+    number: '9',
+    height: '1,78 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_campisi,
-    name: 'Jugador Campisi',
-    Firstname: 'Lucas',
+    name: 'Nicolas Campisi',
+    Firstname: 'Nicolas',
     Lastname: 'Campisi',
-    fullName: 'Lucas Campisi',
-    birthDate: '09/05/1996',
-    country: 'Argentina',
-    position: 'Mediocampista central',
-    club: 'Club Atlético Central',
-    number: '5',
-    height: '1,80 m',
+    birthDate: '29/10/1996',
+    country: 'Río Negro, Argentina',
+    position: 'Arquero',
+    club: 'Miami FC',
+    number: '1',
+    height: '1,89 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_correa,
-    name: 'Jugador Correa',
-    Firstname: 'Diego',
+    name: 'Javier Correa',
+    Firstname: 'Javier',
     Lastname: 'Correa',
-    fullName: 'Diego Correa',
-    birthDate: '30/06/1992',
-    country: 'Chile',
-    position: 'Defensor central',
-    club: 'Unión Deportiva Modelo',
-    number: '2',
-    height: '1,85 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_gonzapiovi,
-    name: 'Jugador Gonzapiovi',
-    Firstname: 'Gonzalo',
-    Lastname: 'Piovi',
-    fullName: 'Gonzalo Piovi',
-    birthDate: '05/02/1994',
-    country: 'Argentina',
-    position: 'Lateral / Central',
-    club: 'Racing Club (ejemplo)',
-    number: '33',
+    birthDate: '23/10/1992',
+    country: 'Córdoba, Argentina',
+    position: 'Delantero',
+    club: 'Colo-Colo',
+    number: '9',
     height: '1,84 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
+    img: jugador_gonzapiovi,
+    name: 'Gonzalo Piovi',
+    Firstname: 'Gonzalo',
+    Lastname: 'Piovi',
+    birthDate: '08/09/1994',
+    country: 'Buenos Aires, Argentina',
+    position: 'Lateral Izquierdo',
+    club: 'Cruz Azul',
+    number: '33',
+    height: '1,80 m',
+    item1: 'lorem ipsum dolor',
+    item2: 'lorem ipsum dolor',
+  },
+  {
     img: jugador_carmelo,
-    name: 'Jugador Carmelo',
+    name: 'Carmelo Argañaraz',
     Firstname: 'Carmelo',
-    Lastname: 'Díaz',
-    fullName: 'Carmelo Díaz',
-    birthDate: '18/09/1990',
-    country: 'Paraguay',
+    Lastname: 'Argañaraz',
+    birthDate: '27/01/1996',
+    country: 'Santa Cruz, Bolivia',
     position: 'Delantero',
-    club: 'Club Guaraní (ejemplo)',
+    club: 'Kalamata FC',
     number: '11',
-    height: '1,79 m',
+    height: '1,76 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
@@ -142,13 +138,12 @@ const brands = [
     name: 'Facundo Farias',
     Firstname: 'Facundo',
     Lastname: 'Farias',
-    fullName: 'Facundo Farias',
-    birthDate: '02/12/1998',
-    country: 'Argentina',
-    position: 'Enganche',
-    club: 'Club Atlético Norte',
-    number: '10',
-    height: '1,76 m',
+    birthDate: '22/08/2002',
+    country: 'Santa Fe, Argentina',
+    position: 'Mediocampista',
+    club: 'Estudiantes LP',
+    number: '11',
+    height: '1,72 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
@@ -157,13 +152,12 @@ const brands = [
     name: 'Gonzalo Sosa',
     Firstname: 'Gonzalo',
     Lastname: 'Sosa',
-    fullName: 'Gonzalo Sosa',
-    birthDate: '21/01/1997',
-    country: 'Argentina',
-    position: 'Volante ofensivo',
-    club: 'Club Deportivo Sur',
-    number: '20',
-    height: '1,74 m',
+    birthDate: '04/01/1989',
+    country: 'Santa Fe, Argentina',
+    position: 'Delantero',
+    club: 'Ñublense',
+    number: '9',
+    height: '1,85 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
@@ -172,42 +166,39 @@ const brands = [
     name: 'Jonatan Torres',
     Firstname: 'Jonatan',
     Lastname: 'Torres',
-    fullName: 'Jonatan Torres',
-    birthDate: '10/04/1995',
-    country: 'Colombia',
-    position: 'Extremo',
-    club: 'Club América (ejemplo)',
-    number: '17',
-    height: '1,81 m',
+    birthDate: '29/12/1996',
+    country: 'Santa Fe, Argentina',
+    position: 'Delantero',
+    club: 'Cerro Porteño',
+    number: '27',
+    height: '1,87 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_keki,
     name: 'Keki Piovi',
-    Firstname: 'Keki',
+    Firstname: 'Lucas',
     Lastname: 'Piovi',
-    fullName: 'Keki Piovi',
-    birthDate: '29/08/1999',
-    country: 'Argentina',
-    position: 'Mediapunta',
-    club: 'Club del Sur',
-    number: '19',
-    height: '1,73 m',
+    birthDate: '20/08/1992',
+    country: 'Buenos Aires, Argentina',
+    position: 'Mediocampista',
+    club: 'Estudiantes LP',
+    number: '21',
+    height: '1,72 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_lotti,
-    name: 'Franco Lotti',
-    Firstname: 'Franco',
+    name: 'Augusto Lotti',
+    Firstname: 'Augusto',
     Lastname: 'Lotti',
-    fullName: 'Franco Lotti',
-    birthDate: '03/03/1994',
-    country: 'Argentina',
-    position: 'Delantero extremo',
-    club: 'Club Atlético Este',
-    number: '14',
+    birthDate: '10/06/1996',
+    country: 'Buenos Aires, Argentina',
+    position: 'Delantero',
+    club: 'Platense',
+    number: '21',
     height: '1,80 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
@@ -217,64 +208,61 @@ const brands = [
     name: 'Luka Romero',
     Firstname: 'Luka',
     Lastname: 'Romero',
-    fullName: 'Luka Romero',
-    birthDate: '26/01/2000',
-    country: 'Croacia',
-    position: 'Mediocampista mixto',
-    club: 'Dinamo FC (ejemplo)',
-    number: '8',
-    height: '1,83 m',
+    birthDate: '18/11/2004',
+    country: 'Durango, México',
+    position: 'Mediocampista',
+    club: 'Cruz Azul',
+    number: '18',
+    height: '1,69 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_oroz,
-    name: 'Ignacio Oroz', 
-    Firstname: 'Ignacio',
+    name: 'Nicolas Oroz', 
+    Firstname: 'Nicolas',
     Lastname: 'Oroz',
-    fullName: 'Ignacio Oroz',
-    birthDate: '14/07/1993',
-    country: 'Argentina',
-    position: 'Mediocampista ofensivo',
-    club: 'Racing Club (ejemplo)',
-    number: '27',
-    height: '1,79 m',
+    birthDate: '01/04/1994',
+    country: 'San Luis, Argentina',
+    position: 'Mediocampista',
+    club: 'Argentinos Jr',
+    number: '21',
+    height: '1,74 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_runi,
-    name: 'Ramiro Runi',
-    Firstname: 'Ramiro',
-    Lastname: 'Runi',
-    fullName: 'Ramiro Runi',
-    birthDate: '19/10/1991',
-    country: 'Uruguay',
-    position: 'Defensor lateral',
-    club: 'Club Oriental',
-    number: '4',
-    height: '1,77 m',
+    name: 'Ronaldo Martinez',
+    Firstname: 'Ronaldo',
+    Lastname: 'Martinez',
+    birthDate: '25/04/1996',
+    country: 'Paraguay',
+    position: 'Delantero',
+    club: 'Platense',
+    number: '21',
+    height: '1,78 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_zuqi,
-    name: 'Fernando Zuqi',
+    name: 'Fernando Zuqui',
     Firstname: 'Fernando',
-    Lastname: 'Zuqi',
-    fullName: 'Fernando Zuqi',
-    birthDate: '07/09/1996',
-    country: 'Chile',
+    Lastname: 'Zuqui',
+    birthDate: '27/11/1991',
+    country: 'Mendoza, Argentina',
     position: 'Volante de contención',
-    club: 'Club Pacífico',
-    number: '6',
-    height: '1,81 m',
+    club: 'U Católica',
+    number: '18',
+    height: '1,74 m',
     item1: 'lorem ipsum dolor',
     item2: 'lorem ipsum dolor',
   },
 ];
 
 const TrustSection = () => {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const handleScroll = () => setVisible(window.scrollY > 100);
@@ -288,6 +276,7 @@ const TrustSection = () => {
   const animationRef = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const startXRef = useRef(0);
   const startScrollLeftRef = useRef(0);
   const hasDraggedRef = useRef(false);
@@ -475,7 +464,7 @@ const TrustSection = () => {
         maxW="100%"
         minW={{ base: '100%', md: '75%' }}
         margin="auto"
-        mb={{ base: '20px', md: '100px' }}
+        mb={{ base: '10px', md: '20px' }}
         position="relative"
       >
         <IconButton
@@ -497,7 +486,7 @@ const TrustSection = () => {
           className={`scrollCards ${visible ? 'reveal--visible' : ''}`}
           alignItems="center"
           justifyContent="center"
-          overflow="hidden"
+          overflow="visible"
           maxW={{ base: '100%', md: '75%' }}
           minW={{ base: '100%', md: '75%' }}
           margin="auto"
@@ -542,20 +531,17 @@ const TrustSection = () => {
                   direction="column"
                   alignItems="center"
                   justifyContent="center"
-                  mt="50px"
+                  mt="40px"
                   mx={{ base: '-5px', md: '20px' }}
                   w={{ base: '320px', md: '230px' }}
-                  h="300px"
+                  h="340px"
                   transition="all 0.8s"
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                   sx={{
                     '&:hover .image_brand': {
                       filter: 'grayscale(0%) brightness(1)',
                       transform: 'translateY(-20px) scale(1.05)',
-                    },
-                    '&:hover #brand_info': {
-                      opacity: 1,
-                      transform: 'translate(50%, -30px) ',
-                      pointerEvents: 'auto',
                     },
                   }}
                 >
@@ -570,52 +556,145 @@ const TrustSection = () => {
                     transition="all 0.8s"
                   />
 
-                  {/* Overlay info */}
-                  <Flex
+                  {/* #brand_info */}
+                  <Box
                     id="brand_info"
-                    direction="column"
-                    alignItems="flex-start"
-                    justifyContent="center"
-                    gap={2}
-                    p={4}
                     position="absolute"
-                    bottom="-20px"
-                    left={{ base: '-5%', md: '-40%' }}
-                    transform="translate(50%, 30px)"
-                    w={{ base: '60%', md: '90%' }}
-                    h={{ base: '40%', md: '45%' }}
-                    bg="linear-gradient(135deg, rgba(158, 156, 156, 0.68) 0%, rgba(30, 30, 30, 0.45) 100%)"
-                    backdropFilter="blur(2px)"
-                    borderRadius="5px"
-                    boxShadow="0 10px 15px rgba(0,0,0,0.45), 0 0 15px rgba(255,255,255,0.25)"
-                    opacity={0}
-                    pointerEvents="none"
-                    transition="opacity 0.8s ease, transform 0.8s ease"
+                    bottom={{ base: '10px', md: '10px' }}
+                    left="50%"
+                    transform="translate(-50%, -10px)"
+                    w={{ base: '60%', md: '100%' }}
+                    opacity={hoveredIndex === i ? 1 : 0}
+                    pointerEvents={hoveredIndex === i ? 'auto' : 'none'}
+                    transition="all 0.7s ease-out"
+                    overflow="visible"
                     fontFamily={'Stack Sans Headline, sans-serif'}
                   >
-                    <Text as="span" color="white" fontSize={{ base: 'md', md: 'md'}}>
-                      {logo.name}
-                    </Text>
-                    <Text as="span" color="orange.300" fontSize="sm" fontWeight="bold" letterSpacing="wide" alignItems="start">
-                      Highlights
-                    </Text>
-                      <Button
-                        id="ficha_button"
-                        variant="outline"
-                        colorScheme="white"
-                        size="sm"
-                        mt={2}
-                        w="100%"
-                        _hover={{
-                          backgroundColor: 'gray.700',
-                          borderColor: 'orange.400',
-                        }}
+                    <Box
+                      position="relative"
+                      bg="blackAlpha.700"
+                      backdropFilter="blur(5px)"
+                      borderRadius="lg"
+                      p={{ base: 4, md: 5 }}
+                      overflow="visible"
+                    >
+
+                      {/* Border with glow effect */}
+                      <Box
+                        position="absolute"
+                        inset={0}
+                        borderWidth="1px"
+                        borderRadius="lg"
+                        pointerEvents="none"
+                        borderColor={hoveredIndex === i ? 'whiteAlpha.600' : 'rgba(255,255,255,0.6)'}
+                        opacity={hoveredIndex === i ? 0.8 : 0.4}
+                        boxShadow={
+                          hoveredIndex === i
+                            ? 'inset 0 0 30px rgba(255, 255, 255, 0.3)'
+                            : 'none'
+                        }
+                        transition="all 0.6s"
+                      />
+
+                      <Flex
+                        position="relative"
+                        zIndex={10}
+                        align="flex-start"
+                        justify="space-between"
+                        gap={3}
                       >
-                        + Info
-                      </Button>
-                    
-                   
-                  </Flex>
+                        <Box flex="1">
+                          {/* Club with line - slides in from left */}
+                          <Box
+                            as={motion.div}
+                            initial={{ x: -100, opacity: 0 }}
+                            animate={{
+                              x: hoveredIndex === i ? 0 : -100,
+                              opacity: hoveredIndex === i ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.6 }}
+                            mb={2}
+                          >
+                            <Flex align="center" gap={2}>
+                              <Box w="30px" h="2px" bg="orange.400" />
+                              <Text
+                                color="orange.400"
+                                fontSize={{ base: '8px', md: '10px' }}
+                                fontWeight="semibold"
+                                textTransform="uppercase"
+                                letterSpacing="wide"
+                              >
+                                {logo.club}
+                              </Text>
+                            </Flex>
+                          </Box>
+
+                          {/* Name */}
+                          <Box
+                            as={motion.div}
+                            initial={{ y: 0 }}
+                            animate={{ y: hoveredIndex === i ? 0 : 20 }}
+                            transition={{ duration: 0.7 }}
+                          >
+                            <Text
+                              as="h3"
+                              color="white"
+                              fontSize={{ base: 'sm', md: 'md' }}
+                              fontWeight="black"
+                              textTransform="uppercase"
+                              lineHeight="tight"
+                            >
+                              {logo.name}
+                            </Text>
+                          </Box>
+
+                          {/* Bottom expanding line */}
+                          <Box
+                            h="3px"
+                            bg="orange.400"
+                            mt={3}
+                            boxShadow="0 0 15px rgba(251,146,60,0.6)"
+                            transition="all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                            w={hoveredIndex === i ? '100%' : '60px'}
+                          />
+                        </Box>
+
+                        {/* Navigation button */}
+                        <Box
+                          as={motion.button}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{
+                            opacity: hoveredIndex === i ? 1 : 0,
+                            scale: hoveredIndex === i ? 1 : 0.8,
+                          }}
+                          transition={{ duration: 0.3 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate('/jugadores');
+                          }}
+                          aria-label="Ver jugadores"
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                          flexShrink={0}
+                          w={{ base: 8, md: 9 }}
+                          h={{ base: 8, md: 9 }}
+                          borderRadius="full"
+                          bg="orange.400Alpha.200"
+                          borderWidth="1px"
+                          borderColor="orange.400"
+                          color="orange.400"
+                          _hover={{
+                            bg: 'orange.400',
+                            color: 'white',
+                            boxShadow: '0 0 20px rgba(251,146,60,0.5)',
+                          }}
+                        >
+                          <ArrowForwardIcon />
+                        </Box>
+                      </Flex>
+                    </Box>
+                  </Box>
                 </Flex>
               </MotionBox>
             ))}
@@ -629,14 +708,85 @@ const TrustSection = () => {
           position="absolute"
           right={{ base: '10px', md: '80px' }}
           top="50%"
-          transform="translateY(-50%)"
+          transform="translateY(-50%)"  
           zIndex="2"
           fontSize="40px"
           color="white"
-          backgroundColor="rgba(0,0,0,0.3)"
+          backgroundColor="rgba(0,0,0,0.3)" 
           _hover={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
         />
       </Flex>
+      <Box
+        id='verMas'
+        onClick={() => navigate('/jugadores')}
+        position="relative"
+        px={8}
+        py={4}
+        bg="transparent"
+        borderWidth="1px"
+        borderColor="whiteAlpha.500"
+        borderRadius="lg"
+        overflow="hidden"
+        cursor="pointer"
+        w={{ base: '70%', md: '15%' }}
+        role="group"
+        transition="all 0.6s ease-out"
+        _hover={{
+          borderColor: 'orange.400',
+          transform: 'scale(1.02)',
+          color: 'white',
+        }}
+      >  
+      {/* Barra izquierda gruesa con animación mejorada */}
+        <Box
+          position="absolute" 
+          top="0"
+          left="0"
+          w='4px'
+          h='100%' 
+          bg="orange.400"
+          boxShadow="0 0 20px rgba(251, 146, 60, 0.6)"
+          transition="all 0.3s ease-out"
+          _groupHover={{
+            width: '10px',
+          }}
+        />
+
+      <Flex
+        position="relative"
+        align="center"
+        gap={3}
+      >
+        <Box
+          color="orange.400"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          filter="drop-shadow(0 0 8px rgba(251,146,60,0.6))"
+          transition="all 0.6s ease-out"
+          _groupHover={{
+            color: "white",
+            transform: 'translateX(20px)',
+            fontSize: '20px',
+          }}
+        >
+          <ArrowForwardIcon size={20} />
+        </Box> 
+        <Text
+          color="orange.400"
+          fontWeight="bold"
+          fontSize="lg"
+          letterSpacing="wide"
+          _groupHover={{
+            transform: 'translateX(20px)',
+            color: 'white',
+          }}
+          transition="all 0.6s ease-out"
+        >
+          Ver más
+        </Text>
+      </Flex>
+    </Box>  
     </Flex>
   );
 };

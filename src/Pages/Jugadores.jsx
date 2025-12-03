@@ -39,8 +39,6 @@ const brands = [
     club: 'Platense',
     number: '7',
     height: '1,77 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_ade,
@@ -53,8 +51,6 @@ const brands = [
     club: 'Liga de Quito',
     number: '4',
     height: '1,90 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_callejo,
@@ -81,8 +77,6 @@ const brands = [
     club: 'Miami FC',
     number: '1',
     height: '1,89 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_correa,
@@ -95,8 +89,6 @@ const brands = [
     club: 'Colo-Colo',
     number: '9',
     height: '1,84 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_gonzapiovi,
@@ -109,8 +101,6 @@ const brands = [
     club: 'Cruz Azul',
     number: '33',
     height: '1,80 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_carmelo,
@@ -123,8 +113,6 @@ const brands = [
     club: 'Kalamata FC',
     number: '11',
     height: '1,76 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_farias,
@@ -137,8 +125,6 @@ const brands = [
     club: 'Estudiantes LP',
     number: '11',
     height: '1,72 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_gonzasosa,
@@ -151,8 +137,6 @@ const brands = [
     club: 'Ñublense',
     number: '9',
     height: '1,85 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_jonitorres,
@@ -165,8 +149,6 @@ const brands = [
     club: 'Cerro Porteño',
     number: '27',
     height: '1,87 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_keki,
@@ -179,8 +161,6 @@ const brands = [
     club: 'Estudiantes LP',
     number: '21',
     height: '1,72 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_lotti,
@@ -193,8 +173,6 @@ const brands = [
     club: 'Platense',
     number: '21',
     height: '1,80 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_luka,
@@ -207,8 +185,6 @@ const brands = [
     club: 'Cruz Azul',
     number: '18',
     height: '1,69 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_oroz,
@@ -221,8 +197,6 @@ const brands = [
     club: 'Argentinos Jr',
     number: '21',
     height: '1,74 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_runi,
@@ -235,8 +209,6 @@ const brands = [
     club: 'Platense',
     number: '21',
     height: '1,78 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
   {
     img: jugador_zuqi,
@@ -249,8 +221,6 @@ const brands = [
     club: 'U Católica',
     number: '18',
     height: '1,74 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
   },
 ];
 
