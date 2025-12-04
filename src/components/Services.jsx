@@ -156,25 +156,25 @@ const Services = () => {
           alignItems="center"
           justifyContent="center"
           flexWrap="wrap"
-          gap={{ base: '12px', md: 8 }}
+          gap={{ base: '10px', md: 8 }}
           mt={10}
           mb={{ base: '20px', md: '120px' }}
-          mx={{ base: '20px'  , md: 10 }}
+          mx={{ base: 'auto'  , md: 10 }}
+          w={{ base: '100%', md: '100%'}}
         >
           <Link to="/deportistas">
             <Box
-              id='verMas'
               onClick={() => navigate('/jugadores')}
               position="relative"
               px={8}
               py={7}
               bg="transparent"
               borderWidth="1px"
-              borderColor="whiteAlpha.500"
+              borderColor="whiteAlpha.500"  
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '140px', md: '200px'}}
+              w={{ base: '360px', md: '200px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -221,7 +221,6 @@ const Services = () => {
           </Link>
           <Link to="/entidades-deportivas">
             <Box
-              id='verMas'
               onClick={() => navigate('/jugadores')}
               position="relative"
               px={8}
@@ -232,7 +231,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '140px', md: '150px'}}
+              w={{ base: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -279,8 +278,6 @@ const Services = () => {
           </Link>
           <Link to="/agentes">
             <Box
-              id='verMas'
-              onClick={() => navigate('/jugadores')}
               position="relative"
               px={8}
               py={4}
@@ -290,7 +287,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '140px', md: '150px'}}
+              w={{ base: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -348,7 +345,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '140px', md: '150px'}}
+              w={{ base: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -406,7 +403,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '140px', md: '150px'}}
+              w={{ base: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
