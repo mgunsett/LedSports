@@ -12,7 +12,9 @@ import {
   Heading,
   Grid,
   Circle,
+  useBreakpointValue,
 } from '@chakra-ui/react';
+
 import { motion } from 'framer-motion';
 
 const MotionModalContent = motion(ModalContent);
@@ -236,12 +238,14 @@ function FichaJugador({ isOpen, onClose, jugador }) {
   const assists = jugadorData.assists ?? 7;
   const matches = jugadorData.matches ?? 34;
 
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   return (
     <Modal
       isCentered
       isOpen={isOpen}
       onClose={onClose}
-      size="6xl"
+      size={{base:'7xl', md:'6xl'}}  
     >
       <ModalOverlay
         bg="transparent"
@@ -250,7 +254,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
       <MotionModalContent
         maxW={{ base: '95vw', md: '90vw', lg: '85vw' }}
         maxH={{ base: '95vh', md: '90vh', lg: '85vh' }}
-        h={{ base: '85vh', md: '85vh' }}
+        h={{ base: '100vh', md: '85vh' }}
         bg="transparent"
         overflow="hidden"
         borderRadius="2xl"
@@ -260,13 +264,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
         exit={{ opacity: 0, scale: 0.9, y: 60 }}
         transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
       >
-        <ModalBody p={0}>
+        <ModalBody p={0}   >
           <Box
             position="relative"
             w="100%"
-            h="88vh"
+            h={{base: "100vh", md: "88vh"}}
             bgGradient="linear(135deg, gray.900 0%, black 50%, gray.900 100%)"
-            overflow="hidden"
+            overflow={{base: "auto", md: "hidden"}} 
           >
             <Box
               position="absolute"
@@ -317,10 +321,11 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 <Image
                   src={jugadorData.img}
                   alt={jugadorData.name || 'Jugador'}
-                  objectFit='cover'
-                  w="100%"
-                  h="100%"
-                  objectPosition="center top"
+                  objectFit={{ base:'contain', md:'cover' }}
+                  w={{base: "120%", md: "100%"}} 
+                  h={{base: "150%", md: "100%"}}
+                  objectPosition= 'center top'
+                  pt={{base: "5px", md: "0%"}}
                 />
                 <Box
                   position="absolute"
@@ -362,7 +367,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       boxShadow="0 0 10px rgba(251, 146, 60, 0.6)"
                     />
                     <Text
-                      fontSize={{ base: 'xs', md: 'sm' }}
+                      fontSize={{ base: '10px', md: 'sm' }}
                       fontWeight="bold"
                       color="orange.300"
                       textTransform="uppercase"
@@ -404,163 +409,282 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 </Box>
 
                 <Grid
-                  templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
-                  gap={{ base: 3, md: 4 }}
+                  templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(4, 1fr)' }}
+                  gap={{ base: 6, md: 4 }}
                   mb={{ base: 4, md: 6 }}
                   pb={{ base: 4, md: 6 }}
                   borderBottom="1px solid"
                   borderColor="whiteAlpha.200"
-                  overflowY="hidden"
+                  overflowY={{base:"visible", md:'hidden'}} 
                 >
                   <Box>
                     <Text
-                      fontSize="xs"
+                      fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
                       fontWeight="semibold"
                       mb={1}
                     >
                       FECHA NAC.
                     </Text>
-                    <Text fontSize="sm" color="white" fontWeight="bold">
+                    <Text fontSize={{base: "12px", md: "sm"}}  color="white" fontWeight="bold">
                       {jugadorData.birthDate || '01/01/1990'}
                     </Text>
                   </Box>
                   <Box>
                     <Text
-                      fontSize="xs"
+                      fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
                       fontWeight="semibold"
                       mb={1}
                     >
                       PAÍS
                     </Text>
-                    <Text fontSize="sm" color="white" fontWeight="bold">
+                    <Text 
+                    fontSize={{base: "12px", md: "sm"}} 
+                    color="white" 
+                    fontWeight="bold"
+                    >
                       {jugadorData.country || 'Argentina'}
                     </Text>
                   </Box>
                   <Box>
                     <Text
-                      fontSize="xs"
+                      fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
                       fontWeight="semibold"
                       mb={1}
                     >
                       CLUB
                     </Text>
-                    <Text fontSize="sm" color="white" fontWeight="bold">
+                    <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
                       {jugadorData.club || 'Club actual'}
                     </Text>
                   </Box>
                   <Box>
                     <Text
-                      fontSize="xs"
+                      fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
                       fontWeight="semibold"
                       mb={1}
                     >
                       ESTATURA
                     </Text>
-                    <Text fontSize="sm" color="white" fontWeight="bold">
+                    <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
                       {jugadorData.height || '1.80 m'}
                     </Text>
                   </Box>
                 </Grid>
-                <Box
-                  id="stats"
-                  flex="1"
-                  overflowY="hidden"  
-                >
-                  <Grid
-                    templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }}
-                    gap={4}
-                  >
-                    <MotionBox
-                      bg="whiteAlpha.50"
-                      borderRadius="lg"
-                      p={4}
-                      border="1px solid"
-                      borderColor="whiteAlpha.200"
-                      transition={{ duration: 0.3 }}
+                {isMobile ? (
+                    <Grid
+                      templateColumns='repeat(2, 1fr)'
+                      gap={4}
+                      pb={10}
                     >
-                      <Text
-                        fontSize="xs"
-                        color="orange.300"
-                        fontWeight="bold"
-                        mb={3}
-                        textTransform="uppercase"
-                      >
-                        Estadísticas Generales
-                      </Text>
-                      <Flex justify="space-between" mb={2}>
-                        <Text fontSize="sm" color="whiteAlpha.700">
-                          Goles
-                        </Text>
-                        <Text fontSize="sm" color="white" fontWeight="bold">
-                          {goals}
-                        </Text>
-                      </Flex>
-                      <Flex justify="space-between" mb={2}>
-                        <Text fontSize="sm" color="whiteAlpha.700">
-                          Asistencias
-                        </Text>
-                        <Text fontSize="sm" color="white" fontWeight="bold">
-                          {assists}
-                        </Text>
-                      </Flex>
-                      <Flex justify="space-between">
-                        <Text fontSize="sm" color="whiteAlpha.700">
-                          Partidos jugados
-                        </Text>
-                        <Text fontSize="sm" color="white" fontWeight="bold">
-                          {matches}
-                        </Text>
-                      </Flex>
-                    </MotionBox>
-                    <MotionFlex
-                      transition={{ duration: 0.3 }}
-                      flexDirection= 'column'
-                      alignItems="center"
-                      justifyContent="center"
-                      gridColumn={{ base: 'span 3', md: 'span 2' }}
-                    >
-                      <Flex
-                        gap={{ base: 3, md: 6 }}
-                        mb={{ base: 4, md: 6 }}
-                        justify="end"
-                        flexWrap="wrap"
-                      >
-                        <CircularProgress
-                          value={passAccuracy}
-                          label="Precisión pases"
-                          size={90}
-                        />
-                        <CircularProgress 
-                          value={shotConversion}
-                          label="Conversión tiro"
-                          size={90} 
-                        />
-                        <CircularProgress
-                          value={fitness}
-                          label="Condición física"
-                          size={90}
-                        />
-                      </Flex>
+                        <Flex
+                          gridColumn='span 2'
+                          gap={6}
+                          mb={4}
+                          justify="center"
+                          flexWrap="wrap"
+                        >
+                          <CircularProgress
+                            value={passAccuracy}
+                            label="Precisión pases"
+                            size={90}
+                          />
+                          <CircularProgress 
+                            value={shotConversion}
+                            label="Conversión tiro"
+                            size={90} 
+                          />
+                          <CircularProgress
+                            value={fitness}
+                            label="Condición física"
+                            size={90}
+                          />
+                        </Flex>
+                        <Flex
+                        justifyContent='center'
+                        alignItems='center'
+                        w="100%"
+                        ml={3}
+                        mt={4}
+                        gridColumn='span 2'
+                        >
+                          <MotionFlex
+                            bg="whiteAlpha.50"
+                            borderRadius="lg"
+                            px={4}
+                            py={4}
+                            border="1px solid"
+                            borderColor="whiteAlpha.200"
+                            transition={{ duration: 0.3 }}
+                            w="50%"
+                            h="190px"
+                            justifyContent='flex-start'
 
+                            flexDirection='column'
+                          >
+                            <Text
+                              fontSize="xs"
+                              color="orange.300"
+                              fontWeight="bold"
+                              mb={6}
+                              textTransform="uppercase"
+                            >
+                              Estadísticas
+                            </Text>
+                            <Flex justify="space-between" mb={2}>
+                              <Text fontSize="xs" color="whiteAlpha.700">
+                                Goles
+                              </Text>
+                              <Text fontSize="xs" color="white" fontWeight="bold">
+                                {goals}
+                              </Text>
+                            </Flex>
+                            <Flex justify="space-between" mb={2}>
+                              <Text fontSize="xs" color="whiteAlpha.700">
+                                Asistencias
+                              </Text>
+                              <Text fontSize="xs" color="white" fontWeight="bold">
+                                {assists}
+                              </Text>
+                            </Flex>
+                            <Flex justify="space-between">
+                              <Text fontSize="xs" color="whiteAlpha.700">
+                                Partidos
+                              </Text>
+                              <Text fontSize="xs" color="white" fontWeight="bold">
+                                {matches}
+                              </Text>
+                            </Flex>
+                          </MotionFlex>
+                          <MotionBox
+                            bg="whiteAlpha.50"
+                            borderRadius="lg"
+                            border="1px solid"
+                            borderColor="whiteAlpha.200"
+                            transition={{ duration: 0.3 }}
+                            w="70%"
+                            h="150px"
+                            transform="rotate(90deg)"
+                          >
+                            <Box
+                              w="100%"
+                              h="100%"
+                              display="flex"
+                              alignItems="center"
+                              justifyContent="center"
+                              transform="rotate(180deg)"
+                              transformOrigin="center"
+                            >
+                              <SoccerFieldPosition position={jugadorData.position} />
+                            </Box>
+                          </MotionBox>
+
+                      </Flex>
+                    </Grid>
+                ) : (
+                  <Box
+                    id="stats"
+                    flex={{base:"2", md:"1"}}
+                    overflowY={{base:'auto' , md: 'hidden' }} 
+                    h={{base:'600px', md: '100%' }} 
+                  >
+                    <Grid
+                      templateColumns={{ base: 'repeat(2, 1fr)',md:'repeat(3, 1fr)' }}
+                      gap={4}
+                    >
                       <MotionBox
-                        position="relative"
+                        
                         bg="whiteAlpha.50"
                         borderRadius="lg"
+                        p={4}
                         border="1px solid"
                         borderColor="whiteAlpha.200"
                         transition={{ duration: 0.3 }}
-                        w="60%"
-                        h="150px"
                       >
-                        <SoccerFieldPosition position={jugadorData.position} />
+                        <Text
+                          fontSize="xs"
+                          color="orange.300"
+                          fontWeight="bold"
+                          mb={3}
+                          textTransform="uppercase"
+                        >
+                          Estadísticas Generales
+                        </Text>
+                        <Flex justify="space-between" mb={2}>
+                          <Text fontSize="sm" color="whiteAlpha.700">
+                            Goles
+                          </Text>
+                          <Text fontSize="sm" color="white" fontWeight="bold">
+                            {goals}
+                          </Text>
+                        </Flex>
+                        <Flex justify="space-between" mb={2}>
+                          <Text fontSize="sm" color="whiteAlpha.700">
+                            Asistencias
+                          </Text>
+                          <Text fontSize="sm" color="white" fontWeight="bold">
+                            {assists}
+                          </Text>
+                        </Flex>
+                        <Flex justify="space-between">
+                          <Text fontSize="sm" color="whiteAlpha.700">
+                            Partidos jugados
+                          </Text>
+                          <Text fontSize="sm" color="white" fontWeight="bold">
+                            {matches}
+                          </Text>
+                        </Flex>
                       </MotionBox>
-                    </MotionFlex>
-                  </Grid>
-                </Box>
+                      <MotionFlex
+                        order={{ base: 1, md: 0 }}
+                        transition={{ duration: 0.3 }}
+                        flexDirection= 'column'
+                        alignItems="center"
+                        justifyContent="center"
+                        gridColumn={{ base: 'span 2', md: 'span 2' }}
+                      >
+                        <Flex
+                          gap={{ base: 3, md: 6 }}
+                          mb={{ base: 4, md: 6 }}
+                          justify="end"
+                          flexWrap="wrap"
+                        >
+                          <CircularProgress
+                            value={passAccuracy}
+                            label="Precisión pases"
+                            size={90}
+                          />
+                          <CircularProgress 
+                            value={shotConversion}
+                            label="Conversión tiro"
+                            size={90} 
+                          />
+                          <CircularProgress
+                            value={fitness}
+                            label="Condición física"
+                            size={90}
+                          />
+                        </Flex>
+
+                        <MotionBox
+                          position="relative"
+                          bg="whiteAlpha.50"
+                          borderRadius="lg"
+                          border="1px solid"
+                          borderColor="whiteAlpha.200"
+                          transition={{ duration: 0.3 }}
+                          w="60%"
+                          h="150px"
+                        >
+                          <SoccerFieldPosition position={jugadorData.position} />
+                        </MotionBox>
+                      </MotionFlex>
+                    </Grid>
+                  </Box>
+                )}
               </MotionFlex>
             </Flex>
           </Box>
