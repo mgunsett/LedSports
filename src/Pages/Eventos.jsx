@@ -79,17 +79,17 @@ export const Eventos = () => {
                 zIndex={1}
             />
             <MotionFlex
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 1 }}
+                viewport={{ once: true }}
                 bgGradient="linear(to-br,  gray.900, black)"
                 justifyContent="center"
                 alignItems="center"
                 flexDirection="column"
                 gap={6}
                 w={{ base: "100%", md: "100%" }}
-                h="950px"
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 1 }}
-                viewport={{ once: true }}
+                h={{ base: "auto", md: "950px" }}
                 px={'500px'}
                 mt={'-170px'}
                 pt={10}
@@ -98,7 +98,6 @@ export const Eventos = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    
                 >
                     <Box position="relative" role="group" cursor="pointer">
                         <Box
@@ -122,19 +121,32 @@ export const Eventos = () => {
                             borderRadius="2xl"
                             p={{ base: 6, md: 12 }}
                             lineHeight='2.1'
-                            w={{ base: "100%", md: "900px" }}
+                            w={{ base: "350px", md: "900px" }}
                             h={{ base: "auto", md: "550px" }}
-                            textAlign={{ base: "center", md: "left" }}
+                            textAlign='left'
+                            mt={{base: 40, md: 0}}
+                            mb={{base: 40, md: 0 }}
                         >
-                            <Box maxW="4xl" mx="auto">
+                            <Box 
+                            maxW={{base: "3xl"  , md: "4xl"}}
+                            mx="auto"
+                            >
                                 <Flex justify="center" mb={6}>
                                     <Box w="96px" h="4px" bg="orange.400" />
                                 </Flex>
-                                <Text as='h2'  p={2} fontSize="3xl" fontWeight="bold" color="orange.400">
+                                <Text  
+                                as='h2'  
+                                p={ {base: 0, md: 2 }}
+                                fontSize={{ base: "xl", md: "3xl" }} 
+                                fontWeight="bold" 
+                                lineHeight={{base: "shorter" , md: "none"}}
+                                mb={4}
+                                color="orange.400"
+                                >
                                     Transformamos cada evento en una experiencia única
                                 </Text>
                                 <Text
-                                    fontSize="md"
+                                    fontSize={{ base: "sm", md: "md" }}
                                     lineHeight="relaxed"
                                     color="whiteAlpha.900"
                                 >

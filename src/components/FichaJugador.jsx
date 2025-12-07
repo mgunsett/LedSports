@@ -26,11 +26,21 @@ const CircularProgress = ({ value, label, size = 100 }) => {
   const radius = 38;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (value / 100) * circumference;
+  
+  const variants = {
+  mobileInitial:  { opacity: 0, scale: 0.4 },
+  mobileAnimate:  { opacity: 1, scale: 1 }, 
+  desktopInitial: { opacity: 0, scale: 0.2, rotate: (-180) },
+  desktopAnimate: { opacity: 1, scale: 1, rotate: 0 },
+  };
+
+
 
   return (
     <MotionBox
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
+      variants={variants}
+      initial={useBreakpointValue({ base: "mobileInitial", lg: "desktopInitial" })}
+      animate={useBreakpointValue({ base: "mobileAnimate", lg: "desktopAnimate" })}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       position="relative"
       display="flex"
@@ -92,48 +102,120 @@ const CircularProgress = ({ value, label, size = 100 }) => {
   );
 };
 
-// Soccer field mini map component
+// Soccer field mini map component with heatmap effect
 const SoccerFieldPosition = ({ position = 'Forward' }) => {
   const normalized = (position || '').toLowerCase();
 
-  const markerByPosition = () => {
-    // Arquero
+  const getHeatmapArea = () => {
+    // Arquero - Áreas expandidas
     if (normalized === 'arquero') {
-      return { top: '50%', left: '14%' };
+      return {
+        center: { top: '18%', left: '-10%' },
+        size: { width: '32%', height: '75%' },
+        intensity: 0.95
+      };
     }
 
-    // Defensas
+    // Defensor Central 
     if (
       normalized === 'defensor central' ||
-      normalized === 'lateral derecho' ||
-      normalized === 'lateral izquiero'
+      normalized === 'defensor'
     ) {
-      return { top: '50%', left: '28%' };
+      return {
+        center: { top: '15%', left: '0%' },
+        size: { width: '45%', height: '65%' },
+        intensity: 0.9
+      };
     }
-
-    // Mediocampo
+    // Lateral Izquiero
     if (
-      normalized === 'mediocampista' ||
-      normalized === 'mediocampista izq' ||
-      normalized === 'mediocampista der'
+      normalized === 'lateral izquierdo'
     ) {
-      return { top: '50%', left: '50%' };
+      return {
+        center: { top: '-20%', left: '5%' },
+        size: { width: '45%', height: '85%' },
+        intensity: 0.9
+      };
     }
 
-    // Delanteros
+    // Lateral Derecho
     if (
-      normalized === 'delantero' ||
-      normalized === 'extremo izq' ||
-      normalized === 'extremo der'
+      normalized === 'lateral derecho'
     ) {
-      return { top: '50%', left: '75%' };
+      return {
+        center: { top: '45%', left: '5%' },
+        size: { width: '45%', height: '85%' },
+        intensity: 0.9
+      };
     }
 
-    // Fallback al centro
-    return { top: '50%', left: '50%' };
+    // Mediocampista Ofensivo
+    if (
+      normalized === 'mediocampista ofensivo'
+    ) {
+      return {
+        center: { top: '15%', left: '35%' },
+        size: { width: '55%', height: '70%' },
+        intensity: 0.85
+      };
+    }
+    // Mediocampista Central
+    if (
+      normalized === 'mediocampista central'
+    ) {
+      return {
+        center: { top: '10%', left: '15%' },
+        size: { width: '55%', height: '90%' },
+        intensity: 0.85
+      };
+    }
+    // Mediocampista izquierdo
+    if (
+      normalized === 'mediocampista izquierdo'
+    ) {
+      return {
+        center: { top: '-20%', left: '25%' },
+        size: { width: '55%', height: '90%' },
+        intensity: 0.85
+      };
+    }
+
+    // Delantero
+    if (normalized === 'delantero') {
+      return {
+        center: { top: '12%', left: '60%' },
+        size: { width: '48%', height: '80%' },
+        intensity: 0.9
+      };
+    }
+
+    // Extremo Derecho
+    if (normalized === 'extremo derecho') {
+      return {
+        center: { top: '40%', left: '60%' },
+        size: { width: '48%', height: '80%' },
+        intensity: 0.9
+      };
+    }
+
+    // Extremo Izquierdo
+    if (normalized === 'extremo izquierdo') {
+      return {
+        center: { top: '-18%', left: '60%' },
+        size: { width: '48%', height: '80%' },
+        intensity: 0.9
+      };
+    }
+
+    // Fallback al centro (mediocampo)
+    return {
+      center: { top: '50%', left: '50%' },
+      size: { width: '55%', height: '90%' },
+      intensity: 0.85
+    };
   };
 
-  const markerPos = markerByPosition();
+  const heatmapData = getHeatmapArea();
 
   return (
     <Box
@@ -145,6 +227,94 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       borderRadius="lg"
       overflow="hidden"
     >
+      {/* Heatmap layers - Efecto de mapa de calor expandido */}
+      <MotionBox
+        position="absolute"
+        top={heatmapData.center.top}
+        left={heatmapData.center.left}
+        transform="translate(-50%, -50%)"
+        width={heatmapData.size.width}
+        height={heatmapData.size.height}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        {/* Capa más externa - halo naranja difuso */}
+        <Box
+          position="absolute"
+          inset="-20%"
+          borderRadius="50%"
+          bgGradient={`radial(circle, rgba(251, 146, 60, ${heatmapData.intensity * 0.25}) 0%, rgba(251, 146, 60, ${heatmapData.intensity * 0.12}) 35%, rgba(251, 146, 60, ${heatmapData.intensity * 0.05}) 60%, transparent 85%)`}
+          filter="blur(35px)"
+        />
+
+        {/* Capa exterior - naranja suave expandido */}
+        <Box
+          position="absolute"
+          inset="0"
+          borderRadius="50%"
+          bgGradient={`radial(circle, rgba(251, 146, 60, ${heatmapData.intensity * 0.3}) 0%, rgba(251, 146, 60, ${heatmapData.intensity * 0.18}) 40%, rgba(251, 146, 60, ${heatmapData.intensity * 0.08}) 65%, transparent 85%)`}
+          filter="blur(25px)"
+        />
+        
+        {/* Capa media superior - naranja medio */}
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          width="85%"
+          height="85%"
+          borderRadius="50%"
+          bgGradient={`radial(circle, rgba(245, 160, 15, ${heatmapData.intensity * 0.5}) 0%, rgba(251, 146, 60, ${heatmapData.intensity * 0.35}) 45%, rgba(251, 146, 60, ${heatmapData.intensity * 0.15}) 70%, transparent 90%)`}
+          filter="blur(20px)"
+        />
+
+        {/* Capa media - naranja más intenso */}
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          width="68%"
+          height="68%"
+          borderRadius="50%"
+          bgGradient={`radial(circle, rgba(234, 88, 12, ${heatmapData.intensity * 0.65}) 0%, rgba(249, 115, 22, ${heatmapData.intensity * 0.48}) 50%, rgba(251, 146, 60, ${heatmapData.intensity * 0.25}) 75%, transparent 92%)`}
+          filter="blur(16px)"
+        />
+        
+        {/* Capa interna - naranja fuerte */}
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          width="45%"
+          height="45%"
+          borderRadius="50%"
+          bgGradient={`radial(circle, rgba(234, 88, 12, ${heatmapData.intensity * 0.8}) 0%, rgba(249, 115, 22, ${heatmapData.intensity * 0.6}) 55%, rgba(251, 146, 60, ${heatmapData.intensity * 0.35}) 80%, transparent 95%)`}
+          filter="blur(12px)"
+        />
+        
+        {/* Núcleo central - punto más brillante y expandido */}
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          width="28%"
+          height="28%"
+          borderRadius="50%"
+          bg={`rgba(251, 146, 60, ${heatmapData.intensity})`}
+          boxShadow={`
+            0 0 40px rgba(251, 146, 60, ${heatmapData.intensity * 0.9}), 
+            0 0 80px rgba(249, 115, 22, ${heatmapData.intensity * 0.7}),
+            0 0 120px rgba(234, 88, 12, ${heatmapData.intensity * 0.4})
+          `}
+          filter="blur(6px)"
+        />
+      </MotionBox>
+
       {/* Pitch lines */}
       <Box position="absolute" inset="8px" border="1px solid" borderColor="whiteAlpha.700" borderRadius="md">
         <Box position="absolute" left="50%" top="0" bottom="0" w="1px" bg="whiteAlpha.700" />
@@ -160,7 +330,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         />
 
         {/* Left penalty area */}
-
         <Box
           position="absolute"
           top="20%"
@@ -185,7 +354,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         />
 
         {/* Right penalty area */}
-
         <Box
           position="absolute"
           top="20%"
@@ -208,25 +376,10 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
           borderLeft="1px solid"
           borderColor="whiteAlpha.700"
         />
-
       </Box>
-
-      {/* Player marker */}
-      <MotionBox
-        position="absolute"
-        top={markerPos.top}
-        left={markerPos.left}
-        transform="translate(-50%, -50%)"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.4 }}
-      >
-        <Circle size="16px" bg="orange.400" boxShadow="0 0 24px rgba(251, 146, 60, 0.9)" />
-      </MotionBox>
     </Box>
   );
 };
-
 function FichaJugador({ isOpen, onClose, jugador }) {
   const jugadorData = jugador || {};
 
@@ -508,7 +661,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         alignItems='center'
                         w="100%"
                         ml={3}
-                        mt={4}
+                        mt={2}
+                        mb={6}
                         gridColumn='span 2'
                         >
                           <MotionFlex
