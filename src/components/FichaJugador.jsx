@@ -674,7 +674,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             borderColor="whiteAlpha.200"
                             transition={{ duration: 0.3 }}
                             w="50%"
-                            h="190px"
+                            h="198px"
                             justifyContent='flex-start'
 
                             flexDirection='column'
