@@ -110,8 +110,8 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
     // Arquero - Áreas expandidas
     if (normalized === 'arquero') {
       return {
-        center: { top: '18%', left: '-10%' },
-        size: { width: '32%', height: '75%' },
+        center: { top: '41%', left: '-5%' },
+        size: { width: '20%', height: '18%' },
         intensity: 0.95
       };
     }
@@ -122,9 +122,9 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       normalized === 'defensor'
     ) {
       return {
-        center: { top: '15%', left: '0%' },
-        size: { width: '45%', height: '65%' },
-        intensity: 0.9
+        center: { top: '41%', left: '11%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
     // Lateral Izquiero
@@ -132,9 +132,9 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       normalized === 'lateral izquierdo'
     ) {
       return {
-        center: { top: '-20%', left: '5%' },
-        size: { width: '45%', height: '85%' },
-        intensity: 0.9
+        center: { top: '10%', left: '17%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
 
@@ -143,9 +143,9 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       normalized === 'lateral derecho'
     ) {
       return {
-        center: { top: '45%', left: '5%' },
-        size: { width: '45%', height: '85%' },
-        intensity: 0.9
+        center: { top: '70%', left: '17%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
 
@@ -154,9 +154,9 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       normalized === 'mediocampista ofensivo'
     ) {
       return {
-        center: { top: '15%', left: '35%' },
-        size: { width: '55%', height: '70%' },
-        intensity: 0.85
+        center: { top: '41%', left: '55%' },
+       size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
     // Mediocampista Central
@@ -164,9 +164,9 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       normalized === 'mediocampista central'
     ) {
       return {
-        center: { top: '10%', left: '15%' },
-        size: { width: '55%', height: '90%' },
-        intensity: 0.85
+        center: { top: '41%', left: '30%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
     // Mediocampista izquierdo
@@ -174,44 +174,44 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       normalized === 'mediocampista izquierdo'
     ) {
       return {
-        center: { top: '-20%', left: '25%' },
-        size: { width: '55%', height: '90%' },
-        intensity: 0.85
+        center: { top: '10%', left: '40%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
 
     // Delantero
     if (normalized === 'delantero') {
       return {
-        center: { top: '12%', left: '60%' },
-        size: { width: '48%', height: '80%' },
-        intensity: 0.9
+        center: { top: '41%', left: '70%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
 
     // Extremo Derecho
     if (normalized === 'extremo derecho') {
       return {
-        center: { top: '40%', left: '60%' },
-        size: { width: '48%', height: '80%' },
-        intensity: 0.9
+        center: { top: '73%', left: '73%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
 
     // Extremo Izquierdo
     if (normalized === 'extremo izquierdo') {
       return {
-        center: { top: '-18%', left: '60%' },
-        size: { width: '48%', height: '80%' },
-        intensity: 0.9
+        center: { top: '9%', left: '73%' },
+        size: { width: '20%', height: '18%' },
+        intensity: 1.0
       };
     }
 
     // Fallback al centro (mediocampo)
     return {
       center: { top: '50%', left: '50%' },
-      size: { width: '55%', height: '90%' },
-      intensity: 0.85
+      size: { width: '20%', height: '18%' },
+      intensity: 1.0
     };
   };
 
@@ -238,51 +238,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        {/* Capa más externa - halo naranja difuso */}
-        <Box
-          position="absolute"
-          inset="-20%"
-          borderRadius="50%"
-          bgGradient={`radial(circle, rgba(251, 146, 60, ${heatmapData.intensity * 0.25}) 0%, rgba(251, 146, 60, ${heatmapData.intensity * 0.12}) 35%, rgba(251, 146, 60, ${heatmapData.intensity * 0.05}) 60%, transparent 85%)`}
-          filter="blur(35px)"
-        />
-
-        {/* Capa exterior - naranja suave expandido */}
-        <Box
-          position="absolute"
-          inset="0"
-          borderRadius="50%"
-          bgGradient={`radial(circle, rgba(251, 146, 60, ${heatmapData.intensity * 0.3}) 0%, rgba(251, 146, 60, ${heatmapData.intensity * 0.18}) 40%, rgba(251, 146, 60, ${heatmapData.intensity * 0.08}) 65%, transparent 85%)`}
-          filter="blur(25px)"
-        />
-        
-        {/* Capa media superior - naranja medio */}
-        <Box
-          position="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -50%)"
-          width="85%"
-          height="85%"
-          borderRadius="50%"
-          bgGradient={`radial(circle, rgba(245, 160, 15, ${heatmapData.intensity * 0.5}) 0%, rgba(251, 146, 60, ${heatmapData.intensity * 0.35}) 45%, rgba(251, 146, 60, ${heatmapData.intensity * 0.15}) 70%, transparent 90%)`}
-          filter="blur(20px)"
-        />
-
-        {/* Capa media - naranja más intenso */}
-        <Box
-          position="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -50%)"
-          width="68%"
-          height="68%"
-          borderRadius="50%"
-          bgGradient={`radial(circle, rgba(234, 88, 12, ${heatmapData.intensity * 0.65}) 0%, rgba(249, 115, 22, ${heatmapData.intensity * 0.48}) 50%, rgba(251, 146, 60, ${heatmapData.intensity * 0.25}) 75%, transparent 92%)`}
-          filter="blur(16px)"
-        />
-        
+      >    
         {/* Capa interna - naranja fuerte */}
         <Box
           position="absolute"
@@ -293,7 +249,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
           height="45%"
           borderRadius="50%"
           bgGradient={`radial(circle, rgba(234, 88, 12, ${heatmapData.intensity * 0.8}) 0%, rgba(249, 115, 22, ${heatmapData.intensity * 0.6}) 55%, rgba(251, 146, 60, ${heatmapData.intensity * 0.35}) 80%, transparent 95%)`}
-          filter="blur(12px)"
+          filter="blur(8px)"
         />
         
         {/* Núcleo central - punto más brillante y expandido */}
@@ -302,23 +258,19 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
           top="50%"
           left="50%"
           transform="translate(-50%, -50%)"
-          width="28%"
-          height="28%"
+          width="25%"
+          height={{ base: "40%" , md: "50%" }}
           borderRadius="50%"
-          bg={`rgba(251, 146, 60, ${heatmapData.intensity})`}
-          boxShadow={`
-            0 0 40px rgba(251, 146, 60, ${heatmapData.intensity * 0.9}), 
-            0 0 80px rgba(249, 115, 22, ${heatmapData.intensity * 0.7}),
-            0 0 120px rgba(234, 88, 12, ${heatmapData.intensity * 0.4})
-          `}
-          filter="blur(6px)"
+          bg={`orange.400`}
+          boxShadow={`  0 0 30px rgba(251, 146, 60, ${heatmapData.intensity})`}
         />
       </MotionBox>
 
       {/* Pitch lines */}
       <Box position="absolute" inset="8px" border="1px solid" borderColor="whiteAlpha.700" borderRadius="md">
+        {/* Línea de medio campo */}
         <Box position="absolute" left="50%" top="0" bottom="0" w="1px" bg="whiteAlpha.700" />
-
+        {/* Círculo central */}
         <Circle
           position="absolute"
           top="50%"
@@ -328,53 +280,104 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
           border="1px solid"
           borderColor="whiteAlpha.700"
         />
-
-        {/* Left penalty area */}
+        {/* Punto central */}
+        <Circle
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          size="3px"
+          bg="whiteAlpha.700"
+        />
+        {/* Área grande izquierda */}
         <Box
           position="absolute"
-          top="20%"
+          top="22%"
           left="0"
-          w="22%"
-          h="60%"
+          w="18%"
+          h="56%"
           borderTop="1px solid"
           borderBottom="1px solid"
           borderRight="1px solid"
           borderColor="whiteAlpha.700"
         />
+        {/* Semicírculo área grande izquierda */}
         <Box
           position="absolute"
-          top="32%"
+          top="50%"
+          left={{base:"13%" , md:"15%"}}
+          transform="translateY(-50%)"
+          w="16px"
+          h="35px"
+          borderRadius="0 100% 100% 0"
+          borderRight="1px solid"
+          borderColor="whiteAlpha.700"
+        />
+        {/* Área chica izquierda */}
+        <Box
+          position="absolute"
+          top="38%"
           left="0"
-          w="12%"
-          h="36%"
+          w="7%"
+          h="24%"
           borderTop="1px solid"
           borderBottom="1px solid"
           borderRight="1px solid"
           borderColor="whiteAlpha.700"
         />
-
-        {/* Right penalty area */}
+        {/* Punto penal izquierdo */}
+        <Circle
+          position="absolute"
+          top="50%"
+          left="12%"
+          transform="translate(-50%, -50%)"
+          size="3px"
+          bg="whiteAlpha.700"
+        />
+        {/* Área grande derecha */}
         <Box
           position="absolute"
-          top="20%"
+          top="22%"
           right="0"
-          w="22%"
-          h="60%"
+          w="18%"
+          h="56%"
           borderTop="1px solid"
           borderBottom="1px solid"
           borderLeft="1px solid"
           borderColor="whiteAlpha.700"
         />
+        {/* Semicírculo área grande derecha */}
         <Box
           position="absolute"
-          top="32%"
+          top="50%"
+          right={{base:"13%" , md:"15%"}}
+          transform="translateY(-50%)"
+          w="16px"
+          h="35px"
+          borderRadius="100% 0 0 100%"
+          borderLeft="1px solid"
+          borderColor="whiteAlpha.700"
+        />
+        {/* Área chica derecha */}
+        <Box
+          position="absolute"
+          top="38%"
           right="0"
-          w="12%"
-          h="36%"
+          w="7%"
+          h="24%"
           borderTop="1px solid"
           borderBottom="1px solid"
           borderLeft="1px solid"
           borderColor="whiteAlpha.700"
+        />
+        {/* Punto penal derecho */}
+        <Circle
+          position="absolute"
+          top="50%"
+          right="12%"
+          transform="translate(50%, -50%)"
+          size="3px"
+          bg="whiteAlpha.700"
         />
       </Box>
     </Box>

@@ -160,14 +160,14 @@ const Services = () => {
           mt={10}
           mb={{ base: '20px', md: '120px' }}
           mx={{ base: 'auto'  , md: 10 }}
-          w={{ base: '100%', md: '100%'}}
+          w='100%'
         >
           <Link to="/deportistas">
             <Box
               onClick={() => navigate('/jugadores')}
               position="relative"
-              px={8}
-              py={7}
+              px={9}
+              py={6}
               bg="transparent"
               borderWidth="1px"
               borderColor="whiteAlpha.500"  
