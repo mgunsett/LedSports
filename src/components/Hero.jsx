@@ -8,17 +8,19 @@ import {
   VStack,
   Image,
   Link,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import logo_vertical from '../assets/logo_vertical.png';
 import fondo_luz from '../assets/fondo_luz.png';
 import { GoArrowRight } from "react-icons/go";
-import { Link as RouterLink } from 'react-router-dom';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
 const Hero = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   return (
     <Flex
       id="home"
@@ -47,18 +49,17 @@ const Hero = () => {
           fontWeight="bold"
           color="white"
           lineHeight="shorter"
-          initial={{ opacity: 0, y: 30 }}
+          initial={isMobile ? { opacity: 0, y: 10 } : { opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: isMobile ? 0.6 : 0.8 }}
         >
           Potenciamos tu <Text fontSize={{ base: '47px', md: '40px', lg: '50px' }}  as="span" color="orange.400">Marca Deportiva</Text>
         </MotionHeading>
 
         <MotionBox
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 0.5 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-
+          transition={{ delay: isMobile ? 0.3 : 0.6, duration: isMobile ? 0.6 : 0.8 }}
           w="100%"
         > 
         <Link href="#servicesButton">
@@ -93,9 +94,9 @@ const Hero = () => {
       {/* Imagen o Ilustración */}
       <MotionBox
         mt={{ base: 10, md: 0 }}  
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        initial={isMobile ? { opacity: 0.5 } : { opacity: 0 }}
+        animate={isMobile ? { opacity: 0.5 } : { opacity: 1 }}
+        transition={{ duration: isMobile ? 0 : 1 }}
       >
         <Image
           src={fondo_luz}
@@ -114,9 +115,9 @@ const Hero = () => {
       </MotionBox>
        <MotionBox
          ml={{ base: 0, md: 20 }}
-         initial={{ opacity: 0, x: 40 }}
+         initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
          animate={{ opacity: 1, x: 0 }}
-         transition={{ duration: 1 }}
+         transition={{ duration: isMobile ? 0 : 1 }}
        >
         <Image
           src={logo_vertical}

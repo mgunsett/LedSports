@@ -6,6 +6,7 @@ import {
   Text,
   Flex,
   IconButton,
+  filter,
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
@@ -272,7 +273,7 @@ const TrustSection = () => {
 
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [scrollAmount, setScrollAmount] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const animationRef = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
@@ -280,8 +281,21 @@ const TrustSection = () => {
   const startXRef = useRef(0);
   const startScrollLeftRef = useRef(0);
   const hasDraggedRef = useRef(false);
+  const velocityRef = useRef(0);
+  const lastPosRef = useRef(0);
+  const lastTimeRef = useRef(0);
 
-  const animateScrollTo = (target, duration = 500) => {
+  // Detectar si es mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const animateScrollTo = (target, duration = 800) => {
     if (!containerRef.current) return;
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
@@ -291,14 +305,17 @@ const TrustSection = () => {
     const start = containerRef.current.scrollLeft;
     const change = target - start;
     const startTime = performance.now();
-    const easeInOutQuad = (t) =>
-      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    
+    // Ease out quart para transición más suave
+    const easeOutQuart = (t) => {
+      return 1 - Math.pow(1 - t, 4);
+    };
 
     const step = (now) => {
       if (isDragging || !containerRef.current) return;
       const elapsed = now - startTime;
       const t = Math.min(elapsed / duration, 1);
-      const eased = easeInOutQuad(t);
+      const eased = easeOutQuart(t);
       containerRef.current.scrollLeft = start + change * eased;
       if (t < 1) {
         animationRef.current = requestAnimationFrame(step);
@@ -316,58 +333,84 @@ const TrustSection = () => {
     return Math.min(Math.max(0, val), max);
   };
 
-  useEffect(() => {
-    if (!containerRef.current) return;
+  // Calcular el centro de la tarjeta más cercana (mobile)
+  const getClosestCardCenter = (scrollLeft) => {
+    if (!containerRef.current) return scrollLeft;
+    const el = containerRef.current;
+    const cards = el.querySelectorAll('#brand');
+    if (!cards.length) return scrollLeft;
 
-    const measureCardWidth = () => {
-      if (!containerRef.current) return;
-      const el = containerRef.current;
-      const firstCard = el.querySelector('#brand');
-      if (!firstCard) return;
+    const containerRect = el.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
 
-      const rect = firstCard.getBoundingClientRect();
-      const styles = window.getComputedStyle(firstCard);
-      const marginLeft = parseFloat(styles.marginLeft) || 0;
-      const marginRight = parseFloat(styles.marginRight) || 0;
-      const totalWidth = rect.width + marginLeft + marginRight;
-      setScrollAmount(totalWidth);
-    };
+    let closest = null;
+    let minDistance = Infinity;
 
-    measureCardWidth();
-    window.addEventListener('resize', measureCardWidth);
-    return () => window.removeEventListener('resize', measureCardWidth);
-  }, []);
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closest = card;
+      }
+    });
+
+    if (closest) {
+      const rect = closest.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2 - containerRect.left;
+      const offset = cardCenter - containerRect.width / 2;
+      return clampToBounds(scrollLeft + offset);
+    }
+
+    return scrollLeft;
+  };
 
   const scrollLeft = () => {
     const el = containerRef.current;
     if (!el) return;
-    const max = Math.max(0, el.scrollWidth - el.clientWidth);
+    const cards = el.querySelectorAll('#brand');
+    if (!cards.length) return;
 
-    setScrollPosition((prev) => {
-      const next = prev - scrollAmount;
-      if (next < 0) {
-        const lastIndex = Math.floor(max / scrollAmount) || 0;
-        return clampToBounds(lastIndex * scrollAmount);
-      }
-      return clampToBounds(next);
-    });
+    const firstCard = cards[0];
+    const rect = firstCard.getBoundingClientRect();
+    const styles = window.getComputedStyle(firstCard);
+    const marginLeft = parseFloat(styles.marginLeft) || 0;
+    const marginRight = parseFloat(styles.marginRight) || 0;
+    const cardWidth = rect.width + marginLeft + marginRight;
+
+    const scrollAmount = isMobile ? cardWidth : cardWidth * 2;
+    const newPosition = clampToBounds(el.scrollLeft - scrollAmount);
+    
+    // En mobile, centramos la tarjeta
+    const finalPosition = isMobile ? getClosestCardCenter(newPosition) : newPosition;
+    setScrollPosition(finalPosition);
   };
+
   const scrollRight = () => {
     const el = containerRef.current;
     if (!el) return;
-    const max = Math.max(0, el.scrollWidth - el.clientWidth);
+    const cards = el.querySelectorAll('#brand');
+    if (!cards.length) return;
 
-    setScrollPosition((prev) => {
-      const next = prev + scrollAmount;
-      if (next > max) {
-        return 0;
-      }
-      return clampToBounds(next);
-    });
+    const firstCard = cards[0];
+    const rect = firstCard.getBoundingClientRect();
+    const styles = window.getComputedStyle(firstCard);
+    const marginLeft = parseFloat(styles.marginLeft) || 0;
+    const marginRight = parseFloat(styles.marginRight) || 0;
+    const cardWidth = rect.width + marginLeft + marginRight;
+
+    const scrollAmount = isMobile ? cardWidth : cardWidth * 2;
+    const newPosition = clampToBounds(el.scrollLeft + scrollAmount);
+    
+    // En mobile, centramos la tarjeta
+    const finalPosition = isMobile ? getClosestCardCenter(newPosition) : newPosition;
+    setScrollPosition(finalPosition);
   };
 
   useEffect(() => {
-    if (containerRef.current) animateScrollTo(scrollPosition, 900);
+    if (containerRef.current) animateScrollTo(scrollPosition, 800);
   }, [scrollPosition]);
 
   useEffect(() => {
@@ -382,6 +425,9 @@ const TrustSection = () => {
     hasDraggedRef.current = false;
     startXRef.current = e.pageX - containerRef.current.offsetLeft;
     startScrollLeftRef.current = containerRef.current.scrollLeft;
+    lastPosRef.current = e.pageX;
+    lastTimeRef.current = Date.now();
+    velocityRef.current = 0;
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
@@ -394,10 +440,35 @@ const TrustSection = () => {
     const x = e.pageX - containerRef.current.offsetLeft;
     const walk = x - startXRef.current;
     if (Math.abs(walk) > 3) hasDraggedRef.current = true;
+    
+    // Calcular velocidad para inercia
+    const now = Date.now();
+    const timeDelta = now - lastTimeRef.current;
+    if (timeDelta > 0) {
+      velocityRef.current = (e.pageX - lastPosRef.current) / timeDelta;
+    }
+    lastPosRef.current = e.pageX;
+    lastTimeRef.current = now;
+    
     containerRef.current.scrollLeft = startScrollLeftRef.current - walk;
   };
 
-  const endMouseDrag = () => setIsDragging(false);
+  const endMouseDrag = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    // Aplicar inercia suave al soltar
+    if (Math.abs(velocityRef.current) > 0.5 && containerRef.current && isMobile) {
+      const inertiaScroll = velocityRef.current * 150;
+      const targetScroll = containerRef.current.scrollLeft - inertiaScroll;
+      const centeredScroll = getClosestCardCenter(targetScroll);
+      setScrollPosition(centeredScroll);
+    } else if (isMobile && containerRef.current) {
+      // Centrar la tarjeta más cercana
+      const centeredScroll = getClosestCardCenter(containerRef.current.scrollLeft);
+      setScrollPosition(centeredScroll);
+    }
+  };
 
   const onTouchStart = (e) => {
     if (!containerRef.current) return;
@@ -406,6 +477,9 @@ const TrustSection = () => {
     const touch = e.touches[0];
     startXRef.current = touch.pageX - containerRef.current.offsetLeft;
     startScrollLeftRef.current = containerRef.current.scrollLeft;
+    lastPosRef.current = touch.pageX;
+    lastTimeRef.current = Date.now();
+    velocityRef.current = 0;
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
@@ -418,10 +492,35 @@ const TrustSection = () => {
     const x = touch.pageX - containerRef.current.offsetLeft;
     const walk = x - startXRef.current;
     if (Math.abs(walk) > 3) hasDraggedRef.current = true;
+    
+    // Calcular velocidad para inercia
+    const now = Date.now();
+    const timeDelta = now - lastTimeRef.current;
+    if (timeDelta > 0) {
+      velocityRef.current = (touch.pageX - lastPosRef.current) / timeDelta;
+    }
+    lastPosRef.current = touch.pageX;
+    lastTimeRef.current = now;
+    
     containerRef.current.scrollLeft = startScrollLeftRef.current - walk;
   };
 
-  const onTouchEnd = () => setIsDragging(false);
+  const onTouchEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    // Aplicar inercia suave al soltar
+    if (Math.abs(velocityRef.current) > 0.5 && containerRef.current && isMobile) {
+      const inertiaScroll = velocityRef.current * 200;
+      const targetScroll = containerRef.current.scrollLeft - inertiaScroll;
+      const centeredScroll = getClosestCardCenter(targetScroll);
+      setScrollPosition(centeredScroll);
+    } else if (isMobile && containerRef.current) {
+      // Centrar la tarjeta más cercana
+      const centeredScroll = getClosestCardCenter(containerRef.current.scrollLeft);
+      setScrollPosition(centeredScroll);
+    }
+  };
 
   const onClickCapture = (e) => {
     if (hasDraggedRef.current) {
@@ -487,9 +586,13 @@ const TrustSection = () => {
           alignItems="center"
           justifyContent="center"
           overflow="visible"
-          maxW={{ base: '100%', md: '75%' }}
+          maxW={{ base: '100%', md: '79%' }}
           minW={{ base: '100%', md: '75%' }}
-          margin="auto"
+          m={'auto'}
+          sx={{
+            maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+          }}
         >
           <Flex
             ref={containerRef}
@@ -706,7 +809,7 @@ const TrustSection = () => {
           icon={<ChevronRightIcon />}
           onClick={scrollRight}
           position="absolute"
-          right={{ base: '10px', md: '80px' }}
+          right={{ base: '10px', md: '120px' }}
           top="50%"
           transform="translateY(-50%)"  
           zIndex="2"

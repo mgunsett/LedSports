@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Flex, Text, Link, HStack, Icon, Image } from '@chakra-ui/react';
 import { FaInstagram, FaTiktok, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
 import logo_vertical from '../assets/logo_vertical.png';
-import { Link as RouterLink } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -42,7 +41,7 @@ const Footer = () => {
             <Text>
               Desarrollo Web -
             </Text>
-            <Link to={'https://www.linkedin.com/in/matiasgunsett/'} target='_blank' _hover={{ textDecoration: 'none' }}>
+            <Link href={'https://www.linkedin.com/in/matiasgunsett/'} isExternal _hover={{ textDecoration: 'none' }}>
               <Flex
                 direction={'row'}
                 alignItems={'center'}

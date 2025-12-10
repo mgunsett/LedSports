@@ -112,7 +112,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '41%', left: '-5%' },
         size: { width: '20%', height: '18%' },
-        intensity: 0.95
+        intensity: 1.5
       };
     }
 
@@ -124,7 +124,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '41%', left: '11%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
     // Lateral Izquiero
@@ -134,7 +134,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '10%', left: '17%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
 
@@ -145,7 +145,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '70%', left: '17%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
 
@@ -156,7 +156,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '41%', left: '55%' },
        size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
     // Mediocampista Central
@@ -166,7 +166,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '41%', left: '30%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
     // Mediocampista izquierdo
@@ -176,16 +176,16 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '10%', left: '40%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
 
     // Delantero
     if (normalized === 'delantero') {
       return {
-        center: { top: '41%', left: '70%' },
+        center: { top: '41%', left: '73%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
 
@@ -194,7 +194,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '73%', left: '73%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
 
@@ -203,7 +203,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
       return {
         center: { top: '9%', left: '73%' },
         size: { width: '20%', height: '18%' },
-        intensity: 1.0
+        intensity: 1.5
       };
     }
 
@@ -211,7 +211,7 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
     return {
       center: { top: '50%', left: '50%' },
       size: { width: '20%', height: '18%' },
-      intensity: 1.0
+      intensity: 1.5
     };
   };
 
@@ -258,8 +258,8 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
           top="50%"
           left="50%"
           transform="translate(-50%, -50%)"
-          width="25%"
-          height={{ base: "40%" , md: "50%" }}
+          width={{ base: "30%" , md: "25%" }}
+          height={{ base: "45%" , md: "50%" }}
           borderRadius="50%"
           bg={`orange.400`}
           boxShadow={`  0 0 30px rgba(251, 146, 60, ${heatmapData.intensity})`}
