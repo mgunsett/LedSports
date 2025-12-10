@@ -1,7 +1,7 @@
 import { Box, Flex, Text, Heading, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { BsChevronDoubleDown } from "react-icons/bs";
-import entidades_deportivas from "../assets/entidades_deportivas.png";
+import entidades_deportivas from "../assets/entidades_deportivas.webp";
 import Contact from "../components/Contact";
 import PlanMkt from "../components/PlanMkt";
 

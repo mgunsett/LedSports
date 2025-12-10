@@ -1,7 +1,7 @@
 import { Box, Flex, Text, Image, Heading } from "@chakra-ui/react";
-import agentes from "../assets/agentes.png";
-import agentes2 from "../assets/agentes2.png";
-import agentes1 from "../assets/agentes1.png";
+import agentes from "../assets/agentes.webp";
+import agentes2 from "../assets/agentes2.webp";
+import agentes1 from "../assets/agentes1.webp";
 import { motion } from "framer-motion";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import Contact from "../components/Contact";
@@ -156,7 +156,8 @@ export const Agentes = () => {
                     transition={{ delay: 0.3, duration: 1 }}
                     viewport={{ once: true }}
                     mt={{ base: -20, md: -20 }}
-                    boxShadow="0px 0px 12px 1px rgba(245,160,15,0.86)" 
+                    filter="drop-shadow(0px 0px 12px rgba(245,160,15,0.86))"
+                    // boxShadow="0px 0px 12px 1px rgba(245,160,15,0.86)" 
                 />
             </Flex>
             </Box>

@@ -470,9 +470,9 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 h={{ base: '35%', md: '100%' }}
                 position="relative"
                 overflow="hidden"
-                initial={{ x: -100, opacity: 0 }}
+                initial={isMobile ? {x: 0, opacity: 1} : {x: -100, opacity: 0}}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={isMobile ? { duration: 0, delay: 0 } : { duration: 0.6, delay: 0.2 }}
               >
                 <Image
                   src={jugadorData.img}
@@ -510,9 +510,9 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 h={{ base: '65%', md: '100%' }}
                 direction="column"
                 p={{ base: 4, md: 6, lg: 8 }}
-                initial={{ x: 100, opacity: 0 }}
+                initial={isMobile ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={isMobile ? { duration: 0, delay: 0 } : { duration: 0.6, delay: 0.3 }}
               >
                 <Box mb={{ base: 4, md: 6 }}>
                   <Flex align="center" gap={3} mb={2}>
@@ -753,7 +753,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       gap={4}
                     >
                       <MotionBox
-                        
                         bg="whiteAlpha.50"
                         borderRadius="lg"
                         p={4}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex, Text, Link, HStack, Icon, Image } from '@chakra-ui/react';
 import { FaInstagram, FaTiktok, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
-import logo_vertical from '../assets/logo_vertical.png';
+import logo_vertical from '../assets/logo_vertical.webp';
 
 
 const Footer = () => {

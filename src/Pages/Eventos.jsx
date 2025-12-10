@@ -1,6 +1,6 @@
 import { Flex, Heading, Text, Box, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import eventos from "../assets/eventos.png";
+import eventos from "../assets/eventos.webp";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import Contact from "../components/Contact";
 

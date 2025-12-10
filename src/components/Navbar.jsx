@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { motion } from 'framer-motion';
-import logo_horizontal from '../assets/logo_horizontal.png';
+import logo_horizontal from '../assets/logo_horizontal.webp';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // Motion wrapper

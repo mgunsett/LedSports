@@ -11,8 +11,8 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import logo_vertical from '../assets/logo_vertical.png';
-import fondo_luz from '../assets/fondo_luz.png';
+import logo_vertical from '../assets/logo_vertical.webp';
+import fondo_luz from '../assets/fondo_luz.webp';
 import { GoArrowRight } from "react-icons/go";
 
 const MotionBox = motion(Box);
