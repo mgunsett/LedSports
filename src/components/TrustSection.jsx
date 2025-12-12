@@ -614,9 +614,9 @@ const TrustSection = () => {
             onClickCapture={onClickCapture}
             sx={{
               '&::-webkit-scrollbar': { display: 'none' },
-              '-ms-overflow-style': 'none',
-              'scrollbar-width': 'none',
-              'user-select': 'none',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              userSelect: 'none',
             }}
           >
             {brands.map((logo, i) => (
@@ -731,8 +731,6 @@ const TrustSection = () => {
                               </Text>
                             </Flex>
                           </Box>
-
-                          {/* Name */}
                           <Box
                             as={motion.div}
                             initial={{ y: 0 }}
@@ -840,7 +838,6 @@ const TrustSection = () => {
           color: 'white',
         }}
       >  
-      {/* Barra izquierda gruesa con animación mejorada */}
         <Box
           position="absolute" 
           top="0"

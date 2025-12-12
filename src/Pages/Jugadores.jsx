@@ -21,6 +21,12 @@ import jugador_runi from "../assets/jugador_runi.webp";
 import jugador_zuqi from "../assets/jugador_zuqi.webp";
 import { TitleCards } from "../components/TitleCards";
 import FichaJugador from "../components/FichaJugador";
+import escudo_racing1 from "../assets/escudo_racing1.png";
+import escudo_velez from "../assets/escudo_velez.png";
+import escudo_argentinos from "../assets/escudo_argentinos.png";
+import escudo_gimnasia from "../assets/escudo_gimnasia.png";
+import escudo_defensa from "../assets/escudo_defensa.png";
+import escudo_colon from "../assets/escudo_colon.png";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -99,6 +105,12 @@ const brands = [
     club: 'Cruz Azul',
     number: '33',
     height: '1,80 m',
+    clubLogo: escudo_velez,
+    clubLogo2: escudo_argentinos,
+    clubLogo3: escudo_racing1,
+    clubLogo4: escudo_gimnasia,
+    clubLogo5: escudo_defensa,
+    clubLogo6: escudo_colon,
   },
   {
     img: jugador_carmelo,

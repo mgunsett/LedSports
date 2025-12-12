@@ -514,56 +514,76 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 animate={{ x: 0, opacity: 1 }}
                 transition={isMobile ? { duration: 0, delay: 0 } : { duration: 0.6, delay: 0.3 }}
               >
-                <Box mb={{ base: 4, md: 6 }}>
-                  <Flex align="center" gap={3} mb={2}>
-                    <Box
-                      w="40px"
-                      h="2px"
-                      bg="orange.400"
-                      boxShadow="0 0 10px rgba(251, 146, 60, 0.6)"
-                    />
-                    <Text
-                      fontSize={{ base: '10px', md: 'sm' }}
-                      fontWeight="bold"
-                      color="orange.300"
-                      textTransform="uppercase"
-                      letterSpacing="wider"
-                    >
-                      {jugadorData.position || 'Forward'}
-                    </Text>
-                  </Flex>
-                  <Flex align="baseline" gap={3} flexWrap="wrap">
+                  <Box mb={{ base: 4, md: 6 }}>
+                    <Flex align="center" justify="space-between" mb={2} w="100%">
+                      <Flex align="center" gap={3}>
+                        <Box
+                          w="40px"
+                          h="2px"
+                          bg="orange.400"
+                          boxShadow="0 0 10px rgba(251, 146, 60, 0.6)"
+                        />
+                        <Text
+                          fontSize={{ base: '10px', md: 'sm' }}
+                          fontWeight="bold"
+                          color="orange.300"
+                          textTransform="uppercase"
+                          letterSpacing="wider"
+                        >
+                          {jugadorData.position || 'Forward'}
+                        </Text>
+                      </Flex>
+                      <Flex gap={2} align="center">
+                        {[jugadorData.clubLogo, jugadorData.clubLogo2, jugadorData.clubLogo3, jugadorData.clubLogo4, jugadorData.clubLogo5, jugadorData.clubLogo6]
+                          .filter(logo => logo && typeof logo === 'string' && logo.trim() !== '')
+                          .map((logo, index) => (
+                            <Image
+                              key={index}
+                              src={logo}
+                              alt={`Club ${index + 1}`}
+                              w={{ base: "20px", md: "30px" }}
+                              h={{ base: "20px", md: "30px" }}
+                              objectFit="contain"
+                              opacity={0.8}
+                              _hover={{ opacity: 1, transform: 'scale(1.1)' }}
+                              transition="all 0.2s"
+                              fallback={<Box w={{ base: "20px", md: "30px" }} h={{ base: "20px", md: "30px" }} bg="whiteAlpha.200" borderRadius="full" />}
+                            />
+                        ))}
+                      </Flex>
+                    </Flex>
+                    <Flex align="baseline" gap={3} flexWrap="wrap">
+                      <Heading
+                        fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
+                        fontWeight="black"
+                        color="white"
+                        letterSpacing="tight"
+                        lineHeight="1"
+                      >
+                        {jugadorData.Firstname || 'Nombre'}
+                      </Heading>
+                      <Text
+                        fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }}
+                        fontWeight="black"
+                        color="orange.400"
+                        letterSpacing="tight"
+                        lineHeight="1"
+                      >
+                        {jugadorData.number || '10'}
+                      </Text>
+                    </Flex>
                     <Heading
-                      fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
-                      fontWeight="black"
-                      color="white"
-                      letterSpacing="tight"
-                      lineHeight="1"
-                    >
-                      {jugadorData.Firstname || 'Nombre'}
-                    </Heading>
-                    <Text
-                      fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }}
+                      fontSize={{ base: '3xl', md: '4xl', lg: '6xl' }}
                       fontWeight="black"
                       color="orange.400"
                       letterSpacing="tight"
-                      lineHeight="1"
+                      lineHeight="1.1"
+                      textTransform="uppercase"
                     >
-                      {jugadorData.number || '10'}
-                    </Text>
-                  </Flex>
-                  <Heading
-                    fontSize={{ base: '3xl', md: '4xl', lg: '6xl' }}
-                    fontWeight="black"
-                    color="orange.400"
-                    letterSpacing="tight"
-                    lineHeight="1.1"
-                    textTransform="uppercase"
-                  >
-                    {jugadorData.Lastname || 'Apellido'}
-                  </Heading>
-                </Box>
-
+                      {jugadorData.Lastname || 'Apellido'}
+                    </Heading>
+                  </Box>
+                
                 <Grid
                   templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(4, 1fr)' }}
                   gap={{ base: 6, md: 4 }}
