@@ -35,6 +35,24 @@ import escudo_miamiunited from "../assets/escudo_miamiunited.png";
 import escudo_donbosco from "../assets/escudo_donbosco.png";
 import escudo_santiagomorning from "../assets/escudo_santiagomorning.png";
 import escudo_mushucruna from "../assets/escudo_mushucruna.png";
+import escudo_ligaquito from "../assets/escudo_ligaquito.png";
+import escudo_platense from "../assets/escudo_platense.png";
+import escudo_cruzazul from "../assets/escudo_cruzazul.png";
+import escudo_estudiantes from "../assets/escudo_estudiantes.png";
+import escudo_acrmessina from "../assets/escudo_acrmessina.png";
+import escudo_lamadrid from "../assets/escudo_lamadrid.png";
+import escudo_fenix from "../assets/escudo_fenix.png";
+import escudo_almagro from "../assets/escudo_almagro.png";
+import escudo_arsenal from "../assets/escudo_arsenal.png";
+import escudo_kalamata from "../assets/escudo_kalamata.png";
+import escudo_orientepetro from "../assets/escudo_orientepetro.png";
+import escudo_petrolero from "../assets/escudo_petrolero.png";
+import escudo_sportboys from "../assets/escudo_sportboys.png";
+import escudo_alwaysready from "../assets/escudo_alwaysready.png";
+import escudo_ismailySC from "../assets/escudo_ismailySC.png";
+import escudo_bolivar from "../assets/escudo_bolivar.png";
+import escudo_intermiami from "../assets/escudo_intermiami.png";
+import escudo_cusco from "../assets/escudo_cusco.png";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -53,6 +71,7 @@ const brands = [
     club: 'Platense',
     number: '7',
     height: '1,77 m',
+    clubLogoActual: escudo_platense,
     clubLogo: escudo_instituto,
     clubLogo2: escudo_velez,
     clubLogo3: escudo_defensa,
@@ -70,6 +89,7 @@ const brands = [
     club: 'Liga de Quito',
     number: '4',
     height: '1,90 m',
+    clubLogoActual: escudo_ligaquito,
     clubLogo: escudo_baltimore,
     clubLogo2: escudo_miamiunited,
     clubLogo3: escudo_donbosco,
@@ -87,6 +107,8 @@ const brands = [
     club: 'Cusco FC',
     number: '9',
     height: '1,78 m',
+    clubLogoActual: escudo_cusco,
+    clubLogo: escudo_colon,
   },
   {
     img: jugador_campisi,
@@ -123,6 +145,7 @@ const brands = [
     club: 'Cruz Azul',
     number: '33',
     height: '1,80 m',
+    clubLogoActual: escudo_cruzazul,
     clubLogo: escudo_velez,
     clubLogo2: escudo_argentinos,
     clubLogo3: escudo_racing1,
@@ -141,6 +164,13 @@ const brands = [
     club: 'Kalamata FC',
     number: '11',
     height: '1,76 m',
+    clubLogoActual: escudo_kalamata,
+    clubLogo: escudo_orientepetro,
+    clubLogo2: escudo_petrolero,
+    clubLogo3: escudo_sportboys,
+    clubLogo4: escudo_alwaysready,
+    clubLogo5: escudo_ismailySC,
+    clubLogo6: escudo_bolivar,
   },
   {
     img: jugador_farias,
@@ -153,6 +183,9 @@ const brands = [
     club: 'Estudiantes LP',
     number: '11',
     height: '1,72 m',
+    clubLogoActual: escudo_estudiantes,
+    clubLogo: escudo_colon,
+    clubLogo2: escudo_intermiami,
   },
   {
     img: jugador_gonzasosa,
@@ -189,6 +222,13 @@ const brands = [
     club: 'Estudiantes LP',
     number: '21',
     height: '1,72 m',
+    clubLogoActual: escudo_estudiantes,
+    clubLogo: escudo_acrmessina,
+    clubLogo2: escudo_lamadrid,
+    clubLogo3: escudo_fenix,
+    clubLogo4: escudo_almagro,
+    clubLogo5: escudo_arsenal,
+    clubLogo6: escudo_ligaquito,
   },
   {
     img: jugador_lotti,
@@ -201,6 +241,7 @@ const brands = [
     club: 'Platense',
     number: '21',
     height: '1,80 m',
+    clubLogoActual: escudo_platense,
   },
   {
     img: jugador_luka,
@@ -213,6 +254,7 @@ const brands = [
     club: 'Cruz Azul',
     number: '18',
     height: '1,69 m',
+    clubLogoActual: escudo_cruzazul,
   },
   {
     img: jugador_oroz,
@@ -225,6 +267,7 @@ const brands = [
     club: 'Argentinos Jr',
     number: '21',
     height: '1,74 m',
+    clubLogoActual: escudo_argentinos,
   },
   {
     img: jugador_runi,
@@ -237,6 +280,7 @@ const brands = [
     club: 'Platense',
     number: '21',
     height: '1,78 m',
+    clubLogoActual: escudo_platense,
   },
   {
     img: jugador_zuqi,

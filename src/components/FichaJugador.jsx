@@ -586,12 +586,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 
                 <Grid
                   templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(4, 1fr)' }}
-                  gap={{ base: 6, md: 4 }}
+                  gap={{ base: 6, md: 6 }}
                   mb={{ base: 4, md: 6 }}
                   pb={{ base: 4, md: 6 }}
                   borderBottom="1px solid"
                   borderColor="whiteAlpha.200"
                   overflowY={{base:"visible", md:'hidden'}} 
+                        
                 >
                   <Box>
                     <Text
@@ -606,10 +607,10 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       {jugadorData.birthDate || '01/01/1990'}
                     </Text>
                   </Box>
-                  <Box>
+                  <Box ml={{base:-3, md:-8}}>
                     <Text
                       fontSize={{base:"10px", md:"xs"}}
-                      color="whiteAlpha.600"
+                      color="whiteAlpha.600"  
                       fontWeight="semibold"
                       mb={1}
                     >
@@ -632,11 +633,20 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                     >
                       CLUB ACTUAL
                     </Text>
-                    <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
-                      {jugadorData.club || 'Club actual'}
-                    </Text>
+                    <Flex  align="center" gap={2}>
+                      <Image
+                        src={jugadorData.clubLogoActual || ''}
+                        alt={jugadorData.club || 'Club actual'}
+                        w={{ base: "20px", md: "25px" }}
+                        h={{ base: "20px", md: "25px" }}
+                        objectFit="contain"
+                      />
+                      <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
+                        {jugadorData.club || 'Club actual'}
+                      </Text>
+                    </Flex>
                   </Box>
-                  <Box>
+                  <Box ml={{base: 3, md:0}}>
                     <Text
                       fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
