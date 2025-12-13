@@ -630,7 +630,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       fontWeight="semibold"
                       mb={1}
                     >
-                      CLUB
+                      CLUB ACTUAL
                     </Text>
                     <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
                       {jugadorData.club || 'Club actual'}

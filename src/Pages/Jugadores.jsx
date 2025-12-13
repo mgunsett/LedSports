@@ -27,6 +27,14 @@ import escudo_argentinos from "../assets/escudo_argentinos.png";
 import escudo_gimnasia from "../assets/escudo_gimnasia.png";
 import escudo_defensa from "../assets/escudo_defensa.png";
 import escudo_colon from "../assets/escudo_colon.png";
+import escudo_instituto from "../assets/escudo_instituto.png";
+import escudo_iquique from "../assets/escudo_iquique.png";
+import escudo_sarmiento from "../assets/escudo_sarmiento.png";
+import escudo_baltimore from "../assets/escudo_baltimore.png";
+import escudo_miamiunited from "../assets/escudo_miamiunited.png";
+import escudo_donbosco from "../assets/escudo_donbosco.png";
+import escudo_santiagomorning from "../assets/escudo_santiagomorning.png";
+import escudo_mushucruna from "../assets/escudo_mushucruna.png";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -45,6 +53,11 @@ const brands = [
     club: 'Platense',
     number: '7',
     height: '1,77 m',
+    clubLogo: escudo_instituto,
+    clubLogo2: escudo_velez,
+    clubLogo3: escudo_defensa,
+    clubLogo4: escudo_iquique,
+    clubLogo5: escudo_sarmiento,
   },
   {
     img: jugador_ade,
@@ -57,6 +70,11 @@ const brands = [
     club: 'Liga de Quito',
     number: '4',
     height: '1,90 m',
+    clubLogo: escudo_baltimore,
+    clubLogo2: escudo_miamiunited,
+    clubLogo3: escudo_donbosco,
+    clubLogo4: escudo_santiagomorning,
+    clubLogo5: escudo_mushucruna,
   },
   {
     img: jugador_callejo,
