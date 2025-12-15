@@ -53,6 +53,16 @@ import escudo_ismailySC from "../assets/escudo_ismailySC.png";
 import escudo_bolivar from "../assets/escudo_bolivar.png";
 import escudo_intermiami from "../assets/escudo_intermiami.png";
 import escudo_cusco from "../assets/escudo_cusco.png";
+import escudo_gyejujuy from "../assets/escudo_gyejujuy.png";
+import escudo_ligaloja from "../assets/escudo_ligaloja.png";
+import escudo_patronato from "../assets/escudo_patronato.png";
+import escudo_santamarina from "../assets/escudo_santamarina.png";
+import escudo_carabobo from "../assets/escudo_carabobo.png";
+import escudo_allboys from "../assets/escudo_allboys.png";
+import escudo_temperley from "../assets/escudo_temperley.png";
+import escudo_macara from "../assets/escudo_macara.png"; 
+import escudo_nacionalpotosi from "../assets/escudo_nacionalpotosi.png";
+import escudo_aucas from "../assets/escudo_aucas.png";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -109,6 +119,16 @@ const brands = [
     height: '1,78 m',
     clubLogoActual: escudo_cusco,
     clubLogo: escudo_colon,
+    clubLogo2: escudo_gyejujuy,
+    clubLogo3: escudo_ligaloja,
+    clubLogo4: escudo_patronato,
+    clubLogo5: escudo_santamarina,
+    clubLogo6: escudo_carabobo,
+    clubLogo7: escudo_allboys,
+    clubLogo8: escudo_temperley,
+    clubLogo9: escudo_macara,
+    clubLogo10: escudo_nacionalpotosi,
+    clubLogo11: escudo_aucas,
   },
   {
     img: jugador_campisi,

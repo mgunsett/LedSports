@@ -533,8 +533,25 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           {jugadorData.position || 'Forward'}
                         </Text>
                       </Flex>
-                      <Flex gap={2} align="center">
-                        {[jugadorData.clubLogo, jugadorData.clubLogo2, jugadorData.clubLogo3, jugadorData.clubLogo4, jugadorData.clubLogo5, jugadorData.clubLogo6]
+                      <Flex
+                      w={{base: '50%', md: 'auto'}} 
+                      gap={2} 
+                      align="center" 
+                      justify={'end'} 
+                      wrap={{base: 'wrap', md:'nowrap'}}
+                      >
+                        {[jugadorData.clubLogo, 
+                          jugadorData.clubLogo2, 
+                          jugadorData.clubLogo3, 
+                          jugadorData.clubLogo4, 
+                          jugadorData.clubLogo5, 
+                          jugadorData.clubLogo6, 
+                          jugadorData.clubLogo7,
+                          jugadorData.clubLogo8,
+                          jugadorData.clubLogo9,
+                          jugadorData.clubLogo10,
+                          jugadorData.clubLogo11
+                        ]
                           .filter(logo => logo && typeof logo === 'string' && logo.trim() !== '')
                           .map((logo, index) => (
                             <Image
