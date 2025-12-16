@@ -63,6 +63,20 @@ import escudo_temperley from "../assets/escudo_temperley.png";
 import escudo_macara from "../assets/escudo_macara.png"; 
 import escudo_nacionalpotosi from "../assets/escudo_nacionalpotosi.png";
 import escudo_aucas from "../assets/escudo_aucas.png";
+import escudo_sportivosl from "../assets/escudo_sportivosl.png";
+import escudo_miamifc from "../assets/escudo_miamifc.png";
+import escudo_luqueno from "../assets/escudo_luqueno.png";
+import escudo_solamerica from "../assets/escudo_solamerica.png";
+import escudo_atleticotucuman from "../assets/escudo_atleticotucuman.png";
+import escudo_huracan from "../assets/escudo_huracan.png";
+import escudo_union from "../assets/escudo_union.png";
+import escudo_tampa from "../assets/escudo_tampa.png";
+import escudo_colocolo from "../assets/escudo_colocolo.png";
+import escudo_gralpaz from "../assets/escudo_gralpaz.png";
+import escudo_central from "../assets/escudo_central.png";
+import escudo_ferro from "../assets/escudo_ferro.png";
+import escudo_olimpia from "../assets/escudo_olimpia.png";
+import escudo_godoycruz from "../assets/escudo_godoycruz.png";  
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -141,6 +155,14 @@ const brands = [
     club: 'Miami FC',
     number: '1',
     height: '1,89 m',
+    clubLogoActual: escudo_miamifc,
+    clubLogo: escudo_sportivosl,
+    clubLogo2: escudo_luqueno,
+    clubLogo3: escudo_solamerica,
+    clubLogo4: escudo_atleticotucuman,
+    clubLogo5: escudo_huracan,
+    clubLogo6: escudo_union,
+    clubLogo7: escudo_tampa,
   },
   {
     img: jugador_correa,
@@ -153,6 +175,14 @@ const brands = [
     club: 'Colo-Colo',
     number: '9',
     height: '1,84 m',
+    clubLogoActual: escudo_colocolo,
+    clubLogo: escudo_instituto,
+    clubLogo2: escudo_gralpaz,
+    clubLogo3: escudo_ferro,
+    clubLogo4: escudo_central,
+    clubLogo5: escudo_olimpia,
+    clubLogo6: escudo_godoycruz,
+    clubLogo7: escudo_colon,
   },
   {
     img: jugador_gonzapiovi,

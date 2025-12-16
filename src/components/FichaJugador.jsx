@@ -536,7 +536,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       <Flex
                       w={{base: '50%', md: 'auto'}} 
                       gap={2} 
-                      align="center" 
+                      align={{base:"flex-end" , md:'center'}} 
                       justify={'end'} 
                       wrap={{base: 'wrap', md:'nowrap'}}
                       >
