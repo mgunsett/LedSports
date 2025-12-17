@@ -77,6 +77,38 @@ import escudo_central from "../assets/escudo_central.png";
 import escudo_ferro from "../assets/escudo_ferro.png";
 import escudo_olimpia from "../assets/escudo_olimpia.png";
 import escudo_godoycruz from "../assets/escudo_godoycruz.png";  
+import escudo_santoslaguna from "../assets/escudo_santoslaguna.png";
+import escudo_atlas from "../assets/escudo_atlas.png";
+import escudo_nublense from "../assets/escudo_nublense.png";
+import escudo_atlanta from "../assets/escudo_atlanta.png";
+import escudo_barracas from "../assets/escudo_barracas.png";
+import escudo_colegiales from "../assets/escudo_colegiales.png";
+import escudo_gimansia_cdu from "../assets/escudo_gimansia_cdu.png";
+import escudo_guaraniantonio from "../assets/escudo_guaraniantonio.png";
+import escudo_magallanes from "../assets/escudo_magallanes.png";
+import escudo_milipillas from "../assets/escudo_milipillas.png";
+import escudo_mazatlan from "../assets/escudo_mazatlan.png";
+import escudo_audax from "../assets/escudo_audax.png";
+import escudo_palestino from "../assets/escudo_palestino.png";
+import escudo_quilmes from "../assets/escudo_quilmes.png";
+import escudo_cerro from "../assets/escudo_cerro.png";
+import escudo_queretaro from "../assets/escudo_queretaro.png";
+import escudo_lanus from "../assets/escudo_lanus.png";
+import escudo_wohlen from "../assets/escudo_wohlen.png";
+import escudo_mallorca from "../assets/escudo_mallorca.png";
+import escudo_lazio from "../assets/escudo_lazio.png";
+import escudo_milan from "../assets/escudo_milan.png";
+import escudo_almeria from "../assets/escudo_almeria.png";
+import escudo_alaves from "../assets/escudo_alaves.png";
+import escudo_chacarita from "../assets/escudo_chacarita.png";
+import escudo_ohiggins from "../assets/escudo_ohiggins.png";
+import escudo_udechile from "../assets/escudo_udechile.png";
+import escudo_alwasl from "../assets/escudo_alwasl.png";
+import escudo_volos from "../assets/escudo_volos.png";
+import escudo_capiata from "../assets/escudo_capiata.png";
+import escudo_central_norte from "../assets/escudo_central_norte.png";
+import escudo_strongest from "../assets/escudo_strongest.png";
+import escudo_resistencia from "../assets/escudo_resistencia.png";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -183,6 +215,10 @@ const brands = [
     clubLogo5: escudo_olimpia,
     clubLogo6: escudo_godoycruz,
     clubLogo7: escudo_colon,
+    clubLogo8: escudo_santoslaguna,
+    clubLogo9: escudo_atlas, 
+    clubLogo10: escudo_racing1,
+    clubLogo11: escudo_estudiantes,
   },
   {
     img: jugador_gonzapiovi,
@@ -248,6 +284,17 @@ const brands = [
     club: 'Ñublense',
     number: '9',
     height: '1,85 m',
+    clubLogoActual: escudo_nublense,
+    clubLogo: escudo_atlanta,
+    clubLogo2: escudo_barracas,
+    clubLogo3: escudo_colegiales,
+    clubLogo4: escudo_gimansia_cdu,
+    clubLogo5: escudo_guaraniantonio,
+    clubLogo6: escudo_magallanes,
+    clubLogo7: escudo_milipillas,
+    clubLogo8: escudo_mazatlan,
+    clubLogo9: escudo_audax,
+    clubLogo10: escudo_palestino,
   },
   {
     img: jugador_jonitorres,
@@ -260,6 +307,12 @@ const brands = [
     club: 'Cerro Porteño',
     number: '27',
     height: '1,87 m',
+    clubLogoActual: escudo_cerro,
+    clubLogo: escudo_quilmes,
+    clubLogo2: escudo_almagro,
+    clubLogo3: escudo_sarmiento,
+    clubLogo4: escudo_queretaro,
+    clubLogo5: escudo_lanus,
   },
   {
     img: jugador_keki,
@@ -292,6 +345,12 @@ const brands = [
     number: '21',
     height: '1,80 m',
     clubLogoActual: escudo_platense,
+    clubLogo: escudo_racing1,
+    clubLogo2: escudo_wohlen,
+    clubLogo3: escudo_union,
+    clubLogo4: escudo_atleticotucuman,
+    clubLogo5: escudo_cruzazul,
+    clubLogo6: escudo_lanus,
   },
   {
     img: jugador_luka,
@@ -305,6 +364,11 @@ const brands = [
     number: '18',
     height: '1,69 m',
     clubLogoActual: escudo_cruzazul,
+    clubLogo: escudo_mallorca,
+    clubLogo2: escudo_lazio,
+    clubLogo3: escudo_milan,
+    clubLogo4: escudo_almeria,
+    clubLogo5: escudo_alaves,
   },
   {
     img: jugador_oroz,
@@ -318,6 +382,12 @@ const brands = [
     number: '21',
     height: '1,74 m',
     clubLogoActual: escudo_argentinos,
+    clubLogo: escudo_racing1,
+    clubLogo2: escudo_chacarita,
+    clubLogo3: escudo_ohiggins,
+    clubLogo4: escudo_udechile,
+    clubLogo5: escudo_alwasl,
+    clubLogo6: escudo_volos,
   },
   {
     img: jugador_runi,
@@ -331,6 +401,11 @@ const brands = [
     number: '21',
     height: '1,78 m',
     clubLogoActual: escudo_platense,
+    clubLogo: escudo_cerro,
+    clubLogo2: escudo_capiata,
+    clubLogo3: escudo_central_norte,
+    clubLogo4: escudo_strongest,
+    clubLogo5: escudo_resistencia,
   },
   {
     img: jugador_zuqi,
