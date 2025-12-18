@@ -14,8 +14,8 @@ import {
   Circle,
   useBreakpointValue,
 } from '@chakra-ui/react';
-
 import { motion } from 'framer-motion';
+import ClubInfo from './ClubInfo';
 
 const MotionModalContent = motion(ModalContent);
 const MotionBox = motion(Box);
@@ -105,7 +105,6 @@ const CircularProgress = ({ value, label, size = 100 }) => {
 // Soccer field mini map component with heatmap effect
 const SoccerFieldPosition = ({ position = 'Forward' }) => {
   const normalized = (position || '').toLowerCase();
-
   const getHeatmapArea = () => {
     // Arquero - Áreas expandidas
     if (normalized === 'arquero') {
@@ -115,7 +114,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         intensity: 1.5
       };
     }
-
     // Defensor Central 
     if (
       normalized === 'defensor central' ||
@@ -137,7 +135,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         intensity: 1.5
       };
     }
-
     // Lateral Derecho
     if (
       normalized === 'lateral derecho'
@@ -148,7 +145,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         intensity: 1.5
       };
     }
-
     // Mediocampista Ofensivo
     if (
       normalized === 'mediocampista ofensivo'
@@ -179,7 +175,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         intensity: 1.5
       };
     }
-
     // Delantero
     if (normalized === 'delantero') {
       return {
@@ -188,7 +183,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         intensity: 1.5
       };
     }
-
     // Extremo Derecho
     if (normalized === 'extremo derecho') {
       return {
@@ -197,7 +191,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         intensity: 1.5
       };
     }
-
     // Extremo Izquierdo
     if (normalized === 'extremo izquierdo') {
       return {
@@ -206,7 +199,6 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         intensity: 1.5
       };
     }
-
     // Fallback al centro (mediocampo)
     return {
       center: { top: '50%', left: '50%' },
@@ -540,33 +532,52 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       justify={'end'} 
                       wrap={{base: 'wrap', md:'nowrap'}}
                       >
-                        {[jugadorData.clubLogo, 
-                          jugadorData.clubLogo2, 
-                          jugadorData.clubLogo3, 
-                          jugadorData.clubLogo4, 
-                          jugadorData.clubLogo5, 
-                          jugadorData.clubLogo6, 
-                          jugadorData.clubLogo7,
-                          jugadorData.clubLogo8,
-                          jugadorData.clubLogo9,
-                          jugadorData.clubLogo10,
-                          jugadorData.clubLogo11
-                        ]
-                          .filter(logo => logo && typeof logo === 'string' && logo.trim() !== '')
-                          .map((logo, index) => (
-                            <Image
-                              key={index}
-                              src={logo}
-                              alt={`Club ${index + 1}`}
-                              w={{ base: "20px", md: "30px" }}
-                              h={{ base: "20px", md: "30px" }}
-                              objectFit="contain"
-                              opacity={0.8}
-                              _hover={{ opacity: 1, transform: 'scale(1.1)' }}
-                              transition="all 0.2s"
-                              fallback={<Box w={{ base: "20px", md: "30px" }} h={{ base: "20px", md: "30px" }} bg="whiteAlpha.200" borderRadius="full" />}
-                            />
-                        ))}
+                        {jugadorData.trayectoria ? (
+                            jugadorData.trayectoria.map((club, index) => (
+                                <ClubInfo key={index} clubData={club}>
+                                    <Image
+                                      src={club.logo}
+                                      alt={club.name}
+                                      w={{ base: "18px", md: "30px" }}
+                                      h={{ base: "18px", md: "30px" }}
+                                      objectFit="contain"
+                                      opacity={0.8}
+                                      _hover={{ opacity: 1, transform: 'scale(1.1)' }}
+                                      transition="all 0.2s"
+                                      fallback={<Box w={{ base: "20px", md: "30px" }} h={{ base: "20px", md: "30px" }} bg="whiteAlpha.200" borderRadius="full" />}
+                                    />
+                                </ClubInfo>
+                            ))
+                        ) : (
+                            [jugadorData.clubLogo, 
+                              jugadorData.clubLogo2, 
+                              jugadorData.clubLogo3, 
+                              jugadorData.clubLogo4, 
+                              jugadorData.clubLogo5, 
+                              jugadorData.clubLogo6, 
+                              jugadorData.clubLogo7,
+                              jugadorData.clubLogo8,
+                              jugadorData.clubLogo9,
+                              jugadorData.clubLogo10,
+                              jugadorData.clubLogo11
+                            ]
+                              .filter(logo => logo && typeof logo === 'string' && logo.trim() !== '')
+                              .map((logo, index) => (
+                                <ClubInfo key={index} clubData={null}>
+                                    <Image
+                                      src={logo}
+                                      alt={`Club ${index + 1}`}
+                                      w={{ base: "18px", md: "30px" }}
+                                      h={{ base: "18px", md: "30px" }}
+                                      objectFit="contain"
+                                      opacity={0.8}
+                                      _hover={{ opacity: 1, transform: 'scale(1.1)' }}
+                                      transition="all 0.2s"
+                                      fallback={<Box w={{ base: "20px", md: "30px" }} h={{ base: "20px", md: "30px" }} bg="whiteAlpha.200" borderRadius="full" />}
+                                    />
+                                </ClubInfo>
+                            ))
+                        )}
                       </Flex>
                     </Flex>
                     <Flex align="baseline" gap={3} flexWrap="wrap">
@@ -651,13 +662,21 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       CLUB ACTUAL
                     </Text>
                     <Flex  align="center" gap={2}>
-                      <Image
-                        src={jugadorData.clubLogoActual || ''}
-                        alt={jugadorData.club || 'Club actual'}
-                        w={{ base: "20px", md: "25px" }}
-                        h={{ base: "20px", md: "25px" }}
-                        objectFit="contain"
-                      />
+                      <ClubInfo 
+                        clubData={jugadorData.clubActualInfo || {
+                            name: jugadorData.club,
+                            years: "Actualidad",
+                            trophies: []
+                        }}
+                      >
+                        <Image
+                          src={jugadorData.clubLogoActual || ''}
+                          alt={jugadorData.club || 'Club actual'}
+                          w={{ base: "20px", md: "25px" }}
+                          h={{ base: "20px", md: "25px" }}
+                          objectFit="contain"
+                        />
+                      </ClubInfo>
                       <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
                         {jugadorData.club || 'Club actual'}
                       </Text>

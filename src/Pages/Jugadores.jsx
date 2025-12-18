@@ -109,6 +109,9 @@ import escudo_capiata from "../assets/escudo_capiata.png";
 import escudo_central_norte from "../assets/escudo_central_norte.png";
 import escudo_strongest from "../assets/escudo_strongest.png";
 import escudo_resistencia from "../assets/escudo_resistencia.png";
+import escudo_ucatolica from "../assets/escudo_ucatolica.png";
+import escudo_boca from "../assets/escudo_boca.png";
+import escudo_yeni from "../assets/escudo_yeni.png";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -128,11 +131,18 @@ const brands = [
     number: '7',
     height: '1,77 m',
     clubLogoActual: escudo_platense,
-    clubLogo: escudo_instituto,
-    clubLogo2: escudo_velez,
-    clubLogo3: escudo_defensa,
-    clubLogo4: escudo_iquique,
-    clubLogo5: escudo_sarmiento,
+    trayectoria: [
+      { logo: escudo_instituto, name: "Instituto", years: "2014-2017", trophies: [] },
+      { logo: escudo_velez, name: "Vélez Sarsfield", years: "2018-2020", trophies: [] },
+      { logo: escudo_defensa, name: "Defensa y Justicia", years: "2020", trophies: 
+        [ { name: "Copa Sudamericana", image: null },
+          { name: "Copa Sudamericana", image: null },
+          { name: "Copa Sudamericana", image: null }
+        ] 
+      },
+      { logo: escudo_iquique, name: "Deportes Iquique", years: "2021", trophies: [] },
+      { logo: escudo_sarmiento, name: "Sarmiento", years: "2021-2023", trophies: [] },
+    ],
   },
   {
     img: jugador_ade,
@@ -146,11 +156,13 @@ const brands = [
     number: '4',
     height: '1,90 m',
     clubLogoActual: escudo_ligaquito,
-    clubLogo: escudo_baltimore,
-    clubLogo2: escudo_miamiunited,
-    clubLogo3: escudo_donbosco,
-    clubLogo4: escudo_santiagomorning,
-    clubLogo5: escudo_mushucruna,
+    trayectoria: [
+      { logo: escudo_baltimore, name: "Baltimore SC", years: "2013-2015", trophies: [] },
+      { logo: escudo_miamiunited, name: "Miami United FC", years: "2015-2016", trophies: [] },
+      { logo: escudo_donbosco, name: "Don Bosco FC", years: "2016-2018", trophies: [] },
+      { logo: escudo_santiagomorning, name: "Santiago Morning", years: "2018-2020", trophies: [] },
+      { logo: escudo_mushucruna, name: "Mushuc Runa", years: "2020-2022", trophies: [] },
+    ],
   },
   {
     img: jugador_callejo,
@@ -164,17 +176,19 @@ const brands = [
     number: '9',
     height: '1,78 m',
     clubLogoActual: escudo_cusco,
-    clubLogo: escudo_colon,
-    clubLogo2: escudo_gyejujuy,
-    clubLogo3: escudo_ligaloja,
-    clubLogo4: escudo_patronato,
-    clubLogo5: escudo_santamarina,
-    clubLogo6: escudo_carabobo,
-    clubLogo7: escudo_allboys,
-    clubLogo8: escudo_temperley,
-    clubLogo9: escudo_macara,
-    clubLogo10: escudo_nacionalpotosi,
-    clubLogo11: escudo_aucas,
+    trayectoria: [
+      { logo: escudo_colon, name: "Colón de Santa Fe", years: "2012-2015", trophies: [] },
+      { logo: escudo_gyejujuy, name: "Gimnasia y Esgrima de Jujuy", years: "2015-2016", trophies: [] },
+      { logo: escudo_ligaloja, name: "Liga de Loja", years: "2016-2017", trophies: [] },
+      { logo: escudo_patronato, name: "Patronato", years: "2017-2018", trophies: [] },
+      { logo: escudo_santamarina, name: "Santamarina", years: "2018-2019", trophies: [] },
+      { logo: escudo_carabobo, name: "Carabobo FC", years: "2019-2020", trophies: [] },
+      { logo: escudo_allboys, name: "All Boys", years: "2020-2021", trophies: [] },
+      { logo: escudo_temperley, name: "Temperley", years: "2021-2022", trophies: [] },
+      { logo: escudo_macara, name: "Macará", years: "2022-2023", trophies: [] },
+      { logo: escudo_nacionalpotosi, name: "Nacional Potosí", years: "2023", trophies: [] },
+      { logo: escudo_aucas, name: "Aucas", years: "2023-Presente", trophies: [] },
+    ],
   },
   {
     img: jugador_campisi,
@@ -195,6 +209,15 @@ const brands = [
     clubLogo5: escudo_huracan,
     clubLogo6: escudo_union,
     clubLogo7: escudo_tampa,
+    trayectoria: [  
+      {logo: escudo_sportivosl, name: "Sportivo San Lorenzo", years: "2015-2016", trophies: [] },
+      {logo: escudo_luqueno, name: "Club Atlético Luqueño", years: "2016-2017", trophies: [] },
+      {logo: escudo_solamerica, name: "Sol América", years: "2017-2018", trophies: [] },  
+      {logo: escudo_atleticotucuman, name: "Atlético Tucumán", years: "2018-2019", trophies: [] },
+      {logo: escudo_huracan, name: "Huracán", years: "2019-2020", trophies: [] },
+      {logo: escudo_union, name: "Unión de Santa Fe", years: "2020-2021", trophies: [] },
+      {logo: escudo_tampa, name: "Tampa Bay Rowdies", years: "2021-2022", trophies: [] },
+    ],
   },
   {
     img: jugador_correa,
@@ -418,6 +441,11 @@ const brands = [
     club: 'U Católica',
     number: '18',
     height: '1,74 m',
+    clubLogoActual: escudo_ucatolica,
+    clubLogo: escudo_boca,
+    clubLogo2: escudo_estudiantes,
+    clubLogo3: escudo_colon,
+    clubLogo4: escudo_yeni,
   },
 ];
 
