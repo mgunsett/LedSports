@@ -7,7 +7,6 @@ import {
   PopoverBody,
   PopoverArrow,
   PopoverCloseButton,
-  Image,
   Text,
   Box,
   Flex,
@@ -35,7 +34,7 @@ return (
         trigger={triggerMode}
         placement="top"
         openDelay={0}
-        closeDelay={200}
+        closeDelay={100}
     >
         <PopoverTrigger>
             <Box display="inline-block" cursor="pointer">
@@ -46,7 +45,7 @@ return (
             bgGradient="linear(to-b, black, gray.900)"
             borderColor="whiteAlpha.300" 
             color="white" 
-            width={{ base: "180px", md: "200px" }}
+            width={{ base: "180px", md: "210px" }}
             _focus={{ outline: 'none' }}
         >
             <PopoverArrow  bg="gray.900" borderColor="whiteAlpha.300" />

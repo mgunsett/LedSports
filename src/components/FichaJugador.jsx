@@ -538,8 +538,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                     <Image
                                       src={club.logo}
                                       alt={club.name}
-                                      w={{ base: "18px", md: "30px" }}
-                                      h={{ base: "18px", md: "30px" }}
+                                      w={{ base: "20px", md: "30px" }}
+                                      h={{ base: "20px", md: "30px" }}
                                       objectFit="contain"
                                       opacity={0.8}
                                       _hover={{ opacity: 1, transform: 'scale(1.1)' }}
@@ -548,35 +548,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                     />
                                 </ClubInfo>
                             ))
-                        ) : (
-                            [jugadorData.clubLogo, 
-                              jugadorData.clubLogo2, 
-                              jugadorData.clubLogo3, 
-                              jugadorData.clubLogo4, 
-                              jugadorData.clubLogo5, 
-                              jugadorData.clubLogo6, 
-                              jugadorData.clubLogo7,
-                              jugadorData.clubLogo8,
-                              jugadorData.clubLogo9,
-                              jugadorData.clubLogo10,
-                              jugadorData.clubLogo11
-                            ]
-                              .filter(logo => logo && typeof logo === 'string' && logo.trim() !== '')
-                              .map((logo, index) => (
-                                <ClubInfo key={index} clubData={null}>
-                                    <Image
-                                      src={logo}
-                                      alt={`Club ${index + 1}`}
-                                      w={{ base: "18px", md: "30px" }}
-                                      h={{ base: "18px", md: "30px" }}
-                                      objectFit="contain"
-                                      opacity={0.8}
-                                      _hover={{ opacity: 1, transform: 'scale(1.1)' }}
-                                      transition="all 0.2s"
-                                      fallback={<Box w={{ base: "20px", md: "30px" }} h={{ base: "20px", md: "30px" }} bg="whiteAlpha.200" borderRadius="full" />}
-                                    />
-                                </ClubInfo>
-                            ))
+                        ) : (<Text fontSize={{ base: '10px', md: 'sm' }} color="whiteAlpha.600">Sin trayectoria</Text>
                         )}
                       </Flex>
                     </Flex>
