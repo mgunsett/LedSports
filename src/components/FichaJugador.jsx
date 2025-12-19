@@ -104,6 +104,7 @@ const CircularProgress = ({ value, label, size = 100 }) => {
 
 // Soccer field mini map component with heatmap effect
 const SoccerFieldPosition = ({ position = 'Forward' }) => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   const normalized = (position || '').toLowerCase();
   const getHeatmapArea = () => {
     // Arquero - Áreas expandidas
@@ -227,8 +228,8 @@ const SoccerFieldPosition = ({ position = 'Forward' }) => {
         transform="translate(-50%, -50%)"
         width={heatmapData.size.width}
         height={heatmapData.size.height}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={isMobile ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 60 }}
+        animate={ isMobile ? { opacity: 1, scale: 1, y: 0} : { opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >    
         {/* Capa interna - naranja fuerte */}
@@ -392,7 +393,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
     <Modal
       isCentered
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={onClose} 
       size={{base:'7xl', md:'6xl'}}  
     >
       <ModalOverlay
@@ -409,7 +410,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
         boxShadow="0 25px 50px -12px rgba(0, 0, 0, 0.5)"
         initial={isMobile ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 60 }}
         animate={ isMobile ? { opacity: 1, scale: 1, y: 0} : { opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 60 }}
+        exit={ isMobile ? { opacity: 1, scale: 1, y: 0} :   { opacity: 0, scale: 0.9, y: 60 }}
         transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
       >
         <ModalBody p={0}   >

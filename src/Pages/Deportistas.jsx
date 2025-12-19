@@ -19,6 +19,7 @@ import deportistas_carpetacom from "../assets/deportistas_carpetacom.webp";
 import deportistas_planmkt from "../assets/deportistas_planmkt.webp";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import Contact from "../components/Contact";
+import MatchdayCarousel from "../components/MatchdayCarousel";
 
 const MotionFlex = motion(Flex);
 const MotionHeading = motion(Heading);
@@ -387,67 +388,19 @@ export const Deportistas = () => {
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  p={{ base: 20, md: 6 }}
-                  minH={{ base: "150px", md: "200px" }}
+                  p={{ base: 8, md: 6 }}
+                  minH={{ base: "370px", md: "200px" }}
+                  overflow="hidden"
                 >
-                  <Image
-                    src= {deportistas_prematch}
-                    w={{ base: "100px", md: "120px" }}
-                    h={{ base: "210px", md: "230px" }}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    borderRadius="md"
-                    color="gray.500"
-                    fontSize="sm"
-                    transitionDuration="0.6s"
-                    _hover={{
-                        transform:"scale(1.5)",
-                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
-                        mr: {base: '-60px', md: '-50px'}
-                      }}
+                  <MatchdayCarousel 
+                    images={[deportistas_prematch, deportistas_prematch1, deportistas_prematch2]} 
                   />
-                  <Image
-                      src={deportistas_prematch1}
-                      w={{ base: "100px", md: "120px" }}
-                      h={{ base: "210px", md: "230px" }}
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      borderRadius="md"
-                      color="gray.500"
-                      fontSize="sm"
-                      transitionDuration="0.6s"
-                      ml={2}
-                      _hover={{
-                        transform:"scale(1.5)",
-                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
-                        mx: {base: '-60px', md: '-50px'}
-                      }}
-                    />
-                    <Image
-                      src={deportistas_prematch2}
-                      w={{ base: "100px", md: "120px" }}
-                      h={{ base: "210px", md: "230px" }}
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      borderRadius="md"
-                      color="gray.500"
-                      fontSize="sm"
-                      transitionDuration="0.6s"
-                      ml={2}
-                      _hover={{
-                        transform: 'scale(1.5)',
-                        filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
-                        ml: {base: '-60px', md: '-50px'}
-                      }}
-                    />
                 </Box>
                 <Flex
                   flex='1'
                   flexDirection="column"
                   p={{ base: 6, md: 8 }}
+                  py={8}
                   gap={3}
                   justifyContent="center"
                 >
