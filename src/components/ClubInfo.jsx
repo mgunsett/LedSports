@@ -24,7 +24,7 @@ const ClubInfo = ({ clubData, children }) => {
     return children;
   }
 
-  const { name, years, trophies } = clubData;
+  const { name, years, trophies, datoInfo } = clubData;
 
 return (
     <Popover
@@ -37,7 +37,7 @@ return (
         closeDelay={100}
     >
         <PopoverTrigger>
-            <Box display="inline-block" cursor="pointer">
+            <Box display="inline-block" >
                     {children}
             </Box>
         </PopoverTrigger>
@@ -45,7 +45,7 @@ return (
             bgGradient="linear(to-b, black, gray.900)"
             borderColor="whiteAlpha.300" 
             color="white" 
-            width={{ base: "180px", md: "210px" }}
+            width={{ base: "190px", md: "230px" }}
             _focus={{ outline: 'none' }}
         >
             <PopoverArrow  bg="gray.900" borderColor="whiteAlpha.300" />
@@ -59,6 +59,11 @@ return (
             />
             <PopoverBody>
                 <Flex direction="column" gap={4}>
+                    {datoInfo && (
+                        <Text fontSize={{ base: "10px", md: "xs" }}>
+                            &nbsp;{datoInfo}
+                        </Text>
+                    )}
                     {years && (
                         <Text fontSize={{ base: "10px", md: "xs" }}>
                             <Text as="span" color="whiteAlpha.700">Periodo: </Text>
@@ -69,7 +74,7 @@ return (
                         <Box>
                             <Flex wrap="wrap" gap={2}>
                                 {trophies.map((trophy, index) => (
-                                    <Flex key={index} align="center" gap={10} bg="whiteAlpha.100" px={2} py={1} borderRadius="md">
+                                    <Flex key={index} align="center" justifyContent={'space-between'}  bg="whiteAlpha.100" px={2} py={1} borderRadius="md" w="100%">
                                         <Box as={FaTrophy} color="yellow.400" size="12px" />
                                         <Text fontSize={{ base: "10px", md: "xs" }}>{trophy.name}</Text>
                                     </Flex>

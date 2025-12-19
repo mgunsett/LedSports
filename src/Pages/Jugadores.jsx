@@ -130,14 +130,16 @@ const brands = [
     club: 'Cruz Azul',
     number: '33',
     height: '1,80 m',
-    clubLogoActual: escudo_cruzazul,
+    clubLogoActual: [
+      {logo: escudo_cruzazul, name: "Cruz Azul", years: "2024- Actualidad", trophies: [{ name: 'Campeones Concacaf 2025'}]},
+    ],
     trayectoria: [
-      { logo: escudo_velez, name: "Vélez Sarsfield", years: "2014-2016", trophies: [] },
-      { logo: escudo_argentinos, name: "Argentinos Juniors", years: "2016-2018", trophies: [] },
-      { logo: escudo_racing1, name: "Racing Club", years: "2018-2020", trophies: [] },
-      { logo: escudo_gimnasia, name: "Gimnasia de La Plata", years: "2020-2021", trophies: [] },
-      { logo: escudo_defensa, name: "Defensa y Justicia", years: "2021-2022", trophies: [] },
-      { logo: escudo_colon, name: "Colón de Santa Fe", years: "2022-2023", trophies: [] },
+      { logo: escudo_velez, name: "Vélez Sarsfield", years: "2013-2015", datoInfo: "Debút Profesional vs All Boys" , trophies: [] },
+      { logo: escudo_argentinos, name: "Argentinos Juniors", years: "2016-2018", trophies: [{ name: "Ascenso Primera 2017" }] },
+      { logo: escudo_racing1, name: "Racing Club", years: "2018 / 2022-2023", trophies: [{ name: "Trofeo de Campeones '22" }, { name: "Supercopa Internacional '22" }] },
+      { logo: escudo_gimnasia, name: "Gimnasia de La Plata", years: "2018-2019", trophies: [] },
+      { logo: escudo_defensa, name: "Defensa y Justicia", years: "2019-2020", trophies: [] },
+      { logo: escudo_colon, name: "Colón de Santa Fe", years: "2020-2022", trophies: [{name: 'Liga Profesional 2021'}] },
     ],
   },
   {
@@ -151,9 +153,11 @@ const brands = [
     club: 'Liga de Quito',
     number: '4',
     height: '1,90 m',
-    clubLogoActual: escudo_ligaquito,
+    clubLogoActual: [
+      {  logo: escudo_ligaquito, name: "Liga de Quito", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
-      { logo: escudo_baltimore, name: "Baltimore SC", years: "2013-2015", trophies: [] },
+      { logo: escudo_baltimore, name: "Baltimore SC", years: "2013-2014 / 2015-2016", datoInfo:"Debut Profesional", trophies: [] },
       { logo: escudo_miamiunited, name: "Miami United FC", years: "2015-2016", trophies: [] },
       { logo: escudo_donbosco, name: "Don Bosco FC", years: "2016-2018", trophies: [] },
       { logo: escudo_santiagomorning, name: "Santiago Morning", years: "2018-2020", trophies: [] },

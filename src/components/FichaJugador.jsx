@@ -634,21 +634,17 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       CLUB ACTUAL
                     </Text>
                     <Flex  align="center" gap={2}>
-                      <ClubInfo 
-                        clubData={jugadorData.clubActualInfo || {
-                            name: jugadorData.club,
-                            years: "Actualidad",
-                            trophies: []
-                        }}
-                      >
-                        <Image
-                          src={jugadorData.clubLogoActual || ''}
-                          alt={jugadorData.club || 'Club actual'}
-                          w={{ base: "20px", md: "25px" }}
-                          h={{ base: "20px", md: "25px" }}
-                          objectFit="contain"
-                        />
-                      </ClubInfo>
+                      {jugadorData.clubLogoActual && (
+                        <ClubInfo clubData={Array.isArray(jugadorData.clubLogoActual) ? jugadorData.clubLogoActual[0] : null}>
+                          <Image
+                            src={Array.isArray(jugadorData.clubLogoActual) ? jugadorData.clubLogoActual[0].logo : jugadorData.clubLogoActual}
+                            alt={jugadorData.club || 'Club actual'}
+                            w={{ base: "20px", md: "25px" }}
+                            h={{ base: "20px", md: "25px" }}
+                            objectFit="contain"
+                          />
+                        </ClubInfo>
+                      )}
                       <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
                         {jugadorData.club || 'Club actual'}
                       </Text>
