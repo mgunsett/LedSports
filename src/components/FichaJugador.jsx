@@ -407,8 +407,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
         overflow="hidden"
         borderRadius="2xl"
         boxShadow="0 25px 50px -12px rgba(0, 0, 0, 0.5)"
-        initial={{ opacity: 0, scale: 0.9, y: 60 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
+        initial={isMobile ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 60 }}
+        animate={ isMobile ? { opacity: 1, scale: 1, y: 0} : { opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 60 }}
         transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
       >
@@ -713,7 +713,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             w="50%"
                             h="198px"
                             justifyContent='flex-start'
-
                             flexDirection='column'
                           >
                             <Text
