@@ -31,7 +31,7 @@ const About = () => {
       {/* Imagen de apoyo */}
       <MotionBox
         w="100%"
-        maxW={{ base: '320px', md: '400px' }}
+        maxW={{ base: '350px', md: '400px' }}
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
@@ -41,10 +41,10 @@ const About = () => {
           src={nosotros_photo}
           alt="Equipo de marketing deportivo"
           borderRadius="2xl"
-          objectFit="cover"
+          objectFit="contain"
           boxShadow="xl"
           w="100%"
-          maxW={{ base: '320px', md: '400px' }}
+          maxW={{ base: '350px', md: '400px' }}
         />
       </MotionBox>
 

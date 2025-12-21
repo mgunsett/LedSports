@@ -46,7 +46,7 @@ export const Deportistas = () => {
         flexDirection="row"
         alignSelf='start'
         w="100%"
-        pl={{ base: 4, md: 16, lg: "250px" }}
+        pl={{ base: 10, md: 16, lg: "250px" }}
         mb={{ base: 6, md: 10 }}
       >
         <MotionBox
@@ -89,7 +89,7 @@ export const Deportistas = () => {
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        px={{ base: 6, md: 0 }}
+        px={{ base: 10, md: 0 }}
         my={{ base: 8, md: 16 }}
         w={{ base: "100%", md: "60%" }}
         fontSize={{ base: "md", md: "xl" }}
@@ -152,6 +152,7 @@ export const Deportistas = () => {
                 boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
               }}
               transitionDuration="0.3s"
+              
             >
               <Flex
                 flexDirection={{ base: "column", md: "row" }}
@@ -164,7 +165,8 @@ export const Deportistas = () => {
                   alignItems="center"
                   justifyContent="center"
                   p={{ base: 10, md: 6 }}
-                  minH={{ base: "150px", md: "200px" }}
+                  py={{ base: 16, md: 0 }}
+                  minH={{ base: "150px", md: '"200px"' }}
                 >
                   <Image
                     src= {deportistas_planmkt}
@@ -226,6 +228,7 @@ export const Deportistas = () => {
                 boxShadow: "0 0 20px rgba(245, 160, 15, 0.3)"
               }}
               transitionDuration="0.3s"
+
             >
               <Flex
                 flexDirection={{ base: "column", md: "column" }}
@@ -238,6 +241,7 @@ export const Deportistas = () => {
                   alignItems="center"
                   justifyContent="center"
                   p={{ base: 12, md: 6 }}
+                  py={{ base: 16, md: 0 }}
                   minH={{ base: "150px", md: "220px" }}
                 >
                   <Image
@@ -314,13 +318,14 @@ export const Deportistas = () => {
                   alignItems="center"
                   justifyContent="center"
                   p={{ base: 14, md: 6 }}
+                  py={{ base: 20, md: 0 }}
                   minH={{ base: "200px", md: "300px" }}
                 >
                   <Image
                     src= {deportistas_logos}
                     w={{ base: "280px", md: "250px" }}
                     h={{ base: "180px", md: "150px" }}
-                    objectFit="cover"
+                    objectFit={{base: "contain", md: "cover"}}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -389,6 +394,7 @@ export const Deportistas = () => {
                   alignItems="center"
                   justifyContent="center"
                   p={{ base: 8, md: 6 }}
+                  
                   minH={{ base: "370px", md: "200px" }}
                   overflow="hidden"
                 >
@@ -460,12 +466,14 @@ export const Deportistas = () => {
                     loop
                     playsInline
                     controls={false}
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   />
                 </Box>
                 <Flex
                   flex='1'
                   flexDirection="column"
                   p={{ base: 6, md: 8 }}
+                  py= {0}
                   gap={3}
                   justifyContent="center"
                 >
@@ -477,7 +485,7 @@ export const Deportistas = () => {
                     p={{ base: 0, md: 2 }}
                     alignSelf="start"
                   >
-                    Rells
+                    Reels
                   </Text>
                   <Text fontSize={{ base: "xs", md: "md" }} color="gray.300" lineHeight="tall">
                     Generamos videos profesionales para tus redes sociales.
@@ -612,6 +620,7 @@ export const Deportistas = () => {
                     color="gray.500"
                     fontSize="sm"
                     transitionDuration="0.3s"
+                    objectFit={'contain'}
                     _hover={{
                         transform: "translateY(-8px)",
                         borderColor: "orange.400",
@@ -636,6 +645,7 @@ export const Deportistas = () => {
                       color="gray.500"
                       fontSize="sm"
                       transitionDuration="0.3s"
+                      objectFit={'contain'}
                       ml={2}
                       _hover={{
                         transform: "translateY(-8px)",
@@ -654,6 +664,7 @@ export const Deportistas = () => {
                       color="gray.500"
                       fontSize="sm"
                       transitionDuration="0.3s"
+                      objectFit={'contain'}
                       ml={2}
                       _hover={{
                         transform: "translateY(-8px)",
@@ -717,6 +728,7 @@ export const Deportistas = () => {
                   alignItems="center"
                   justifyContent="center"
                   p={10}
+                  py={{ base: 16, md: 10 }}
                   minH={{ base: "200px", md: "220px" }}
                 >
                   <Image
@@ -730,6 +742,7 @@ export const Deportistas = () => {
                     color="gray.500"
                     fontSize="sm"
                     transitionDuration="0.3s"
+                    objectFit={'contain'}
                     _hover={{
                         transform: "translateY(-8px)",
                         borderColor: "orange.400",
@@ -741,6 +754,7 @@ export const Deportistas = () => {
                   flex='1'
                   flexDirection="column"
                   p={{ base: 6, md: 8 }}
+                  py={{ base: 6, md: 8 }}
                   gap={3}
                   justifyContent="center"
                   h="100%"
@@ -792,7 +806,7 @@ export const Deportistas = () => {
                   alignItems="center"
                   justifyContent="center"
                   p={8}
-                  pb={12}
+                  pb={{ base: '90px', md: 10 }}
                   minH={{ base: "200px", md: "220px" }}
                 >
                   <Image
@@ -807,12 +821,14 @@ export const Deportistas = () => {
                     fontSize="sm"
                     transitionDuration="0.3s"
                     mt={-4}
+                    objectFit={'contain'}
                   />
                 </Box>
                 <Flex
                   flex='1'
                   flexDirection="column"
                   p={{ base: 6, md: 8 }}
+                  py={{ base: 6, md: 8  }}
                   gap={3}
                   justifyContent="center"
                   h="100%"
@@ -890,6 +906,7 @@ export const Deportistas = () => {
                   flex='1'
                   flexDirection="column"
                   p={{ base: 6, md: 8 }}
+                  py={{ base: 12, md: 6 }}
                   gap={3}
                   justifyContent="center"
                   h="100%"
@@ -941,7 +958,7 @@ export const Deportistas = () => {
                   alignItems="center"
                   justifyContent="center"
                   p={{ base: 16, md: 6 }}
-                  pb={12}
+                  py={{ base: 16, md: 10 }}
                   minH={{ base: "200px", md: "220px" }}
                 >
                   <Image
@@ -955,7 +972,7 @@ export const Deportistas = () => {
                     color="gray.500"
                     fontSize="sm"
                     transitionDuration="0.3s"
-                    
+                    objectFit={'contain'}
                     _hover={{
                         transform: "translateY(-8px)",
                         borderColor: "orange.400",

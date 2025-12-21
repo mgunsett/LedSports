@@ -60,12 +60,12 @@ const MatchdayCarousel = ({ images }) => {
           icon={<BsChevronLeft />} 
           onClick={handlePrev} 
           position="absolute" 
-          left={{ base: "-20px", md: "0" }}
+          left={{ base: "-35px", md: "0" }}
           zIndex={20} 
           variant="ghost"
           color="orange.400"
           _hover={{transform: 'scale(1.1)' }}
-          fontSize="3xl"
+          fontSize="xl"
           isRound
        />
        
@@ -84,8 +84,8 @@ const MatchdayCarousel = ({ images }) => {
                 key={index}
                 src={img}
                 position="absolute"
-                w={{ base: "90px", md: "120px" }}
-                h={{ base: "200px", md: "230px" }}
+                w={{ base: "100px", md: "120px" }}
+                h={{ base: "250px", md: "230px" }}
                 borderRadius="md"
                 initial={false}
                 animate={position}
@@ -102,12 +102,12 @@ const MatchdayCarousel = ({ images }) => {
           icon={<BsChevronRight />} 
           onClick={handleNext} 
           position="absolute" 
-          right={{ base: "-20px", md: "0" }}
+          right={{ base: "-35px", md: "0" }}
           zIndex={20} 
           variant="ghost"
           color="orange.400"
           _hover={{  transform: 'scale(1.1)' }}
-          fontSize="3xl"
+          fontSize="xl"
           isRound
        />
     </Flex>
