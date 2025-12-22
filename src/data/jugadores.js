@@ -112,12 +112,18 @@ export const brands = [
     name: 'Gonzalo Piovi',
     Firstname: 'Gonzalo',
     Lastname: 'Piovi',
-    birthDate: '08/09/1994',
+    birthDate: '08/09/1994 (31)',
     country: 'Buenos Aires, Argentina',
     position: 'Lateral izquierdo',
     club: 'Cruz Azul',
     number: '33',
-    height: '1,80 m',
+    altura: '1,80 m',
+    recuperos: 60.2,
+    pases: 92.7,
+    tiros: 96.5,
+    goals: 15,
+    partidos: 286,
+    pieHabil: 'Izquierdo',
     clubLogoActual: [
       {logo: escudo_cruzazul, name: "Cruz Azul", years: "2024- Actualidad", trophies: [{ name: 'Campeones Concacaf 2025'}]},
     ],
@@ -140,7 +146,7 @@ export const brands = [
     position: 'Defensor Central',
     club: 'Liga de Quito',
     number: '4',
-    height: '1,90 m',
+    altura: '1,90 m',
     clubLogoActual: [
       {  logo: escudo_ligaquito, name: "Liga de Quito", years: "2023- Actualidad", trophies: [] }
     ],
@@ -162,7 +168,7 @@ export const brands = [
     position: 'Extremo Derecho',
     club: 'Cruz Azul',
     number: '18',
-    height: '1,69 m',
+    altura: '1,69 m',
     clubLogoActual: escudo_cruzazul,
     trayectoria: [
       { logo: escudo_mallorca, name: "RCD Mallorca", years: "2019-2021", trophies: [] },
@@ -182,7 +188,7 @@ export const brands = [
     position: 'Extremo izquierdo',
     club: 'Platense',
     number: '7',
-    height: '1,77 m',
+    altura: '1,77 m',
     clubLogoActual: escudo_platense,
     trayectoria: [
       { logo: escudo_instituto, name: "Instituto", years: "2014-2017", trophies: [] },
@@ -207,7 +213,7 @@ export const brands = [
     position: 'Delantero',
     club: 'Cusco FC',
     number: '9',
-    height: '1,78 m',
+    altura: '1,78 m',
     clubLogoActual: escudo_cusco,
     trayectoria: [
       { logo: escudo_colon, name: "Colón de Santa Fe", years: "2012-2015", trophies: [] },
@@ -233,7 +239,7 @@ export const brands = [
     position: 'Arquero',
     club: 'Miami FC',
     number: '1',
-    height: '1,89 m',
+    altura: '1,89 m',
     clubLogoActual: escudo_miamifc,
     trayectoria: [  
       {logo: escudo_sportivosl, name: "Sportivo San Lorenzo", years: "2015-2016", trophies: [] },
@@ -255,7 +261,7 @@ export const brands = [
     position: 'Delantero',
     club: 'Colo-Colo',
     number: '9',
-    height: '1,84 m',
+    altura: '1,84 m',
     clubLogoActual: escudo_colocolo,
     trayectoria: [
       { logo: escudo_instituto, name: "Instituto", years: "2012-2014", trophies: [] },
@@ -281,7 +287,7 @@ export const brands = [
     position: 'Delantero',
     club: 'Kalamata FC',
     number: '11',
-    height: '1,76 m',
+    altura: '1,76 m',
     clubLogoActual: escudo_kalamata,
     trayectoria: [
       { logo: escudo_orientepetro, name: "Oriente Petrolero", years: "2014-2016", trophies: [] },
@@ -302,7 +308,7 @@ export const brands = [
     position: 'Mediocampista Ofensivo',
     club: 'Estudiantes LP',
     number: '11',
-    height: '1,72 m',
+    altura: '1,72 m',
     clubLogoActual: escudo_estudiantes,
     trayectoria: [
       { logo: escudo_colon, name: "Colón de Santa Fe", years: "2020-Presente", trophies: [] },
@@ -319,7 +325,7 @@ export const brands = [
     position: 'Delantero',
     club: 'Ñublense',
     number: '9',
-    height: '1,85 m',
+    altura: '1,85 m',
     clubLogoActual: escudo_nublense,
     trayectoria: [
       { logo: escudo_atlanta, name: "Atlanta", years: "2010-2012", trophies: [] },
@@ -344,7 +350,7 @@ export const brands = [
     position: 'Delantero',
     club: 'Cerro Porteño',
     number: '27',
-    height: '1,87 m',
+    altura: '1,87 m',
     clubLogoActual: escudo_cerro,
     trayectoria: [
       { logo: escudo_quilmes, name: "Quilmes", years: "2016-2018", trophies: [] },
@@ -364,7 +370,8 @@ export const brands = [
     position: 'Mediocampista Central',
     club: 'Estudiantes LP',
     number: '21',
-    height: '1,72 m',
+    altura: '1,72 m',
+    pases: 84.8 ,
     clubLogoActual: escudo_estudiantes,
     trajectoria: [
       { logo: escudo_acrmessina, name: "ACR Messina", years: "2015-2016", trophies: [] },
@@ -385,7 +392,7 @@ export const brands = [
     position: 'Delantero',
     club: 'Platense',
     number: '21',
-    height: '1,80 m',
+    altura: '1,80 m',
     clubLogoActual: escudo_platense,
     trayectoria: [
       { logo: escudo_racing1, name: "Racing Club", years: "2016-2018", trophies: [] },
@@ -406,7 +413,7 @@ export const brands = [
     position: 'Mediocampista Izquierdo',
     club: 'Argentinos Jr',
     number: '21',
-    height: '1,74 m',
+    altura: '1,74 m',
     clubLogoActual: escudo_argentinos,
     trayectoria: [
       { logo: escudo_racing1, name: "Racing Club", years: "2013-2016", trophies: [] },
@@ -427,7 +434,7 @@ export const brands = [
     position: 'Delantero',
     club: 'Platense',
     number: '21',
-    height: '1,78 m',
+    altura: '1,78 m',
     clubLogoActual: escudo_platense,
     trayectoria: [
       { logo: escudo_cerro, name: "Cerro Porteño", years: "2013-2015", trophies: [] },
@@ -447,7 +454,7 @@ export const brands = [
     position: 'Mediocampista Central',
     club: 'U Católica',
     number: '18',
-    height: '1,74 m',
+    altura: '1,74 m',
     clubLogoActual: escudo_ucatolica,
     trayectoria: [
       { logo: escudo_boca, name: "Boca Juniors", years: "2013-2015", trophies: [] },
