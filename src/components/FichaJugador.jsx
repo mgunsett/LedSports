@@ -25,6 +25,7 @@ const MotionFlex = motion(Flex);
 function FichaJugador({ isOpen, onClose, jugador }) {
   const jugadorData = jugador || {};
 // Circulos de progreso
+  const aereo = jugadorData.aereo;
   const recuperos = jugadorData.recuperos;
   const pases = jugadorData.pases;
   const oportunidadDeTiro = jugadorData.tiros;
@@ -331,6 +332,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             size={90}
                           />
                           ) : null}
+                          {aereo ? (
+                          <CircularProgress
+                            value={aereo}
+                            label="Juego aéreo"
+                            size={90}
+                          />
+                          ) : null}
                           {pases ? (
                           <CircularProgress
                             value={pases}
@@ -505,6 +513,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           <CircularProgress
                             value={recuperos}
                             label="Quites por partido"
+                            size={90}
+                          />
+                          ) : null}
+                          {aereo ? (
+                          <CircularProgress
+                            value={aereo}
+                            label="Juego aéreo"
                             size={90}
                           />
                           ) : null}

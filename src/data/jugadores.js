@@ -14,6 +14,8 @@ import jugador_luka from "../assets/jugador_luka.webp";
 import jugador_oroz from "../assets/jugador_oroz.webp";
 import jugador_runi from "../assets/jugador_runi.webp";
 import jugador_zuqi from "../assets/jugador_zuqi.webp";
+import jugador_ajito from "../assets/jugador_ajito.webp";
+import jugador_ledesma   from "../assets/jugador_ledesma.webp";
 import escudo_racing1 from "../assets/escudo_racing1.png";
 import escudo_velez from "../assets/escudo_velez.png";
 import escudo_argentinos from "../assets/escudo_argentinos.png";
@@ -105,6 +107,20 @@ import escudo_resistencia from "../assets/escudo_resistencia.png";
 import escudo_ucatolica from "../assets/escudo_ucatolica.png";
 import escudo_boca from "../assets/escudo_boca.png";
 import escudo_yeni from "../assets/escudo_yeni.png";
+import escudo_centralcordoba from "../assets/escudo_centralcordoba.png";
+import escudo_talleres from "../assets/escudo_talleres.png";
+import escudo_agropecuario from "../assets/escudo_agropecuario.png";
+import escudo_floriana from "../assets/escudo_floriana.png";
+import escudo_sanjorge from "../assets/escudo_sanjorge.png";
+import escudo_atlconcepcion from "../assets/escudo_atlconcepcion.png";
+import escudo_argentinos25 from "../assets/escudo_argentinos25.png";
+import escudo_sportivoguzman from "../assets/escudo_sportivoguzman.png";
+import escudo_santiagodeportivo from "../assets/escudo_santiagodeportivo.png";
+import escudo_mitresantiago from "../assets/escudo_mitresantiago.png";
+import escudo_sportivopatria from "../assets/escudo_sportivopatria.png";
+import escudo_independienteriv from "../assets/escudo_independienteriv.png";
+import escudo_alvarado from "../assets/escudo_alvarado.png";
+import escudo_santiagoarica from "../assets/escudo_santiagoarica.png";
 
 export const brands = [
   {
@@ -462,5 +478,68 @@ export const brands = [
       { logo: escudo_colon, name: "Colón de Santa Fe", years: "2017-2020", trophies: [] },
       { logo: escudo_yeni, name: "Yeni Malatyaspor", years: "2020-2021", trophies: [] },
     ],
+  },
+  {
+    img: jugador_ajito,
+    name: 'Fernando Juárez',
+    Firstname: 'Fernando',
+    Lastname: 'Juárez',
+    birthDate: '23/08/1998 (27)',
+    country: 'Santiago del Estero, Argentina',
+    position: 'Mediocampista Central',
+    club: 'Central Cordoba',
+    number: '27',
+    altura: '1,77 m',
+    pases: 80.6,
+    recuperos: 50.6,
+    fitness: 89.4,
+    goals: 0,
+    partidos: 178,
+    pieHabil: 'Derecho',
+    clubLogoActual: [
+      { logo: escudo_centralcordoba, name: "Central Córdoba", years: "2025- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_talleres, name: "Talleres", years: "2016-2024", trophies: [{name: "Primera B Nacional '16"}] },
+      { logo: escudo_agropecuario, name: "Agropecuario", years: "2019-2021 (Préstamo)", trophies: [] },
+      { logo: escudo_floriana, name: "Floriana FC", years: "2022 (Préstamo)", trophies: [] },
+      { logo: escudo_audax, name: "Audax Italiano", years: "2022-2023 (Préstamo)", trophies: [] },
+      { logo: escudo_platense, name: "Platense", years: "2024-2025", trophies: [{ name: 'Liga Profesional 2025'}] },
+    ]
+  },
+  {
+    img: jugador_ledesma,
+    name: 'Franco Ledesma',
+    Firstname: 'Franco',
+    Lastname: 'Ledesma',
+    birthDate: '03/10/1992 (33)',
+    country: 'Tucumán,Argentina',
+    position: 'Defensor Central',
+    club: 'Iquique FC',
+    number: '27',
+    altura: '1,77 m',
+    aereo: 40.5,
+    recuperos: 50.2,
+    fitness: 89.7,
+    goals: 2,
+    partidos: 160,
+    pieHabil: 'Izquierdo',
+    clubLogoActual: [
+      { logo: escudo_iquique, name: "Iquique", years: "2023 / 2026- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_sanjorge, name: "San Jorge", years: "2011", trophies: [] },
+      { logo: escudo_atlconcepcion, name: "Atlético Concepción", years: "2012-2013", trophies: [] },
+      { logo: escudo_argentinos25, name: "Argentinos de 25 de Mayo", years: "2013", trophies: [] },
+      { logo: escudo_santiagodeportivo, name: "Instituto Deportivo Santiago", years: "2013-2014", trophies: [] },
+      { logo: escudo_sportivoguzman, name: "Sportivo Guzmán", years: "2014 (Préstamo)", trophies: [] },
+      { logo: escudo_centralcordoba, name: "Central Córdoba", years: "2014 (Préstamo)", trophies: [] },
+      { logo: escudo_mitresantiago, name: "Mitre de Santiago del Estero", years: "2015 / 2016-2019", trophies: [] },
+      { logo: escudo_sportivopatria, name: "Sportivo Patria", years: "2016", trophies: [] },
+      { logo: escudo_independienteriv, name: "Independiente Rivadavia", years: "2019-2020", trophies: [] },
+      { logo: escudo_alvarado, name: "Alvarado", years: "2020-2022", trophies: [] },
+      { logo: escudo_agropecuario, name: "Agropecuario", years: "2024", trophies: [] },
+      { logo: escudo_santiagoarica, name: "San Marcos de Arica", years: "2025", trophies: [] },
+    ]
   },
 ];
