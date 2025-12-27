@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Box,
   Flex,
@@ -6,46 +6,142 @@ import {
   Text,
   Image,
   VStack,
+  IconButton,
+  HStack,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import nosotros_photo from '../assets/nosotros_photo.svg';
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import nacion_led from '../assets/NACIONLED.mp4';
+import './About.css';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 
 const About = () => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const handleVideoInView = () => {
+    if (videoRef.current) {
+      // Reproducir siempre muteado al inicio para evitar bloqueos
+      videoRef.current.muted = true;
+      setIsMuted(true);
+      
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch((error) => {
+        console.warn("Autoplay falló:", error);
+        setIsPlaying(false);
+      });
+    }
+  };
+
+  const handleVideoOutOfView = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      // Resetear estado al salir: muteado y pausado
+      videoRef.current.muted = true;
+      setIsMuted(true);
+      setIsPlaying(false);
+    }
+  };
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <Flex
       id="about"
       direction={{ base: 'column-reverse', md: 'row' }}
       align="center"
       justify={{ base: 'center', md: 'space-evenly' }}
-      py={{ base: 0, md: 10 }}
-      px={{ base: 6, md: 20 }}
-      gap={{ base: 10, md: 2 }}
+      py={{ base: 8, md: 10 }}
+      px={{ base: 0, md: 20 }}
+      gap={{ base: 10, md: 0 }}
       mb={{ base: 12, md: 0 }}
       bg="black"
       overflow="hidden"
     >
-      {/* Imagen de apoyo */}
       <MotionBox
-        w="100%"
-        maxW={{ base: '350px', md: '400px' }}
+        id="video_led"
+        w={{base:"429px", sm:"440px", md:"100%"}}
+        maxW={{ base: '550px', md: '800px' }}
+        maxH={{ base: '500px', md: '750px' }}
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.5 }}
+        onViewportEnter={handleVideoInView}
+        onViewportLeave={handleVideoOutOfView}
+        position="relative"
+        role="group"
+        // filter="drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))"
+        borderColor="orange.400"
+        borderWidth="1px"
+        borderRadius="8px"
+        overflow="hidden"
+        right="-0.6px"
       >
-        <Image
-          src={nosotros_photo}
-          alt="Equipo de marketing deportivo"
-          borderRadius="2xl"
-          objectFit="contain"
-          boxShadow="xl"
-          w="100%"
-          maxW={{ base: '350px', md: '400px' }}
+        <video 
+          class="video-led"
+          ref={videoRef}
+          src={nacion_led} 
+          loop 
+          muted={isMuted}
+          playsInline
         />
+        
+        {/* Controles de video */}
+        <HStack
+          position="absolute"
+          bottom="15px"
+          right="15px"
+          spacing={2}
+          opacity={0}
+          _groupHover={{ opacity: 1 }}
+          transition="opacity 0.3s ease-in-out"
+          bg="blackAlpha.600"
+          p={2}
+          borderRadius="full"
+        >
+          <IconButton
+            aria-label={isPlaying ? "Pausar" : "Reproducir"}
+            icon={isPlaying ? <FaPause /> : <FaPlay />}
+            onClick={togglePlay}
+            size="sm"
+            variant="ghost"
+            color="white"
+            _hover={{ bg: 'whiteAlpha.300' }}
+            isRound
+          />
+          <IconButton
+            aria-label={isMuted ? "Activar sonido" : "Silenciar"}
+            icon={isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+            onClick={toggleMute}
+            size="sm"
+            variant="ghost"
+            color="white"
+            _hover={{ bg: 'whiteAlpha.300' }}
+            isRound
+          />
+        </HStack>
       </MotionBox>
 
       {/* Texto de descripción */}
