@@ -185,7 +185,9 @@ export const brands = [
     club: 'Cruz Azul',
     number: '18',
     altura: '1,69 m',
-    clubLogoActual: escudo_cruzazul,
+    clubLogoActual: [
+      { logo: escudo_cruzazul, name: "Cruz Azul", years: "2023- Actualidad", trophies: [] },
+    ],
     trayectoria: [
       { logo: escudo_mallorca, name: "RCD Mallorca", years: "2019-2021", trophies: [] },
       { logo: escudo_lazio, name: "SS Lazio", years: "2021-2023", trophies: [] },
@@ -205,7 +207,9 @@ export const brands = [
     club: 'Platense',
     number: '7',
     altura: '1,77 m',
-    clubLogoActual: escudo_platense,
+    clubLogoActual: [
+      { logo: escudo_platense, name: "Platense", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_instituto, name: "Instituto", years: "2014-2017", trophies: [] },
       { logo: escudo_velez, name: "Vélez Sarsfield", years: "2018-2020", trophies: [] },
@@ -230,7 +234,9 @@ export const brands = [
     club: 'Cusco FC',
     number: '9',
     altura: '1,78 m',
-    clubLogoActual: escudo_cusco,
+    clubLogoActual: [
+      { logo: escudo_cusco, name: "Cusco FC", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_colon, name: "Colón de Santa Fe", years: "2012-2015", trophies: [] },
       { logo: escudo_gyejujuy, name: "Gimnasia y Esgrima de Jujuy", years: "2015-2016", trophies: [] },
@@ -256,7 +262,9 @@ export const brands = [
     club: 'Miami FC',
     number: '1',
     altura: '1,89 m',
-    clubLogoActual: escudo_miamifc,
+    clubLogoActual: [
+      { logo: escudo_miamifc, name: "Miami FC", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [  
       {logo: escudo_sportivosl, name: "Sportivo San Lorenzo", years: "2015-2016", trophies: [] },
       {logo: escudo_luqueno, name: "Club Atlético Luqueño", years: "2016-2017", trophies: [] },
@@ -325,7 +333,9 @@ export const brands = [
     club: 'Estudiantes LP',
     number: '11',
     altura: '1,72 m',
-    clubLogoActual: escudo_estudiantes,
+    clubLogoActual: [
+      { logo: escudo_estudiantes, name: "Estudiantes LP", years: "2020- Actualidad", trophies: [] },
+    ],
     trayectoria: [
       { logo: escudo_colon, name: "Colón de Santa Fe", years: "2020-Presente", trophies: [] },
       { logo: escudo_intermiami, name: "Inter Miami CF", years: "2023 (Préstamo)", trophies: [] },
@@ -342,7 +352,9 @@ export const brands = [
     club: 'Ñublense',
     number: '9',
     altura: '1,85 m',
-    clubLogoActual: escudo_nublense,
+    clubLogoActual: [
+      { logo: escudo_nublense, name: "Ñublense", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_atlanta, name: "Atlanta", years: "2010-2012", trophies: [] },
       { logo: escudo_barracas, name: "Barracas Central", years: "2012-2014", trophies: [] },
@@ -367,7 +379,9 @@ export const brands = [
     club: 'Cerro Porteño',
     number: '27',
     altura: '1,87 m',
-    clubLogoActual: escudo_cerro,
+    clubLogoActual: [
+      { logo: escudo_cerro, name: "Cerro Porteño", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_quilmes, name: "Quilmes", years: "2016-2018", trophies: [] },
       { logo: escudo_almagro, name: "Almagro", years: "2018-2019", trophies: [] },
@@ -388,8 +402,10 @@ export const brands = [
     number: '21',
     altura: '1,72 m',
     pases: 84.8 ,
-    clubLogoActual: escudo_estudiantes,
-    trajectoria: [
+    clubLogoActual: [
+      { logo: escudo_estudiantes, name: "Estudiantes LP", years: "2020- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
       { logo: escudo_acrmessina, name: "ACR Messina", years: "2015-2016", trophies: [] },
       { logo: escudo_lamadrid, name: "Deportivo La Madrid", years: "2016-2017", trophies: [] }, 
       { logo: escudo_fenix, name: "Fénix", years: "2017-2018", trophies: [] },
@@ -409,7 +425,9 @@ export const brands = [
     club: 'Platense',
     number: '21',
     altura: '1,80 m',
-    clubLogoActual: escudo_platense,
+    clubLogoActual: [
+      { logo: escudo_platense, name: "Platense", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_racing1, name: "Racing Club", years: "2016-2018", trophies: [] },
       { logo: escudo_wohlen, name: "FC Wohlen", years: "2018-2019", trophies: [] },
@@ -430,7 +448,9 @@ export const brands = [
     club: 'Argentinos Jr',
     number: '21',
     altura: '1,74 m',
-    clubLogoActual: escudo_argentinos,
+    clubLogoActual: [
+      { logo: escudo_argentinos, name: "Argentinos Jr", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_racing1, name: "Racing Club", years: "2013-2016", trophies: [] },
       { logo: escudo_chacarita, name: "Chacarita Juniors", years: "2016-2017", trophies: [] },
@@ -451,7 +471,9 @@ export const brands = [
     club: 'Platense',
     number: '21',
     altura: '1,78 m',
-    clubLogoActual: escudo_platense,
+    clubLogoActual: [
+      { logo: escudo_platense, name: "Platense", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_cerro, name: "Cerro Porteño", years: "2013-2015", trophies: [] },
       { logo: escudo_capiata, name: "Club Deportivo Capiatá", years: "2015-2017", trophies: [] },
@@ -471,7 +493,9 @@ export const brands = [
     club: 'U Católica',
     number: '18',
     altura: '1,74 m',
-    clubLogoActual: escudo_ucatolica,
+    clubLogoActual: [
+      { logo: escudo_ucatolica, name: "U Católica", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
       { logo: escudo_boca, name: "Boca Juniors", years: "2013-2015", trophies: [] },
       { logo: escudo_estudiantes, name: "Estudiantes LP", years: "2015-2017", trophies: [] },

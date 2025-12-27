@@ -4,10 +4,10 @@ import {
   Flex,
   Heading,
   Text,
-  Image,
   VStack,
   IconButton,
   HStack,
+  useBreakpointValue
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
@@ -22,6 +22,8 @@ const About = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const handleVideoInView = () => {
     if (videoRef.current) {
@@ -84,8 +86,8 @@ const About = () => {
         w={{base:"429px", sm:"440px", md:"100%"}}
         maxW={{ base: '550px', md: '800px' }}
         maxH={{ base: '500px', md: '750px' }}
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+        whileInView={isMobile ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false, amount: 0.5 }}
         onViewportEnter={handleVideoInView}
