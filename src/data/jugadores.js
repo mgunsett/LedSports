@@ -16,6 +16,22 @@ import jugador_runi from "../assets/jugador_runi.webp";
 import jugador_zuqi from "../assets/jugador_zuqi.webp";
 import jugador_ajito from "../assets/jugador_ajito.webp";
 import jugador_ledesma   from "../assets/jugador_ledesma.webp";
+import jugador_amade from "../assets/jugador_amade.webp";
+import jugador_antonio from "../assets/jugador_antonio.webp";
+import jugador_contin from "../assets/jugador_contin.webp";
+import jugador_ferreyra from "../assets/jugador_ferreyra.webp";
+import jugador_giacopuzzi from "../assets/jugador_giacopuzzi.webp";
+import jugador_guillebenitez from "../assets/jugador_guillebenitez.webp";
+import jugador_manulopez from "../assets/jugador_manulopez.webp";
+import jugador_orsini from "../assets/jugador_orsini.webp";
+import jugador_mateos from "../assets/jugador_mateos.webp";
+import jugador_retamar from "../assets/jugador_retamar.webp";
+import jugador_vera from "../assets/jugador_vera.webp";
+import jugador_villalba from "../assets/jugador_villalba.webp";
+import jugador_yomar_rocha from "../assets/jugador_yomar_rocha.webp";
+import jugador_zabala from "../assets/jugador_zabala.webp";
+import jugador_zanini from "../assets/jugador_zanini.webp";
+import jugador_monteagudo from "../assets/jugador_monteagudo.png";
 import escudo_racing1 from "../assets/escudo_racing1.png";
 import escudo_velez from "../assets/escudo_velez.png";
 import escudo_argentinos from "../assets/escudo_argentinos.png";
@@ -121,6 +137,56 @@ import escudo_sportivopatria from "../assets/escudo_sportivopatria.png";
 import escudo_independienteriv from "../assets/escudo_independienteriv.png";
 import escudo_alvarado from "../assets/escudo_alvarado.png";
 import escudo_santiagoarica from "../assets/escudo_santiagoarica.png";
+import escudo_racingmont from "../assets/escudo_racingmont.png";
+import escudo_estudiantescaseros from "../assets/escudo_estudiantescaseros.png";
+import escudo_gimnasiamendoza from "../assets/escudo_gimnasiamendoza.png";
+import escudo_depmaipu from "../assets/escudo_depmaipu.png";
+import escudo_sanmartinsj from "../assets/escudo_sanmartinsj.png";  
+import escudo_gimnasiaytiro from "../assets/escudo_gimnasiaytiro.png";
+import escudo_gimnasiajujuy from "../assets/escudo_gimnasiajujuy.png";
+import escudo_sportboysperu from "../assets/escudo_sportboysperu.png";
+import escudo_tigre from "../assets/escudo_tigre.png";
+import escudo_deplaserena from "../assets/escudo_deplaserena.png";
+import escudo_belgrano from "../assets/escudo_belgrano.png";
+import escudo_cuneo from "../assets/escudo_cuneo.png";
+import escudo_estudiantesrc from "../assets/escudo_estudiantesrc.png";
+import escudo_unionlacalera from "../assets/escudo_unionlacalera.png";
+import escudo_depmadryn from "../assets/escudo_depmadryn.png";
+import escudo_villadalmine from "../assets/escudo_villadalmine.png";
+import escudo_guarani from "../assets/escudo_guarani.png";
+import escudo_copiapo from "../assets/escudo_copiapo.png";
+import escudo_uaiurquiza from "../assets/escudo_uaiurquiza.png";
+import escudo_flandria from "../assets/escudo_flandria.png";
+import escudo_antofagasta from "../assets/escudo_antofagasta.png";
+import escudo_rangers from "../assets/escudo_rangers.png";
+import escudo_tyfmortero from "../assets/escudo_tyfmortero.png";
+import escudo_atleticorafaela from "../assets/escudo_atleticorafaela.png";
+import escudo_vortis from "../assets/escudo_vortis.png";
+import escudo_anyang from "../assets/escudo_anyang.png";
+import escudo_horn from "../assets/escudo_horn.png";
+import escudo_fagiano from "../assets/escudo_fagiano.png";
+import escudo_santelmo from "../assets/escudo_santelmo.png";
+import escudo_juvunida from  "../assets/escudo_juvunida.png";
+import escudo_lasparejas from  "../assets/escudo_lasparejas.png";
+import escudo_atlparana from  "../assets/escudo_atlparana.png";
+import escudo_guemes from  "../assets/escudo_guemes.png";
+import escudo_river from  "../assets/escudo_river.png";
+import escudo_depconcepcion from  "../assets/escudo_depconcepcion.png";
+import escudo_guillermobrown from  "../assets/escudo_guillermobrown.png";
+import escudo_sanluis from  "../assets/escudo_sanluis.png";
+import escudo_bostonriver from  "../assets/escudo_bostonriver.png";
+import escudo_argentina from  "../assets/escudo_argentina.png";
+import escudo_akron from  "../assets/escudo_akron.png";
+import escudo_bolivia from  "../assets/escudo_bolivia.png";
+import escudo_independientedv from  "../assets/escudo_independientedv.png";
+import escudo_acassuso from  "../assets/escudo_acassuso.png";
+import escudo_defensores from  "../assets/escudo_defensores.png";
+import escudo_chicago from  "../assets/escudo_chicago.png";
+import escudo_mont from  "../assets/escudo_mont.png";
+import escudo_catania from  "../assets/escudo_catania.png";
+import escudo_viterbese from  "../assets/escudo_viterbese.png";
+import escudo_francavilla from  "../assets/escudo_francavilla.png";
+import escudo_nacional from  "../assets/escudo_nacional.png";
 
 export const brands = [
   {
@@ -163,15 +229,28 @@ export const brands = [
     club: 'Liga de Quito',
     number: '4',
     altura: '1,90 m',
+    goals: 6,
+    partidos: 274,
+    pieHabil: 'Derecho',
+    recuperos: 47.5,
+    aereo: 65.3,
+    fitness: 88.9,
     clubLogoActual: [
-      {  logo: escudo_ligaquito, name: "Liga de Quito", years: "2023- Actualidad", trophies: [] }
+      {  logo: escudo_ligaquito, name: "Liga de Quito", years: "2023- Actualidad", trophies: [
+        { name: "Serie A de Ecuador 2023"},
+        { name: "Copa Sudamericana 2023"},
+        { name: "Serie A de Ecuador 2024"},
+        { name: "Supercopa de Ecuador 2025"},
+      ] }
     ],
     trayectoria: [
-      { logo: escudo_baltimore, name: "Baltimore SC", years: "2013-2014 / 2015-2016", datoInfo:"Debut Profesional", trophies: [] },
-      { logo: escudo_miamiunited, name: "Miami United FC", years: "2015-2016", trophies: [] },
-      { logo: escudo_donbosco, name: "Don Bosco FC", years: "2016-2018", trophies: [] },
-      { logo: escudo_santiagomorning, name: "Santiago Morning", years: "2018-2020", trophies: [] },
-      { logo: escudo_mushucruna, name: "Mushuc Runa", years: "2020-2022", trophies: [] },
+      { logo: escudo_baltimore, name: "Baltimore SC", years: "2011-2013", datoInfo:"Debút Profesional", trophies: [] },
+      { logo: escudo_miamiunited, name: "Miami United FC", years: "2014", trophies: [] },
+      { logo: escudo_donbosco, name: "Don Bosco FC", years: "2015-2016", trophies: [{name: "Liga Haití 2016"}] },
+      { logo: escudo_santiagomorning, name: "Santiago Morning", years: "2017-2018", trophies: [] },
+      {logo: escudo_magallanes, name: "Magallanes", years: "2019-2020", trophies: [] },
+      { logo: escudo_mushucruna, name: "Mushuc Runa", years: "2021", trophies: [] },
+      { logo: escudo_aucas, name: "S.D Aucas", years: "2022", trophies: [{name: "Serie A de Ecuador 2022"}] },
     ],
   },
    {
@@ -207,18 +286,19 @@ export const brands = [
     club: 'Platense',
     number: '7',
     altura: '1,77 m',
+    goals: 24,
+    partidos: 236,
+    pieHabil: 'Izquierdo',
+    tiros: 83.4,
+    pases: 78.9,
+    fitness: 85.2,
     clubLogoActual: [
-      { logo: escudo_platense, name: "Platense", years: "2023- Actualidad", trophies: [] }
+      { logo: escudo_platense, name: "Platense", years: "2023- Actualidad", trophies: [{name: "Liga Apertura 2025"}] }
     ],
     trayectoria: [
-      { logo: escudo_instituto, name: "Instituto", years: "2014-2017", trophies: [] },
+      { logo: escudo_instituto, name: "Instituto", years: "2014-2017",datoInfo: "Debút Profesional", trophies: [] },
       { logo: escudo_velez, name: "Vélez Sarsfield", years: "2018-2020", trophies: [] },
-      { logo: escudo_defensa, name: "Defensa y Justicia", years: "2020", trophies: 
-        [ { name: "Copa Sudamericana"},
-          { name: "Copa Sudamericana"},
-          { name: "Copa Sudamericana"}
-        ] 
-      },
+      { logo: escudo_defensa, name: "Defensa y Justicia", years: "2020", trophies: [] },
       { logo: escudo_iquique, name: "Deportes Iquique", years: "2021", trophies: [] },
       { logo: escudo_sarmiento, name: "Sarmiento", years: "2021-2023", trophies: [] },
     ],
@@ -310,16 +390,25 @@ export const brands = [
     country: 'Santa Cruz, Bolivia',
     position: 'Delantero',
     club: 'Kalamata FC',
-    number: '11',
+    number: '9',
     altura: '1,76 m',
-    clubLogoActual: escudo_kalamata,
+    goals: 81,
+    partidos: 280,
+    pieHabil: 'Izquierdo',
+    tiros: 89.3,
+    pases: 74.5,
+    fitness: 92.1,
+    clubLogoActual: [
+      { logo: escudo_kalamata, name: "Kalamata FC", years: "2023- Actualidad", trophies: [] }
+    ],
     trayectoria: [
-      { logo: escudo_orientepetro, name: "Oriente Petrolero", years: "2014-2016", trophies: [] },
+      { logo: escudo_orientepetro, name: "Oriente Petrolero", years: "2014-2016",datoInfo:"Debút Profesional", trophies: [] },
       { logo: escudo_petrolero, name: "Club Petrolero", years: "2016-2017", trophies: [] },
       { logo: escudo_sportboys, name : "Sport Boys", years: "2017-2018", trophies: [] },
       { logo: escudo_alwaysready, name: "Always Ready", years: "2018-2019", trophies: [] },
       { logo: escudo_ismailySC, name: "Ismaily SC", years: "2019-2020", trophies: [] },
-      { logo: escudo_bolivar, name: "Club Bolívar", years: "2020-2022", trophies: [] },
+      { logo: escudo_bolivar, name: "Club Bolívar", years: "2020-2022", trophies: [{name: "Copa de la Liga 2023"}] },
+      { logo: escudo_bolivia, name: "Selección de Bolivia", years: "2016-Actualidad", trophies: [] },
     ],
   },
   {
@@ -334,7 +423,7 @@ export const brands = [
     number: '11',
     altura: '1,72 m',
     clubLogoActual: [
-      { logo: escudo_estudiantes, name: "Estudiantes LP", years: "2020- Actualidad", trophies: [] },
+      { logo: escudo_estudiantes, name: "Estudiantes LP", years: "2020- Actualidad", trophies: [{name: "Liga Clausura 2025"}, {name: "Trofeo de Campeones 2025"}]}
     ],
     trayectoria: [
       { logo: escudo_colon, name: "Colón de Santa Fe", years: "2020-Presente", trophies: [] },
@@ -401,17 +490,27 @@ export const brands = [
     club: 'Estudiantes LP',
     number: '21',
     altura: '1,72 m',
-    pases: 84.8 ,
+    goals: 15,
+    partidos: 367,
+    pieHabil: 'Derecho',
+    pases: 84.8,
+    recuperos: 75.3,
+    fitness: 94.1,
     clubLogoActual: [
-      { logo: escudo_estudiantes, name: "Estudiantes LP", years: "2020- Actualidad", trophies: [] },
+      { logo: escudo_estudiantes, name: "Estudiantes LP", years: "2020- Actualidad", trophies: [{name: "Liga Clausura 2025"}, {name: "Trofeo de Campeones 2025"}]}
     ],
     trayectoria: [
-      { logo: escudo_acrmessina, name: "ACR Messina", years: "2015-2016", trophies: [] },
+      { logo: escudo_acrmessina, name: "ACR Messina", years: "2015-2016",datoInfo: "Debút Profesional vs Foggia", trophies: [] },
       { logo: escudo_lamadrid, name: "Deportivo La Madrid", years: "2016-2017", trophies: [] }, 
       { logo: escudo_fenix, name: "Fénix", years: "2017-2018", trophies: [] },
       { logo: escudo_almagro, name: "Almagro", years: "2018-2019", trophies: [] },
       { logo: escudo_arsenal, name: "Arsenal de Sarandí", years: "2019-2020", trophies: [] },
-      { logo: escudo_ligaquito, name: "Liga de Quito", years: "2020-2021", trophies: [] },
+      { logo: escudo_ligaquito, name: "Liga de Quito", years: "2020-2021", trophies: [
+        { name: "Supercopa Ecuador 2021" },
+        { name: "Serie A Ecuador 2023" },
+        { name: "Serie A Ecuador 2024" },
+        { name: "Copa Sudamericana 2023" },
+      ] },
     ],
   },
   {
@@ -566,4 +665,440 @@ export const brands = [
       { logo: escudo_santiagoarica, name: "San Marcos de Arica", years: "2025", trophies: [] },
     ]
   },
+  {
+    img: jugador_amade,
+    name: 'Lautaro Amadé',
+    Firstname: 'Lautaro',
+    Lastname: 'Amadé',
+    birthDate: '21/12/1999 (26)',
+    country: 'Buenos Aires, Argentina',
+    position: 'Arquero',
+    club: 'Racing de Montevideo',
+    number: '25',
+    altura: '1,93 m',
+    aereo: 85.5,
+    reflejos: 90.2,
+    penalesAtajados: 2,
+    partidos: 63,
+    pieHabil: 'Izquierdo',
+    clubLogoActual: [
+      { logo: escudo_racingmont, name: "Racing de Montevideo", years: "2024- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_sarmiento, name: "Sarmiento", years: "2020", trophies: [] },
+      { logo: escudo_defensa, name: "Defensa y Justicia", years: "2020-2022", trophies: [{name: "Sudamericana 2020"}, {name: "Recopa 2021"}] },
+      { logo: escudo_estudiantescaseros, name: "Estudiantes de Caseros", years: "2023-2024 (Préstamo)", trophies: [] },
+    ]
+  },
+  {
+    img: jugador_antonio,
+    name: 'Ignacio Antonio',
+    Firstname: 'Ignacio',
+    Lastname: 'Antonio',
+    birthDate: '04/01/1995 (30)',
+    country: 'Rosario, Argentina',
+    position: 'Mediocampista Central',
+    club: 'Colón de Santa Fe',
+    number: '5',
+    altura: '1,73 m',
+    pases: 78.4,
+    recuperos: 55.3,
+    fitness: 88.9,
+    goals: 5,
+    partidos: 210,
+    pieHabil: 'Derecho',
+    clubLogoActual: [
+      { logo: escudo_colon, name: "Colón de Santa Fe", years: "2025- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_instituto, name: "Instituto", years: "2014-2021", datoInfo: "Debút Profesional vs Arsenal" , trophies: [] },
+      { logo: escudo_depmaipu, name: "Deportivo Maipú", years: "2021", trophies: [] },
+      { logo: escudo_sanmartinsj, name: "San Martín de San Juan", years: "2022", trophies: [] },
+      { logo: escudo_gimnasiamendoza, name: "Gimnasia de Mendoza", years: "2023-2025", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_contin,
+    name: 'Nicolas Contin',
+    Firstname: 'Nicolas',
+    Lastname: 'Contin',
+    birthDate: '07/01/1995 (30)',
+    country: 'Caá Catí, Argentina',
+    position: 'delantero',
+    club: 'Gimnasia y Tiro de Salto',
+    number: '9',
+    altura: '1,83 m',
+    goals: 27,
+    partidos: 182,
+    pieHabil: 'Derecho',
+    pases: 84.9,
+    tiros: 88.4,
+    fitness: 87.6,
+    clubLogoActual: [
+      { logo: escudo_gimnasiaytiro, name: "Gimnasia y Tiro de Salto", years: "2024- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_gimnasia, name: "Gimnasia de la Plata", datoInfo: "Debút Profesional vs Quilmes", years: "2016-2023", trophies: [] },
+      { logo: escudo_gimnasiajujuy, name: "Gimnasia de Jujuy", years: "2018-2019 (Préstamo)", trophies: [] },
+      { logo: escudo_sportboysperu, name: "Sport Boys", years: "2023", trophies: [] },
+      { logo: escudo_tigre, name: "Tigre", years: "2024", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_ferreyra,
+    name: 'Nicolas Ferreyra',
+    Lastname: 'Ferreyra',
+    birthDate: '21/03/1993',
+    Firstname: 'Matías',
+    country: 'Córdoba, Argentina',
+    position: 'Delantero',
+    club: 'Deportes La Serena',
+    number: '9',
+    altura: '1,89 m',
+    goals: 27,
+    partidos: 140,
+    pieHabil: 'Derecho',
+    pases: 78.4,
+    tiros: 85.2,
+    fitness: 88.1,
+    clubLogoActual: [
+      { logo: escudo_deplaserena, name: "Deportes La Serena", years: "2025- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_belgrano, name: "Belgrano de Córdoba", years: "2012-2018",datoInfo: "Debút Profesional vs Argentinos Jrs" , trophies: [] },
+      { logo: escudo_santiagoarica, name: "San Marcos de Arica", years: "2015-2016 (Préstamo)", trophies: [] },
+      { logo: escudo_audax, name: "Audax Italiano", years: "2017 (Préstamo)", trophies: [] },
+      { logo: escudo_cuneo, name: "Cuneo", years: "2018", trophies: [] },
+      { logo: escudo_bolivar, name: "Bolívar ", years: "2019 / 2023", trophies: [] },
+      { logo: escudo_estudiantesrc, name: "Estudiantes de Río Cuarto", years: "2020-2022", trophies: [] },
+      { logo: escudo_central, name: "Rosario Central", years: "2022 (Préstamo)", trophies: [] },
+      { logo: escudo_barracas, name: "Barracas Central", years: "2023 (Préstamo)", trophies: [] },
+      { logo: escudo_unionlacalera, name: "Unión La Calera", years: "2024", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_giacopuzzi,
+    name: 'Facundo Giacopuzzi',
+    Firstname: 'Facundo',
+    Lastname: 'Giacopuzzi',
+    birthDate: '26/04/2001 (24)',
+    country: 'Santa Fe, Argentina',
+    position: 'Defensor Central',
+    club: 'Deportivo Madryn',
+    number: '2',
+    altura: '1,82 m',
+    aereo: 78.4,
+    recuperos: 85.6,
+    fitness: 90.1,
+    goals: 5,
+    partidos: 111,
+    pieHabil: 'Izquierdo',
+    clubLogoActual: [
+      { logo: escudo_depmadryn, name: "Deportivo Madryn", years: "2024- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_tigre, name: "Tigre", years: "2020-2021 / 2024", datoInfo: "Debút Profesional" , trophies: [{name: 'Primera Nacional 20/21'}] },
+      { logo: escudo_almagro, name: "Almagro", years: "2022 (Préstamo)", trophies: [] },
+      { logo: escudo_independienteriv, name: "Independiente Rivadavia", years: "2023 (Préstamo)", trophies: [{name: 'Primera Nacional 22/23'}] },
+      { logo: escudo_villadalmine, name: "Villa Dálmine", years: "2023 (Préstamo)", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_guillebenitez,
+    name: 'Guillermo Benítez',
+    Firstname: 'Guillermo',
+    Lastname: 'Benítez',
+    birthDate: '08/12/1993 (32)',
+    country: 'Buenos Aires, Argentina',
+    position: 'Lateral Izquierdo',
+    club: 'Cerro Porteño',
+    number: '4',
+    altura: '1,70 m',
+    pases: 82.3,
+    recuperos: 80.5,
+    fitness: 88.4,
+    goals: 6,
+    partidos: 202,
+    pieHabil: 'Izquierdo',
+    clubLogoActual: [
+      { logo: escudo_cerro, name: "Cerro Porteño", years: "2025- Actualidad", trophies: [{name: "Torneo Clausura 2025"}, {name: "Supercopa Paraguay 2025"}] },
+    ],
+    trayectoria: [
+      { logo: escudo_argentinos, name: "Argentinos Juniors", years: "2013-2020", datoInfo: "Debút Profesional vs Sp Belgrano" , trophies: [{name: "Primera Nacional 16/17"}] },
+      { logo: escudo_estudiantescaseros, name: "Estudiantes de Caseros", years: "2014-2015 (Préstamo)", trophies: [] },
+      { logo: escudo_guarani, name: "Guaraní", years: "2018-2024", trophies: [{name: "Copa Paraguay 2018"}] },
+      { logo: escudo_huracan, name: "Huracán", years: "2022-2024 (Préstamo)", trophies: []}
+    ],
+  },
+  {
+    img: jugador_manulopez,
+    name: 'Manuel López',
+    Firstname: 'Manuel',
+    Lastname: 'López',
+    birthDate: '30/11/1995 (30)',
+    country: 'Buenos Aires, Argentina',
+    position: 'Delantero',
+    club: 'Deportes Copiapó',
+    number: '9',
+    altura: '1,92 m',
+    goals: 67,
+    partidos: 234,
+    pieHabil: 'Derecho',
+    clubLogoActual: [
+      { logo: escudo_copiapo, name: "Deportes Copiapó", years: "2021/2023/Actualidad", datoInfo: "Máximo Goleador'21(21 goles)" , trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_colegiales, name: "Colegiales", years: "2012-2018", datoInfo: "Debút Profesional" , trophies: [] },
+      { logo: escudo_uaiurquiza, name: "UAI Urquiza", years: "2018-2019", trophies: [] },
+      { logo: escudo_flandria, name: "Flandria", years: "2019-2020", trophies: [] },
+      { logo: escudo_antofagasta, name: "Antofagasta", years: "2020-2021", trophies: [] },
+      { logo: escudo_rangers, name: "Rangers", years: "2021-2023", trophies: [] },
+      { logo: escudo_ferro, name: "Ferro Carril Oeste", years: "2024", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_orsini,
+    name: 'Nicolas Orsini',
+    Firstname: 'Nicolas',
+    Lastname: 'Orsini',
+    birthDate: '12/09/1994 (31)',
+    country: 'Córdoba, Argentina',
+    position: 'Delantero',
+    club: 'Platense',
+    number: '36',
+    altura: '1,87 m',
+    goals: 50,
+    partidos: 310,
+    pieHabil: 'Derecho',
+    pases: 82.1,
+    tiros: 88.7,
+    fitness: 89.3,
+    
+    clubLogoActual: [
+      { logo: escudo_platense, name: "Platense", years: "2025-Actualidad", trophies: [{name: "Torneo Apertura 2025"}] }
+    ],
+    trayectoria: [
+      { logo: escudo_tyfmortero, name: "Tiro y Federal de Morteros", years: "2012-2013", trophies: [] },
+      { logo: escudo_atleticorafaela, name: "Atlético de Rafaela", years: "2015-2017", trophies: [] },
+      { logo: escudo_vortis, name: "Tokushima Vortis", years: "2017-2019", trophies: [] },
+      { logo: escudo_anyang, name: "FC Anyang", years: "2016 (Préstamo)", trophies: [] },
+      { logo: escudo_horn, name: "SF Horn", years: "2016-2017 (Préstamo)", trophies: [] },
+      { logo: escudo_fagiano, name: "Fagiano Okayama", years: "2017 (Préstamo)", trophies: [] },
+      { logo: escudo_luqueno, name: "Club Sportivo Luqueño", years: "2018 (Préstamo)", trophies: [] },
+      { logo: escudo_sarmiento, name: "Sarmiento", years: "2018-2019", trophies: [] },
+      { logo: escudo_lanus, name: "Lanús", years: "2019-2021", trophies: [] },
+      { logo: escudo_boca, name: "Boca Juniors", years: "2021-2023", 
+        trophies: [
+          { name: "Copa Argentina 2021" },
+          { name: "Copa de la Liga 2022" },
+          { name: "Liga Profesional 2022" },
+          { name: "Supercopa Argentina 2022"}
+        ] },
+      { logo: escudo_union, name: "Unión de Santa Fe", years: "2023-2024 (Préstamo)", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_mateos,
+    name: 'Federico Mateos',
+    Firstname: 'Federico',
+    Lastname: 'Mateos',
+    birthDate: '28/03/1993 (32)',
+    country: 'Boulogne, Argentina',
+    position: 'Mediocampista Central',
+    club: 'ñublense',
+    number: '20',
+    altura: '1,77 m',
+    pases: 85.2,
+    recuperos: 78.4,
+    fitness: 90.3,
+    goals: 35,
+    partidos: 256,
+    pieHabil: 'Derecho',
+    clubLogoActual: [
+      { logo: escudo_nublense, name: "Ñublense", years: "2018-2022/2025- Actualidad", trophies: [{name: "Primera B 2020"}] },
+    ],
+    trayectoria: [
+      { logo: escudo_colegiales, name: "Colegiales", years: "2013-2014", datoInfo: "Debút Profesional" , trophies: [] },
+      { logo: escudo_santelmo, name: "San Telmo", years: "2015-2018", trophies: [] },
+      { logo: escudo_udechile, name: "Universidad de Chile", years: "2023-2024", trophies: [{name: "Copa Chile 2024"}] },
+    ],
+  },
+  {
+    img: jugador_retamar,
+    name: 'Nicolas Retamar',
+    Firstname: 'Nicolas',
+    Lastname: 'Retamar',
+    birthDate: '06/02/1999 (26)',
+    country: 'Entre Ríos, Argentina',
+    position: 'Delantero',
+    club: 'Independiente Rivadavia',
+    number: '34',
+    altura: '1,75 m',
+    goals: 32,
+    partidos: 163,
+    pieHabil: 'Derecho',
+    pases: 81.4,
+    tiros: 87.6,
+    fitness: 88.9,
+    clubLogoActual: [
+      { logo: escudo_independienteriv, name: "Independiente Rivadavia", years: "2025- Actualidad (Préstamo)", trophies: [{name: "Copa Argentina 2025"}] },
+    ],
+    trayectoria: [
+      { logo: escudo_juvunida, name: "Juventud Unida Gualeguaychú", years: "2018-2019", datoInfo: "Debút Profesional" , trophies: [] },
+      { logo: escudo_gimansia_cdu, name: "Gimnasia y Esgrima CDU", years: "2019-2020", trophies: [] },
+      { logo: escudo_barracas, name: "Barracas Central", years: "2020", trophies: [] },
+      { logo: escudo_lasparejas, name: "Sportivo Las Parejas", years: "2021", trophies: [] },
+      { logo: escudo_atlparana, name: "Atlético Paraná", years: "2021-2022", trophies: [] },
+      { logo: escudo_guemes, name: "CA Güemes", years: "2022", trophies: []},
+      { logo: escudo_ferro, name: "Ferro Carril Oeste", years: "2023-Actualidad", trophies: [] }
+    ],
+  },
+  {
+    img: jugador_vera,
+    name: 'Mauricio Vera',
+    Firstname: 'Mauricio',
+    Lastname: 'Vera',
+    birthDate: '12/02/1997 (27)', 
+    country: 'Canelones, Uruguay',
+    position: 'Mediocampista Central',
+    club: 'Deportes Concepción', 
+    number: '8',
+    altura: '1,75 m',
+    clubLogoActual: [
+      { logo: escudo_depconcepcion, name: "Deportes Concepción", years: "2026 - Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_river, name: "River Plate", years: "2016-2017", datoInfo: "Debút Profesional" , trophies: [] },
+      { logo: escudo_estudiantes, name: "Estudiantes", years: "2017-2021", trophies: [] },
+      { logo: escudo_guillermobrown, name: "Guillermo Brown", years: "2019-2020 (Préstamo)", trophies: [] },
+      { logo: escudo_sanmartinsj, name: "San Martín SJ", years: "2021", trophies: [] },
+      { logo: escudo_sanluis, name: "San Luis", years: "2022-2023", trophies: [] },
+      { logo: escudo_bostonriver, name: "Boston River", years: "2024-2025", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_villalba,
+    name: 'Juan Manuel Villalba',
+    Firstname: 'Juan Manuel',
+    Lastname: 'Villalba',
+    birthDate: '12/10/1998 (25)',
+    country: 'Moreno, Argentina',
+    position: 'Defensor Central',
+    club: 'Gimnasia de la Plata',
+    number: '33',
+    altura: '1,75 m',
+    clubLogoActual: [
+      { logo: escudo_gimnasia, name: "Gimnasia de la Plata", years: "2025 - Actualidad", datoInfo: "Debút Profesional vs Rosario Central", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_argentina, name: "Argentina Sub-20", years: "2016-2020", trophies: [] },
+    ],  
+  },
+  {
+    img: jugador_yomar_rocha,
+    name: 'Yomar Rocha',
+    Firstname: 'Yomar',
+    Lastname: 'Rocha',
+    birthDate: '21/06/2003 (22)',
+    country: 'Trinidad, Bolivia',
+    position: 'Lateral Derecho',
+    club: 'Deportivo Maldonado',
+    number: '2',
+    altura: '1,78 m',
+    goals: 9,
+    partidos: 118,
+    pieHabil: 'Derecho',
+    pases: 83.6,
+    recuperos: 79.4,
+    fitness: 91.2,
+    clubLogoActual: [
+      { logo: escudo_akron, name: "FC Akron Tolyatti", years: "2026- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_bolivar, name: "Bolívar", years: "2021- 2025",datoInfo: "Debút Profesional vs Ind.Petrolero", trophies: [{name: "Liga Boliviana 2022"}] },
+      { logo: escudo_bolivia, name: "Seleccion Bolivia", years: "2024-Actualidad", trophies: [] },
+    ],
+  },
+  {
+    img: jugador_zabala,
+    name: 'Cristian Zabala',
+    Firstname: 'Cristian',
+    Lastname: 'Zabala',
+    birthDate: '04/03/1998 (27)',
+    country: 'Solano, Argentina',
+    position: 'Mediocampista Central',
+    club: 'Independiente del Valle',
+    number: '18',
+    altura: '1,78 m',
+    goals: 9,
+    partidos: 208,
+    pieHabil: 'Derecho',
+    pases: 84.9,
+    recuperos: 82.5,
+    fitness: 95.1,
+    clubLogoActual: [
+      { logo: escudo_independientedv, name: "Independiente del Valle", years: "2024- Actualidad", trophies: [{name: "Serie A Ecuador 2023"}] },
+    ],
+    trayectoria: [
+      { logo: escudo_quilmes, name: "Quilmes", years: "2018-2020", datoInfo: "Debút Profesional vs Atl.Rafaela", trophies: [] },
+      { logo: escudo_tigre, name: "Tigre", years: "2020-2023", trophies: [{name: "Primera Nacional 21/22"}] },
+    ],
+  },
+  {
+    img: jugador_zanini,
+    name: 'Andres Zanini',
+    Firstname: 'Andres',
+    Lastname: 'Zanini',
+    birthDate: '18/01/1997 (28)',
+    country: 'Buenos Aires, Argentina',
+    position: 'Defensor Central',
+    club: 'Deportes La Serena',
+    number: '2',
+    altura: '1,88 m',
+    goals: 8,
+    partidos: 178,
+    pieHabil: 'Derecho',
+    aereo: 82.1,
+    recuperos: 84.3,
+    fitness: 89.6,
+    clubLogoActual: [
+      { logo: escudo_deplaserena, name: "Deportes La Serena", years: "2024- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_tigre, name: "Tigre", years: "2017", trophies: [] },
+      { logo: escudo_acassuso, name: "Acassuso", years: "2018-2024",datoInfo: "Debút Profesional vs Dep.Español", trophies: [] },
+      { logo: escudo_guemes, name: "Güemes", years: "2022 (Préstamo)", trophies: [] },
+      { logo: escudo_chacarita, name: "Chacarita Jr", years: "2023 (Préstamo)", trophies: [] },
+      { logo: escudo_ligaquito, name: "Liga de Quito", years: "2024-2025", trophies: [{name:"Serie A Ecuador 2024"}] },
+    ],
+  },
+  {
+    img: jugador_monteagudo,
+    name: 'Juan Cruz Monteagudo',
+    Firstname: 'Juan Cruz',
+    Lastname: 'Monteagudo',
+    birthDate: '26/10/1995 (30)',
+    country: 'Buenos Aires, Argentina',
+    position: 'Defensor Central',
+    club: 'Defensores de Belgrano',
+    number: '4',
+    altura: '1,92 m',
+    goals: 6,
+    partidos: 221,
+    pieHabil: 'Izquierdo',
+    recuperos: 63.4,
+    aereo: 88.7,
+    fitness: 90.2,
+    clubLogoActual: [
+      { logo: escudo_defensores, name: "Defensores de Belgrano", years: "2026- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: escudo_chicago, name: "Nueva Chicago", years: "2016-2019", datoInfo: "Debút Profesional" , trophies: [] },
+      { logo: escudo_mont, name: "Deportes Puerto Mont", years: "2019-2020", trophies: [] },
+      { logo: escudo_catania, name: "Calcio Catania", years: "2021-2022", trophies: [] },
+      { logo: escudo_viterbese, name: "SSC Bari", years: "2022-2023", trophies: [] },
+      { logo: escudo_francavilla, name: "Virtus Francavilla", years: "2023-2024", trophies: [] },
+      { logo: escudo_nacional, name: "Nacional", years: "2024-2025", trophies: [] },
+    ],
+  }
 ];

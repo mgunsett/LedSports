@@ -50,7 +50,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
       <MotionModalContent
         maxW={{ base: '95vw', md: '90vw', lg: '85vw' }}
         maxH={{ base: '95vh', md: '90vh', lg: '85vh' }}
-        h={{ base: '100vh', md: '85vh' }}
+        h={{ base: '100vh', md: '110vh' }}
         bg="transparent"
         overflow="hidden"
         borderRadius="2xl"
@@ -240,7 +240,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                   borderBottom="1px solid"
                   borderColor="whiteAlpha.200"
                   overflowY={{base:"visible", md:'hidden'}} 
-                        
                 >
                   <Box>
                     <Text
@@ -251,7 +250,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                     >
                       FECHA NAC.
                     </Text>
-                    <Text fontSize={{base: "12px", md: "sm"}}  color="white" fontWeight="bold">
+                    <Text fontSize={{base: "12px", md: "xs"}}  color="white" fontWeight="bold">
                       {jugadorData.birthDate || '01/01/1990'}
                     </Text>
                   </Box>
@@ -265,14 +264,14 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       PAÍS
                     </Text>
                     <Text 
-                    fontSize={{base: "12px", md: "sm"}} 
+                    fontSize={{base: "12px", md: "xs"}} 
                     color="white" 
                     fontWeight="bold"
                     >
                       {jugadorData.country || 'Argentina'}
                     </Text>
                   </Box>
-                  <Box>
+                  <Box ml={{base:-3, md:-8}}>
                     <Text
                       fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
