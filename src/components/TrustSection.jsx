@@ -6,263 +6,53 @@ import {
   Text,
   Flex,
   IconButton,
-  filter,
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-
-import jugador_mainero from '../assets/jugador_mainero.webp';
-import jugador_ade from '../assets/jugador_ade.webp';
-import jugador_callejo from '../assets/jugador_callejo.webp';
-import jugador_campisi from '../assets/jugador_campisi.webp';
-import jugador_correa from '../assets/jugador_correa.webp';
-import jugador_gonzapiovi from '../assets/jugador_gonzapiovi.webp';
-import jugador_carmelo from '../assets/jugador_carmelo.webp';
-import jugador_farias from '../assets/jugador_farias.webp';
-import jugador_gonzasosa from '../assets/jugador_gonzasosa.webp';
-import jugador_jonitorres from '../assets/jugador_jonitorres.webp';
-import jugador_keki from '../assets/jugador_keki.webp';
-import jugador_lotti from '../assets/jugador_lotti.webp';
-import jugador_luka from '../assets/jugador_luka.webp';
-import jugador_oroz from '../assets/jugador_oroz.webp';
-import jugador_runi from '../assets/jugador_runi.webp';
-import jugador_zuqi from '../assets/jugador_zuqi.webp';
-
+import { brands } from '../data/jugadores';
 import '../components/TrustSection.css';
 
 const MotionBox = motion(Box);
-const MotionFlex = motion(Flex);
-const MotionText = motion(Text);
-
-const brands = [
-  {
-    img: jugador_mainero,
-    name: 'Guido Mainero',
-    Firstname: 'Guido',
-    Lastname: 'Mainero',
-    birthDate: '23/03/1995',
-    country: 'Córdoba, Argentina',
-    position: 'Extremo derecho',
-    club: 'Platense',
-    number: '7',
-    height: '1,77 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_ade,
-    name: 'Ricardo Ade',
-    Firstname: 'Ricardo',
-    Lastname: 'Ade',
-    birthDate: '21/05/1990',
-    country: 'San Marcos, Haití',
-    position: 'Defensor',
-    club: 'Liga de Quito',
-    number: '4',
-    height: '1,90 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_callejo,
-    name: 'Facundo Callejo',
-    Firstname: 'Facundo',
-    Lastname: 'Callejo',
-    birthDate: '02/07/1992',
-    country: 'Tandil, Argentina',
-    position: 'Delantero',
-    club: 'Cusco FC',
-    number: '9',
-    height: '1,78 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_campisi,
-    name: 'Nicolas Campisi',
-    Firstname: 'Nicolas',
-    Lastname: 'Campisi',
-    birthDate: '29/10/1996',
-    country: 'Río Negro, Argentina',
-    position: 'Arquero',
-    club: 'Miami FC',
-    number: '1',
-    height: '1,89 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_correa,
-    name: 'Javier Correa',
-    Firstname: 'Javier',
-    Lastname: 'Correa',
-    birthDate: '23/10/1992',
-    country: 'Córdoba, Argentina',
-    position: 'Delantero',
-    club: 'Colo-Colo',
-    number: '9',
-    height: '1,84 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_gonzapiovi,
-    name: 'Gonzalo Piovi',
-    Firstname: 'Gonzalo',
-    Lastname: 'Piovi',
-    birthDate: '08/09/1994',
-    country: 'Buenos Aires, Argentina',
-    position: 'Lateral Izquierdo',
-    club: 'Cruz Azul',
-    number: '33',
-    height: '1,80 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_carmelo,
-    name: 'Carmelo Argañaraz',
-    Firstname: 'Carmelo',
-    Lastname: 'Argañaraz',
-    birthDate: '27/01/1996',
-    country: 'Santa Cruz, Bolivia',
-    position: 'Delantero',
-    club: 'Kalamata FC',
-    number: '11',
-    height: '1,76 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_farias,
-    name: 'Facundo Farias',
-    Firstname: 'Facundo',
-    Lastname: 'Farias',
-    birthDate: '22/08/2002',
-    country: 'Santa Fe, Argentina',
-    position: 'Mediocampista',
-    club: 'Estudiantes LP',
-    number: '11',
-    height: '1,72 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_gonzasosa,
-    name: 'Gonzalo Sosa',
-    Firstname: 'Gonzalo',
-    Lastname: 'Sosa',
-    birthDate: '04/01/1989',
-    country: 'Santa Fe, Argentina',
-    position: 'Delantero',
-    club: 'Ñublense',
-    number: '9',
-    height: '1,85 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_jonitorres,
-    name: 'Jonatan Torres',
-    Firstname: 'Jonatan',
-    Lastname: 'Torres',
-    birthDate: '29/12/1996',
-    country: 'Santa Fe, Argentina',
-    position: 'Delantero',
-    club: 'Cerro Porteño',
-    number: '27',
-    height: '1,87 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_keki,
-    name: 'Keki Piovi',
-    Firstname: 'Lucas',
-    Lastname: 'Piovi',
-    birthDate: '20/08/1992',
-    country: 'Buenos Aires, Argentina',
-    position: 'Mediocampista',
-    club: 'Estudiantes LP',
-    number: '21',
-    height: '1,72 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_lotti,
-    name: 'Augusto Lotti',
-    Firstname: 'Augusto',
-    Lastname: 'Lotti',
-    birthDate: '10/06/1996',
-    country: 'Buenos Aires, Argentina',
-    position: 'Delantero',
-    club: 'Platense',
-    number: '21',
-    height: '1,80 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_luka,
-    name: 'Luka Romero',
-    Firstname: 'Luka',
-    Lastname: 'Romero',
-    birthDate: '18/11/2004',
-    country: 'Durango, México',
-    position: 'Mediocampista',
-    club: 'Cruz Azul',
-    number: '18',
-    height: '1,69 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_oroz,
-    name: 'Nicolas Oroz', 
-    Firstname: 'Nicolas',
-    Lastname: 'Oroz',
-    birthDate: '01/04/1994',
-    country: 'San Luis, Argentina',
-    position: 'Mediocampista',
-    club: 'Argentinos Jr',
-    number: '21',
-    height: '1,74 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_runi,
-    name: 'Ronaldo Martinez',
-    Firstname: 'Ronaldo',
-    Lastname: 'Martinez',
-    birthDate: '25/04/1996',
-    country: 'Paraguay',
-    position: 'Delantero',
-    club: 'Platense',
-    number: '21',
-    height: '1,78 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-  {
-    img: jugador_zuqi,
-    name: 'Fernando Zuqui',
-    Firstname: 'Fernando',
-    Lastname: 'Zuqui',
-    birthDate: '27/11/1991',
-    country: 'Mendoza, Argentina',
-    position: 'Volante de contención',
-    club: 'U Católica',
-    number: '18',
-    height: '1,74 m',
-    item1: 'lorem ipsum dolor',
-    item2: 'lorem ipsum dolor',
-  },
-];
 
 const TrustSection = () => {
+
+  const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  //-----------------------------------------------------------------
+  // PRUEBA INTERSECTION OBSERVER PARA DESTACAR TARJETA ACTIVA EN MOBILE
+  //-----------------------------------------------------------------
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  useEffect(() => {
+  if (!isMobile || !containerRef.current) return;
+
+  const cards = containerRef.current.querySelectorAll('.brand');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Number(entry.target.dataset.index);
+          setActiveIndex(index);
+        }
+      });
+    },
+    {
+      root: containerRef.current,
+      threshold: 0.6, // 60% visible
+    }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+
+  return () => observer.disconnect();
+}, [isMobile]);
+
+  //-----------------------------------------------------------------
+  //-----------------------------------------------------------------
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -271,9 +61,9 @@ const TrustSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const containerRef = useRef(null);
+  
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  
   const animationRef = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
@@ -295,7 +85,7 @@ const TrustSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const animateScrollTo = (target, duration = 800) => {
+  const animateScrollTo = (target, duration = 900) => {
     if (!containerRef.current) return;
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
@@ -312,7 +102,12 @@ const TrustSection = () => {
     };
 
     const step = (now) => {
-      if (isDragging || !containerRef.current) return;
+      if (!containerRef.current) return;
+      // if user started dragging, cancel the smooth animation
+      if (isDragging) {
+        animationRef.current = null;
+        return;
+      }
       const elapsed = now - startTime;
       const t = Math.min(elapsed / duration, 1);
       const eased = easeOutQuart(t);
@@ -333,44 +128,55 @@ const TrustSection = () => {
     return Math.min(Math.max(0, val), max);
   };
 
-  // Calcular el centro de la tarjeta más cercana (mobile)
-  const getClosestCardCenter = (scrollLeft) => {
-    if (!containerRef.current) return scrollLeft;
-    const el = containerRef.current;
-    const cards = el.querySelectorAll('#brand');
-    if (!cards.length) return scrollLeft;
-
-    const containerRect = el.getBoundingClientRect();
-    const containerCenter = containerRect.left + containerRect.width / 2;
-
-    let closest = null;
-    let minDistance = Infinity;
-
-    cards.forEach((card) => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
-      const distance = Math.abs(cardCenter - containerCenter);
-
-      if (distance < minDistance) {
-        minDistance = distance;
-        closest = card;
+  // Center the first visible card on mount
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      if (containerRef.current) {
+        const centered = getClosestCardCenter(containerRef.current.scrollLeft);
+        setScrollPosition(centered);
       }
     });
+    return () => cancelAnimationFrame(id);
+  }, []);
 
-    if (closest) {
-      const rect = closest.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2 - containerRect.left;
-      const offset = cardCenter - containerRect.width / 2;
-      return clampToBounds(scrollLeft + offset);
+  // Calcular el centro de la tarjeta más cercana (mobile)
+  const getClosestCardCenter = (targetScroll) => {
+  const el = containerRef.current;
+  if (!el) return targetScroll;
+
+  const cards = el.querySelectorAll('.brand');
+  if (!cards.length) return targetScroll;
+
+  const containerCenter = targetScroll + el.clientWidth / 2;
+
+  let closest = null;
+  let minDistance = Infinity;
+
+  cards.forEach((card) => {
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const distance = Math.abs(cardCenter - containerCenter);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      closest = card;
     }
+  });
 
-    return scrollLeft;
-  };
+  if (!closest) return targetScroll;
+
+  const centeredScroll =
+    closest.offsetLeft +
+    closest.offsetWidth / 2 -
+    el.clientWidth / 2;
+
+  return clampToBounds(centeredScroll);
+};
+
 
   const scrollLeft = () => {
     const el = containerRef.current;
     if (!el) return;
-    const cards = el.querySelectorAll('#brand');
+    const cards = el.querySelectorAll('.brand');
     if (!cards.length) return;
 
     const firstCard = cards[0];
@@ -382,16 +188,14 @@ const TrustSection = () => {
 
     const scrollAmount = isMobile ? cardWidth : cardWidth * 2;
     const newPosition = clampToBounds(el.scrollLeft - scrollAmount);
-    
-    // En mobile, centramos la tarjeta
-    const finalPosition = isMobile ? getClosestCardCenter(newPosition) : newPosition;
+    const finalPosition = getClosestCardCenter(newPosition);
     setScrollPosition(finalPosition);
   };
 
   const scrollRight = () => {
     const el = containerRef.current;
     if (!el) return;
-    const cards = el.querySelectorAll('#brand');
+    const cards = el.querySelectorAll('.brand');
     if (!cards.length) return;
 
     const firstCard = cards[0];
@@ -403,14 +207,12 @@ const TrustSection = () => {
 
     const scrollAmount = isMobile ? cardWidth : cardWidth * 2;
     const newPosition = clampToBounds(el.scrollLeft + scrollAmount);
-    
-    // En mobile, centramos la tarjeta
-    const finalPosition = isMobile ? getClosestCardCenter(newPosition) : newPosition;
+    const finalPosition = getClosestCardCenter(newPosition);
     setScrollPosition(finalPosition);
   };
 
   useEffect(() => {
-    if (containerRef.current) animateScrollTo(scrollPosition, 800);
+    if (containerRef.current) animateScrollTo(scrollPosition, 900);
   }, [scrollPosition]);
 
   useEffect(() => {
@@ -458,15 +260,17 @@ const TrustSection = () => {
     setIsDragging(false);
     
     // Aplicar inercia suave al soltar
-    if (Math.abs(velocityRef.current) > 0.5 && containerRef.current && isMobile) {
-      const inertiaScroll = velocityRef.current * 150;
-      const targetScroll = containerRef.current.scrollLeft - inertiaScroll;
-      const centeredScroll = getClosestCardCenter(targetScroll);
-      setScrollPosition(centeredScroll);
-    } else if (isMobile && containerRef.current) {
-      // Centrar la tarjeta más cercana
-      const centeredScroll = getClosestCardCenter(containerRef.current.scrollLeft);
-      setScrollPosition(centeredScroll);
+    if (containerRef.current) {
+      if (Math.abs(velocityRef.current) > 0.5) {
+        const inertiaMultiplier = isMobile ? 200 : 150;
+        const inertiaScroll = velocityRef.current * inertiaMultiplier;
+        const targetScroll = containerRef.current.scrollLeft - inertiaScroll;
+        const centeredScroll = getClosestCardCenter(targetScroll);
+        setScrollPosition(centeredScroll);
+      } else {
+        const centeredScroll = getClosestCardCenter(containerRef.current.scrollLeft);
+        setScrollPosition(centeredScroll);
+      }
     }
   };
 
@@ -510,15 +314,16 @@ const TrustSection = () => {
     setIsDragging(false);
     
     // Aplicar inercia suave al soltar
-    if (Math.abs(velocityRef.current) > 0.5 && containerRef.current && isMobile) {
-      const inertiaScroll = velocityRef.current * 200;
-      const targetScroll = containerRef.current.scrollLeft - inertiaScroll;
-      const centeredScroll = getClosestCardCenter(targetScroll);
-      setScrollPosition(centeredScroll);
-    } else if (isMobile && containerRef.current) {
-      // Centrar la tarjeta más cercana
-      const centeredScroll = getClosestCardCenter(containerRef.current.scrollLeft);
-      setScrollPosition(centeredScroll);
+    if (containerRef.current) {
+      if (Math.abs(velocityRef.current) > 0.5) {
+        const inertiaScroll = velocityRef.current * 200;
+        const targetScroll = containerRef.current.scrollLeft - inertiaScroll;
+        const centeredScroll = getClosestCardCenter(targetScroll);
+        setScrollPosition(centeredScroll);
+      } else {
+        const centeredScroll = getClosestCardCenter(containerRef.current.scrollLeft);
+        setScrollPosition(centeredScroll);
+      }
     }
   };
 
@@ -600,6 +405,7 @@ const TrustSection = () => {
             overflowY="hidden"
             gap={8}
             padding={2}
+            px={{ base: 'calc(50vw - 160px)', md: '0' }}
             margin="auto"
             maxW="100%"
             minW="100%"
@@ -619,28 +425,33 @@ const TrustSection = () => {
               userSelect: 'none',
             }}
           >
-            {brands.map((logo, i) => (
+            {brands.map((logo, i) => {
+              const isActive = isMobile
+                  ? activeIndex === i
+                  : hoveredIndex === i;
+              return (
               <MotionBox
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.2 }}
-                viewport={{ once: true }}
-                overflow="visible"
-              >
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.25 }}
+                  viewport={{ once: true, root: containerRef.current || undefined }}
+                  overflow='visible'
+                >
                 <Flex
-                  id="brand"
+                  className="brand"
+                  data-index={i}
                   position="relative"
                   direction="column"
                   alignItems="center"
                   justifyContent="center"
                   mt="40px"
-                  mx={{ base: '-5px', md: '20px' }}
+                  mx={{ base: '5px', md: '20px' }}
                   w={{ base: '320px', md: '230px' }}
                   h="340px"
-                  transition="all 0.8s"
-                  onMouseEnter={() => setHoveredIndex(i)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  transition="all 1.2s"
+                  onMouseEnter={() => !isMobile && setHoveredIndex(i)}
+                  onMouseLeave={() => !isMobile && setHoveredIndex(null)}
                   sx={{
                     '&:hover .image_brand': {
                       filter: 'grayscale(0%) brightness(1)',
@@ -654,9 +465,10 @@ const TrustSection = () => {
                     alt={`Logo ${i}`}
                     maxH={{ base: '300px', md: '280px' }}
                     maxW={{ base: '320px', md: '300px' }}
+                    transition="all 0.5s ease-out"
                     borderRadius="8px"
-                    filter="grayscale(100%) brightness(0.9)"
-                    transition="all 0.8s"
+                    filter={isActive ? 'grayscale(0%) brightness(1)' : 'grayscale(100%) brightness(0.9)'}
+                    transform={isActive ? 'translateY(-20px) scale(1.05)' : 'none'}
                   />
 
                   {/* #brand_info */}
@@ -666,10 +478,10 @@ const TrustSection = () => {
                     bottom={{ base: '10px', md: '10px' }}
                     left="50%"
                     transform="translate(-50%, -10px)"
-                    w={{ base: '60%', md: '100%' }}
-                    opacity={hoveredIndex === i ? 1 : 0}
-                    pointerEvents={hoveredIndex === i ? 'auto' : 'none'}
-                    transition="all 0.7s ease-out"
+                    w={{ base: '70%', md: '100%' }}
+                    opacity={isActive ? 1 : 0}
+                    pointerEvents={isActive ? 'auto' : 'none'}
+                    transition="all 1.2s ease-out"
                     overflow="visible"
                     fontFamily={'Stack Sans Headline, sans-serif'}
                   >
@@ -681,22 +493,20 @@ const TrustSection = () => {
                       p={{ base: 4, md: 5 }}
                       overflow="visible"
                     >
-
-                      {/* Border with glow effect */}
                       <Box
                         position="absolute"
                         inset={0}
                         borderWidth="1px"
                         borderRadius="lg"
                         pointerEvents="none"
-                        borderColor={hoveredIndex === i ? 'whiteAlpha.600' : 'rgba(255,255,255,0.6)'}
-                        opacity={hoveredIndex === i ? 0.8 : 0.4}
+                        borderColor={isActive ? 'whiteAlpha.600' : 'rgba(255,255,255,0.6)'}
+                        opacity={ isActive ? 0.8 : 0.4}
                         boxShadow={
-                          hoveredIndex === i
+                          isActive
                             ? 'inset 0 0 30px rgba(255, 255, 255, 0.3)'
                             : 'none'
                         }
-                        transition="all 0.6s"
+                        transition="all 0.9s"
                       />
 
                       <Flex
@@ -707,19 +517,19 @@ const TrustSection = () => {
                         gap={3}
                       >
                         <Box flex="1">
-                          {/* Club with line - slides in from left */}
                           <Box
                             as={motion.div}
                             initial={{ x: -100, opacity: 0 }}
                             animate={{
-                              x: hoveredIndex === i ? 0 : -100,
-                              opacity: hoveredIndex === i ? 1 : 0,
+                              x: isActive ? 0 : -100,
+                              opacity: isActive ? 1 : 0,
                             }}
-                            transition={{ duration: 0.6 }}
+                            transition={{ duration: 0.9 }}
                             mb={2}
+
                           >
                             <Flex align="center" gap={2}>
-                              <Box w="30px" h="2px" bg="orange.400" />
+                              <Box w={{ base: "45px", md: "30px" }} h="2px" bg="orange.400" />
                               <Text
                                 color="orange.400"
                                 fontSize={{ base: '8px', md: '10px' }}
@@ -734,13 +544,13 @@ const TrustSection = () => {
                           <Box
                             as={motion.div}
                             initial={{ y: 0 }}
-                            animate={{ y: hoveredIndex === i ? 0 : 20 }}
+                            animate={{ y: isActive ? 0 : 20 }}
                             transition={{ duration: 0.7 }}
                           >
                             <Text
                               as="h3"
                               color="white"
-                              fontSize={{ base: 'sm', md: 'md' }}
+                              fontSize={{ base: '12px', md: 'md' }}
                               fontWeight="black"
                               textTransform="uppercase"
                               lineHeight="tight"
@@ -756,7 +566,7 @@ const TrustSection = () => {
                             mt={3}
                             boxShadow="0 0 15px rgba(251,146,60,0.6)"
                             transition="all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)"
-                            w={hoveredIndex === i ? '100%' : '60px'}
+                            w={isActive ? '100%' : '60px'}
                           />
                         </Box>
 
@@ -798,7 +608,7 @@ const TrustSection = () => {
                   </Box>
                 </Flex>
               </MotionBox>
-            ))}
+            )})}
           </Flex>
         </Flex>
 

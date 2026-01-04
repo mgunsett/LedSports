@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Heading,
@@ -6,17 +6,57 @@ import {
   Flex,
   Image,
   Button,
+  
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import service1 from '../assets/service1.webp';
 import service3 from '../assets/service3.webp';
 import service4 from '../assets/service4.webp';
 import { BsChevronDoubleDown } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MotionBox = motion(Box);
+const MotionImage = motion(Image);
 
 const Services = () => {
+  const navigate = useNavigate();
+  const images = [service1, service3, service4];
+  const [activeIndex, setActiveIndex] = useState(1); // start with middle image as center
+
+  const handleNext = () => setActiveIndex((prev) => (prev + 1) % images.length);
+  const handlePrev = () => setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  const getPosition = (index) => {
+    if (index === activeIndex) return 'center';
+    if (index === (activeIndex - 1 + images.length) % images.length) return 'left';
+    if (index === (activeIndex + 1) % images.length) return 'right';
+    return 'hidden';
+  };
+
+  const variants = {
+    center: {
+      x: "0%",
+      scale: 1.5,
+      zIndex: 10,
+      opacity: 1,
+      filter: "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))",
+    },
+    left: {
+      x: "-100%",
+      scale: 1,
+      zIndex: 1,
+      opacity: 1,
+      filter: "brightness(0.7)",
+    },
+    right: {
+      x: "100%",
+      scale: 1,
+      zIndex: 1,
+      opacity: 1,
+      filter: "brightness(0.7)",
+    }
+  };
+
   return (
     <Box 
     id="services" 
@@ -29,14 +69,15 @@ const Services = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
+        mb={{ base: 10, md: 20 }}
       >
         <Flex
-        direction={{ base: "column", md: "row" }}
-        alignItems="center"
-        justifyContent={{ base: "center", md: "space-evenly" }}
-        px={{ base: 2, md: 2 }}
-        pt={6}
-        gap={{ base: 10, md: 20 }}
+          direction={{ base: "column", md: "row" }}
+          alignItems="center"
+          justifyContent={{ base: "center", md: "space-evenly" }}
+          px={{ base: 2, md: 2 }}
+          pt={6}
+          gap={{ base: 10, md: 20 }}
         >
           <Flex
             width={{ base: "100%", md: "310px" }}
@@ -73,65 +114,41 @@ const Services = () => {
             alignItems="center"
             justifyContent="center"
             h={{ base: "350px", md: "750px" }}
-            w={{ base: "100%", md: "40%"}}
+            w={{ base: "100%", md: "40%" }}
             p={10}
           >
-              <Image
-                src={service3}
-                alt="services"
-                mr={{ base: '-15px', md: '-12px' }}
-                w={{ base: "210px", md: "350px" }}
-                h={{ base: "210px", md: "350px" }}
-                objectFit="contain"
-                transition="all 0.6s ease-in-out"
-                _hover={{
-                  filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
-                  transform: { base: "scale(1.2) translateX(15px)", md: "scale(1.05) translateX(15px)"},
-                  mr: '-15px',
-                  zIndex: 2
-                }}
-                _active={{
-                  transform: { base: "scale(1.2) translateX(15px)", md: "none"},
-                }}
-              />
-              <Image
-                src={service1}
-                alt="services"
-                zIndex={1}
-                w={{ base: "260px", md: "500px" }}
-                h={{ base: "260px", md: "500px" }} 
-                objectFit="contain"
-                transition="all 0.4s ease-in-out"
-                _hover={{
-                  filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
-                  transform: { base: "scale(1.2)", md: "scale(1.05)"},
-                  ml: '-15px',
-                  mr: '-15px'
-                }}
-                _active={{
-                  transform: { base: "scale(1.2)", md: "none"},
-                }}
-              />
-              <Image
-                src={service4}
-                alt="services"
-                ml={{ base: '-15px', md: '-12px' }}
-                w={{ base: "210px", md: "350px" }}
-                h={{ base: "210px", md: "350px" }}
-                objectFit="contain"
-                transition="all 0.6s ease-in-out"
-                _hover={{
-                  filter: 'drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))',
-                  transform: { base: "scale(1.2) translateX(-15px)", md: "scale(1.05) translateX(-15px)"},
-                  ml: '-15px',
-                  zIndex: 2 
-                }}
-                _active={{
-                  transform: { base: "scale(1.2) translateX(-15px)", md: "none"},
-                }}
-              />
+            <Box
+              position="relative"
+              w="100%"
+              h="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              {images.map((img, index) => {
+                const position = getPosition(index);
+                const isCenter = position === 'center';
+                return (
+                  <MotionImage
+                    key={index}
+                    src={img}
+                    position="absolute"
+                    w={{ base: "115px", md: "200px" }}
+                    h={{ base: "250px", md: "500px" }}
+                    borderRadius="md"
+                    initial={false}
+                    animate={position}
+                    variants={variants}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    objectFit={"contain"}
+                    cursor={isCenter ? 'default' : 'pointer'}
+                    onClick={!isCenter ? () => setActiveIndex(index) : undefined}
+                  />
+                );
+              })}
+            </Box>
           </Flex>
-      </Flex>
+        </Flex>
       </MotionBox>
       <MotionBox
         animate={{ y: [0, -15, 0]}}
@@ -156,10 +173,10 @@ const Services = () => {
           alignItems="center"
           justifyContent="center"
           flexWrap="wrap"
-          gap={{ base: '10px', md: 8 }}
+          gap={{ base: '7px', sm: '12px', md: 8 }}
           mt={10}
           mb={{ base: '20px', md: '120px' }}
-          mx={{ base: 'auto'  , md: 10 }}
+          mx={{ base: 'auto', md: 10 }}
           w='100%'
         >
           <Link to="/deportistas">
@@ -174,7 +191,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '360px', md: '200px'}}
+              w={{ base: '355px', sm: '360px', md: '200px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -231,7 +248,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '175px', md: '150px'}}
+              w={{ base: '173px', sm: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -287,7 +304,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '175px', md: '150px'}}
+              w={{ base: '173px', sm: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -345,7 +362,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '175px', md: '150px'}}
+              w={{ base: '173px', sm: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{
@@ -403,7 +420,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '175px', md: '150px'}}
+              w={{ base: '173px', sm: '175px', md: '150px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{

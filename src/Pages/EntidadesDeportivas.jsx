@@ -93,7 +93,7 @@ export const EntidadesDeportivas= () => {
               src={entidades_deportivas}
               alt="Entidades Deportivas"
               w="100%"
-              h={{ base: "300px", md: "100%" }}
+              h={{ base: "300px", sm: "400px", md: "100%" }}
               objectFit="cover"
               initial={{ scale: 1.5 }}
               animate={{ scale: 1 }}

@@ -5,6 +5,7 @@ import {
   Text,
   Box,
   Icon,
+  useBreakpointValue
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion'; 
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
@@ -14,7 +15,82 @@ import './Contact.css';
 
 const MotionBox = motion(Box);
 
+function ContactButton({ icon, title, subtitle, to, external }) {
+  return (
+    <MotionBox
+      as={external ? "a" : Link}
+      href={external ? to : undefined}
+      to={!external ? to : undefined}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      w="100%"
+      p="20px 24px"
+      display="flex"
+      alignItems="center"
+      gap="16px"
+      borderRadius="12px"
+      border="1px solid rgba(255, 107, 53, 0.3)"
+      bg="rgba(255,255,255,0.05)"
+      color="white"
+      position="relative"
+      overflow="hidden"
+      whileHover={{
+        x: 8,
+        boxShadow: "0 5px 20px rgba(255,107,53,0.3)",
+        borderColor: "#ff6b35",
+      }}
+    >
+      {/* Hover background */}
+      <Box
+        position="absolute"
+        inset="0"
+        bgGradient="linear(to-r, rgba(255,107,53,0.1), transparent)"
+        w="0%"
+        _groupHover={{ w: "100%" }}
+        transition="width 0.3s ease"
+      />
+
+      {/* ICON */}
+      <MotionBox
+        w="48px"
+        h="48px"
+        borderRadius="10px"
+        bgGradient="linear(135deg, #ff6b35, #ff8c42)"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        fontSize="1.5rem"
+        flexShrink={0}
+        whileHover={{ scale: 1.1, rotate: 5 }}
+      >
+        {icon}
+      </MotionBox>
+
+      {/* TEXT */}
+      <Box flex="1">
+        <Text fontWeight="600" fontSize="1.1rem">
+          {title}
+        </Text>
+        <Text fontSize="0.9rem" color="#aaa">
+          {subtitle}
+        </Text>
+      </Box>
+
+      {/* ARROW */}
+      <MotionBox
+        fontSize="1.2rem"
+        color="#aaa"
+        whileHover={{ x: 4, color: "#ff6b35" }}
+      >
+        →
+      </MotionBox>
+    </MotionBox>
+  );
+}
+
 const Contact = ({ path }) => {
+
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const contactText = {
     home: 'Consulta por el Plan que más se ajuste a tus necesidades.',
@@ -59,7 +135,7 @@ const Contact = ({ path }) => {
         mb={{ base: 2, md: 20 }}
       >
         <MotionBox
-          initial={{ opacity: 0, y: 30 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -76,38 +152,20 @@ const Contact = ({ path }) => {
         </MotionBox>
 
         <Flex
+        w={{base: '90%', md: '70%'}}
+        flexDirection={{base:'column', md: 'row'}}
         justifyContent={'space-evenly'} 
-        gap={10}
+        gap={{ base: 4, md: 10  }}
         >
             {contactMethods.map((method, index) => (
-            <MotionBox
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-            >
-              <RouterLink to={method.href} target="_blank">
-              <Flex 
-                w={{ base: '100px', md: '80px' }}
-                h={{ base: '70px', md: '80px' }}
-                justify="center"
-                alignItems="center"
-                mx="auto"
-                borderRadius='lg'
-                bgGradient="linear(to-br, orange.600, orange.500)"
-                transition="all 0.4s ease"
-                _hover={{
-                boxShadow: "0px 10px 15px rgba(255, 165, 0, 0.5)",
-                cursor: 'pointer',
-                transform: "scale(1.1)",
-              }} 
-              >
-                <Icon as={method.icon} color="white" fontSize={{ base: '25px', md: '30px' }} />
-              </Flex>
-              </RouterLink>
-            </MotionBox>
+              <ContactButton
+                key={index}
+                icon={<Icon as={method.icon} />}
+                title={method.title}
+                subtitle={method.value}
+                to={method.href}
+                external={true}
+              />
           ))}
         </Flex>
       </Flex>

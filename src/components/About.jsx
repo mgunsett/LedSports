@@ -94,7 +94,6 @@ const About = () => {
         onViewportLeave={handleVideoOutOfView}
         position="relative"
         role="group"
-        // filter="drop-shadow(0px 0px 14px rgba(255, 165, 0, 0.5))"
         borderColor="orange.400"
         borderWidth="1px"
         borderRadius="8px"
@@ -146,7 +145,6 @@ const About = () => {
         </HStack>
       </MotionBox>
 
-      {/* Texto de descripción */}
       <VStack
         align={{ base: 'flex-end', md: 'start' }}
         spacing={{ base: 2,  md: 5 }}

@@ -1,10 +1,16 @@
 // App.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@/theme';
 import { MainRouters } from './Routers';
+import PageLoaderLED from './components/Loading';
+import { motion } from 'framer-motion';
+
+const MotionDiv = motion.div;
 
 function App() {
+  const [showLoader, setShowLoader] = useState(true);
+  const [loaderExiting, setLoaderExiting] = useState(false);
   useEffect(() => {
     document.title = 'LED SPORTS - Marketing Digital Deportivo';
     const metaName = 'description';
@@ -18,9 +24,22 @@ function App() {
     meta.setAttribute('content', content);
   }, []);
 
+  useEffect(() => {
+    const id = setTimeout(() => setLoaderExiting(true), 2000);
+    return () => clearTimeout(id);
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
+      {/* Main app is mounted immediately so loader can slide away revealing it */}
       <MainRouters />
+
+      {showLoader && (
+        <PageLoaderLED
+          isExiting={loaderExiting}
+          onExitComplete={() => setShowLoader(false)}
+        />
+      )}
     </ChakraProvider>
   );
 }

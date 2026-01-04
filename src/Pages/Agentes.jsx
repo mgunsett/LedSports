@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Image, Heading } from "@chakra-ui/react";
+import { Box, Flex, Text, Image, Heading, useBreakpointValue } from "@chakra-ui/react";
 import agentes from "../assets/agentes.webp";
 import agentes2 from "../assets/agentes2.webp";
 import agentes1 from "../assets/agentes1.webp";
@@ -13,6 +13,9 @@ const MotionBox = motion(Box);
 const MotionText = motion(Text);
 
 export const Agentes = () => {
+
+    const isMobile = useBreakpointValue({ base: true, md: false });
+
     return (       
         <Flex
             bg="black"
@@ -80,7 +83,7 @@ export const Agentes = () => {
                     src={agentes2}
                     alt="agentes"
                     w={{ base: "100%", md: "400px" }}
-                    initial={{ opacity: 0, x: -60 }}
+                    initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.8, duration: 1 }}
                     viewport={{ once: true }}
@@ -151,7 +154,7 @@ export const Agentes = () => {
                     src={agentes}
                     alt="agentes"
                     w={{ base: "80%", md: "350px" }}
-                    initial={{ opacity: 0, y: 60 }}
+                    initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y:0 }}
                     transition={{ delay: 0.3, duration: 1 }}
                     viewport={{ once: true }}
@@ -172,7 +175,7 @@ export const Agentes = () => {
                     src={agentes1}
                     alt="agentes"
                     w={{ base: "100%", md: "400px" }}
-                    initial={{ opacity: 0, x: -60 }}
+                    initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3, duration: 1 }}
                     viewport={{ once: true }}
