@@ -176,7 +176,7 @@ const Services = () => {
           gap={{ base: '7px', sm: '12px', md: 8 }}
           mt={10}
           mb={{ base: '20px', md: '120px' }}
-          mx={{ base: 'auto', md: 10 }}
+          mx={{ base: 'auto', md: 'auto' }}
           w='100%'
         >
           <Link to="/deportistas">
@@ -191,7 +191,7 @@ const Services = () => {
               borderRadius="lg"
               overflow="hidden"
               cursor="pointer"
-              w={{ base: '355px', sm: '360px', md: '200px'}}
+              w={{ base: '355px', sm: '360px', md: '220px'}}
               role="group"
               transition="all 0.6s ease-out"
               _hover={{

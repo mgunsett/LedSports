@@ -9,8 +9,10 @@ import { motion } from 'framer-motion';
 const MotionDiv = motion.div;
 
 function App() {
+
   const [showLoader, setShowLoader] = useState(true);
   const [loaderExiting, setLoaderExiting] = useState(false);
+
   useEffect(() => {
     document.title = 'LED SPORTS - Marketing Digital Deportivo';
     const metaName = 'description';
@@ -25,15 +27,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const id = setTimeout(() => setLoaderExiting(true), 2000);
+    const id = setTimeout(() => setLoaderExiting(true), 4000);
     return () => clearTimeout(id);
   }, []);
 
   return (
     <ChakraProvider theme={theme}>
-      {/* Main app is mounted immediately so loader can slide away revealing it */}
       <MainRouters />
-
       {showLoader && (
         <PageLoaderLED
           isExiting={loaderExiting}

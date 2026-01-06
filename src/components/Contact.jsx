@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion'; 
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
-import { Link as RouterLink } from 'react-router-dom';
 import './Contact.css';
 
 
@@ -29,15 +28,15 @@ function ContactButton({ icon, title, subtitle, to, external }) {
       alignItems="center"
       gap="16px"
       borderRadius="12px"
-      border="1px solid rgba(255, 107, 53, 0.3)"
+      border="1px solid rgba(255,255,255,0.1)"
       bg="rgba(255,255,255,0.05)"
       color="white"
       position="relative"
       overflow="hidden"
       whileHover={{
         x: 8,
-        boxShadow: "0 5px 20px rgba(255,107,53,0.3)",
-        borderColor: "#ff6b35",
+        boxShadow: "0 0 10px rgba(251, 146, 60, 0.6)",
+        borderColor: "rgba(241, 158, 49, 0.71)",
       }}
     >
       {/* Hover background */}
@@ -111,7 +110,7 @@ const Contact = ({ path }) => {
       icon: FaWhatsapp,
       title: 'WhatsApp',
       value: 'Contáctanos',
-      href: 'https://wa.me/5493516666666',
+      href: 'https://wa.link/v8wl84',
     },
     {
       icon: FaInstagram,

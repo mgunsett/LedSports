@@ -1,22 +1,21 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Image, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import logo_horizontal  from '../assets/logo_horizontal.webp';
 
-const MotionBox = motion(Box);
+const MotionFlex = motion(Flex);
 const MotionImage = motion(Image);
+const MotionBox = motion(Box);
 
 const PageLoaderLED = ({ isExiting = false, onExitComplete } = {}) => {
   return (
-    <MotionBox
+    <MotionFlex
       position="fixed"
       inset="0"
       bg="black"
-      display="flex"
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
       zIndex="9999"
-      gap={{ base: 6, md: 8 }}
       initial={{  y: 0 }}
       animate={isExiting ? { y: "-100vh" } : { y: 0}}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -36,13 +35,12 @@ const PageLoaderLED = ({ isExiting = false, onExitComplete } = {}) => {
           scale: [0.95, 1, 0.95],
         }}
         transition={{
-          duration: 1.8,
+          duration: 2,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         filter="drop-shadow(0 0 20px rgba(255,107,53,0.6))"
       />
-
       {/* LOADING BAR */}
       <Box
         w={{ base: "160px", md: "220px" }}
@@ -62,7 +60,7 @@ const PageLoaderLED = ({ isExiting = false, onExitComplete } = {}) => {
           }}
         />
       </Box>
-    </MotionBox>
+    </MotionFlex>
   );
 }
 
