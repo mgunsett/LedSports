@@ -21,6 +21,7 @@ import CircularProgress from './CircularProgress';
 import SoccerFieldPosition from './SoccerFieldPosition';
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
+import './FichaJugador.css';
 
 const MotionModalContent = motion(ModalContent);
 const MotionBox = motion(Box);
@@ -38,14 +39,14 @@ function FichaJugador({ isOpen, onClose, jugador }) {
   const goals = jugadorData.goals;
   const partidos = jugadorData.partidos;
 
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isMobile = useBreakpointValue({ base: true, sm: false, md: false });
 
   return (
     <Modal
       isCentered
       isOpen={isOpen}
       onClose={onClose} 
-      size={{base:'7xl', md:'6xl'}}  
+      size={{base:'100%', md:'6xl'}}  
     >
       <ModalOverlay
         bg="transparent"
@@ -319,15 +320,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                     <Flex
                       flexDirection= 'column'
                       alignItems="center"
-                      justifyContent="flex-start"
+                      justifyContent="center"
                       h="100%"
                       w="100%"
                       gap={4}
-                      pb={10}
+                      pb={6}
                     >
-
                       <Flex
-                        gridColumn='span 2'
                         gap={6}
                         mb={4}
                         justify="center"
@@ -374,7 +373,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         justifyContent='center'
                         alignItems='center'
                         w="100%"
-                        h="70%"
+                        h="100%"
+                        gap={4}
                         mb={6}
                         >
                           <Flex
@@ -382,26 +382,27 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           alignItems="center"
                           justifyContent="center"
                           w="100%"
-                          h="100%"
-                          gap={2}                   
+                          h="100%"                                                                    
                           >
-                            <MotionFlex
-                              w="60%"
+                            <Flex
+                              className='estadisticas_mobile'
+                              w="110%"
+                              h="110%"
                               flexDirection='column'
                               alignItems="space-between"
-                              justifyContent="center"
+                              justifyContent="start"
                               bg="whiteAlpha.50"
                               borderRadius="lg"
                               p={4}
                               border="1px solid"
                               borderColor="whiteAlpha.200"
-                              transition={{ duration: 0.3 }}
                             >
                               <Text
                                 fontSize="xs"
                                 color="orange.300"
                                 fontWeight="bold"
-                                mb={3}
+                                mt={2}
+                                mb={4}
                                 textTransform="uppercase"
                               >
                                 Estadísticas Generales
@@ -430,21 +431,22 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                   {jugadorData.pieHabil}
                                 </Text>
                               </Flex>
-                            </MotionFlex>
-                            <MotionBox
+                            </Flex>
+                            <Box
+                              className='cancha_position'
                               bg="whiteAlpha.50"
                               borderRadius="lg"
                               border="1px solid"
                               borderColor="whiteAlpha.200"
-                              transition={{ duration: 0.3 }}
-                              w="70%"
-                              h="80%"
+                              w="90%"
+                              h="85%"
+                              mr={-5}
                               transform="rotate(90deg)"
                             >
                               <SoccerFieldPosition position={jugadorData.position} />
-                            </MotionBox>         
+                            </Box>         
                           </Flex>
-                        <MotionFlex
+                        <Flex
                             w="100%"
                             h="40%"
                             flexDirection='column'
@@ -456,7 +458,6 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             pb={2}
                             border="1px solid"
                             borderColor="whiteAlpha.200"
-                            transition={{ duration: 0.3 }}
                           >
                             <Text
                               fontSize="xs"
@@ -473,6 +474,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               </Text>
                               <MdOutlineFileDownload size={16} color="white" />
                             </Flex>
+                            <Flex justify="space-between">
                             <Text
                               fontSize="xs"
                               color="orange.300"
@@ -490,7 +492,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                 <Icon as={FaTiktok} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
                               </Link>
                             </Flex>
-                          </MotionFlex>
+                            </Flex>
+                          </Flex>
                       </Flex>
                     </Flex>
                 ) : (

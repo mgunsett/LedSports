@@ -1,0 +1,7 @@
+@media screen and (max-width: 378px) {
+  .cancha_position {
+    width: 450px !important;
+    height: 130px !important;
+    margin-right: -30px !important;
+  }
+}
