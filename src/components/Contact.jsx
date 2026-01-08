@@ -9,8 +9,6 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion'; 
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
-import './Contact.css';
-
 
 const MotionBox = motion(Box);
 
@@ -126,13 +124,19 @@ const Contact = ({ path }) => {
         justifyContent={'center'}
         flexDirection={"column"}
         alignItems={"center"}
-        borderTop={"1px solid orange"}
-        w={{ base: '80%', md: '60%' }}
-        h="400px"
+        w="90%"
+        maxW="1200px"
+        h={{ base: "500px", md: "400px" }}
         mx={'auto'}
         mt={12}
-        mb={{ base: 2, md: 20 }}
+        mb={{ base: 10, md: 20 }}
       >
+        <Box
+          w={{ base: "80%" , md: "90%" }}
+          h="2px"
+          bgGradient="linear(to-r, transparent, orange.400, transparent)"
+          mb={8}
+        />
         <MotionBox
           initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

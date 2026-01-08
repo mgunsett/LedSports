@@ -1,0 +1,21 @@
+@media screen and (max-width: 917px) {
+  .logo_vertical {
+    width: 600px;
+  }
+  .fondo_luz {
+    width: 200px;
+    right: 30px;
+    top: 130px;
+    }   
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+  .fondo_luz {
+    display: none;
+  }
+    
+}
+ 

@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import logo_vertical from '../assets/logo_vertical.webp';
 import fondo_luz from '../assets/fondo_luz.webp';
 import { GoArrowRight } from "react-icons/go";
+import '../components/Hero.css';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -99,6 +100,7 @@ const Hero = () => {
         transition={{ duration: isMobile ? 0 : 1 }}
       >
         <Image
+          className='fondo_luz'
           src={fondo_luz}
           alt="Marketing Deportivo"
           boxSize={{ base: '300px', sm: '400px', md: '400px'}}
@@ -120,9 +122,10 @@ const Hero = () => {
          transition={{ duration: isMobile ? 0 : 1 }}
        >
         <Image
+          className='logo_vertical'
           src={logo_vertical}
           alt="Marketing Deportivo"
-          boxSize={{ base: '400px', md: '380px', lg: '400px' }}
+          boxSize={{ base: '400px', sm: '390px', md: '400px', lg: '400px' }}
           objectFit="contain"
           draggable="false"
           zIndex="1"

@@ -1,5 +1,6 @@
-import { Flex, Heading, Text, Box, Image, SimpleGrid } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Image, SimpleGrid,HStack,VStack, IconButton} from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import "./Deportistas.css";
 
 import deportistas_gestion360 from "../assets/deportistas_gestion360.webp";
@@ -20,6 +21,7 @@ import deportistas_planmkt from "../assets/deportistas_planmkt.webp";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import Contact from "../components/Contact";
 import MatchdayCarousel from "../components/MatchdayCarousel";
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 const MotionFlex = motion(Flex);
 const MotionHeading = motion(Heading);
@@ -27,6 +29,60 @@ const MotionText = motion(Text);
 const MotionBox = motion(Box);
 
 export const Deportistas = () => {
+
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const handleVideoInView = () => {
+    if (videoRef.current) {
+      // Asegurar que el video esté muteado antes de reproducir
+      videoRef.current.muted = true;
+      setIsMuted(true);
+      
+      // Reproducir automáticamente
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch((error) => {
+        console.warn("Autoplay falló:", error);
+        setIsPlaying(false);
+      });
+    }
+  };
+
+  const handleVideoOutOfView = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0; // Reiniciar el video
+      // Resetear estado al salir: muteado y pausado
+      videoRef.current.muted = true;
+      setIsMuted(true);
+      setIsPlaying(false);
+    }
+  };
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch((error) => {
+          console.warn("Play falló:", error);
+        });
+      }
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const newMutedState = !isMuted;
+      videoRef.current.muted = newMutedState;
+      setIsMuted(newMutedState);
+    }
+  };
 
   return (
     <Flex
@@ -458,16 +514,53 @@ export const Deportistas = () => {
                   minH={{ base: "150px", md: "200px" }}
                   minW={{ base: "150px", md: "200px" }}
                   overflow="hidden"
+                  onViewportEnter={handleVideoInView}
+                  onViewportLeave={handleVideoOutOfView}
+                  role="group"
                 >
-                  <video
-                    src={deportistas_video}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    controls={false}
-                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                <video
+                  src={deportistas_video}
+                  ref={videoRef}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                />
+                {/* Controles de video */}
+                <HStack
+                  position="absolute"
+                  bottom="15px"
+                  right="15px"
+                  spacing={2}
+                  opacity={0}
+                  _groupHover={{ opacity: 1 }}
+                  transition="opacity 0.3s ease-in-out"
+                  bg="blackAlpha.600"
+                  p={2}
+                  borderRadius="full"
+                >
+                  <IconButton
+                    aria-label={isPlaying ? "Pausar" : "Reproducir"}
+                    icon={isPlaying ? <FaPause /> : <FaPlay />}
+                    onClick={togglePlay}
+                    size="sm"
+                    variant="ghost"
+                    color="white"
+                    _hover={{ bg: 'whiteAlpha.300' }}
+                    isRound
                   />
+                  <IconButton
+                    aria-label={isMuted ? "Activar sonido" : "Silenciar"}
+                    icon={isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+                    onClick={toggleMute}
+                    size="sm"
+                    variant="ghost"
+                    color="white"
+                    _hover={{ bg: 'whiteAlpha.300' }}
+                    isRound
+                  />
+                </HStack>
                 </Box>
                 <Flex
                   flex='1'
