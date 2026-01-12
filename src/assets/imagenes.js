@@ -32,6 +32,7 @@ import jugador_yomar_rocha from "../assets/jugador_yomar_rocha.webp";
 import jugador_zabala from "../assets/jugador_zabala.webp";
 import jugador_zanini from "../assets/jugador_zanini.webp";
 import jugador_monteagudo from "../assets/jugador_monteagudo.png";
+import jugador_cano from "../assets/jugador_cano.webp";
 import escudo_racing1 from "../assets/escudo_racing1.webp";
 import escudo_velez from "../assets/escudo_velez.webp";
 import escudo_argentinos from "../assets/escudo_argentinos.webp";
@@ -186,6 +187,11 @@ import escudo_catania from  "../assets/escudo_catania.webp";
 import escudo_viterbese from  "../assets/escudo_viterbese.webp";
 import escudo_francavilla from  "../assets/escudo_francavilla.webp";
 import escudo_nacional from  "../assets/escudo_nacional.webp";
+import escudo_felda from  "../assets/escudo_felda.webp";
+import escudo_sanmartintuc from  "../assets/escudo_sanmartintuc.webp";
+import escudo_huancayo from  "../assets/escudo_huancayo.webp";
+import escudo_deptachira from  "../assets/escudo_deptachira.webp";
+import descarga from "../assets/descarga.pdf";
 
 
 export const JUGADORES = {
@@ -223,7 +229,10 @@ export const JUGADORES = {
     zabala: jugador_zabala,
     zanini: jugador_zanini,
     zuqi: jugador_zuqi,
+    cano: jugador_cano,
 };
+
+export const FICHAS = { descarga: descarga };
 
 export const ESCUDOS = {    
     acassuso: escudo_acassuso,
@@ -237,6 +246,7 @@ export const ESCUDOS = {
     colegiales: escudo_colegiales,
     cuneo: escudo_cuneo,
     donbosco: escudo_donbosco, 
+    deptachira: escudo_deptachira,
     almagro: escudo_almagro,
     almeria: escudo_almeria,
     alvarado: escudo_alvarado,
@@ -289,6 +299,7 @@ export const ESCUDOS = {
     ferro: escudo_ferro,
     flandria: escudo_flandria,
     fenix: escudo_fenix,
+    felda: escudo_felda,
     floriana: escudo_floriana,
     fagiano: escudo_fagiano,
     francavilla: escudo_francavilla,
@@ -305,6 +316,7 @@ export const ESCUDOS = {
     gralpaz: escudo_gralpaz,
     guillermobrown: escudo_guillermobrown,
     huracan: escudo_huracan,
+    huancayo: escudo_huancayo,
     horn: escudo_horn,
     independientedv: escudo_independientedv,
     independienteriv: escudo_independienteriv,
@@ -358,6 +370,7 @@ export const ESCUDOS = {
     sanjorge: escudo_sanjorge,
     sanluis: escudo_sanluis,
     sanmartinsj: escudo_sanmartinsj,
+    sanmartintuc: escudo_sanmartintuc,
     solamerica: escudo_solamerica,
     sportboys: escudo_sportboys,
     sportboysperu: escudo_sportboysperu,

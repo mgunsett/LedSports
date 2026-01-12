@@ -590,7 +590,14 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               <Text fontSize="xs" color="whiteAlpha.700">
                                 Descargar PDF
                               </Text>
-                              <MdOutlineFileDownload size={16} color="white" />
+                              <Link href={jugadorData.ficha} isExternal>
+                                <Icon
+                                as={MdOutlineFileDownload}
+                                size={16} 
+                                color="white" 
+                                _hover={{ color: 'orange.300' }}
+                                />
+                              </Link>
                             </Flex>
                             <Text
                               fontSize="xs"
