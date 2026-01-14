@@ -1,12 +1,13 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";     
 import Navbar from "../components/Navbar";     
 import { Home } from "../Pages/Home";     
-import { Agentes } from "../Pages/Agentes";     
-import { Eventos } from "../Pages/Eventos";     
-import { Marcas } from "../Pages/Marcas";     
-import { Deportistas } from "../Pages/Deportistas";     
-import { EntidadesDeportivas } from "../Pages/EntidadesDeportivas";
-import { Jugadores } from "../Pages/Jugadores";
+const Agentes = lazy(() => import("../Pages/Agentes"));
+const Eventos = lazy(() => import("../Pages/Eventos"));   
+const Marcas = lazy(() => import("../Pages/Marcas"));      
+const EntidadesDeportivas = lazy(() => import("../Pages/EntidadesDeportivas"));
+const Deportistas = lazy(() => import("../Pages/Deportistas"));
+const Jugadores = lazy(() => import("../Pages/Jugadores"));
 import Footer from "../components/Footer";     
 import { ScrollToTop } from "./ScrollToTop";     
       
@@ -20,14 +21,42 @@ export const MainRouters = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home/:id" element={<Home />} />
-        <Route path="/agentes" element={<Agentes />} />
-        <Route path="/eventos" element={<Eventos />} />
-        <Route path="/marcas" element={<Marcas />} />
-        <Route path="/deportistas" element={<Deportistas />} />
-        <Route path="/entidades-deportivas" element={<EntidadesDeportivas />} />
-        <Route path="/jugadores" element={<Jugadores />} />
+        <Route path="/agentes" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Agentes />
+          </Suspense>
+        } />
+        <Route path="/eventos" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Eventos />
+          </Suspense>
+        } />
+        <Route path="/marcas" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Marcas />
+          </Suspense>
+        } />
+        <Route path="/deportistas" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Deportistas />
+          </Suspense>
+        } />
+        <Route path="/entidades-deportivas" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <EntidadesDeportivas />
+          </Suspense>
+        } />
+        <Route path="/jugadores" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Jugadores />
+          </Suspense>
+        } />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
 };
+
+
+// import { Deportistas } from "../Pages/Deportistas";  
+// import { Jugadores } from "../Pages/Jugadores";

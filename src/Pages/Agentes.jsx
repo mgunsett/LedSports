@@ -12,7 +12,7 @@ const MotionFlex = motion(Flex);
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
 
-export const Agentes = () => {
+const Agentes = () => {
 
     const isMobile = useBreakpointValue({ base: true, md: false });
 
@@ -222,3 +222,4 @@ export const Agentes = () => {
         </Flex>
     );
 };
+export default Agentes;

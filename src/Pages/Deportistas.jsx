@@ -28,7 +28,7 @@ const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionBox = motion(Box);
 
-export const Deportistas = () => {
+const Deportistas = () => {
 
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -1112,5 +1112,7 @@ export const Deportistas = () => {
     </Flex>
   );
 };
+
+export default Deportistas;
 
 

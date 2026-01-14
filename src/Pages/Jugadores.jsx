@@ -1,18 +1,20 @@
 import { Box, Flex, Heading, Text, Grid, useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
+const FichaJugador = lazy(() => import("../components/FichaJugador"));
 import Contact from "../components/Contact";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { brands } from "../data/jugadores";
 import { TitleCards } from "../components/TitleCards";
-import FichaJugador from "../components/FichaJugador";
+// import FichaJugador from "../components/FichaJugador";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionBox = motion(Box);
 const MotionGrid = motion(Grid);
 
-export const Jugadores = () => {
+const Jugadores = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
 
@@ -116,13 +118,16 @@ export const Jugadores = () => {
       </MotionBox>
       <Contact />
       {jugadorSeleccionado && (
-        <FichaJugador
-          isOpen={isOpen}
-          onClose={onClose}
-          jugador={jugadorSeleccionado}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <FichaJugador
+            isOpen={isOpen}
+            onClose={onClose}
+            jugador={jugadorSeleccionado}
+          />
+        </Suspense>
       )}
     </Box>
   );
 };
+export default Jugadores;
 

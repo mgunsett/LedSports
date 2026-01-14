@@ -10,7 +10,7 @@ const MotionBox = motion(Box);
 const MotionImage = motion(Image);
 const MotionFlex = motion(Flex);
 
-export const Eventos = () => {
+const Eventos = () => {
     return (
         <Flex
             bg={'black'}
@@ -182,3 +182,4 @@ export const Eventos = () => {
         </Flex>
     );
 };
+export default Eventos;

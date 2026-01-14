@@ -35,9 +35,12 @@ function FichaJugador({ isOpen, onClose, jugador }) {
   const pases = jugadorData.pases;
   const oportunidadDeTiro = jugadorData.tiros;
   const fitness = jugadorData.fitness;
+  const reflejos = jugadorData.reflejos;
 // Ficha Estadísticas
   const goals = jugadorData.goals;
   const partidos = jugadorData.partidos;
+  const asistencias = jugadorData.asistencias;
+  const vallaInvicta = jugadorData.vallaInvicta;
 
   const isMobile = useBreakpointValue({ base: true, sm: false, md: false });
 
@@ -46,7 +49,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
       isCentered
       isOpen={isOpen}
       onClose={onClose} 
-      size={{base:'100%', md:'6xl'}}  
+      size={{base:'100%', md:'8xl'}}  
     >
       <ModalOverlay
         bg="transparent"
@@ -54,8 +57,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
       />
       <MotionModalContent
         maxW={{ base: '95vw', md: '90vw', lg: '85vw' }}
-        maxH={{ base: '95vh', md: '90vh', lg: '85vh' }}
-        h={{ base: '100vh', md: '90vh' }}
+        maxH={{ base: '95vh', md: '90vh', lg: '88vh' }}
+        h={{ base: '100vh', md: '88 vh' }}
         bg="transparent"
         overflow="hidden"
         borderRadius="2xl"
@@ -154,7 +157,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 w={{ base: '100%', md: '60%' }}
                 h={{ base: '65%', md: '100%' }}
                 direction="column"
-                p={{ base: 4, md: 6, lg: 8 }}
+                p={{ base: 4, md: 6}}
                 initial={isMobile ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={isMobile ? { duration: 0, delay: 0 } : { duration: 0.6, delay: 0.3 }}
@@ -332,6 +335,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         justify="center"
                         flexWrap="wrap"
                         >
+                          {reflejos ? (
+                          <CircularProgress
+                            value={reflejos}
+                            label="Reflejos"
+                            size={90}
+                          />
+                          ) : null}
                           {recuperos ? (
                           <CircularProgress
                             value={recuperos}
@@ -407,6 +417,27 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               >
                                 Estadísticas Generales
                               </Text>
+                              {vallaInvicta ? (
+                                <Flex justify="space-between" mb={2}>
+                                  <Text fontSize="xs" color="whiteAlpha.700">
+                                    Vallas invictas
+                                  </Text>
+                                  <Text fontSize="xs" color="white" fontWeight="bold">
+                                    {vallaInvicta}
+                                  </Text>
+                                </Flex>
+                              ) : null}
+                              {asistencias ? (
+                                <Flex justify="space-between" mb={2}>
+                                  <Text fontSize="xs" color="whiteAlpha.700">
+                                    Asistencias
+                                  </Text>
+                                  <Text fontSize="xs" color="white" fontWeight="bold">
+                                    {asistencias}
+                                  </Text>
+                                </Flex>
+                              ) : null}
+                              {goals ? (
                               <Flex justify="space-between" mb={2}>
                                 <Text fontSize="xs" color="whiteAlpha.700">
                                   Goles
@@ -415,6 +446,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                   {goals}
                                 </Text>
                               </Flex>
+                              ) : null}
                               <Flex justify="space-between" mb={2}>
                                 <Text fontSize="xs" color="whiteAlpha.700">
                                   Partidos
@@ -508,7 +540,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       alignItems="flex-start"
                       justifyContent='center'
                       h="100%"
-                      gap={12}
+                      gap={8}
                     >
                       <Flex
                         flexDirection= 'column'
@@ -516,7 +548,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         justifyContent="flex-start"
                         h="100%"
                         w="43%"
-                        gap={'12px'}                     
+                        gap={'16px'}                     
                         >
                           <MotionFlex
                             w="100%"
@@ -539,6 +571,27 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             >
                               Estadísticas Generales
                             </Text>
+                            { vallaInvicta ? (
+                            <Flex justify="space-between" mb={2}>
+                              <Text fontSize="xs" color="whiteAlpha.700">
+                                Vallas invictas
+                              </Text>
+                              <Text fontSize="xs" color="white" fontWeight="bold">
+                                {vallaInvicta}
+                              </Text>
+                            </Flex>
+                            ) : null}
+                            { asistencias ? (
+                            <Flex justify="space-between" mb={2}>
+                              <Text fontSize="xs" color="whiteAlpha.700">
+                                Asistencias
+                              </Text>
+                              <Text fontSize="xs" color="white" fontWeight="bold">
+                                {asistencias}
+                              </Text>
+                            </Flex>
+                            ) : null}
+                            { goals ? (
                             <Flex justify="space-between" mb={2}>
                               <Text fontSize="xs" color="whiteAlpha.700">
                                 Goles
@@ -547,6 +600,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                 {goals}
                               </Text>
                             </Flex>
+                            ) : null}
                             <Flex justify="space-between" mb={2}>
                               <Text fontSize="xs" color="whiteAlpha.700">
                                 Partidos
@@ -566,6 +620,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           </MotionFlex>
                           <MotionFlex
                             w="100%"
+                            h="40%"
                             flexDirection='column'
                             alignItems="space-between"
                             justifyContent="center"
@@ -632,6 +687,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           justify="end"
                           flexWrap="wrap"
                         > 
+                          {reflejos ? (
+                          <CircularProgress
+                            value={reflejos}
+                            label="Reflejos"
+                            size={90}
+                          />
+                          ) : null}
                           {recuperos ? (
                           <CircularProgress
                             value={recuperos}

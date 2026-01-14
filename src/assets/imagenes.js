@@ -191,6 +191,10 @@ import escudo_felda from  "../assets/escudo_felda.webp";
 import escudo_sanmartintuc from  "../assets/escudo_sanmartintuc.webp";
 import escudo_huancayo from  "../assets/escudo_huancayo.webp";
 import escudo_deptachira from  "../assets/escudo_deptachira.webp";
+import escudo_elporvenir from  "../assets/escudo_elporvenir.webp";
+import escudo_liniers from  "../assets/escudo_liniers.webp";
+import escudo_sarmientolb from  "../assets/escudo_sarmientolb.webp";
+import escudo_cadu from  "../assets/escudo_cadu.webp";
 import descarga from "../assets/descarga.pdf";
 
 
@@ -274,6 +278,7 @@ export const ESCUDOS = {
     boca: escudo_boca,
     bolivia: escudo_bolivia,
     bolivar: escudo_bolivar,
+    cadu: escudo_cadu,
     capiata: escudo_capiata,
     carabobo: escudo_carabobo,
     catania: escudo_catania,
@@ -293,6 +298,7 @@ export const ESCUDOS = {
     depmadryn: escudo_depmadryn,
     defensa: escudo_defensa,
     defensores: escudo_defensores,
+    elporvenir: escudo_elporvenir,
     estudiantes: escudo_estudiantes,
     estudiantescaseros: escudo_estudiantescaseros,
     estudiantesrc: escudo_estudiantesrc,
@@ -331,6 +337,7 @@ export const ESCUDOS = {
     lazio: escudo_lazio,
     ligaquito: escudo_ligaquito,
     ligaloja: escudo_ligaloja,
+    liniers: escudo_liniers,
     luqueno: escudo_luqueno,
     lanus: escudo_lanus,
     macara: escudo_macara,
@@ -361,6 +368,7 @@ export const ESCUDOS = {
     resistencia: escudo_resistencia,
     river: escudo_river,
     sarmiento: escudo_sarmiento,
+    sarmientolb: escudo_sarmientolb,
     santoslaguna: escudo_santoslaguna,
     santiagoarica: escudo_santiagoarica,
     santiagodeportivo: escudo_santiagodeportivo,

@@ -8,7 +8,7 @@ const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
 
-export const Marcas = () => {
+const Marcas = () => {
     return (
         <Flex 
         bg="black"
@@ -219,97 +219,8 @@ export const Marcas = () => {
         </Flex>
     );
 };
+export default Marcas;
 
 
 
-
-
-             {/* <Flex
-                justifyContent="center"
-                alignItems="center"
-                gap={{ base: 8, md: 20 }}
-                flexDirection={{ base: "column", md: "row" }}
-                w={{ base: "100%", md: "60%" }}
-                mb={{ base: 6, md: 10 }}
-            >
-                <MotionFlex
-                    justifyContent="start"
-                    alignItems="start"
-                    flexDirection="column"
-                    gap={2}
-                    w={{ base: "100%", md: "400px" }}
-                    initial={{ opacity: 0, x: 60 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8, duration: 1 }}
-                    viewport={{ once: true }}
-                    
-                    p={{base: 6, md: 4}}
-                >
-                    <Text fontSize="3xl" fontWeight="bold"fontFamily="Stack Sans Headline, sans-serif" color="orange.400">
-                        Unimos marcas y deportistas para generar impacto real
-                    </Text>
-                    <Text fontSize="xl" color="white"> 
-                        Nuestro servicio está diseñado para marcas que buscan potenciar su presencia a través del deporte y conectar con su 
-                        público desde la emoción, la credibilidad y la pasión.
-                    </Text> 
-                </MotionFlex>
-                <MotionImage
-                    src={marcas}
-                    alt="marcas"
-                    w={{ base: "100%", md: "400px" }}
-                    h={{ base: "auto", md: "auto" }}
-                    initial={{ opacity: 0, x: -60 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8, duration: 1 }}
-                    viewport={{ once: true }}
-                />
-            </Flex>
-            <MotionFlex
-                justifyContent="center"
-                alignItems="stretch"
-                flexWrap="wrap"
-                gap={2}
-                w={{ base: "100%", md: "70%" }}
-                initial={{ opacity: 0}}
-                whileInView={{ opacity: 1}}
-                transition={{ delay: 0.3, duration: 1 }}
-                viewport={{ once: true }}  
-                color="white"
-                fontFamily="Stack Sans Headline, sans-serif"
-            >
-                <MotionBox
-                    w={{ base: "100%", md: "85%" }}
-                    p={20}
-                    border="1px solid"
-                    borderColor="orange.400"
-                    borderRadius="md"
-                    textAlign="center"
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1}}
-                    viewport={{ once: true }}
-                    _hover={{
-                        boxShadow: "0px 0px 12px 1px rgba(245,160,15,0.56)",
-                    }}
-                >
-                    <Text fontSize="lg" lineHeight="30px">
-                        Nos encargamos de identificar al atleta ideal, gestionar la colaboración y producir contenido 
-                        profesional para campañas, activaciones y eventos. Creamos vínculos auténticos que amplían el alcance,
-                        fortalecen el posicionamiento y generan una conexión real con las audiencias. Diseñamos acciones y 
-                        presupuestos a medida para que cada alianza entre marca y deporte genere valor y crecimiento compartido.
-                    </Text>
-                </MotionBox>
-            </MotionFlex>
-             <MotionBox
-            animate={{ y: [0, -15, 0]}}
-            transition={{ duration: 1, repeat: Infinity}}
-            display="flex"
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
-            fontSize={{ base: '50px', md: '100px' }}
-            >
-                <BsChevronDoubleDown color="orange" />
-            </MotionBox>  
-            <Contact />
-        </Flex> */}
+        
