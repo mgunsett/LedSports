@@ -10,6 +10,7 @@ const Deportistas = lazy(() => import("../Pages/Deportistas"));
 const Jugadores = lazy(() => import("../Pages/Jugadores"));
 import Footer from "../components/Footer";     
 import { ScrollToTop } from "./ScrollToTop";     
+import Loading2 from "@/components/Loading2";
       
 
 export const MainRouters = () => {
@@ -22,32 +23,32 @@ export const MainRouters = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home/:id" element={<Home />} />
         <Route path="/agentes" element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading2 />}>
             <Agentes />
           </Suspense>
         } />
         <Route path="/eventos" element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading2 />}>
             <Eventos />
           </Suspense>
         } />
         <Route path="/marcas" element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading2 />}>
             <Marcas />
           </Suspense>
         } />
         <Route path="/deportistas" element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading2 />}>
             <Deportistas />
           </Suspense>
         } />
         <Route path="/entidades-deportivas" element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading2 />}>
             <EntidadesDeportivas />
           </Suspense>
         } />
         <Route path="/jugadores" element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading2 />}>
             <Jugadores />
           </Suspense>
         } />

@@ -33,6 +33,10 @@ import jugador_zabala from "../assets/jugador_zabala.webp";
 import jugador_zanini from "../assets/jugador_zanini.webp";
 import jugador_monteagudo from "../assets/jugador_monteagudo.png";
 import jugador_cano from "../assets/jugador_cano.webp";
+import jugador_avellaneda from "../assets/jugador_avellaneda.webp";
+import jugador_papaleo from "../assets/jugador_papaleo.webp";
+import jugador_alfaro from "../assets/jugador_alfaro.webp";
+import escudo_spameliano from "../assets/escudo_spameliano.webp";
 import escudo_racing1 from "../assets/escudo_racing1.webp";
 import escudo_velez from "../assets/escudo_velez.webp";
 import escudo_argentinos from "../assets/escudo_argentinos.webp";
@@ -195,14 +199,20 @@ import escudo_elporvenir from  "../assets/escudo_elporvenir.webp";
 import escudo_liniers from  "../assets/escudo_liniers.webp";
 import escudo_sarmientolb from  "../assets/escudo_sarmientolb.webp";
 import escudo_cadu from  "../assets/escudo_cadu.webp";
+import escudo_cobreloa from  "../assets/escudo_cobreloa.webp";
+import escudo_depcali from  "../assets/escudo_depcali.webp";
+import escudo_gualeguay from  "../assets/escudo_gualeguay.webp";
+import escudo_racingcordoba from  "../assets/escudo_racingcordoba.webp";
 import descarga from "../assets/descarga.pdf";
 
 
 export const JUGADORES = {
     ade: jugador_ade,
     ajito: jugador_ajito,
+    alfaro: jugador_alfaro,
     amade: jugador_amade,
     antonio: jugador_antonio,
+    avellaneda: jugador_avellaneda,
     callejo: jugador_callejo,
     campisi: jugador_campisi,
     carmelo: jugador_carmelo,
@@ -225,6 +235,7 @@ export const JUGADORES = {
     monteagudo: jugador_monteagudo,
     oroz: jugador_oroz,
     orsini: jugador_orsini,
+    papaleo: jugador_papaleo,
     retamar: jugador_retamar,
     runi: jugador_runi,
     vera: jugador_vera,
@@ -288,6 +299,7 @@ export const ESCUDOS = {
     chicago: escudo_chicago,
     cusco: escudo_cusco,
     nacional: escudo_nacional,
+    cobreloa: escudo_cobreloa,
     colon: escudo_colon,
     colocolo: escudo_colocolo,
     copiapo: escudo_copiapo,
@@ -295,6 +307,7 @@ export const ESCUDOS = {
     depmaipu: escudo_depmaipu,
     depconcepcion: escudo_depconcepcion,
     deplaserena: escudo_deplaserena,
+    depcali: escudo_depcali,
     depmadryn: escudo_depmadryn,
     defensa: escudo_defensa,
     defensores: escudo_defensores,
@@ -311,6 +324,7 @@ export const ESCUDOS = {
     francavilla: escudo_francavilla,
     godoycruz: escudo_godoycruz,
     guemes: escudo_guemes,
+    gualeguay: escudo_gualeguay,
     guarani: escudo_guarani,
     guaraniantonio: escudo_guaraniantonio,
     guillermobrown: escudo_guillermobrown,
@@ -364,6 +378,7 @@ export const ESCUDOS = {
     queretaro: escudo_queretaro,
     racing1: escudo_racing1,
     racingmont: escudo_racingmont,
+    racingcordoba: escudo_racingcordoba,
     rangers: escudo_rangers,
     resistencia: escudo_resistencia,
     river: escudo_river,
@@ -382,6 +397,7 @@ export const ESCUDOS = {
     solamerica: escudo_solamerica,
     sportboys: escudo_sportboys,
     sportboysperu: escudo_sportboysperu,
+    spameliano: escudo_spameliano,
     sportivoguzman: escudo_sportivoguzman,
     sportivopatria: escudo_sportivopatria,
     sportivosl: escudo_sportivosl,  

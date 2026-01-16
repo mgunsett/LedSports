@@ -57,7 +57,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
       />
       <MotionModalContent
         maxW={{ base: '95vw', md: '90vw', lg: '85vw' }}
-        maxH={{ base: '95vh', md: '90vh', lg: '88vh' }}
+        maxH={{ base: '98vh', md: '90vh', lg: '88vh' }}
         h={{ base: '100vh', md: '88 vh' }}
         bg="transparent"
         overflow="hidden"
@@ -332,6 +332,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       <Flex
                         gap={6}
                         mb={4}
+                        mt={{base: 2, md: 0}}
                         justify="center"
                         flexWrap="wrap"
                         >
@@ -396,7 +397,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           >
                             <Flex
                               className='estadisticas_mobile'
-                              w="110%"
+                              w="100%"
                               h="110%"
                               flexDirection='column'
                               alignItems="space-between"
@@ -470,9 +471,9 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               borderRadius="lg"
                               border="1px solid"
                               borderColor="whiteAlpha.200"
-                              w="90%"
-                              h="85%"
-                              mr={-5}
+                              w="92%"
+                              h="75%"
+                              mr={-3}
                               transform="rotate(90deg)"
                             >
                               <SoccerFieldPosition position={jugadorData.position} />
