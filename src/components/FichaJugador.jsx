@@ -21,6 +21,8 @@ import CircularProgress from './CircularProgress';
 import SoccerFieldPosition from './SoccerFieldPosition';
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaXTwitter, FaThreads } from "react-icons/fa6";
+
 import './FichaJugador.css';
 
 const MotionModalContent = motion(ModalContent);
@@ -41,6 +43,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
   const partidos = jugadorData.partidos;
   const asistencias = jugadorData.asistencias;
   const vallaInvicta = jugadorData.vallaInvicta;
+// Redes Sociales
+  const instagram = jugadorData.instagram;
+  const tiktok = jugadorData.tiktok;
+  const twitter = jugadorData.twitter;
+  const threads = jugadorData.threads;
+// Ficha PDF
+  const ficha = jugadorData.ficha;
 
   const isMobile = useBreakpointValue({ base: true, sm: false, md: false });
 
@@ -518,12 +527,26 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               Redes Sociales
                             </Text>
                             <Flex justify="flex-start" mb={2} gap={3}>
-                              <Link href={`https://www.instagram.com/${jugadorData.instagram}`} isExternal>
+                              { instagram ? (
+                              <Link href={`https://www.instagram.com/${instagram}`} isExternal>
                                 <Icon as={FaInstagram} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
                               </Link>
-                              <Link href={`https://www.tiktok.com/${jugadorData.tiktok}`} isExternal>
+                              ) : null}
+                              { tiktok ? (
+                              <Link href={`https://www.tiktok.com/${tiktok}`} isExternal>
                                 <Icon as={FaTiktok} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
                               </Link>
+                              ) : null}
+                              { twitter ? (
+                              <Link href={`https://twitter.com/${twitter}`} isExternal>
+                                <Icon as={FaXTwitter} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
+                              </Link>
+                              ) : null}
+                              { threads ? (
+                              <Link href={`https://www.threads.net/${threads}`} isExternal>
+                                <Icon as={FaThreads} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
+                              </Link>
+                              ) : null}
                             </Flex>
                             </Flex>
                           </Flex>
@@ -665,12 +688,26 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               Redes Sociales
                             </Text>
                             <Flex justify="flex-start" mb={2} gap={3}>
-                              <Link href={`https://www.instagram.com/${jugadorData.instagram}`} isExternal>
+                              { instagram ? (
+                              <Link href={`https://www.instagram.com/${instagram}`} isExternal>
                                 <Icon as={FaInstagram} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
                               </Link>
-                              <Link href={`https://www.tiktok.com/${jugadorData.tiktok}`} isExternal>
+                              ) : null}
+                              { tiktok ? (
+                              <Link href={`https://www.tiktok.com/${tiktok}`} isExternal>
                                 <Icon as={FaTiktok} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
                               </Link>
+                              ) : null}
+                              { twitter ? (
+                              <Link href={`https://twitter.com/${twitter}`} isExternal>
+                                <Icon as={FaXTwitter} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
+                              </Link>
+                              ) : null}
+                              { threads ? (
+                              <Link href={`https://www.threads.net/${threads}`} isExternal>
+                                <Icon as={FaThreads} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
+                              </Link>
+                              ) : null}
                             </Flex>
                           </MotionFlex>
                       </Flex>

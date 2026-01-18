@@ -36,6 +36,8 @@ import jugador_cano from "../assets/jugador_cano.webp";
 import jugador_avellaneda from "../assets/jugador_avellaneda.webp";
 import jugador_papaleo from "../assets/jugador_papaleo.webp";
 import jugador_alfaro from "../assets/jugador_alfaro.webp";
+import jugador_gudiño from "../assets/jugador_gudiño.webp";
+import escudo_venados from "../assets/escudo_venados.webp";
 import escudo_spameliano from "../assets/escudo_spameliano.webp";
 import escudo_racing1 from "../assets/escudo_racing1.webp";
 import escudo_velez from "../assets/escudo_velez.webp";
@@ -203,6 +205,7 @@ import escudo_cobreloa from  "../assets/escudo_cobreloa.webp";
 import escudo_depcali from  "../assets/escudo_depcali.webp";
 import escudo_gualeguay from  "../assets/escudo_gualeguay.webp";
 import escudo_racingcordoba from  "../assets/escudo_racingcordoba.webp";
+import escudo_tepatitlan from  "../assets/escudo_tepatitlan.webp";
 import descarga from "../assets/descarga.pdf";
 
 
@@ -223,6 +226,7 @@ export const JUGADORES = {
     giacopuzzi: jugador_giacopuzzi,
     gonzasosa: jugador_gonzasosa,
     gonzapiovi: jugador_gonzapiovi,
+    gudiño: jugador_gudiño,
     guillebenitez: jugador_guillebenitez,
     jonitorres: jugador_jonitorres,
     keki: jugador_keki,
@@ -404,6 +408,7 @@ export const ESCUDOS = {
     strongest: escudo_strongest,
     tampa: escudo_tampa,
     temperley: escudo_temperley,
+    tepatitlan: escudo_tepatitlan,
     tigre: escudo_tigre,
     talleres: escudo_talleres,
     tyfmortero: escudo_tyfmortero,
@@ -414,6 +419,7 @@ export const ESCUDOS = {
     unionlacalera: escudo_unionlacalera,
     wohlen: escudo_wohlen,
     yeni: escudo_yeni,
+    venados: escudo_venados,
     velez: escudo_velez,
     volos: escudo_volos,
     vortis: escudo_vortis,

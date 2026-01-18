@@ -60,10 +60,10 @@ const Footer = () => {
           <Link href="https://www.instagram.com/_ledsports/" isExternal>
             <Icon as={FaInstagram} color="orange.400" boxSize={{ base: 6, md: '20px'}} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
           </Link>
-          <Link href="https://www.tiktok.com/@ledsports" isExternal>
+          <Link href="https://www.tiktok.com/@led.sports" isExternal>
             <Icon as={FaTiktok} color="orange.400" boxSize={{ base: 6, md: '20px'}} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
           </Link>
-          <Link href="https://wa.me/5493516666666" isExternal>
+          <Link href="https://wa.link/v8wl84" isExternal>
             <Icon as={FaWhatsapp} color="orange.400" boxSize={{ base: 6, md: '20px'}} transition="all 0.4s ease" _hover={{ color: 'white', transform: 'scale(1.3)' }} />
           </Link>
         </HStack>
