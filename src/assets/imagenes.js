@@ -37,6 +37,12 @@ import jugador_avellaneda from "../assets/jugador_avellaneda.webp";
 import jugador_papaleo from "../assets/jugador_papaleo.webp";
 import jugador_alfaro from "../assets/jugador_alfaro.webp";
 import jugador_gudiño from "../assets/jugador_gudiño.webp";
+import jugador_muñoz from "../assets/jugador_muñoz.webp";
+import jugador_aviles from "../assets/jugador_aviles.webp";
+import jugador_oyanedel from "../assets/jugador_oyanedel.webp";
+import jugador_bosch from "../assets/jugador_bosch.webp";
+import jugador_fara from "../assets/jugador_fara.webp";
+import jugador_romero from "../assets/jugador_romero.webp";
 import escudo_venados from "../assets/escudo_venados.webp";
 import escudo_spameliano from "../assets/escudo_spameliano.webp";
 import escudo_racing1 from "../assets/escudo_racing1.webp";
@@ -206,6 +212,15 @@ import escudo_depcali from  "../assets/escudo_depcali.webp";
 import escudo_gualeguay from  "../assets/escudo_gualeguay.webp";
 import escudo_racingcordoba from  "../assets/escudo_racingcordoba.webp";
 import escudo_tepatitlan from  "../assets/escudo_tepatitlan.webp";
+import escudo_tristansuarez from  "../assets/escudo_tristansuarez.webp";
+import escudo_chile from  "../assets/escudo_chile.webp";
+import escudo_univconcep from  "../assets/escudo_univconcep.webp";
+import escudo_cobresal from  "../assets/escudo_cobresal.webp";
+import escudo_universitario from  "../assets/escudo_universitario.webp";
+import escudo_juvantoniana from  "../assets/escudo_juvantoniana.webp"; 
+import escudo_aldosivi from  "../assets/escudo_aldosivi.webp"; 
+import escudo_emelec from  "../assets/escudo_emelec.webp";
+import escudo_psv from  "../assets/escudo_psv.webp";
 import descarga from "../assets/descarga.pdf";
 
 
@@ -213,14 +228,17 @@ export const JUGADORES = {
     ade: jugador_ade,
     ajito: jugador_ajito,
     alfaro: jugador_alfaro,
+    aviles: jugador_aviles,
     amade: jugador_amade,
     antonio: jugador_antonio,
     avellaneda: jugador_avellaneda,
+    bosch: jugador_bosch,
     callejo: jugador_callejo,
     campisi: jugador_campisi,
     carmelo: jugador_carmelo,
     contin: jugador_contin,
     correa: jugador_correa,
+    fara: jugador_fara,
     farias: jugador_farias,
     ferreyra: jugador_ferreyra,
     giacopuzzi: jugador_giacopuzzi,
@@ -237,10 +255,13 @@ export const JUGADORES = {
     manulopez: jugador_manulopez,
     mateos: jugador_mateos,
     monteagudo: jugador_monteagudo,
+    muñoz: jugador_muñoz,
     oroz: jugador_oroz,
     orsini: jugador_orsini,
+    oyanedel: jugador_oyanedel,
     papaleo: jugador_papaleo,
     retamar: jugador_retamar,
+    romero: jugador_romero,
     runi: jugador_runi,
     vera: jugador_vera,
     villalba: jugador_villalba,
@@ -266,6 +287,7 @@ export const ESCUDOS = {
     cuneo: escudo_cuneo,
     donbosco: escudo_donbosco, 
     deptachira: escudo_deptachira,
+    aldosivi: escudo_aldosivi,
     almagro: escudo_almagro,
     almeria: escudo_almeria,
     alvarado: escudo_alvarado,
@@ -303,7 +325,9 @@ export const ESCUDOS = {
     chicago: escudo_chicago,
     cusco: escudo_cusco,
     nacional: escudo_nacional,
+    chile: escudo_chile,
     cobreloa: escudo_cobreloa,
+    cobresal: escudo_cobresal,
     colon: escudo_colon,
     colocolo: escudo_colocolo,
     copiapo: escudo_copiapo,
@@ -316,6 +340,7 @@ export const ESCUDOS = {
     defensa: escudo_defensa,
     defensores: escudo_defensores,
     elporvenir: escudo_elporvenir,
+    emelec: escudo_emelec,
     estudiantes: escudo_estudiantes,
     estudiantescaseros: escudo_estudiantescaseros,
     estudiantesrc: escudo_estudiantesrc,
@@ -348,6 +373,7 @@ export const ESCUDOS = {
     instituto: escudo_instituto,
     iquique: escudo_iquique,
     ismailySC: escudo_ismailySC,
+    juvantoniana: escudo_juvantoniana,
     juvunida: escudo_juvunida,
     kalamata: escudo_kalamata,
     lamadrid: escudo_lamadrid,
@@ -378,6 +404,7 @@ export const ESCUDOS = {
     patronato: escudo_patronato,
     petrolero: escudo_petrolero,
     platense: escudo_platense,
+    psv: escudo_psv,
     quilmes: escudo_quilmes,
     queretaro: escudo_queretaro,
     racing1: escudo_racing1,
@@ -411,12 +438,15 @@ export const ESCUDOS = {
     tepatitlan: escudo_tepatitlan,
     tigre: escudo_tigre,
     talleres: escudo_talleres,
+    tristansuarez: escudo_tristansuarez,
     tyfmortero: escudo_tyfmortero,
     uaiurquiza: escudo_uaiurquiza,
     ucatolica: escudo_ucatolica,
     udechile: escudo_udechile,
     union: escudo_union,
     unionlacalera: escudo_unionlacalera,
+    univconcep: escudo_univconcep,
+    universitario: escudo_universitario,
     wohlen: escudo_wohlen,
     yeni: escudo_yeni,
     venados: escudo_venados,

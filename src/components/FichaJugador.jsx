@@ -250,7 +250,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                   </Box>
                 
                 <Grid
-                  templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(4, 1fr)' }}
+                  templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
                   gap={{ base: 6, md: 6 }}
                   mb={{ base: 4, md: 6 }}
                   pb={{ base: 4, md: 6 }}
@@ -263,7 +263,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
                       fontWeight="semibold"
-                      mb={1}
+                      mb={2}
                     >
                       FECHA NAC.
                     </Text>
@@ -271,12 +271,12 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       {jugadorData.birthDate || '01/01/1990'}
                     </Text>
                   </Box>
-                  <Box ml={{base:-3, md:-8}}>
+                  <Box ml={{base: 0, md:-8}}>
                     <Text
                       fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"  
                       fontWeight="semibold"
-                      mb={1}
+                      mb={2}
                     >
                       PAÍS
                     </Text>
@@ -288,7 +288,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       {jugadorData.country || 'Argentina'}
                     </Text>
                   </Box>
-                  <Box ml={{base:-3, md:-8}}>
+                  <Box ml={{base: 0, md:-8}}>
                     <Text
                       fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
@@ -297,12 +297,12 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                     >
                       CLUB ACTUAL
                     </Text>
-                    <Flex  align="center" gap={2}>
+                    <Flex  align="center" gap={2} boxSize='max-content'>
                       {jugadorData.clubLogoActual && (
                         <ClubInfo clubData={Array.isArray(jugadorData.clubLogoActual) ? jugadorData.clubLogoActual[0] : null}>
                           <Image
                             src={Array.isArray(jugadorData.clubLogoActual) ? jugadorData.clubLogoActual[0].logo : jugadorData.clubLogoActual}
-                            alt={jugadorData.club || 'Club actual'}
+                            alt={jugadorData.club || 'Club Logo'}
                             w={{ base: "20px", md: "25px" }}
                             h={{ base: "20px", md: "25px" }}
                             objectFit="contain"
@@ -310,16 +310,16 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         </ClubInfo>
                       )}
                       <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
-                        {jugadorData.club || 'Club actual'}
+                        {jugadorData.club || 'Jugador libre'}
                       </Text>
                     </Flex>
                   </Box>
-                  <Box ml={{base: 3, md:0}}>
+                  <Box ml={{base: 0, md:0}}>
                     <Text
                       fontSize={{base:"10px", md:"xs"}}
                       color="whiteAlpha.600"
                       fontWeight="semibold"
-                      mb={1}
+                      mb={2}
                     >
                       ESTATURA
                     </Text>
