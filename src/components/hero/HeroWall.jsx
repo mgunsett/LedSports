@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import { Box, Button, Image, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import { motion, useReducedMotion } from 'framer-motion';
 import logo3d from '../../assets/logo_3d.webp';
@@ -15,6 +15,7 @@ import { JUGADORES } from '../../assets/imagenes';
 
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const COLUMNS = 9;
+const COLUMNS_MOBILE = 7;
 const TILES_PER_COLUMN = 7;
 const HOT_EVERY = 6; // 1 de cada 6 tarjetas usa el fondo naranja de marca
 
@@ -35,8 +36,8 @@ const scrollToSection = (id) => {
 };
 
 // Reparto determinista de jugadores en columnas (sin repetir vecinos inmediatos)
-function buildColumns(players) {
-  return Array.from({ length: COLUMNS }, (_, c) => {
+function buildColumns(players, count) {
+  return Array.from({ length: count }, (_, c) => {
     const items = Array.from({ length: TILES_PER_COLUMN }, (_, k) => {
       const src = players[(c * TILES_PER_COLUMN + k * 5) % players.length];
       return { src, hot: (c + k) % HOT_EVERY === 2 };
@@ -128,7 +129,9 @@ const Wall = memo(function Wall({ columns, reduceMotion }) {
 const HeroWall = () => {
   const reduceMotion = useReducedMotion();
   const players = useMemo(() => Object.values(JUGADORES), []);
-  const columns = useMemo(() => buildColumns(players), [players]);
+  // en mobile menos columnas = menos <img> y menos capas animadas
+  const columnCount = useBreakpointValue({ base: COLUMNS_MOBILE, md: COLUMNS }, { ssr: false }) ?? COLUMNS;
+  const columns = useMemo(() => buildColumns(players, columnCount), [players, columnCount]);
 
   // con reduced motion: solo fundidos, sin desplazamientos ni escalas
   const enter = (delay, from = { y: 16 }) => ({

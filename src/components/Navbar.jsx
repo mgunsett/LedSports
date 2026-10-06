@@ -62,6 +62,14 @@ const Navbar = () => {
     }
   };
 
+  // "Inicio" ya en Home: el router no navega, así que subimos manualmente
+  const handleInicioClick = (e) => {
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleNosotrosClick = () => {
     if (window.location.pathname !== '/') {
       navigate('/');
@@ -175,6 +183,7 @@ const Navbar = () => {
                 key={link.href}
                 as={RouterLink}
                 to={link.href}
+                onClick={link.label === 'Inicio' ? handleInicioClick : undefined}
                 color="whiteAlpha.900"
                 _hover={{ color: 'orange.400', textDecoration: 'none' }}
                 transition="color 0.2s"
@@ -254,7 +263,10 @@ const Navbar = () => {
                     to={link.href}
                     fontSize="lg"
                     _hover={{ color: 'orange.400' }}
-                    onClick={onClose}
+                    onClick={(e) => {
+                      if (link.label === 'Inicio') handleInicioClick(e);
+                      onClose();
+                    }}
                   >
                     {link.label}
                   </Link>
