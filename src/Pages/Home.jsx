@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import Hero from "../components/Hero";
+import HeroWall from "../components/hero/HeroWall";
 import About from "../components/About";
 import Services from "../components/Services";
 import TrustSection from "../components/TrustSection";
@@ -9,7 +9,7 @@ import { Toaster } from "../components/ui/toaster";
 export const Home = () => {    
     return (
         <Box id="home" height={'100%'} pb={20} bg="black" color="white" overflowX="hidden">
-            <Hero />
+            <HeroWall />
             <Toaster />
             <About />
             <Services />
