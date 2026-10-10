@@ -43,6 +43,7 @@ import jugador_oyanedel from "../assets/jugador_oyanedel.webp";
 import jugador_bosch from "../assets/jugador_bosch.webp";
 import jugador_fara from "../assets/jugador_fara.webp";
 import jugador_romero from "../assets/jugador_romero.webp";
+import jugador_maffini from "../assets/jugador_maffini.webp";
 import escudo_venados from "../assets/escudo_venados.webp";
 import escudo_spameliano from "../assets/escudo_spameliano.webp";
 import escudo_racing1 from "../assets/escudo_racing1.webp";
@@ -252,6 +253,7 @@ export const JUGADORES = {
     lotti: jugador_lotti,
     luka: jugador_luka,
     mainero: jugador_mainero,
+    maffini: jugador_maffini,
     manulopez: jugador_manulopez,
     mateos: jugador_mateos,
     monteagudo: jugador_monteagudo,
