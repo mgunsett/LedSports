@@ -201,6 +201,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             jugadorData.trayectoria.map((club, index) => (
                                 <ClubInfo key={index} clubData={club}>
                                     <Image
+                                      loading="lazy"
+                                      decoding="async"
                                       src={club.logo}
                                       alt={club.name}
                                       w={{ base: "20px", md: "30px" }}
@@ -301,6 +303,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       {jugadorData.clubLogoActual && (
                         <ClubInfo clubData={Array.isArray(jugadorData.clubLogoActual) ? jugadorData.clubLogoActual[0] : null}>
                           <Image
+                            loading="lazy"
+                            decoding="async"
                             src={Array.isArray(jugadorData.clubLogoActual) ? jugadorData.clubLogoActual[0].logo : jugadorData.clubLogoActual}
                             alt={jugadorData.club || 'Club Logo'}
                             w={{ base: "20px", md: "25px" }}

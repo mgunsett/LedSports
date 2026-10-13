@@ -31,7 +31,7 @@ import jugador_villalba from "../assets/jugador_villalba.webp";
 import jugador_yomar_rocha from "../assets/jugador_yomar_rocha.webp";
 import jugador_zabala from "../assets/jugador_zabala.webp";
 import jugador_zanini from "../assets/jugador_zanini.webp";
-import jugador_monteagudo from "../assets/jugador_monteagudo.png";
+import jugador_monteagudo from "../assets/jugador_monteagudo.webp";
 import jugador_cano from "../assets/jugador_cano.webp";
 import jugador_avellaneda from "../assets/jugador_avellaneda.webp";
 import jugador_papaleo from "../assets/jugador_papaleo.webp";

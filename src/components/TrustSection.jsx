@@ -460,6 +460,8 @@ const TrustSection = () => {
                   }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     className="image_brand"
                     src={logo.img}
                     alt={`Logo ${i}`}

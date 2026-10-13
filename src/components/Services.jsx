@@ -130,6 +130,8 @@ const Services = () => {
                 const isCenter = position === 'center';
                 return (
                   <MotionImage
+                    loading="lazy"
+                    decoding="async"
                     key={index}
                     src={img}
                     position="absolute"

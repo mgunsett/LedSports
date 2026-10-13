@@ -31,7 +31,7 @@ const MotionBox = motion(Box);
 const Deportistas = () => {
 
   const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
   const handleVideoInView = () => {
@@ -225,6 +225,8 @@ const Deportistas = () => {
                   minH={{ base: "150px", md: '"200px"' }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_planmkt}
                     w={{ base: "180px", md: "250px" }}
                     h={{ base: "150px", md: "210px" }}
@@ -301,6 +303,8 @@ const Deportistas = () => {
                   minH={{ base: "150px", md: "220px" }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_gestion360}
                     w="200px"
                     h="200px"
@@ -378,6 +382,8 @@ const Deportistas = () => {
                   minH={{ base: "200px", md: "300px" }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_logos}
                     w={{ base: "280px", md: "250px" }}
                     h={{ base: "180px", md: "150px" }}
@@ -506,7 +512,7 @@ const Deportistas = () => {
                 flexDirection={{ base: "column", md: "row" }}
                 h="100%"
               >
-                <Box
+                <MotionBox
                   flex='2'
                   bg="gray.900"
                   position="relative"
@@ -521,7 +527,7 @@ const Deportistas = () => {
                 <video
                   src={deportistas_video}
                   ref={videoRef}
-                  autoPlay
+                  preload="metadata"
                   loop
                   muted={isMuted}
                   playsInline
@@ -561,7 +567,7 @@ const Deportistas = () => {
                     isRound
                   />
                 </HStack>
-                </Box>
+                </MotionBox>
                 <Flex
                   flex='1'
                   flexDirection="column"
@@ -622,6 +628,8 @@ const Deportistas = () => {
                 overflow="hidden"
               >
                 <Image
+                  loading="lazy"
+                  decoding="async"
                   src={deportistas_postpartido}
                   w={{base: "300px", md: "320px"}}
                   h={{base: "350px", md: "320px"}}
@@ -703,6 +711,8 @@ const Deportistas = () => {
                   minH={{ base: "150px", md: "200px" }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_perfil}
                     w={{ base: "250px", md: "320px" }}
                     h={{ base: "250px", md: "250px" }}
@@ -728,6 +738,8 @@ const Deportistas = () => {
                   />
                   <Flex flexDirection="column" alignItems="center" gap={2}>
                     <Image
+                      loading="lazy"
+                      decoding="async"
                       src={deportistas_perfil3}
                       w={{ base: "300px", md: "380px" }}
                       h={{ base: "120px", md: "150px" }}
@@ -747,6 +759,8 @@ const Deportistas = () => {
                       }}
                     />
                     <Image
+                      loading="lazy"
+                      decoding="async"
                       src={deportistas_perfil4}
                       w={{ base: "300px", md: "380px" }}
                       h={{ base: "120px", md: "150px" }}
@@ -825,6 +839,8 @@ const Deportistas = () => {
                   minH={{ base: "200px", md: "220px" }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_aniversario}
                     w={{ base: "250px", md: "280px" }}
                     h={{ base: "270px", md: "300px" }}
@@ -903,6 +919,8 @@ const Deportistas = () => {
                   minH={{ base: "200px", md: "220px" }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_estadis}
                     w={{ base: "180px", md: "200px" }}
                     h={{ base: "340px", md: "360px" }}
@@ -977,6 +995,8 @@ const Deportistas = () => {
                   minH={{ base: "200px", md: "220px" }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_fotografia}
                     w="200px"
                     h="150px"
@@ -1055,6 +1075,8 @@ const Deportistas = () => {
                   minH={{ base: "200px", md: "220px" }}
                 >
                   <Image
+                    loading="lazy"
+                    decoding="async"
                     src= {deportistas_carpetacom}
                     w={{base: "120px" , md: "140px"}}
                     h="200px"

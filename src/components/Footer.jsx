@@ -20,6 +20,8 @@ const Footer = () => {
       >
         <Link href="/" >
         <Image 
+          loading="lazy"
+          decoding="async"
           src={logo_vertical} 
           alt="Logo" 
           width={{ base: '80px', md: '60px' }} 

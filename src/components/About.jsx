@@ -101,10 +101,11 @@ const About = () => {
         right="-0.6px"
       >
         <video 
-          class="video-led"
+          className="video-led"
           ref={videoRef}
-          src={nacion_led} 
-          loop 
+          src={nacion_led}
+          preload="metadata"
+          loop
           muted={isMuted}
           playsInline
         />
