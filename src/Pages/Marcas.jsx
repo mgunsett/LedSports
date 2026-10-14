@@ -1,8 +1,8 @@
 import { Flex, Text, Heading, Box, Image } from "@chakra-ui/react";  
 import { motion } from "framer-motion";
-import marcas from "../assets/marcas.webp";
+import marcas from "@/assets/banners/marcas.webp";
 import { BsChevronDoubleDown } from "react-icons/bs";
-import Contact from "../components/Contact";
+import Contact from "@/components/common/Contact";
 
 const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);

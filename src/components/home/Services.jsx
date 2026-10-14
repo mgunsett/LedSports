@@ -9,9 +9,9 @@ import {
   
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import service1 from '../assets/service1.webp';
-import service3 from '../assets/service3.webp';
-import service4 from '../assets/service4.webp';
+import service1 from '@/assets/servicios/service1.webp';
+import service3 from '@/assets/servicios/service3.webp';
+import service4 from '@/assets/servicios/service4.webp';
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 

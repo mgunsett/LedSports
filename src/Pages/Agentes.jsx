@@ -1,10 +1,10 @@
 import { Box, Flex, Text, Image, Heading, useBreakpointValue } from "@chakra-ui/react";
-import agentes from "../assets/agentes.webp";
-import agentes2 from "../assets/agentes2.webp";
-import agentes1 from "../assets/agentes1.webp";
+import agentes from "@/assets/agentes/agentes.webp";
+import agentes2 from "@/assets/agentes/agentes2.webp";
+import agentes1 from "@/assets/agentes/agentes1.webp";
 import { motion } from "framer-motion";
 import { BsChevronDoubleDown } from "react-icons/bs";
-import Contact from "../components/Contact";
+import Contact from "@/components/common/Contact";
 
 const MotionHeading = motion(Heading);
 const MotionImage = motion(Image);

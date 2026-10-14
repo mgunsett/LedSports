@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@/theme';
 import { MainRouters } from './Routers';
-import PageLoaderLED from './components/Loading';
+import PageLoaderLED from '@/components/layout/Loading';
 import { motion } from 'framer-motion';
 
 const MotionDiv = motion.div;

@@ -1,9 +1,10 @@
 import { memo, useMemo } from 'react';
-import { Box, Button, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Button, Image, Stack, VisuallyHidden, useBreakpointValue } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import { motion, useReducedMotion } from 'framer-motion';
-import logo3d from '../../assets/logo_3d.webp';
-import { JUGADORES } from '../../assets/imagenes';
+import { GoArrowRight } from 'react-icons/go';
+import logo3d from '@/assets/branding/logo_3d.webp';
+import { JUGADORES } from '@/assets/imagenes';
 
 /*
  * Hero "Muro" — muro 3D de publicaciones que se desplaza en columnas alternas,
@@ -30,6 +31,24 @@ const VIGNETTE_DESKTOP = `radial-gradient(ellipse 42% 50% at 50% 50%, rgba(0,0,0
 
 const MotionBox = motion(Box);
 const MotionImage = motion(Image);
+
+// Estilo compartido de los CTAs: mismo ancho mínimo para que se lean como par
+const CTA_BASE = {
+  h: '54px',
+  minW: { base: '100%', sm: '200px' },
+  px: '30px',
+  borderRadius: 'full',
+  color: 'white',
+  border: '1.5px solid',
+  fontFamily: 'Stack Sans Headline, sans-serif',
+  fontWeight: '600',
+  fontSize: '16px',
+  letterSpacing: '.01em',
+  transition:
+    'background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)',
+  _hover: {},
+  _active: { transform: 'scale(0.97)' },
+};
 
 const scrollToSection = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -152,6 +171,7 @@ const HeroWall = () => {
       overflow="hidden"
       bg="black"
       isolation="isolate"
+     
     >
       {/* Muro */}
       <MotionBox
@@ -203,64 +223,41 @@ const HeroWall = () => {
           {...enter(450, { scale: 0.96 })}
         />
 
-        <MotionBox {...enter(800)}>
-          <Text
-            as="h1"
-            m="0"
-            color="whiteAlpha.800"
-            fontWeight="400"
-            fontSize={{ base: '17px', md: 'clamp(17px, 1.5vw, 21px)' }}
-            letterSpacing=".01em"
-            textAlign="center"
-          >
-            Potenciamos tu marca deportiva
-          </Text>
-        </MotionBox>
+        {/* h1 solo para SEO / lectores de pantalla; visualmente manda el logo */}
+        <VisuallyHidden as="h1">LED Sports · Potenciamos tu marca deportiva</VisuallyHidden>
 
-        <MotionBox {...enter(860)} w={{ base: 'min(320px, 100%)', sm: 'auto' }}>
-          <Stack direction={{ base: 'column', sm: 'row' }} spacing="14px" justify="center">
+        <MotionBox {...enter(800)} w={{ base: 'min(300px, 100%)', sm: 'auto' }}>
+          <Stack direction={{ base: 'column', sm: 'row' }} spacing={{ base: '12px', sm: '14px' }} justify="center">
             <Button
+              {...CTA_BASE}
               onClick={() => scrollToSection('services')}
-              h="52px"
-              px="30px"
-              borderRadius="full"
               bg="orange.500"
-              color="white"
-              border="1.5px solid"
               borderColor="orange.500"
-              fontFamily="Stack Sans Headline, sans-serif"
-              fontWeight="600"
-              fontSize="16px"
-              transition="background-color 200ms ease, border-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)"
-              _hover={{}}
-              _active={{ transform: 'scale(0.97)' }}
+              boxShadow="0 10px 30px -8px rgba(237,137,54,.55)"
+              rightIcon={<GoArrowRight className="cta-arrow" />}
               sx={{
+                '.cta-arrow': { transition: 'transform 200ms cubic-bezier(0.23, 1, 0.32, 1)' },
                 '@media (hover: hover) and (pointer: fine)': {
-                  '&:hover': { bg: 'orange.400', borderColor: 'orange.400' },
+                  '&:hover': {
+                    bg: 'orange.400',
+                    borderColor: 'orange.400',
+                    boxShadow: '0 12px 36px -6px rgba(237,137,54,.7)',
+                  },
+                  '&:hover .cta-arrow': { transform: 'translateX(4px)' },
                 },
               }}
             >
               Ver servicios
             </Button>
             <Button
+              {...CTA_BASE}
               onClick={() => scrollToSection('trust')}
-              h="52px"
-              px="30px"
-              borderRadius="full"
-              bg="blackAlpha.400"
-              color="white"
-              border="1.5px solid"
-              borderColor="whiteAlpha.500"
-              backdropFilter="blur(6px)"
-              fontFamily="Stack Sans Headline, sans-serif"
-              fontWeight="600"
-              fontSize="16px"
-              transition="background-color 200ms ease, border-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)"
-              _hover={{}}
-              _active={{ transform: 'scale(0.97)' }}
+              bg="whiteAlpha.100"
+              borderColor="whiteAlpha.400"
+              backdropFilter="blur(8px)"
               sx={{
                 '@media (hover: hover) and (pointer: fine)': {
-                  '&:hover': { bg: 'whiteAlpha.100', borderColor: 'white' },
+                  '&:hover': { bg: 'whiteAlpha.200', borderColor: 'whiteAlpha.800' },
                 },
               }}
             >

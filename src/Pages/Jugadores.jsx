@@ -2,12 +2,12 @@ import { Box, Flex, Heading, Text, Grid, useDisclosure } from "@chakra-ui/react"
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
-const FichaJugador = lazy(() => import("../components/FichaJugador"));
-import Contact from "../components/Contact";
+const FichaJugador = lazy(() => import("@/components/jugadores/FichaJugador"));
+import Contact from "@/components/common/Contact";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { brands } from "../data/jugadores";
-import { TitleCards } from "../components/TitleCards";
-// import FichaJugador from "../components/FichaJugador";
+import { TitleCards } from "@/components/common/TitleCards";
+// import FichaJugador from "@/components/jugadores/FichaJugador";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);

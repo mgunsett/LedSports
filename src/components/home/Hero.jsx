@@ -11,10 +11,10 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import logo_vertical from '../assets/logo_vertical.webp';
-import fondo_luz from '../assets/fondo_luz.webp';
+import logo_vertical from '@/assets/branding/logo_vertical.webp';
+import fondo_luz from '@/assets/branding/fondo_luz.webp';
 import { GoArrowRight } from "react-icons/go";
-import '../components/Hero.css';
+import './Hero.css';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);

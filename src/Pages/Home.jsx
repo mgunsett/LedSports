@@ -1,14 +1,14 @@
 import { Box } from "@chakra-ui/react";
-import HeroWall from "../components/hero/HeroWall";
-import About from "../components/About";
-import Services from "../components/Services";
-import TrustSection from "../components/TrustSection";
-import Contact from "../components/Contact";
+import HeroWall from "@/components/home/HeroWall";
+import About from "@/components/home/About";
+import Services from "@/components/home/Services";
+import TrustSection from "@/components/home/TrustSection";
+import Contact from "@/components/common/Contact";
 import { Toaster } from "../components/ui/toaster";
 
 export const Home = () => {    
     return (
-        <Box id="home" height={'100%'} pb={20} bg="black" color="white" overflowX="hidden">
+        <Box id="home" height={'100%'} pb={20} bg="black" color="white" overflowX="clip">
             <HeroWall />
             <Toaster />
             <About />

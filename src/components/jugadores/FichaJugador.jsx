@@ -16,9 +16,9 @@ import {
   Icon
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import ClubInfo from './ClubInfo';
-import CircularProgress from './CircularProgress';
-import SoccerFieldPosition from './SoccerFieldPosition';
+import ClubInfo from '@/components/jugadores/ClubInfo';
+import CircularProgress from '@/components/jugadores/CircularProgress';
+import SoccerFieldPosition from '@/components/jugadores/SoccerFieldPosition';
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter, FaThreads } from "react-icons/fa6";

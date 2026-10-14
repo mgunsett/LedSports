@@ -10,8 +10,8 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { brands } from '../data/jugadores';
-import '../components/TrustSection.css';
+import { brands } from '@/data/jugadores';
+import './TrustSection.css';
 
 const MotionBox = motion(Box);
 

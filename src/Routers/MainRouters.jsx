@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";     
-import Navbar from "../components/Navbar";     
+import Navbar from "@/components/layout/Navbar";     
 import { Home } from "../Pages/Home";     
 const Agentes = lazy(() => import("../Pages/Agentes"));
 const Eventos = lazy(() => import("../Pages/Eventos"));   
@@ -8,9 +8,9 @@ const Marcas = lazy(() => import("../Pages/Marcas"));
 const EntidadesDeportivas = lazy(() => import("../Pages/EntidadesDeportivas"));
 const Deportistas = lazy(() => import("../Pages/Deportistas"));
 const Jugadores = lazy(() => import("../Pages/Jugadores"));
-import Footer from "../components/Footer";     
+import Footer from "@/components/layout/Footer";     
 import { ScrollToTop } from "./ScrollToTop";     
-import Loading2 from "@/components/Loading2";
+import Loading2 from "@/components/layout/Loading2";
       
 
 export const MainRouters = () => {

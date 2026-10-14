@@ -1,6 +1,6 @@
 import { Box, Image, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import logo_horizontal  from '../assets/logo_horizontal.webp';
+import logo_horizontal  from '@/assets/branding/logo_horizontal.webp';
 
 const MotionFlex = motion(Flex);
 const MotionImage = motion(Image);
