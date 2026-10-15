@@ -4,18 +4,11 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import { GoArrowRight } from 'react-icons/go';
 import serviceDeportistas from '@/assets/servicios/service1.webp';
-import serviceEntidades from '@/assets/servicios/service4.webp';
+import serviceEntidades from '@/assets/banners/entidades_deportivas.webp';
 import serviceAgentes from '@/assets/agentes/agentes1.webp';
 import serviceEventos from '@/assets/banners/eventos.webp';
 import serviceMarcas from '@/assets/banners/marcas.webp';
 
-/*
- * Servicios · versión "Vitrina"
- * Desktop: columna izquierda fija (título, texto y lista de servicios) y tarjetas que pasan a la derecha.
- *          La lista marca el servicio visible y al tocarla lleva a su tarjeta.
- * Mobile:  encabezado y tarjetas apiladas.
- * Cada servicio enlaza a su página.
- */
 
 const SERVICES = [
   {
@@ -170,6 +163,7 @@ const Services = () => {
       gridTemplateColumns={{ base: '1fr', md: 'minmax(0, .9fr) minmax(0, 1.1fr)' }}
       columnGap={{ md: 'clamp(28px, 5vw, 90px)' }}
       px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
+      py={{ base: 'clamp(40px, 8vw, 80px)', md: 'clamp(60px, 12vw, 120px)' }}
     >
       {/* Ancla que usa el Navbar ("Servicios") */}
       <Box id="servicesButton" position="absolute" top="0" left="0" />
