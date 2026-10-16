@@ -57,10 +57,7 @@ const Header = () => (
     flexShrink={0}
   >
     <Box>
-      <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-        <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
-        Jugadores
-      </Flex>
+      
       <Heading
         as="h2"
         m="12px 0 0"
@@ -77,7 +74,7 @@ const Header = () => (
       </Heading>
     </Box>
     <Flex direction={{ base: 'column', md: 'row' }} align={{ base: 'flex-start', md: 'flex-end' }} gap={{ base: '14px', md: '24px' }}>
-      <Text m="0" maxW="30ch" textAlign={{ base: 'left', md: 'right' }} color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.15vw, 17px)' }} lineHeight="1.55">
+      <Text m="0" maxW="35ch" textAlign={{ base: 'left', md: 'right' }} color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.15vw, 17px)' }} lineHeight="1.55">
         Más de 350 deportistas confiaron su marca en nosotros. Estos son algunos.
       </Text>
       <Flex
@@ -197,9 +194,10 @@ const TrustSection = () => {
       flexDirection="column"
       gap={{ base: '22px', md: 'clamp(16px, 2.4vh, 26px)' }}
       px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
-      pt={{ base: '80px', md: '12px' }}
+      pt={{ base: '80px', md: '32px' }}
       pb={{ base: '100px', md: '28px' }}
-      mb={{ base: 0, md: '100px' }}
+      mb={{ base: 0, md: '300px' }}
+      mt={{ base: 0, md: '200px' }}
       scrollMarginTop={NAV_H}
       sx={{ [MD]: { height: `calc(100svh - ${NAV_H})`, minHeight: '600px', maxHeight: '860px' } }}
     >
@@ -234,9 +232,9 @@ const TrustSection = () => {
             key={`num-${index}`}
             aria-hidden="true"
             position="absolute"
-            right="4%"
+            right="14%"
             top="10px"
-            fontSize="min(64vw, 300px)"
+            fontSize="200px"
             lineHeight=".8"
             fontWeight="700"
             fontStyle="italic"
@@ -245,7 +243,7 @@ const TrustSection = () => {
             pointerEvents="none"
             sx={{
               WebkitTextStroke: '2px rgba(237,137,54,.35)',
-              [MD]: { right: 'auto', top: 'auto', left: '1%', bottom: '-8%', fontSize: 'clamp(180px, min(24vw, 70cqh), 400px)' },
+              [MD]: { right: 'auto', top: 'auto', left: '1%', bottom: '-8%', fontSize: '600px' },
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -321,7 +319,7 @@ const TrustSection = () => {
                 gap="10px"
                 minH="48px"
                 px="22px"
-                borderRadius="full"
+                borderRadius="lg"
                 bg="orange.500"
                 color="white"
                 fontWeight="600"
