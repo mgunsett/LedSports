@@ -8,10 +8,13 @@ import { brands } from '@/data/jugadores';
 const FichaJugador = lazy(() => import('@/components/jugadores/FichaJugador'));
 
 /*
- * "Nos eligieron" · versión Foco
- * Un jugador destacado en grande (foto, número, escudo, posición, club, país) y una tira de miniaturas para elegir.
- * Rota solo cada 6 s mientras la sección está en pantalla; se pausa con el mouse encima, con el foco del teclado
- * o si el usuario prefiere menos movimiento. "Ver ficha" abre FichaJugador sin salir de la home.
+ * "Nos eligieron" · versión Foco (B2 · Fila)
+ * Desktop: toda la sección entra en una pantalla. Encabezado en una fila (título | texto + "Ver todos")
+ *          y debajo el escenario: foto del jugador | datos | grilla de miniaturas 3×4.
+ *          La foto y las miniaturas se dimensionan según el alto real del escenario (container query units).
+ * Mobile:  foto, datos y una tira de tarjetas deslizable con nombre.
+ * Rota cada 6 s mientras la sección está en pantalla; se pausa con el mouse encima, con foco de teclado,
+ * con la ficha abierta o con "reducir movimiento". "Ver ficha" abre FichaJugador sin salir de la home.
  *
  * Para cambiar los destacados, editá FEATURED (nombres exactos de src/data/jugadores.js).
  */
@@ -31,22 +34,27 @@ const FEATURED = [
 ];
 
 const ROTATE_MS = 6000;
+const NAV_H = '80px'; // alto del Navbar fijo
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const LINE = 'rgba(255,255,255,.12)';
+const MD = '@media (min-width: 48em)';
+// Tamaño de miniatura en desktop: 4 filas que entran en el alto del escenario
+const THUMB = 'clamp(60px, calc((100cqh - 72px) / 4), 112px)';
 const MotionBox = motion(Box);
 const hoverOnly = (styles) => ({ '@media (hover: hover) and (pointer: fine)': { '&:hover': styles } });
 
 const capitalize = (s = '') => s.charAt(0).toUpperCase() + s.slice(1);
 const countryOf = (p) => (p.country || '').split(',').pop().trim();
 const crestOf = (p) => p.clubLogoActual?.[0]?.logo;
+const shortName = (name = '') => `${name.charAt(0)}. ${name.split(' ').slice(-1)[0]}`;
 
 const Header = () => (
   <Flex
     direction={{ base: 'column', md: 'row' }}
     align={{ base: 'flex-start', md: 'flex-end' }}
     justify="space-between"
-    gap="24px"
-    mb={{ base: '24px', md: 'clamp(24px, 4vw, 48px)' }}
+    gap={{ base: '14px', md: '24px' }}
+    flexShrink={0}
   >
     <Box>
       <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
@@ -55,8 +63,8 @@ const Header = () => (
       </Flex>
       <Heading
         as="h2"
-        m="14px 0 0"
-        fontSize={{ base: '44px', md: 'clamp(42px, 6vw, 96px)' }}
+        m="12px 0 0"
+        fontSize={{ base: '44px', md: 'clamp(40px, 4.6vw, 72px)' }}
         lineHeight=".92"
         fontWeight="700"
         letterSpacing="-0.03em"
@@ -67,38 +75,40 @@ const Header = () => (
           eligieron
         </Text>
       </Heading>
-      <Text mt="16px" maxW="40ch" color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.25vw, 18px)' }} lineHeight="1.6">
+    </Box>
+    <Flex direction={{ base: 'column', md: 'row' }} align={{ base: 'flex-start', md: 'flex-end' }} gap={{ base: '14px', md: '24px' }}>
+      <Text m="0" maxW="30ch" textAlign={{ base: 'left', md: 'right' }} color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.15vw, 17px)' }} lineHeight="1.55">
         Más de 350 deportistas confiaron su marca en nosotros. Estos son algunos.
       </Text>
-    </Box>
-    <Flex
-      as={RouterLink}
-      to="/jugadores"
-      align="center"
-      gap="10px"
-      minH="48px"
-      px="22px"
-      borderRadius="full"
-      border="1.5px solid"
-      borderColor="whiteAlpha.500"
-      fontWeight="600"
-      fontSize="15px"
-      whiteSpace="nowrap"
-      transition="border-color 200ms ease, background-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)"
-      _active={{ transform: 'scale(0.97)' }}
-      _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '3px' }}
-      sx={{
-        '& svg': { color: 'orange.400', transition: 'transform 200ms cubic-bezier(0.23, 1, 0.32, 1)' },
-        ...hoverOnly({ borderColor: 'orange.500', bg: 'rgba(237,137,54,.1)', '& svg': { transform: 'translateX(3px)' } }),
-      }}
-    >
-      Ver todos los jugadores <GoArrowRight aria-hidden="true" />
+      <Flex
+        as={RouterLink}
+        to="/jugadores"
+        align="center"
+        gap="10px"
+        minH="48px"
+        px="22px"
+        borderRadius="full"
+        border="1.5px solid"
+        borderColor="whiteAlpha.500"
+        fontWeight="600"
+        fontSize="15px"
+        whiteSpace="nowrap"
+        transition="border-color 200ms ease, background-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)"
+        _active={{ transform: 'scale(0.97)' }}
+        _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '3px' }}
+        sx={{
+          '& svg': { color: 'orange.400', transition: 'transform 200ms cubic-bezier(0.23, 1, 0.32, 1)' },
+          ...hoverOnly({ borderColor: 'orange.500', bg: 'rgba(237,137,54,.1)', '& svg': { transform: 'translateX(3px)' } }),
+        }}
+      >
+        Ver todos <GoArrowRight aria-hidden="true" />
+      </Flex>
     </Flex>
   </Flex>
 );
 
 const MetaPill = ({ children }) => (
-  <Box as="span" px="14px" py="9px" borderRadius="full" border={`1px solid ${LINE}`} bg="blackAlpha.400" fontSize="14px" color="whiteAlpha.800">
+  <Box as="span" px="13px" py="8px" borderRadius="full" border={`1px solid ${LINE}`} bg="blackAlpha.400" fontSize="13px" color="whiteAlpha.800">
     {children}
   </Box>
 );
@@ -115,12 +125,11 @@ const TrustSection = () => {
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
   const sectionRef = useRef(null);
-  const stripRef = useRef(null);
+  const railRef = useRef(null);
+  const progressRef = useRef(0);
   const inView = useInView(sectionRef, { amount: 0.4 });
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [fichaPlayer, setFichaPlayer] = useState(null);
-
-  const progressRef = useRef(0);
 
   const goTo = useCallback(
     (i) => {
@@ -128,11 +137,11 @@ const TrustSection = () => {
       progressRef.current = 0;
       setProgress(0);
       setIndex(next);
-      const thumb = stripRef.current?.children[next];
-      const strip = stripRef.current;
-      if (thumb && strip) {
-        // centrar la miniatura dentro de la tira sin mover la página
-        strip.scrollTo({ left: thumb.offsetLeft - strip.clientWidth / 2 + thumb.clientWidth / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+      // En mobile la tira se desliza: mantener visible la tarjeta activa (sin mover la página)
+      const rail = railRef.current;
+      const card = rail?.children[next];
+      if (rail && card && rail.scrollWidth > rail.clientWidth) {
+        rail.scrollTo({ left: Math.max(0, card.offsetLeft - 20), behavior: reduceMotion ? 'auto' : 'smooth' });
       }
     },
     [players.length, reduceMotion]
@@ -171,24 +180,39 @@ const TrustSection = () => {
   const swap = reduceMotion
     ? { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, transition: { duration: 0.2 } }
     : {
-        initial: { opacity: 0, y: 14 },
+        initial: { opacity: 0, y: 12 },
         animate: { opacity: 1, y: 0 },
         exit: { opacity: 0, y: -8 },
-        transition: { duration: 0.5, ease: EASE_OUT },
+        transition: { duration: 0.45, ease: EASE_OUT },
       };
 
   return (
-    <Box as="section" id="trust" ref={sectionRef} aria-label="Nos eligieron" bg="black" px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }} pt={{ base: '80px', md: 'clamp(80px, 11vh, 120px)' }} pb={{ base: '100px', md: '160px' }}>
+    <Box
+      as="section"
+      id="trust"
+      ref={sectionRef}
+      aria-label="Nos eligieron"
+      bg="black"
+      display="flex"
+      flexDirection="column"
+      gap={{ base: '22px', md: 'clamp(16px, 2.4vh, 26px)' }}
+      px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
+      pt={{ base: '80px', md: '12px' }}
+      pb={{ base: '100px', md: '28px' }}
+      mb={{ base: 0, md: '100px' }}
+      scrollMarginTop={NAV_H}
+      sx={{ [MD]: { height: `calc(100svh - ${NAV_H})`, minHeight: '600px', maxHeight: '860px' } }}
+    >
       <Header />
 
       {/* Escenario */}
       <Box
         position="relative"
-        display="grid"
-        gridTemplateColumns={{ base: '1fr', md: 'minmax(0, 1.05fr) minmax(0, .95fr)' }}
-        alignItems="end"
-        minH={{ md: 'min(70vh, 640px)' }}
-        borderRadius={{ base: '24px', md: '32px' }}
+        flex={{ md: '1' }}
+        minH={{ md: 0 }}
+        display="flex"
+        flexDirection="column"
+        borderRadius={{ base: '24px', md: '28px' }}
         overflow="hidden"
         border={`1px solid ${LINE}`}
         bg="radial-gradient(ellipse 70% 80% at 30% 100%, #2a1606 0%, #0d0d0d 60%, #050505 100%)"
@@ -196,6 +220,13 @@ const TrustSection = () => {
         onMouseLeave={() => setPaused(false)}
         onFocusCapture={() => setPaused(true)}
         onBlurCapture={() => setPaused(false)}
+        sx={{
+          [MD]: {
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, .9fr) minmax(0, 1fr) auto',
+            containerType: 'size',
+          },
+        }}
       >
         {/* Número gigante */}
         <AnimatePresence mode="wait" initial={false}>
@@ -203,18 +234,19 @@ const TrustSection = () => {
             key={`num-${index}`}
             aria-hidden="true"
             position="absolute"
-            left={{ base: 'auto', md: '2%' }}
-            right={{ base: '-4%', md: 'auto' }}
-            top={{ base: '2%', md: 'auto' }}
-            bottom={{ base: 'auto', md: '-6%' }}
-            fontSize={{ base: '62vw', md: 'clamp(220px, 34vw, 520px)' }}
+            right="4%"
+            top="10px"
+            fontSize="min(64vw, 300px)"
             lineHeight=".8"
             fontWeight="700"
             fontStyle="italic"
             letterSpacing="-0.06em"
             color="transparent"
             pointerEvents="none"
-            sx={{ WebkitTextStroke: '2px rgba(237,137,54,.35)' }}
+            sx={{
+              WebkitTextStroke: '2px rgba(237,137,54,.35)',
+              [MD]: { right: 'auto', top: 'auto', left: '1%', bottom: '-8%', fontSize: 'clamp(180px, min(24vw, 70cqh), 400px)' },
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -225,34 +257,46 @@ const TrustSection = () => {
         </AnimatePresence>
 
         {/* Foto */}
-        <Flex position="relative" h="100%" align="flex-end" justify="center" pt={{ base: '20px', md: '30px' }}>
+        <Flex
+          position="relative"
+          align="flex-end"
+          justify="center"
+          overflow="hidden"
+          pt="28px"
+          px="16px"
+          sx={{ [MD]: { alignSelf: 'stretch', pt: 0, px: '12px' } }}
+        >
           <AnimatePresence mode="wait" initial={false}>
-            <MotionBox key={`img-${index}`} {...swap}>
+            <MotionBox key={`img-${index}`} display="flex" alignItems="flex-end" justifyContent="center" maxW="100%" {...swap}>
               <Image
                 src={p.img}
                 alt={p.name}
                 draggable={false}
-                h={{ base: '44vh', md: 'min(64vh, 600px)' }}
+                display="block"
                 w="auto"
-                maxW="none"
+                maxW="100%"
+                objectFit="contain"
+                objectPosition="50% 100%"
+                h="min(44svh, 400px)"
                 filter="drop-shadow(0 30px 40px rgba(0,0,0,.7))"
+                sx={{ [MD]: { height: 'min(88cqh, 640px)' } }}
               />
             </MotionBox>
           </AnimatePresence>
         </Flex>
 
         {/* Datos */}
-        <Box position="relative" p={{ base: '22px 22px 26px', md: 'clamp(28px, 4vw, 56px)' }} alignSelf="center" aria-live="polite">
+        <Box position="relative" alignSelf={{ base: 'stretch', md: 'center' }} p={{ base: '20px 20px 8px', md: 'clamp(20px, 2.4vw, 36px)' }} aria-live="polite">
           <AnimatePresence mode="wait" initial={false}>
             <MotionBox key={`info-${index}`} {...swap}>
-              {crest && <Image src={crest} alt={p.club} w="56px" h="56px" objectFit="contain" mb="18px" />}
-              <Text color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".16em" textTransform="uppercase">
+              {crest && <Image src={crest} alt={p.club} w="48px" h="48px" objectFit="contain" mb="14px" />}
+              <Text color="orange.400" fontSize="12px" fontWeight="600" letterSpacing=".16em" textTransform="uppercase">
                 {capitalize(p.position)}
               </Text>
               <Heading
                 as="h3"
-                m="10px 0 0"
-                fontSize={{ base: '40px', md: 'clamp(40px, 5vw, 80px)' }}
+                m="8px 0 0"
+                fontSize={{ base: '36px', md: 'clamp(34px, 3.4vw, 58px)' }}
                 lineHeight=".92"
                 fontWeight="700"
                 letterSpacing="-0.03em"
@@ -260,7 +304,7 @@ const TrustSection = () => {
               >
                 {p.name}
               </Heading>
-              <Flex wrap="wrap" gap="10px" m="22px 0 28px">
+              <Flex wrap="wrap" gap="8px" m="18px 0 22px">
                 <MetaPill>
                   #<Text as="b" color="white" fontWeight="600">{p.number}</Text>
                 </MetaPill>
@@ -275,8 +319,8 @@ const TrustSection = () => {
                 onClick={openFicha}
                 align="center"
                 gap="10px"
-                minH="50px"
-                px="24px"
+                minH="48px"
+                px="22px"
                 borderRadius="full"
                 bg="orange.500"
                 color="white"
@@ -292,61 +336,106 @@ const TrustSection = () => {
             </MotionBox>
           </AnimatePresence>
         </Box>
-      </Box>
 
-      {/* Miniaturas */}
-      <Flex
-        ref={stripRef}
-        role="tablist"
-        aria-label="Jugadores destacados"
-        gap="12px"
-        mt="18px"
-        p="4px 2px 8px"
-        overflowX="auto"
-        sx={{ scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}
-      >
-        {players.map((pl, i) => {
-          const active = i === index;
-          return (
-            <Box
-              as="button"
-              type="button"
-              role="tab"
-              key={pl.name}
-              aria-selected={active}
-              aria-label={pl.name}
-              onClick={() => goTo(i)}
-              position="relative"
-              flex="0 0 auto"
-              w={{ base: '70px', md: '86px' }}
-              h={{ base: '70px', md: '86px' }}
-              borderRadius={{ base: '16px', md: '20px' }}
-              border="1px solid"
-              borderColor={active ? 'orange.500' : LINE}
-              bg="#111"
-              overflow="hidden"
-              transition="border-color 200ms ease"
-              _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '2px' }}
-              sx={{
-                '& img': { filter: active ? 'none' : 'grayscale(1) brightness(.7)', transition: 'filter 250ms ease' },
-                ...hoverOnly({ '& img': { filter: 'none' } }),
-              }}
-            >
-              <Image src={pl.img} alt="" loading="lazy" w="100%" h="135%" maxW="none" objectFit="cover" objectPosition="50% 0" />
+        {/* Miniaturas: tira deslizable en mobile, grilla 3×4 en desktop */}
+        <Box
+          ref={railRef}
+          role="tablist"
+          aria-label="Jugadores destacados"
+          position="relative"
+          display="flex"
+          gap="10px"
+          overflowX="auto"
+          p="8px 20px 20px"
+          sx={{
+            scrollSnapType: 'x mandatory',
+            scrollPaddingInline: '20px',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': { display: 'none' },
+            WebkitMaskImage: 'linear-gradient(90deg, #000 88%, transparent)',
+            maskImage: 'linear-gradient(90deg, #000 88%, transparent)',
+            [MD]: {
+              alignSelf: 'center',
+              display: 'grid',
+              gridTemplateColumns: `repeat(3, ${THUMB})`,
+              gridAutoRows: THUMB,
+              overflow: 'visible',
+              padding: '0 22px 0 6px',
+              WebkitMaskImage: 'none',
+              maskImage: 'none',
+            },
+          }}
+        >
+          {players.map((pl, i) => {
+            const active = i === index;
+            return (
               <Box
-                position="absolute"
-                left="0"
-                right="0"
-                bottom="0"
-                h="3px"
-                bg="orange.500"
-                transformOrigin="0 50%"
-                style={{ transform: `scaleX(${active ? progress : 0})` }}
-              />
-            </Box>
-          );
-        })}
-      </Flex>
+                as="button"
+                type="button"
+                role="tab"
+                key={pl.name}
+                aria-selected={active}
+                aria-label={pl.name}
+                onClick={() => goTo(i)}
+                position="relative"
+                flex="0 0 78px"
+                w="78px"
+                display="flex"
+                flexDirection="column"
+                borderRadius="16px"
+                border="1px solid"
+                borderColor={active ? 'orange.500' : LINE}
+                bg="#141414"
+                overflow="hidden"
+                transition="border-color 200ms ease"
+                _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '2px' }}
+                sx={{
+                  scrollSnapAlign: 'start',
+                  '& img': { filter: active ? 'none' : 'grayscale(1) brightness(.7)', transition: 'filter 250ms ease' },
+                  ...hoverOnly({ '& img': { filter: 'none' } }),
+                  [MD]: { width: THUMB, height: THUMB, flex: 'none', display: 'block', bg: '#111' },
+                }}
+              >
+                <Image
+                  src={pl.img}
+                  alt=""
+                  loading="lazy"
+                  w="100%"
+                  h="84px"
+                  maxW="none"
+                  objectFit="cover"
+                  objectPosition="50% 4%"
+                  sx={{ [MD]: { height: '130%', objectPosition: '50% 0' } }}
+                />
+                <Text
+                  as="span"
+                  display="block"
+                  p="6px 4px 8px"
+                  fontSize="11px"
+                  fontWeight="600"
+                  lineHeight="1.1"
+                  textAlign="center"
+                  color={active ? 'white' : 'whiteAlpha.700'}
+                  noOfLines={1}
+                  sx={{ [MD]: { display: 'none' } }}
+                >
+                  {shortName(pl.name)}
+                </Text>
+                <Box
+                  position="absolute"
+                  left="0"
+                  right="0"
+                  bottom="0"
+                  h="3px"
+                  bg="orange.500"
+                  transformOrigin="0 50%"
+                  style={{ transform: `scaleX(${active ? progress : 0})` }}
+                />
+              </Box>
+            );
+          })}
+        </Box>
+      </Box>
 
       {fichaPlayer && (
         <Suspense fallback={null}>
