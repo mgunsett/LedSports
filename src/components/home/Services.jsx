@@ -63,7 +63,7 @@ const ServiceButton = ({ to }) => (
     gap="10px"
     minH="46px"
     px="20px"
-    borderRadius="full"
+    borderRadius="lg"
     bg="orange.500"
     color="white"
     fontWeight="600"
@@ -76,7 +76,7 @@ const ServiceButton = ({ to }) => (
       ...hoverOnly({ bg: 'orange.400', '& svg': { transform: 'translateX(3px)' } }),
     }}
   >
-    Ver servicio <GoArrowRight aria-hidden="true" />
+    Ver servicio
   </Flex>
 );
 
@@ -114,10 +114,7 @@ const ServiceMedia = ({ src, alt }) => (
 
 const Intro = () => (
   <>
-    <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-      <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
-      Servicios
-    </Flex>
+    
     <Heading
       as="h2"
       m="14px 0 0"

@@ -7,14 +7,6 @@ import { brands } from '@/data/jugadores';
 
 const FichaJugador = lazy(() => import('@/components/jugadores/FichaJugador'));
 
-/*
- * "Nos eligieron" · versión Foco
- * Un jugador destacado en grande (foto, número, escudo, posición, club, país) y una tira de miniaturas para elegir.
- * Rota solo cada 6 s mientras la sección está en pantalla; se pausa con el mouse encima, con el foco del teclado
- * o si el usuario prefiere menos movimiento. "Ver ficha" abre FichaJugador sin salir de la home.
- *
- * Para cambiar los destacados, editá FEATURED (nombres exactos de src/data/jugadores.js).
- */
 const FEATURED = [
   'Andres Gudiño',
   'Ricardo Ade',
@@ -49,10 +41,6 @@ const Header = () => (
     mb={{ base: '24px', md: 'clamp(24px, 4vw, 48px)' }}
   >
     <Box>
-      <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-        <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
-        Jugadores
-      </Flex>
       <Heading
         as="h2"
         m="14px 0 0"
@@ -317,9 +305,10 @@ const TrustSection = () => {
               aria-label={pl.name}
               onClick={() => goTo(i)}
               position="relative"
-              flex="0 0 auto"
-              w={{ base: '70px', md: '86px' }}
-              h={{ base: '70px', md: '86px' }}
+              flex={{ base: '0 0 auto', md: '1 0 86px' }}
+              w={{ base: '70px', md: 'auto' }}
+              h={{ base: '70px', md: 'auto' }}
+              aspectRatio="1"
               borderRadius={{ base: '16px', md: '20px' }}
               border="1px solid"
               borderColor={active ? 'orange.500' : LINE}

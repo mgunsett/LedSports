@@ -1,177 +1,140 @@
-import React from 'react';
-import {
-  Flex,
-  Heading,
-  Text,
-  Box,
-  Icon,
-  useBreakpointValue
-} from '@chakra-ui/react';
-import { motion } from 'framer-motion'; 
-import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { Box, Flex, Heading, Icon, SimpleGrid, Text } from '@chakra-ui/react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { GoArrowUpRight } from 'react-icons/go';
 
 const MotionBox = motion(Box);
+const EASE_OUT = [0.23, 1, 0.32, 1];
+const LINE = 'rgba(255,255,255,.12)';
+const hoverOnly = (styles) => ({ '@media (hover: hover) and (pointer: fine)': { '&:hover': styles } });
 
-function ContactButton({ icon, title, subtitle, to, external }) {
-  return (
-    <MotionBox
-      as={external ? "a" : Link}
-      href={external ? to : undefined}
-      to={!external ? to : undefined}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      w="100%"
-      p="20px 24px"
-      display="flex"
-      alignItems="center"
-      gap="16px"
-      borderRadius="12px"
-      border="1px solid rgba(255,255,255,0.1)"
-      bg="rgba(255,255,255,0.05)"
-      color="white"
-      position="relative"
-      overflow="hidden"
-      whileHover={{
-        x: 8,
-        boxShadow: "0 0 10px rgba(251, 146, 60, 0.6)",
-        borderColor: "rgba(241, 158, 49, 0.71)",
-      }}
+const CONTACT_TEXT = {
+  home: 'Consulta por el plan que más se ajuste a tus necesidades.',
+  deportistas: 'Consulta por nuestros packs.',
+  agentes: 'Solicita tu presupuesto a la medida de tu agencia.',
+};
+
+const CONTACT_METHODS = [
+  { icon: FaWhatsapp, label: 'WhatsApp', value: 'Escribinos directo', href: 'https://wa.link/v8wl84' },
+  { icon: FaInstagram, label: 'Instagram', value: '@_ledsports', href: 'https://www.instagram.com/_ledsports/' },
+];
+
+const ContactCard = ({ icon, label, value, href }) => (
+  <Flex
+    as="a"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${label}: ${value}`}
+    align="center"
+    gap={{ base: 4, md: 6 }}
+    p={{ base: 5, md: 8 }}
+    borderRadius="2xl"
+    border={`1px solid ${LINE}`}
+    bg="whiteAlpha.50"
+    color="white"
+    transition="border-color 200ms ease, background-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)"
+    _active={{ transform: 'scale(0.98)' }}
+    _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '3px' }}
+    sx={{
+      '& .contact-arrow': { transition: 'transform 200ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms ease, border-color 200ms ease' },
+      ...hoverOnly({
+        borderColor: 'orange.500',
+        bg: 'whiteAlpha.100',
+        '& .contact-arrow': { bg: 'orange.500', borderColor: 'orange.500', transform: 'translate(2px, -2px)' },
+      }),
+    }}
+  >
+    <Flex
+      flexShrink={0}
+      align="center"
+      justify="center"
+      boxSize={{ base: 12, md: 16 }}
+      borderRadius="xl"
+      bg="orange.500"
+      fontSize={{ base: '2xl', md: '3xl' }}
     >
-      {/* Hover background */}
-      <Box
-        position="absolute"
-        inset="0"
-        bgGradient="linear(to-r, rgba(255,107,53,0.1), transparent)"
-        w="0%"
-        _groupHover={{ w: "100%" }}
-        transition="width 0.3s ease"
-      />
-
-      {/* ICON */}
-      <MotionBox
-        w="48px"
-        h="48px"
-        borderRadius="10px"
-        bgGradient="linear(135deg, #ff6b35, #ff8c42)"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        fontSize="1.5rem"
-        flexShrink={0}
-        whileHover={{ scale: 1.1, rotate: 5 }}
-      >
-        {icon}
-      </MotionBox>
-
-      {/* TEXT */}
-      <Box flex="1">
-        <Text fontWeight="600" fontSize="1.1rem">
-          {title}
-        </Text>
-        <Text fontSize="0.9rem" color="#aaa">
-          {subtitle}
-        </Text>
-      </Box>
-
-      {/* ARROW */}
-      <MotionBox
-        fontSize="1.2rem"
-        color="#aaa"
-        whileHover={{ x: 4, color: "#ff6b35" }}
-      >
-        →
-      </MotionBox>
-    </MotionBox>
-  );
-}
+      <Icon as={icon} />
+    </Flex>
+    <Box flex="1" minW={0}>
+      <Text fontSize={{ base: 'xl', md: '2xl' }} fontWeight="700" fontStyle="italic" letterSpacing="-0.01em" lineHeight="1.1">
+        {label}
+      </Text>
+      <Text mt={1} color="whiteAlpha.700" fontSize={{ base: 'sm', md: 'md' }} noOfLines={1}>
+        {value}
+      </Text>
+    </Box>
+    <Flex
+      className="contact-arrow"
+      flexShrink={0}
+      align="center"
+      justify="center"
+      boxSize={{ base: 10, md: 12 }}
+      borderRadius="full"
+      border={`1px solid ${LINE}`}
+      fontSize={{ base: 'lg', md: 'xl' }}
+    >
+      <Icon as={GoArrowUpRight} />
+    </Flex>
+  </Flex>
+);
 
 const Contact = ({ path }) => {
-
-  const isMobile = useBreakpointValue({ base: true, md: false });
-
-  const contactText = {
-    home: 'Consulta por el Plan que más se ajuste a tus necesidades.',
-    deportistas: 'Consulta por nuestros packs.',
-    agentes: 'Solicita tu presupuesto a la medida de tu agencia.',
-  };
-
+  const reduceMotion = useReducedMotion();
   const currentPath = path || (typeof window !== 'undefined' ? window.location.pathname : '/');
 
   let pageKey = 'home';
   if (currentPath.includes('deportistas')) pageKey = 'deportistas';
   if (currentPath.includes('agentes')) pageKey = 'agentes';
 
-  const selectedText = contactText[pageKey];
-
-  const contactMethods = [
-    {
-      icon: FaWhatsapp,
-      title: 'WhatsApp',
-      value: 'Contáctanos',
-      href: 'https://wa.link/v8wl84',
-    },
-    {
-      icon: FaInstagram,
-      title: 'Instagram',
-      value: '@ledsports',
-      href: 'https://www.instagram.com/_ledsports/',
-    }
-  ];
+  const reveal = (delay = 0) => ({
+    initial: reduceMotion ? false : { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.4 },
+    transition: { duration: 0.6, delay, ease: EASE_OUT },
+  });
 
   return (
-      <Flex
-        id='contact'
-        justifyContent={'center'}
-        flexDirection={"column"}
-        alignItems={"center"}
-        w="90%"
-        maxW="1200px"
-        h={{ base: "500px", md: "400px" }}
-        mx={'auto'}
-        mt={12}
-        mb={{ base: 10, md: 20 }}
-      >
-        <Box
-          w={{ base: "80%" , md: "90%" }}
-          h="2px"
-          bgGradient="linear(to-r, transparent, orange.400, transparent)"
-          mb={8}
-        />
-        <MotionBox
-          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          mb={16}
-          textAlign="center"
-          color="white"
-        >
-          <Heading as="h2" fontSize={{ base: '35px', md: '4xl' }} fontWeight="bold" mb={4}>
-            Cont<Text as="span" color="orange.600">acto</Text>
-          </Heading>
-          <Text fontSize="md" maxW="2xl" mx="auto">
-            {selectedText}
-          </Text>
-        </MotionBox>
+    <Box
+      as="section"
+      id="contact"
+      aria-label="Contacto"
+      w="100%"
+      bg="black"
+      color="white"
+      px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
+      pt={{ base: 10, md: 16 }}
+      pb={{ base: 16, md: 24 }}
+    >
+      <Box h="1px" bgGradient="linear(to-r, orange.500, transparent)" mb={{ base: 10, md: 16 }} />
 
-        <Flex
-        w={{base: '90%', md: '70%'}}
-        flexDirection={{base:'column', md: 'row'}}
-        justifyContent={'space-evenly'} 
-        gap={{ base: 4, md: 10  }}
+      <MotionBox {...reveal()} mb={{ base: 8, md: 'clamp(32px, 4vw, 56px)' }}>
+        <Heading
+          as="h2"
+          m="14px 0 0"
+          fontSize={{ base: '44px', md: 'clamp(42px, 6vw, 90px)' }}
+          lineHeight=".92"
+          fontWeight="700"
+          letterSpacing="-0.03em"
         >
-            {contactMethods.map((method, index) => (
-              <ContactButton
-                key={index}
-                icon={<Icon as={method.icon} />}
-                title={method.title}
-                subtitle={method.value}
-                to={method.href}
-                external={true}
-              />
+          Trabajemos{' '}
+          <Text as="em" fontStyle="italic" color="orange.400">
+            juntos
+          </Text>
+        </Heading>
+        <Text mt="16px" maxW="46ch" color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.25vw, 18px)' }} lineHeight="1.6">
+          {CONTACT_TEXT[pageKey]}
+        </Text>
+      </MotionBox>
+
+      <MotionBox {...reveal(0.1)}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
+          {CONTACT_METHODS.map((method) => (
+            <ContactCard key={method.label} {...method} />
           ))}
-        </Flex>
-      </Flex>
+        </SimpleGrid>
+      </MotionBox>
+    </Box>
   );
 };
 
