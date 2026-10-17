@@ -35,7 +35,7 @@ const MotionText = motion(Text);
 
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const LINE = "rgba(255,255,255,.12)";
-const PX = { base: "20px", md: "clamp(20px, 6vw, 96px)" };
+const PX = { base: "20px", md: "250px" };
 const HOVER = "@media (hover: hover) and (pointer: fine)";
 const GLOW_ORANGE = "drop-shadow(0px 0px 12px rgba(245,160,15,0.56))";
 const GLOW_WHITE = "drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.56))";
@@ -480,7 +480,7 @@ const Deportistas = () => {
         <Text maxW="46ch" color="whiteAlpha.800" fontSize={{ base: "17px", md: "clamp(18px, 1.6vw, 22px)" }} lineHeight="1.55">
           Desde nuestros inicios en 2020 trabajamos la marca personal de{" "}
           <Text as="b" color="white" fontWeight="600">
-            más de 350 deportistas
+            más de <Text as="span" color="orange.400">350 deportistas</Text>
           </Text>{" "}
           que confiaron en nosotros, y los acompañamos en las principales competiciones de América y el mundo.
         </Text>

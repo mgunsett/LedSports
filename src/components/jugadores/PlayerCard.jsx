@@ -62,7 +62,7 @@ const PlayerCard = ({ player, onClick }) => {
           position="absolute"
           right="12px"
           top="6px"
-          fontSize={{ base: '56px', md: '84px' }}
+          fontSize={{ base: '56px', md: '94px' }}
           lineHeight="1"
           fontWeight="700"
           fontStyle="italic"
