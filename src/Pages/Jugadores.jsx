@@ -1,12 +1,13 @@
-import { Box, Flex, Heading, Text, Grid, useDisclosure } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Flex, Heading, Text, Grid, Input, InputGroup, InputLeftElement, useDisclosure } from "@chakra-ui/react";
+import { useMemo, useState } from "react";
+import { FiSearch } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 const FichaJugador = lazy(() => import("@/components/jugadores/FichaJugador"));
 import Contact from "@/components/common/Contact";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { brands } from "../data/jugadores";
-import { TitleCards } from "@/components/common/TitleCards";
+import PlayerCard from "@/components/jugadores/PlayerCard";
 // import FichaJugador from "@/components/jugadores/FichaJugador";
 
 const MotionHeading = motion(Heading);
@@ -14,9 +15,41 @@ const MotionText = motion(Text);
 const MotionBox = motion(Box);
 const MotionGrid = motion(Grid);
 
+// Agrupación por posición a partir del campo `position` de jugadores.js
+const GROUPS = [
+  { key: 'arq', label: 'Arqueros' },
+  { key: 'def', label: 'Defensores' },
+  { key: 'med', label: 'Mediocampistas' },
+  { key: 'del', label: 'Delanteros' },
+];
+const groupOf = (position = '') => {
+  const p = position.toLowerCase();
+  if (p.includes('arquero')) return 'arq';
+  if (p.includes('defensor') || p.includes('lateral')) return 'def';
+  if (p.includes('medio')) return 'med';
+  return 'del';
+};
+const normalize = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const counts = brands.reduce((acc, b) => {
+  const g = groupOf(b.position);
+  acc[g] = (acc[g] || 0) + 1;
+  return acc;
+}, {});
+
 const Jugadores = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
+  const [group, setGroup] = useState('all');
+  const [query, setQuery] = useState('');
+
+  const filtered = useMemo(() => {
+    const q = normalize(query.trim());
+    return brands.filter(
+      (b) =>
+        (group === 'all' || groupOf(b.position) === group) &&
+        (!q || normalize(b.name).includes(q) || normalize(b.club).includes(q))
+    );
+  }, [group, query]);
 
   return (
     <Box bg="black" minHeight="100vh" overflow="hidden">
@@ -78,32 +111,105 @@ const Jugadores = () => {
         
       </Flex>
 
-      {/* Players Grid */}
-      <Box maxW="1180px" mx="auto" px={{ base: 4, md: 8 }} pb={20}>
-        <MotionGrid
-          templateColumns={{
-            base: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
-            lg: "repeat(4, 1fr)",
-          }}
-          gap={{ base: 4, md: 6 }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
+      {/* Filtros + buscador (fijos arriba, sin sticky) */}
+      <Box maxW="1180px" mx="auto" px={{ base: 4, md: 8 }}>
+        <Flex
+          align="center"
+          justify="space-between"
+          gap="14px"
+          wrap="wrap"
+          pb="22px"
+          mb="26px"
+          borderBottom="1px solid rgba(255,255,255,.12)"
         >
-          {brands.map((brand, index) => (
-            <TitleCards
-              key={index}
-              name={brand.name}
-              club={brand.club}
-              img={brand.img}
-              onClick={() => {
-                setJugadorSeleccionado(brand);
-                onOpen();
-              }}
+          <Flex role="group" aria-label="Filtrar por posición" gap="8px" overflowX="auto" sx={{ scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
+            {[{ key: 'all', label: 'Todos' }, ...GROUPS].map((g) => {
+              const active = group === g.key;
+              const count = g.key === 'all' ? brands.length : counts[g.key];
+              return (
+                <Box
+                  as="button"
+                  type="button"
+                  key={g.key}
+                  aria-pressed={active}
+                  onClick={() => setGroup(g.key)}
+                  flex="0 0 auto"
+                  display="inline-flex"
+                  alignItems="center"
+                  gap="8px"
+                  minH="42px"
+                  px="16px"
+                  borderRadius="full"
+                  border="1px solid"
+                  borderColor={active ? 'orange.500' : 'rgba(255,255,255,.12)'}
+                  bg={active ? 'orange.500' : 'rgba(255,255,255,.04)'}
+                  color={active ? 'black' : 'white'}
+                  fontSize="14px"
+                  fontWeight="600"
+                  transition="background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1)"
+                  _active={{ transform: 'scale(0.96)' }}
+                  _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '2px' }}
+                  sx={active ? undefined : { '@media (hover: hover) and (pointer: fine)': { '&:hover': { borderColor: 'rgba(237,137,54,.6)' } } }}
+                >
+                  {g.label}
+                  <Text as="small" fontSize="12px" color={active ? 'blackAlpha.700' : 'whiteAlpha.500'} sx={{ fontVariantNumeric: 'tabular-nums' }}>
+                    {count}
+                  </Text>
+                </Box>
+              );
+            })}
+          </Flex>
+          <InputGroup maxW={{ base: '100%', md: '280px' }} flex={{ base: '1 1 100%', md: '0 1 280px' }}>
+            <InputLeftElement pointerEvents="none" h="44px" color="whiteAlpha.500">
+              <FiSearch />
+            </InputLeftElement>
+            <Input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Buscar jugador o club"
+              aria-label="Buscar jugador o club"
+              autoComplete="off"
+              h="44px"
+              borderRadius="full"
+              borderColor="rgba(255,255,255,.12)"
+              bg="#0b0b0b"
+              color="white"
+              fontSize="16px"
+              _placeholder={{ color: 'whiteAlpha.500' }}
+              _hover={{ borderColor: 'rgba(255,255,255,.25)' }}
+              _focusVisible={{ borderColor: 'orange.500', boxShadow: 'none' }}
             />
-          ))}
-        </MotionGrid>
+          </InputGroup>
+        </Flex>
+      </Box>
+
+      {/* Grilla de jugadores */}
+      <Box maxW="1180px" mx="auto" px={{ base: 4, md: 8 }} pb={20}>
+        {filtered.length ? (
+          <MotionGrid
+            templateColumns={{ base: 'repeat(2, minmax(0, 1fr))', md: 'repeat(auto-fill, minmax(210px, 1fr))' }}
+            gap={{ base: '10px', md: '18px' }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+          >
+            {filtered.map((player) => (
+              <PlayerCard
+                key={player.name}
+                player={player}
+                onClick={() => {
+                  setJugadorSeleccionado(player);
+                  onOpen();
+                }}
+              />
+            ))}
+          </MotionGrid>
+        ) : (
+          <Text py="60px" textAlign="center" color="whiteAlpha.700">
+            No encontramos jugadores con ese filtro. Probá con otro nombre o posición.
+          </Text>
+        )}
       </Box>
       <MotionBox
         animate={{ y: [0, -15, 0] }}
