@@ -189,7 +189,7 @@ const BottomFade = (props) => (
 );
 
 /* Versión estática para "reducir movimiento" */
-const AboutStatic = () => {
+const AboutStatic = () => { 
   const ref = useRef(null);
   const video = useSectionVideo(ref);
   return (
@@ -242,31 +242,7 @@ const AboutCine = () => {
           <VideoControls {...video} visible={full} />
         </MotionBox>
 
-        {/* "Sobre" · "LED SPORTS" */}
-        <Flex
-          aria-hidden="true"
-          position="absolute"
-          left="0"
-          right="0"
-          top="50%"
-          transform="translateY(-50%)"
-          zIndex={2}
-          pointerEvents="none"
-          px={{ base: '16px', md: '4vw' }}
-          direction={{ base: 'column', md: 'row' }}
-          justify={{ base: 'center', md: 'space-between' }}
-          align="center"
-          gap={{ base: 'min(56vw, 60vh)', md: 0 }}
-          fontSize={{ base: '44px', md: 'clamp(44px, 8.6vw, 100px)' }}
-          lineHeight=".9"
-          fontWeight="700"
-          letterSpacing="-0.03em"
-        >
-          <MotionBox style={{ x: leftX, y: leftY, opacity: titleOpacity }}>Sómos</MotionBox>
-          <MotionBox style={{ x: rightX, y: rightY, opacity: titleOpacity }}>
-            <Brand />
-          </MotionBox>
-        </Flex>
+       
 
         <Copy style={{ opacity: copyOpacity, y: copyY }} />
       </Box>

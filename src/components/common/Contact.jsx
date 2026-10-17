@@ -112,7 +112,7 @@ const Contact = ({ path }) => {
         <Heading
           as="h2"
           m="14px 0 0"
-          fontSize={{ base: '44px', md: 'clamp(42px, 6vw, 90px)' }}
+          fontSize={{ base: '44px', md: '66px' }}
           lineHeight=".92"
           fontWeight="700"
           letterSpacing="-0.03em"

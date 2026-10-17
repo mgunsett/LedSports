@@ -37,7 +37,7 @@ const CTA_BASE = {
   h: '54px',
   minW: { base: '100%', sm: '200px' },
   px: '30px',
-  borderRadius: 'full',
+  borderRadius: 'xl',
   color: 'white',
   border: '1.5px solid',
   fontFamily: 'Stack Sans Headline, sans-serif',
@@ -221,6 +221,7 @@ const HeroWall = () => {
           h="auto"
           filter="drop-shadow(0 18px 22px rgba(0,0,0,.6))"
           {...enter(450, { scale: 0.96 })}
+          ml={{ base: 0, sm: '76px' }}
         />
 
         {/* h1 solo para SEO / lectores de pantalla; visualmente manda el logo */}
