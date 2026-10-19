@@ -217,6 +217,7 @@ const HeroWall = () => {
           src={logo3d}
           alt="LED Sports"
           draggable={false}
+          data-hero-logo=""
           w="min(440px, 68vw, calc((100svh - 300px) * .9))"
           h="auto"
           filter="drop-shadow(0 18px 22px rgba(0,0,0,.6))"
