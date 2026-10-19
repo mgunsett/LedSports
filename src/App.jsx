@@ -8,6 +8,9 @@ import { motion } from 'framer-motion';
 
 const MotionDiv = motion.div;
 
+const LOADER_MIN_MS = 2200;
+const LOADER_MAX_MS = 5000;
+
 function App() {
 
   const [showLoader, setShowLoader] = useState(true);
@@ -26,9 +29,29 @@ function App() {
     meta.setAttribute('content', content);
   }, []);
 
+  // El loader se va cuando la página terminó de cargar, pero se muestra al menos
+  // LOADER_MIN_MS (para que se vea la animación) y nunca más de LOADER_MAX_MS.
   useEffect(() => {
-    const id = setTimeout(() => setLoaderExiting(true), 4000);
-    return () => clearTimeout(id);
+    let loaded = document.readyState === 'complete';
+    let minDone = false;
+    const tryExit = () => {
+      if (loaded && minDone) setLoaderExiting(true);
+    };
+    const onLoad = () => {
+      loaded = true;
+      tryExit();
+    };
+    const minId = setTimeout(() => {
+      minDone = true;
+      tryExit();
+    }, LOADER_MIN_MS);
+    const maxId = setTimeout(() => setLoaderExiting(true), LOADER_MAX_MS);
+    if (!loaded) window.addEventListener('load', onLoad);
+    return () => {
+      clearTimeout(minId);
+      clearTimeout(maxId);
+      window.removeEventListener('load', onLoad);
+    };
   }, []);
 
   return (
@@ -36,6 +59,7 @@ function App() {
       <MainRouters />
       {showLoader && (
         <PageLoaderLED
+          minDuration={LOADER_MIN_MS}
           isExiting={loaderExiting}
           onExitComplete={() => setShowLoader(false)}
         />
