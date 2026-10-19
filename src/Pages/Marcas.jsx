@@ -20,7 +20,8 @@ const MotionText = motion(Text);
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const EASE_OUT_CSS = "cubic-bezier(0.23, 1, 0.32, 1)";
 const LINE = "rgba(255,255,255,.12)";
-const PX = { base: "20px", md: "clamp(20px, 6vw, 96px)" };
+// Mismo contenedor que EntidadesDeportivas
+const CONTAINER = { w: "100%", maxW: "1280px", mx: "auto", px: { base: 5, md: 10 } };
 const HOVER = "@media (hover: hover) and (pointer: fine)";
 const QUOTE = "Transformamos el deporte en conexión y propósito.";
 
@@ -162,7 +163,7 @@ const Marcas = () => {
         templateColumns={{ base: "1fr", md: "minmax(0, 1fr) minmax(0, 1fr)" }}
         gap={{ base: "20px", md: "clamp(28px, 5vw, 80px)" }}
         alignItems="end"
-        px={PX}
+        {...CONTAINER}
         pb={{ base: "56px", md: "clamp(60px, 9vh, 100px)" }}
       >
         <MotionBox {...reveal(0.2)}>
@@ -187,7 +188,7 @@ const Marcas = () => {
         overflow="hidden"
         bg="linear-gradient(160deg, #F7A94A, #EE8420 55%, #E07612)"
         color="white"
-        px={PX}
+        px={CONTAINER.px}
         py={{ base: "90px", md: "clamp(90px, 16vh, 180px)" }}
         textAlign="center"
         _before={{
@@ -239,7 +240,7 @@ const Marcas = () => {
 
       {/* Cinta de deportistas */}
       <Box as="section" pt={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }}>
-        <Flex px={PX} wrap="wrap" align="flex-end" justify="space-between" gap="16px">
+        <Flex {...CONTAINER} wrap="wrap" align="flex-end" justify="space-between" gap="16px">
           <Box>
             <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
               <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
@@ -280,7 +281,7 @@ const Marcas = () => {
           <Flex
             className="roster-track"
             w="max-content"
-            px={reduceMotion ? PX : 0}
+            px={reduceMotion ? CONTAINER.px : 0}
             animation={reduceMotion ? "none" : `${scroll} 50s linear infinite`}
           >
             {(reduceMotion ? [0] : [0, 1]).map((copy) => (
@@ -295,7 +296,7 @@ const Marcas = () => {
       </Box>
 
       {/* Formatos + cierre */}
-      <Box as="section" px={PX}>
+      <Box as="section" {...CONTAINER}>
         <Grid templateColumns={{ base: "1fr", md: "repeat(3, minmax(0, 1fr))" }} borderTop={`1px solid ${LINE}`} mt={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }}>
           {FORMATS.map((f, i) => (
             <MotionBox

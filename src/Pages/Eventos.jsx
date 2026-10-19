@@ -18,7 +18,8 @@ const MotionBox = motion(Box);
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const EASE_OUT_CSS = "cubic-bezier(0.23, 1, 0.32, 1)";
 const LINE = "rgba(255,255,255,.12)";
-const PX = { base: "20px", md: "clamp(20px, 6vw, 96px)" };
+// Mismo contenedor que EntidadesDeportivas
+const CONTAINER = { w: "100%", maxW: "1280px", mx: "auto", px: { base: 5, md: 10 } };
 const HOVER = "@media (hover: hover) and (pointer: fine)";
 const NOTCH = "radial-gradient(circle 14px at calc(100% - 150px) 0, #0000 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle 14px at calc(100% - 150px) 100%, #0000 98%, #000) bottom / 100% 51% no-repeat";
 
@@ -186,7 +187,7 @@ const Eventos = () => {
                 flexDirection="row"
                 alignSelf="start"
                 pl={{ base: 4, md: 16, lg: '250px' }}
-                mb={{ base: 6, md: 10 }}
+                mb={{ base: 6, md: 20 }}
             >
                 <MotionBox
                     w={'2px'}
@@ -228,7 +229,7 @@ const Eventos = () => {
         as="section"
         templateColumns={{ base: "1fr", lg: "minmax(0, .95fr) minmax(0, 1.05fr)" }}
         gap={{ base: "36px", lg: "clamp(28px, 5vw, 90px)" }}
-        px={PX}
+        {...CONTAINER}
         pb={{ base: "60px", md: "clamp(60px, 10vh, 110px)" }}
       >
         {/* Columna fija */}
@@ -241,10 +242,7 @@ const Eventos = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: EASE_OUT }}
         >
-          <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-            <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
-            Programa del evento
-          </Flex>
+          
           <Heading as="h2" mt="12px" fontSize={{ base: "34px", md: "clamp(32px, 3.6vw, 56px)" }} lineHeight=".95" fontWeight="700" letterSpacing="-0.03em">
             Transformamos cada evento en una <Em>experiencia única</Em>
           </Heading>

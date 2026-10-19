@@ -460,6 +460,7 @@ const Deportistas = () => {
             fontSize={{ base: "4xl", md: "5xl" }}
             as="span"
             color="orange.400"
+            fontStyle="italic"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
@@ -480,7 +481,7 @@ const Deportistas = () => {
         <Text maxW="46ch" color="whiteAlpha.800" fontSize={{ base: "17px", md: "clamp(18px, 1.6vw, 22px)" }} lineHeight="1.55">
           Desde nuestros inicios en 2020 trabajamos la marca personal de{" "}
           <Text as="b" color="white" fontWeight="600">
-            más de <Text as="span" color="orange.400">350 deportistas</Text>
+            más de <Text as="span" color="orange.400" fontStyle="italic">350 deportistas</Text>
           </Text>{" "}
           que confiaron en nosotros, y los acompañamos en las principales competiciones de América y el mundo.
         </Text>

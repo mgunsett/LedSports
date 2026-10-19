@@ -20,7 +20,8 @@ const MotionText = motion(Text);
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const EASE_OUT_CSS = "cubic-bezier(0.23, 1, 0.32, 1)";
 const LINE = "rgba(255,255,255,.12)";
-const PX = { base: "20px", md: "clamp(20px, 6vw, 96px)" };
+// Mismo contenedor que EntidadesDeportivas
+const CONTAINER = { w: "100%", maxW: "1280px", mx: "auto", px: { base: 5, md: 10 } };
 const reveal = (delay = 0) => ({
   initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
@@ -221,7 +222,7 @@ const Agentes = () => {
             alignSelf="start"
             w="100%"
             pl={{ base: 4, md: 16, lg: '250px' }}
-            mb={{ base: 6, md: 10 }}
+            mb={{ base: 6, md: 20 }}
             >
                 <MotionBox 
                 w={'2px'} 
@@ -247,6 +248,7 @@ const Agentes = () => {
                     Agen
                         <MotionText 
                         fontSize="5xl"  
+                        fontStyle="italic"
                         as="span" 
                         color="orange.400"
                         initial={{ opacity: 0, x: -20 }}
@@ -264,7 +266,7 @@ const Agentes = () => {
         templateColumns={{ base: "1fr", md: "minmax(0, .9fr) minmax(0, 1.1fr)" }}
         gap={{ base: "32px", md: "clamp(28px, 5vw, 80px)" }}
         alignItems="center"
-        px={PX}
+        {...CONTAINER}
         pb={{ base: "70px", md: "clamp(70px, 10vh, 120px)" }}
       >
         <MotionBox {...reveal(0.2)}>
@@ -296,58 +298,62 @@ const Agentes = () => {
       </Grid>
 
       {/* Dos frentes */}
-      <Box as="section" px={PX} py={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }} borderTop={`1px solid ${LINE}`}>
-        <Flex
-          wrap="wrap"
-          direction={{ base: "column", md: "row" }}
-          align={{ base: "flex-start", md: "flex-end" }}
-          justify="space-between"
-          gap="24px"
-        >
-          <Box>
-            <Eyebrow>Un servicio, dos frentes</Eyebrow>
-            <Heading as="h2" mt="12px" fontSize={{ base: "36px", md: "clamp(36px, 4.4vw, 68px)" }} lineHeight=".95" fontWeight="700" letterSpacing="-0.03em">
-              ¿A quién <Em>potenciamos?</Em>
-            </Heading>
-          </Box>
-          <FrontSwitch active={front} onChange={setFront} />
-        </Flex>
-        <Grid mt={{ base: "28px", md: "clamp(28px, 4vw, 48px)" }}>
-          {FRONTS.map((f, i) => (
-            <FrontPanel key={f.id} front={f} on={front === i} />
-          ))}
-        </Grid>
+      <Box as="section" py={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }} borderTop={`1px solid ${LINE}`}>
+        <Box {...CONTAINER}>
+          <Flex
+            wrap="wrap"
+            direction={{ base: "column", md: "row" }}
+            align={{ base: "flex-start", md: "flex-end" }}
+            justify="space-between"
+            gap="24px"
+          >
+            <Box>
+              <Eyebrow>Un servicio, dos frentes</Eyebrow>
+              <Heading as="h2" mt="12px" fontSize={{ base: "36px", md: "clamp(36px, 4.4vw, 68px)" }} lineHeight=".95" fontWeight="700" letterSpacing="-0.03em">
+                ¿A quién <Em>potenciamos?</Em>
+              </Heading>
+            </Box>
+            <FrontSwitch active={front} onChange={setFront} />
+          </Flex>
+          <Grid mt={{ base: "28px", md: "clamp(28px, 4vw, 48px)" }}>
+            {FRONTS.map((f, i) => (
+              <FrontPanel key={f.id} front={f} on={front === i} />
+            ))}
+          </Grid>
+        </Box>
       </Box>
 
       {/* Frase de cierre */}
-      <Box as="section" px={PX} py={{ base: "80px", md: "clamp(80px, 14vh, 150px)" }} borderTop={`1px solid ${LINE}`} textAlign="center">
-        <Text
-          as="span"
-          aria-hidden="true"
-          display="block"
-          mb="10px"
-          fontSize={{ base: "70px", md: "clamp(70px, 9vw, 140px)" }}
-          lineHeight=".6"
-          color="orange.500"
-          fontStyle="italic"
-          fontWeight="700"
-        >
-          “
-        </Text>
-        <MotionText
-          {...reveal()}
-          mx="auto"
-          maxW="18ch"
-          fontSize={{ base: "36px", md: "clamp(36px, 5.6vw, 92px)" }}
-          lineHeight=".98"
-          fontWeight="700"
-          letterSpacing="-0.035em"
-        >
-          Elevamos tu presencia digital y la de <Em>tus talentos</Em> al siguiente nivel.
-        </MotionText>
-        <Text mt="26px" color="whiteAlpha.500" fontSize="13px" letterSpacing=".16em" textTransform="uppercase">
-          Presupuestos a medida para cada agente o agencia
-        </Text>
+      <Box as="section" py={{ base: "80px", md: "clamp(80px, 14vh, 150px)" }} borderTop={`1px solid ${LINE}`}>
+        <Box {...CONTAINER} textAlign="center">
+          <Text
+            as="span"
+            aria-hidden="true"
+            display="block"
+            mb="10px"
+            fontSize={{ base: "70px", md: "clamp(70px, 9vw, 140px)" }}
+            lineHeight=".6"
+            color="orange.500"
+            fontStyle="italic"
+            fontWeight="700"
+          >
+            “
+          </Text>
+          <MotionText
+            {...reveal()}
+            mx="auto"
+            maxW="18ch"
+            fontSize={{ base: "36px", md: "clamp(36px, 5.6vw, 92px)" }}
+            lineHeight=".98"
+            fontWeight="700"
+            letterSpacing="-0.035em"
+          >
+            Elevamos tu presencia digital y la de <Em>tus talentos</Em> al siguiente nivel.
+          </MotionText>
+          <Text mt="26px" color="whiteAlpha.500" fontSize="13px" letterSpacing=".16em" textTransform="uppercase">
+            Presupuestos a medida para cada agente o agencia
+          </Text>
+        </Box>
       </Box>
 
       <MotionBox

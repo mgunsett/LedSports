@@ -128,6 +128,7 @@ const EntidadesDeportivas = () => {
           </Heading>
           <Text
             color="orange.400"
+            fontStyle="italic"
             fontSize={{ base: '5xl', md: '5xl', lg: '5xl' }}
             fontWeight="bold"
             lineHeight="shorter"
