@@ -2,8 +2,10 @@ import { Box, Flex, Text, Heading, Image, Grid } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import entidades_deportivas from "@/assets/banners/entidades_deportivas.webp";
-import pieza_aniversario_club from "@/assets/servicios/service4.webp";
-import piezas_conmemorativas from "@/assets/deportistas/deportistas_aniversario.webp";
+import entidades_matchday from "@/assets/entidades/entidades_matchday.jpg";
+import entidades_plantel from "@/assets/entidades/entidades_plantel.jpg";
+import entidades_estadio from "@/assets/entidades/entidades_estadio.jpg";
+import entidades_girone from "@/assets/entidades/entidades_girone.jpg";
 import Contact from "@/components/common/Contact";
 
 /*
@@ -60,6 +62,14 @@ const PLANS = [
 ];
 
 const AUDIENCE = ["Clubes", "Academias", "Ligas", "Organizaciones"];
+
+// Collage de trabajos para clubes: posición en % del contenedor, rotación y orden de apilado
+const PHOTOS = [
+  { src: entidades_matchday, alt: "Pieza Matchday para club de fútbol", ratio: "4 / 5", pos: { left: "2%", top: "0" }, w: "36%", rot: -6, z: 2 },
+  { src: entidades_plantel, alt: "Producción fotográfica del plantel", ratio: "793 / 900", pos: { right: "4%", top: "4%" }, w: "40%", rot: 5, z: 1 },
+  { src: entidades_estadio, alt: "Cobertura en el estadio del club", ratio: "3 / 2", pos: { left: "10%", bottom: "4%" }, w: "58%", rot: -3, z: 3 },
+  { src: entidades_girone, alt: "Pieza de presentación del torneo", ratio: "4 / 5", pos: { right: "0", bottom: "0" }, w: "33%", rot: 4, z: 4 },
+];
 
 const Eyebrow = ({ children }) => (
   <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
@@ -230,7 +240,7 @@ const EntidadesDeportivas = () => {
           {/* Frase + piezas reales */}
           <MotionBox {...reveal()}>
             <Grid
-              templateColumns={{ base: "1fr", md: "minmax(0, 1.3fr) minmax(0, .7fr)" }}
+              templateColumns={{ base: "1fr", md: "minmax(0, 1.1fr) minmax(0, .9fr)" }}
               gap={{ base: 8, md: 14 }}
               alignItems="center"
               mt={{ base: "56px", md: "72px" }}
@@ -244,35 +254,29 @@ const EntidadesDeportivas = () => {
                   Piezas realizadas por LED Sports para instituciones.
                 </Text>
               </Box>
-              <Box position="relative" h={{ base: "260px", md: "clamp(260px, 26vw, 380px)" }}>
-                <Image
-                  src={piezas_conmemorativas}
-                  alt="Piezas conmemorativas para clubes"
-                  loading="lazy"
-                  position="absolute"
-                  left="0"
-                  bottom="0"
-                  h="88%"
-                  w="auto"
-                  maxW="70%"
-                  objectFit="contain"
-                  transform="rotate(-5deg)"
-                  filter="drop-shadow(0 20px 30px rgba(0,0,0,.6))"
-                />
-                <Image
-                  src={pieza_aniversario_club}
-                  alt="Pieza de aniversario para club"
-                  loading="lazy"
-                  position="absolute"
-                  right="0"
-                  top="0"
-                  h="100%"
-                  w="auto"
-                  maxW="55%"
-                  objectFit="contain"
-                  transform="rotate(4deg)"
-                  filter="drop-shadow(0 20px 30px rgba(0,0,0,.6))"
-                />
+              <Box position="relative" w="100%" maxW="560px" mx="auto" aspectRatio="10 / 9">
+                {PHOTOS.map((p) => (
+                  <Image
+                    key={p.alt}
+                    src={p.src}
+                    alt={p.alt}
+                    loading="lazy"
+                    position="absolute"
+                    {...p.pos}
+                    w={p.w}
+                    aspectRatio={p.ratio}
+                    objectFit="cover"
+                    zIndex={p.z}
+                    borderRadius={{ base: "10px", md: "14px" }}
+                    border="1px solid rgba(255,255,255,.14)"
+                    boxShadow="0 24px 40px rgba(0,0,0,.65)"
+                    transform={`rotate(${p.rot}deg)`}
+                    transitionProperty="transform"
+                    transitionDuration="300ms"
+                    transitionTimingFunction="cubic-bezier(0.23, 1, 0.32, 1)"
+                    sx={hoverOnly({ transform: "rotate(0deg) scale(1.04)", zIndex: 10 })}
+                  />
+                ))}
               </Box>
             </Grid>
           </MotionBox>
