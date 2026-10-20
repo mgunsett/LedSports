@@ -3,6 +3,7 @@ import HeroWall from "@/components/home/HeroWall";
 import About from "@/components/home/About";
 import Services from "@/components/home/Services";
 import TrustSection from "@/components/home/TrustSection";
+import ParadisoSection from "@/components/home/ParadisoSection";
 import Contact from "@/components/common/Contact";
 import { Toaster } from "../components/ui/toaster";
 
@@ -13,6 +14,7 @@ export const Home = () => {
             <Toaster />
             <About />
             <Services />
+            <ParadisoSection />
             <TrustSection />
             <Contact path={window.location.pathname}/>
         </Box>

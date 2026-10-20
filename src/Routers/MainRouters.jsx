@@ -8,6 +8,7 @@ const Marcas = lazy(() => import("../Pages/Marcas"));
 const EntidadesDeportivas = lazy(() => import("../Pages/EntidadesDeportivas"));
 const Deportistas = lazy(() => import("../Pages/Deportistas"));
 const Jugadores = lazy(() => import("../Pages/Jugadores"));
+const FcParadiso = lazy(() => import("../Pages/FcParadiso"));
 import Footer from "@/components/layout/Footer";     
 import { ScrollToTop } from "./ScrollToTop";     
 import Loading2 from "@/components/layout/Loading2";
@@ -50,6 +51,11 @@ export const MainRouters = () => {
         <Route path="/jugadores" element={
           <Suspense fallback={<Loading2 />}>
             <Jugadores />
+          </Suspense>
+        } />
+        <Route path="/fc-paradiso" element={
+          <Suspense fallback={<Loading2 />}>
+            <FcParadiso />
           </Suspense>
         } />
       </Routes>
