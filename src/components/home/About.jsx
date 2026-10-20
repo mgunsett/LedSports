@@ -12,17 +12,24 @@ import {
 import { FaPause, FaPlay, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 import nacion_led from '@/assets/videos/video_nacionled.mp4';
 import nacion_led_poster from '@/assets/videos/NACIONLED-poster.jpg';
+import nacion_led_ambient from '@/assets/videos/NACIONLED-ambient.jpg';
 
 /*
- * "Sobre nosotros" · versión Cine
- * El video arranca como tarjeta centrada y se expande a pantalla completa con el scroll.
- * "Sobre" y "LED SPORTS" se separan y desaparecen; luego entra el texto sobre el video.
+ * "Sobre nosotros" · versión Cine (Marco y panel)
+ * - El video arranca como tarjeta (16:9 en celular) sobre un fondo ambiente: el mismo video difuminado
+ *   y un brillo naranja, para que se distinga aunque el video empiece en negro.
+ * - Al entrar en la sección el video vuelve al inicio, así se ve el arranque mientras la tarjeta crece.
+ * - Al terminar de crecer, el video se corre (a la derecha en desktop, hacia arriba en celular)
+ *   y el texto aparece en un panel aparte: nunca se pisa con el texto ni los subtítulos del video.
  * - Requiere que ningún ancestro tenga overflow: hidden (usar overflow: clip), si no el sticky no funciona.
- * - Con "reducir movimiento" se muestra la versión final estática (video completo + texto).
+ * - Con "reducir movimiento" se muestra la versión final estática.
  */
 
 const MotionBox = motion(Box);
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+const clamp01 = (v) => Math.min(1, Math.max(0, v));
+const range = (v, a, b) => clamp01((v - a) / (b - a));
+const lerp = (a, b, t) => a + (b - a) * t;
 
 const DESCRIPTION =
   'Somos una agencia de marketing deportivo. Creamos y potenciamos la marca de deportistas y entidades deportivas a través de la profesionalización de sus redes y web propia.';
@@ -39,13 +46,16 @@ function useSectionVideo(containerRef) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const userPaused = useRef(false);
-  const inView = useInView(containerRef, { amount: 0.35 });
+  const wasOut = useRef(true);
+  const inView = useInView(containerRef, { amount: 0.15 });
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
     if (inView) {
       if (userPaused.current) return;
+      if (wasOut.current) v.currentTime = 0; // arranca desde el principio cada vez que se entra
+      wasOut.current = false;
       v.muted = true;
       setIsMuted(true);
       v.play().catch(() => setIsPlaying(false));
@@ -54,6 +64,7 @@ function useSectionVideo(containerRef) {
       v.muted = true;
       setIsMuted(true);
       userPaused.current = false;
+      wasOut.current = true;
     }
   }, [inView]);
 
@@ -130,39 +141,42 @@ const VideoControls = ({ isPlaying, isMuted, togglePlay, toggleMute, visible = t
   </HStack>
 );
 
-const Copy = (props) => (
+const Copy = ({ compact, ...props }) => (
   <MotionBox
     position="absolute"
+    zIndex={3}
     left={{ base: '20px', md: '6vw' }}
-    right={{ base: '20px', md: '6vw' }}
-    bottom={{ base: '88px', md: '11vh' }}
-    zIndex={2}
-    maxW="640px"
+    w={{ base: 'calc(100% - 40px)', md: 'min(430px, calc(100% - 40px))' }}
+    p={{ base: '20px', md: 'clamp(22px, 2.6vw, 36px)' }}
+    borderRadius="24px"
+    bg="rgba(0,0,0,.58)"
+    border="1px solid"
+    borderColor="whiteAlpha.200"
+    backdropFilter="blur(14px)"
     {...props}
   >
     <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-     
+      <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
       Somos familia
     </Flex>
-    <Text as="h2" m="8px 0 18px" fontSize={{ base: '34px', md: 'clamp(32px, 4.2vw, 60px)' }} lineHeight="1">
+    <Text as="h2" m="8px 0 16px" fontSize={{ base: '30px', md: 'clamp(30px, 3vw, 44px)' }} lineHeight="1" whiteSpace="nowrap">
       <Brand />
     </Text>
-    <Text m="0 0 24px" color="whiteAlpha.900" fontSize={{ base: '15px', md: 'clamp(16px, 1.35vw, 20px)' }} lineHeight="1.6">
+    <Text m={{ base: '0 0 16px', md: '0 0 22px' }} color="whiteAlpha.900" fontSize={{ base: '14px', md: 'clamp(15px, 1.2vw, 18px)' }} lineHeight="1.6">
       {DESCRIPTION}
     </Text>
-    <Flex wrap="wrap" gap="10px">
+    <Flex wrap="wrap" gap={compact ? '8px' : '10px'}>
       {PILLS.map((p, i) => (
         <Box
           key={p}
-          px="16px"
-          py="9px"
+          px={{ base: '12px', md: '16px' }}
+          py={{ base: '7px', md: '9px' }}
           borderRadius="full"
           border="1px solid"
           borderColor={i === 0 ? 'orange.500' : 'whiteAlpha.400'}
           color={i === 0 ? 'orange.400' : 'white'}
           bg="blackAlpha.400"
-          backdropFilter="blur(6px)"
-          fontSize="14px"
+          fontSize={{ base: '13px', md: '14px' }}
         >
           {p}
         </Box>
@@ -171,80 +185,187 @@ const Copy = (props) => (
   </MotionBox>
 );
 
-const SHADE =
-  'linear-gradient(0deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 32%, rgba(0,0,0,.05) 62%), linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,0) 55%)';
-
-// Fundido a negro en el borde inferior para que el video no corte en seco contra la sección siguiente
-const BottomFade = (props) => (
-  <MotionBox
-    position="absolute"
-    left="0"
-    right="0"
-    bottom="0"
-    h={{ base: '22vh', md: '28vh' }}
-    bg="linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 55%, #000 100%)"
-    pointerEvents="none"
-    {...props}
-  />
+// Fondo ambiente: el propio video difuminado + brillo naranja
+const Ambient = (props) => (
+  <MotionBox position="absolute" inset="0" pointerEvents="none" {...props}>
+    <Box
+      position="absolute"
+      inset="-10%"
+      bgImage={`url(${nacion_led_ambient})`}
+      bgSize="cover"
+      bgPosition="center"
+      filter="blur(70px) saturate(1.3) brightness(.32)"
+      transform="scale(1.1)"
+    />
+    <Box
+      position="absolute"
+      left="50%"
+      top="50%"
+      w="min(1100px, 130vw)"
+      aspectRatio="1.6"
+      transform="translate(-50%, -50%)"
+      bg="radial-gradient(closest-side, rgba(237,137,54,.22), transparent 70%)"
+    />
+  </MotionBox>
 );
 
+const SIDE_SHADE = 'linear-gradient(90deg, rgba(0,0,0,.6), rgba(0,0,0,0) 55%)';
+
 /* Versión estática para "reducir movimiento" */
-const AboutStatic = () => { 
+const AboutStatic = () => {
   const ref = useRef(null);
   const video = useSectionVideo(ref);
   return (
     <Box id="about" ref={ref} position="relative" h="100svh" minH="560px" overflow="hidden" bg="black">
-      <video {...video.videoProps} />
-      <Box position="absolute" inset="0" bg={SHADE} pointerEvents="none" />
-      <BottomFade />
-      <Copy />
-      <VideoControls {...video} />
+      <Ambient />
+      <Box
+        position="absolute"
+        top={{ base: '8%', md: '8%' }}
+        bottom={{ base: '52%', md: '8%' }}
+        left={{ base: '20px', md: '36%' }}
+        right={{ base: '20px', md: '4%' }}
+        borderRadius="20px"
+        overflow="hidden"
+        boxShadow="0 30px 80px rgba(0,0,0,.55)"
+      >
+        <video {...video.videoProps} />
+        <VideoControls {...video} />
+      </Box>
+      <Copy top={{ base: 'auto', md: '50%' }} bottom={{ base: '40px', md: 'auto' }} transform={{ base: 'none', md: 'translateY(-50%)' }} />
     </Box>
   );
 };
+
+function useViewport() {
+  const [vp, setVp] = useState(() => ({ w: typeof window !== 'undefined' ? window.innerWidth : 1440, h: typeof window !== 'undefined' ? window.innerHeight : 900 }));
+  useEffect(() => {
+    const onResize = () => setVp({ w: window.innerWidth, h: window.innerHeight });
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  return vp;
+}
 
 const AboutCine = () => {
   const sectionRef = useRef(null);
   const stickyRef = useRef(null);
   const isMobile = useBreakpointValue({ base: true, md: false }, { ssr: false }) ?? false;
+  const { w, h } = useViewport();
   const video = useSectionVideo(stickyRef);
 
   const { scrollYProgress: p } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
 
-  // 0 → 1 en el primer 60% del recorrido: la tarjeta se expande
-  const grow = useTransform(p, [0, 0.6], [0, 1], { ease: easeOutCubic });
-  const insetX = useTransform(grow, (g) => (1 - g) * (isMobile ? 8 : 30));
-  const insetY = useTransform(grow, (g) => (1 - g) * (isMobile ? 24 : 20));
-  const radius = useTransform(grow, (g) => (1 - g) * 28);
-  const clipPath = useMotionTemplate`inset(${insetY}% ${insetX}% round ${radius}px)`;
+  // Tarjeta inicial → pantalla completa (primer 55% del recorrido)
+  const g = useTransform(p, (v) => easeOutCubic(range(v, 0, 0.55)));
+  const cardH = Math.min(60, ((w * 0.9 * 0.5625) / h) * 100); // 16:9 en celular
+  const start = isMobile ? { t: (100 - cardH) / 2, l: 5 } : { t: 16, l: 20 };
+  const top = useTransform(g, (v) => `${lerp(start.t, 0, v)}%`);
+  const side = useTransform(g, (v) => `${lerp(start.l, 0, v)}%`);
+  const radius = useTransform(g, (v) => `${lerp(28, 0, v)}px`);
+  const borderColor = useTransform(g, (v) => `rgba(255,255,255,${0.16 * (1 - v)})`);
 
-  const titleOpacity = useTransform(p, [0.35, 0.5], [1, 0]);
-  const leftX = useTransform(grow, [0, 1], ['0vw', isMobile ? '0vw' : '-12vw']);
-  const rightX = useTransform(grow, [0, 1], ['0vw', isMobile ? '0vw' : '12vw']);
-  const leftY = useTransform(grow, [0, 1], [0, isMobile ? -30 : 0]);
-  const rightY = useTransform(grow, [0, 1], [0, isMobile ? 30 : 0]);
+  // Etiqueta y "Deslizá" acompañan a la tarjeta y se van al crecer
+  const labelsOpacity = useTransform(p, [0.05, 0.25], [1, 0]);
+  const chipLeft = useMotionTemplate`calc(${side} + 16px)`;
+  const chipTop = useMotionTemplate`calc(${top} + 16px)`;
+  const hintTop = useTransform(g, (v) => `calc(${100 - lerp(start.t, 0, v)}% + 18px)`);
 
-  const shadeOpacity = useTransform(p, [0.45, 0.65], [0, 1]);
-  const copyOpacity = useTransform(p, [0.55, 0.75], [0, 1]);
-  const copyY = useTransform(p, [0.55, 0.75], [24, 0]);
+  // Al final el video se corre para dejarle lugar al panel
+  const sh = useTransform(p, (v) => easeOutCubic(range(v, 0.55, 0.78)));
+  const videoTransform = useTransform(sh, (v) =>
+    isMobile ? `translateY(${-v * 26}%)` : `translateX(${v * 16}%) scale(${1 - v * 0.34})`
+  );
+  const videoRadius = useTransform(sh, (v) => (isMobile ? '0px' : `${(v * 18) / (1 - v * 0.34)}px`));
+  const frameBg = useTransform(sh, (v) => (isMobile ? 'rgba(0,0,0,0)' : `rgba(0,0,0,${1 - v})`));
+  const ambientOpacity = useTransform(p, (v) => (isMobile ? 1 : Math.max(1 - range(v, 0.35, 0.6), easeOutCubic(range(v, 0.55, 0.78)) * 0.7)));
+
+  const shadeOpacity = useTransform(p, [0.5, 0.7], [0, 1]);
+  const copyOpacity = useTransform(p, [0.62, 0.8], [0, 1]);
+  const copyShift = useTransform(p, [0.62, 0.8], [24, 0]);
+  const copyTransform = useTransform(copyShift, (v) => (isMobile ? `translateY(${v}px)` : `translateY(calc(-50% + ${v}px))`));
 
   const [full, setFull] = useState(false);
-  useMotionValueEvent(grow, 'change', (g) => setFull(g > 0.95));
+  useMotionValueEvent(g, 'change', (v) => setFull(v > 0.95));
 
   return (
     <Box id="about" ref={sectionRef} position="relative" h={{ base: '260vh', md: '300vh' }} bg="black" mt={{ base: 0, md: 20 }}>
-      <Box ref={stickyRef} position="sticky" top="0" h="100svh" overflow="hidden">
-        {/* Video que se expande */}
-        <MotionBox position="absolute" inset="0" style={{ clipPath, willChange: 'clip-path' }}>
-          <video {...video.videoProps} />
-          <MotionBox position="absolute" inset="0" bg={SHADE} pointerEvents="none" style={{ opacity: shadeOpacity }} />
-          <BottomFade style={{ opacity: shadeOpacity }} />
+      <Box ref={stickyRef} position="sticky" top="0" h="100svh" overflow="hidden" sx={{ isolation: 'isolate' }}>
+        <Ambient style={{ opacity: ambientOpacity }} />
+
+        {/* Marco que se expande */}
+        <MotionBox
+          position="absolute"
+          overflow="hidden"
+          border="1px solid"
+          boxShadow="0 40px 120px rgba(0,0,0,.7)"
+          style={{ top, bottom: top, left: side, right: side, borderRadius: radius, borderColor, background: frameBg }}
+        >
+          <MotionBox
+            position="absolute"
+            inset="0"
+            overflow="hidden"
+            boxShadow="0 30px 80px rgba(0,0,0,.55)"
+            style={{ transform: videoTransform, borderRadius: videoRadius }}
+            sx={{ '& video': { objectFit: isMobile ? 'contain !important' : 'cover' } }}
+          >
+            <video {...video.videoProps} />
+          </MotionBox>
           <VideoControls {...video} visible={full} />
         </MotionBox>
 
-       
+        <MotionBox position="absolute" inset="0" zIndex={2} bg={SIDE_SHADE} pointerEvents="none" display={{ base: 'none', md: 'block' }} style={{ opacity: shadeOpacity }} />
 
-        <Copy style={{ opacity: copyOpacity, y: copyY }} />
+        {/* Etiqueta + indicación de scroll */}
+        <MotionBox
+          position="absolute"
+          zIndex={3}
+          display="flex"
+          alignItems="center"
+          gap="8px"
+          px="12px"
+          py="7px"
+          borderRadius="full"
+          bg="blackAlpha.600"
+          border="1px solid"
+          borderColor="whiteAlpha.200"
+          backdropFilter="blur(8px)"
+          fontSize="11px"
+          fontWeight="700"
+          letterSpacing=".14em"
+          textTransform="uppercase"
+          whiteSpace="nowrap"
+          pointerEvents="none"
+          style={{ left: chipLeft, top: chipTop, opacity: labelsOpacity }}
+        >
+          <Box w="7px" h="7px" borderRadius="full" bg="orange.500" />
+          Nación LED · Manifiesto
+        </MotionBox>
+        <MotionBox
+          position="absolute"
+          left="50%"
+          zIndex={3}
+          transform="translateX(-50%)"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          gap="8px"
+          color="whiteAlpha.600"
+          fontSize="11px"
+          fontWeight="600"
+          letterSpacing=".2em"
+          textTransform="uppercase"
+          pointerEvents="none"
+          style={{ top: hintTop, opacity: labelsOpacity }}
+        >
+          Deslizá
+          <Box w="1px" h="28px" bg="linear-gradient(180deg, rgba(255,255,255,.6), transparent)" />
+        </MotionBox>
+
+        <Copy
+          top={{ base: 'auto', md: '50%' }}
+          bottom={{ base: '84px', md: 'auto' }}
+          style={{ opacity: copyOpacity, transform: copyTransform }}
+        />
       </Box>
     </Box>
   );
