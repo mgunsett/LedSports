@@ -7,17 +7,6 @@ import { brands } from '@/data/jugadores';
 
 const FichaJugador = lazy(() => import('@/components/jugadores/FichaJugador'));
 
-/*
- * "Nos eligieron" · versión Foco (B2 · Fila)
- * Desktop: toda la sección entra en una pantalla. Encabezado en una fila (título | texto + "Ver todos")
- *          y debajo el escenario: foto del jugador | datos | grilla de miniaturas 3×4.
- *          La foto y las miniaturas se dimensionan según el alto real del escenario (container query units).
- * Mobile:  foto, datos y una tira de tarjetas deslizable con nombre.
- * Rota cada 6 s mientras la sección está en pantalla; se pausa con el mouse encima, con foco de teclado,
- * con la ficha abierta o con "reducir movimiento". "Ver ficha" abre FichaJugador sin salir de la home.
- *
- * Para cambiar los destacados, editá FEATURED (nombres exactos de src/data/jugadores.js).
- */
 const FEATURED = [
   'Andres Gudiño',
   'Ricardo Ade',
@@ -53,14 +42,14 @@ const Header = () => (
     direction={{ base: 'column', md: 'row' }}
     align={{ base: 'flex-start', md: 'flex-end' }}
     justify="space-between"
-    gap={{ base: '14px', md: '24px' }}
+    gap={{ base: '12px', md: '24px' }}
     flexShrink={0}
   >
     <Box>
-      
+
       <Heading
         as="h2"
-        m="12px 0 0"
+        m={{ base: 0, md: '12px 0 0' }}
         fontSize={{ base: '44px', md: 'clamp(40px, 4.6vw, 72px)' }}
         lineHeight=".92"
         fontWeight="700"
@@ -73,7 +62,7 @@ const Header = () => (
         </Text>
       </Heading>
     </Box>
-    <Flex direction={{ base: 'column', md: 'row' }} align={{ base: 'flex-start', md: 'flex-end' }} gap={{ base: '14px', md: '24px' }}>
+    <Flex direction={{ base: 'column', md: 'row' }} align={{ base: 'flex-start', md: 'flex-end' }} gap={{ base: '12px', md: '24px' }}>
       <Text m="0" maxW="35ch" textAlign={{ base: 'left', md: 'right' }} color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.15vw, 17px)' }} lineHeight="1.55">
         Más de 350 deportistas confiaron su marca en nosotros. Estos son algunos.
       </Text>
@@ -192,24 +181,27 @@ const TrustSection = () => {
       bg="black"
       display="flex"
       flexDirection="column"
-      gap={{ base: '22px', md: 'clamp(16px, 2.4vh, 26px)' }}
+      gap={{ base: '16px', md: 'clamp(16px, 2.4vh, 26px)' }}
       px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
-      pt={{ base: '80px', md: '32px' }}
-      pb={{ base: '100px', md: '28px' }}
-      mb={{ base: 0, md: '300px' }}
-      mt={{ base: 0, md: '200px' }}
+      pt={{ base: '20px', md: '32px' }}
+      pb={{ base: '20px', md: '28px' }}
+      mb={{ base: '80px', md: '300px' }}
+      mt={{ base: '60px', md: '200px' }}
       scrollMarginTop={NAV_H}
-      sx={{ [MD]: { height: `calc(100svh - ${NAV_H})`, minHeight: '600px', maxHeight: '860px' } }}
+      h={`calc(100svh - ${NAV_H})`}
+      minH={{ base: '620px', md: '600px' }}
+      maxH="860px"
     >
       <Header />
 
       {/* Escenario */}
       <Box
         position="relative"
-        flex={{ md: '1' }}
-        minH={{ md: 0 }}
-        display="flex"
-        flexDirection="column"
+        flex="1"
+        minH={0}
+        display="grid"
+        gridTemplateColumns="minmax(0, 1fr)"
+        gridTemplateRows="minmax(0, 1fr) auto"
         borderRadius={{ base: '24px', md: '28px' }}
         overflow="hidden"
         border={`1px solid ${LINE}`}
@@ -220,8 +212,8 @@ const TrustSection = () => {
         onBlurCapture={() => setPaused(false)}
         sx={{
           [MD]: {
-            display: 'grid',
             gridTemplateColumns: 'minmax(0, .9fr) minmax(0, 1fr) auto',
+            gridTemplateRows: 'none',
             containerType: 'size',
           },
         }}
@@ -254,43 +246,72 @@ const TrustSection = () => {
           </MotionBox>
         </AnimatePresence>
 
-        {/* Foto */}
+        {/* Foto: en mobile llena la card y se recorta por abajo, bajo los datos */}
         <Flex
           position="relative"
+          gridRow={{ base: 1, md: 'auto' }}
+          gridColumn={{ base: 1, md: 'auto' }}
           align="flex-end"
           justify="center"
           overflow="hidden"
-          pt="28px"
-          px="16px"
-          sx={{ [MD]: { alignSelf: 'stretch', pt: 0, px: '12px' } }}
+          sx={{ [MD]: { alignSelf: 'stretch', px: '12px' } }}
         >
           <AnimatePresence mode="wait" initial={false}>
-            <MotionBox key={`img-${index}`} display="flex" alignItems="flex-end" justifyContent="center" maxW="100%" {...swap}>
+            <MotionBox
+              key={`img-${index}`}
+              position="absolute"
+              inset="0"
+              display="flex"
+              alignItems="flex-start"
+              justifyContent="center"
+              pt="20px"
+              sx={{ [MD]: { position: 'static', alignItems: 'flex-end', maxWidth: '100%', pt: 0 } }}
+              {...swap}
+            >
               <Image
                 src={p.img}
                 alt={p.name}
                 draggable={false}
                 display="block"
                 w="auto"
-                maxW="100%"
+                maxW="none"
                 objectFit="contain"
                 objectPosition="50% 100%"
-                h="min(44svh, 400px)"
+                h="110%"
                 filter="drop-shadow(0 30px 40px rgba(0,0,0,.7))"
-                sx={{ [MD]: { height: 'min(88cqh, 640px)' } }}
+                sx={{ [MD]: { maxWidth: '100%', height: 'min(88cqh, 640px)' } }}
               />
             </MotionBox>
           </AnimatePresence>
         </Flex>
 
-        {/* Datos */}
-        <Box position="relative" alignSelf={{ base: 'stretch', md: 'center' }} p={{ base: '20px 20px 8px', md: 'clamp(20px, 2.4vw, 36px)' }} aria-live="polite">
+        {/* Datos: en mobile van sobre el pie de la foto, encima de un degradé */}
+        <Box
+          position="relative"
+          gridRow={{ base: 1, md: 'auto' }}
+          gridColumn={{ base: 1, md: 'auto' }}
+          alignSelf={{ base: 'end', md: 'center' }}
+          p={{ base: '72px 20px 16px', md: 'clamp(20px, 2.4vw, 36px)' }}
+          bg={{ base: 'linear-gradient(180deg, rgba(8,8,8,0) 0%, rgba(8,8,8,.78) 42%, rgba(8,8,8,.94) 100%)', md: 'none' }}
+          aria-live="polite"
+        >
           <AnimatePresence mode="wait" initial={false}>
             <MotionBox key={`info-${index}`} {...swap}>
-              {crest && <Image src={crest} alt={p.club} w="48px" h="48px" objectFit="contain" mb="14px" />}
-              <Text color="orange.400" fontSize="12px" fontWeight="600" letterSpacing=".16em" textTransform="uppercase">
-                {capitalize(p.position)}
-              </Text>
+              <Flex direction={{ base: 'row', md: 'column' }} align={{ base: 'center', md: 'flex-start' }} gap={{ base: '10px', md: 0 }}>
+                {crest && (
+                  <Image
+                    src={crest}
+                    alt={p.club}
+                    w={{ base: '28px', md: '48px' }}
+                    h={{ base: '28px', md: '48px' }}
+                    objectFit="contain"
+                    mb={{ base: 0, md: '14px' }}
+                  />
+                )}
+                <Text color="orange.400" fontSize="12px" fontWeight="600" letterSpacing=".16em" textTransform="uppercase">
+                  {capitalize(p.position)}
+                </Text>
+              </Flex>
               <Heading
                 as="h3"
                 m="8px 0 0"
@@ -302,7 +323,7 @@ const TrustSection = () => {
               >
                 {p.name}
               </Heading>
-              <Flex wrap="wrap" gap="8px" m="18px 0 22px">
+              <Flex display={{ base: 'none', md: 'flex' }} wrap="wrap" gap="8px" m="18px 0 22px">
                 <MetaPill>
                   #<Text as="b" color="white" fontWeight="600">{p.number}</Text>
                 </MetaPill>
@@ -317,6 +338,7 @@ const TrustSection = () => {
                 onClick={openFicha}
                 align="center"
                 gap="10px"
+                mt={{ base: '16px', md: 0 }}
                 minH="48px"
                 px="22px"
                 borderRadius="lg"
@@ -341,10 +363,12 @@ const TrustSection = () => {
           role="tablist"
           aria-label="Jugadores destacados"
           position="relative"
+          gridRow={{ base: 2, md: 'auto' }}
+          bg={{ base: 'rgba(8,8,8,.94)', md: 'none' }}
           display="flex"
           gap="10px"
           overflowX="auto"
-          p="8px 20px 20px"
+          p="12px 20px 16px"
           sx={{
             scrollSnapType: 'x mandatory',
             scrollPaddingInline: '20px',
@@ -399,7 +423,7 @@ const TrustSection = () => {
                   alt=""
                   loading="lazy"
                   w="100%"
-                  h="84px"
+                  h="68px"
                   maxW="none"
                   objectFit="cover"
                   objectPosition="50% 4%"

@@ -5,13 +5,10 @@ import { GoArrowRight } from 'react-icons/go';
 import fotoAccion from '@/assets/paradiso/foto_accion.webp';
 import escudo from '@/assets/paradiso/escudo.webp';
 
-/*
- * Home · Caso FC Paradiso (versión "Pantalla completa")
- * Foto a todo el ancho con el título encima, CTA a /fc-paradiso y una barra de datos del club.
- */
 
 const MotionBox = motion(Box);
 const MotionImage = motion(Image);
+const MotionFlex = motion(Flex);
 
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const MD = '@media (min-width: 48em)';
@@ -73,53 +70,55 @@ const ParadisoSection = () => {
         />
 
         {/* Texto + CTA */}
-        <MotionBox
-          position={{ base: 'relative', md: 'absolute' }}
+        <MotionFlex
           inset={{ md: 0 }}
           zIndex={2}
           flex={{ base: '1', md: 'none' }}
-          display="flex"
-          flexDirection="column"
+          flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={{ base: 'flex-end', md: 'center' }}
-          maxW="760px"
+          alignItems={{ base: 'flex-start', md: 'flex-end' }}
+          maxW="1960px"
           p={{ base: '200px 22px 24px', md: 'clamp(24px, 5vw, 72px)' }}
           variants={{ hidden: { opacity: 0, y: reduceMotion ? 0 : 22 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.8, delay: 0.2, ease: EASE_OUT }}
         >
-          <Flex
-            align="center"
-            gap="12px"
-            w="max-content"
-            maxW="100%"
-            p="6px 16px 6px 6px"
-            borderRadius="full"
-            bg="rgba(0,0,0,.5)"
-            border="1px solid rgba(255,255,255,.14)"
-            backdropFilter="blur(8px)"
-            fontSize="13px"
-            fontWeight="600"
-          >
-            <Image src={escudo} alt="" w="36px" h="36px" borderRadius="full" bg="white" p="2px" />
-            Caso real · FC Paradiso, Suiza
-          </Flex>
-          <Heading
-            as="h2"
-            id="paradiso-title"
-            mt="22px"
-            fontSize={{ base: '40px', md: 'clamp(40px, 5.4vw, 88px)' }}
-            lineHeight=".95"
-            fontWeight="700"
-            letterSpacing="-0.03em"
-            color="white"
-          >
-            Dirigimos el marketing de un club{' '}
-            <Text as="em" fontStyle="italic" color="orange.400">
-              con historia
+          <Box>
+            <Flex
+              align="center"
+              gap="12px"
+              w="max-content"
+              maxW="100%"
+              p="6px 16px 6px 6px"
+              borderRadius="full"
+              bg="rgba(0,0,0,.5)"
+              border="1px solid rgba(255,255,255,.14)"
+              backdropFilter="blur(8px)"
+              fontSize="13px"
+              fontWeight="600"
+            >
+              <Image src={escudo} alt="" w="36px" h="36px" borderRadius="full" bg="white" p="2px" />
+              FC Paradiso, Suiza
+            </Flex>
+            <Heading
+              as="h2"
+              id="paradiso-title"
+              mt="22px"
+              fontSize={{ base: '40px', md: 'clamp(40px, 5.4vw, 88px)' }}
+              lineHeight=".95"
+              fontWeight="700"
+              letterSpacing="-0.03em"
+              color="white"
+              w={{ base: '100%', md: '40%' }}
+            >
+              Dirigimos el marketing de un club{' '}
+              <Text as="em" fontStyle="italic" color="orange.400">
+                con historia
+              </Text>
+            </Heading>
+            <Text mt="18px" maxW="46ch" color="whiteAlpha.800" fontSize={{ base: '16px', md: 'clamp(16px, 1.4vw, 20px)' }} lineHeight="1.6">
+              Fotografía, video, redes y el seguimiento del club día a día, partido a partido, entrenamiento a entrenamiento.
             </Text>
-          </Heading>
-          <Text mt="18px" maxW="46ch" color="whiteAlpha.800" fontSize={{ base: '16px', md: 'clamp(16px, 1.4vw, 20px)' }} lineHeight="1.6">
-            Fotografía, video, redes y el seguimiento del club día a día, partido a partido, entrenamiento a entrenamiento.
-          </Text>
+          </Box>
           <Box mt="30px">
             <Box
               as={RouterLink}
@@ -128,8 +127,9 @@ const ParadisoSection = () => {
               alignItems="center"
               gap="10px"
               minH="52px"
+              w="max-content"
               px="24px"
-              borderRadius="full"
+              borderRadius="xl"
               bg="orange.500"
               color="white"
               fontWeight="600"
@@ -139,11 +139,11 @@ const ParadisoSection = () => {
               _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '3px' }}
               sx={{ '@media (hover: hover) and (pointer: fine)': { '&:hover': { bg: 'orange.400' } } }}
             >
-              Ver el caso
+              Ver más
               <GoArrowRight aria-hidden="true" />
             </Box>
           </Box>
-        </MotionBox>
+        </MotionFlex>
 
         {/* Datos del club */}
         <Grid
