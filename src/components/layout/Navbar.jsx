@@ -231,8 +231,10 @@ const Navbar = () => {
         bg="rgba(0,0,0,.55)"
         backdropFilter="blur(4px)"
         opacity={isOpen ? 1 : 0}
+        // Oculto del todo al cerrar: un backdrop-filter a pantalla completa, aunque esté en opacity 0, genera artefactos en GPUs móviles
+        visibility={isOpen ? 'visible' : 'hidden'}
         pointerEvents={isOpen ? 'auto' : 'none'}
-        transition="opacity 400ms ease"
+        transition={`opacity 400ms ease, visibility 0s linear ${isOpen ? '0s' : '400ms'}`}
         onClick={close}
         aria-hidden="true"
       />

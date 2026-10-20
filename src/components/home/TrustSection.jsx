@@ -107,12 +107,12 @@ const TrustSection = () => {
   }, []);
 
   const [index, setIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
   const sectionRef = useRef(null);
   const railRef = useRef(null);
   const progressRef = useRef(0);
+  const barRef = useRef(null); // barra de progreso activa: se escribe directo en el DOM para no re-renderizar cada frame
   const inView = useInView(sectionRef, { amount: 0.4 });
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [fichaPlayer, setFichaPlayer] = useState(null);
@@ -121,7 +121,7 @@ const TrustSection = () => {
     (i) => {
       const next = (i + players.length) % players.length;
       progressRef.current = 0;
-      setProgress(0);
+      if (barRef.current) barRef.current.style.transform = 'scaleX(0)';
       setIndex(next);
       // En mobile la tira se desliza: mantener visible la tarjeta activa (sin mover la página)
       const rail = railRef.current;
@@ -148,7 +148,7 @@ const TrustSection = () => {
           goTo(index + 1);
           return;
         }
-        setProgress(progressRef.current);
+        if (barRef.current) barRef.current.style.transform = `scaleX(${progressRef.current})`;
       }
       raf = requestAnimationFrame(tick);
     };
@@ -278,8 +278,8 @@ const TrustSection = () => {
                 objectFit="contain"
                 objectPosition="50% 100%"
                 h="110%"
-                filter="drop-shadow(0 30px 40px rgba(0,0,0,.7))"
-                sx={{ [MD]: { maxWidth: '100%', height: 'min(88cqh, 640px)' } }}
+                // En mobile el pie de la foto queda bajo el degradé: la sombra no se ve y es cara de pintar en cada swap
+                sx={{ [MD]: { maxWidth: '100%', height: 'min(88cqh, 640px)', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,.7))' } }}
               />
             </MotionBox>
           </AnimatePresence>
@@ -444,6 +444,7 @@ const TrustSection = () => {
                   {shortName(pl.name)}
                 </Text>
                 <Box
+                  ref={active ? barRef : null}
                   position="absolute"
                   left="0"
                   right="0"
@@ -451,7 +452,7 @@ const TrustSection = () => {
                   h="3px"
                   bg="orange.500"
                   transformOrigin="0 50%"
-                  style={{ transform: `scaleX(${active ? progress : 0})` }}
+                  style={{ transform: 'scaleX(0)' }}
                 />
               </Box>
             );
