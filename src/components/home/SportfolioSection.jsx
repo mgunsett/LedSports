@@ -33,7 +33,7 @@ const SportfolioSection = () => (
   >
     <MotionBox {...reveal()}>
       <NewBadge />
-      <Lockup mt="20px" />
+      <Lockup mt="40px" />
       <Heading
         as="h2"
         id="sportfolio-title"
@@ -61,7 +61,7 @@ const SportfolioSection = () => (
           Conocer el servicio
           <LineIcon name="arrow" />
         </Cta>
-        <Cta as="a" href="https://guidomainero.com" target="_blank" rel="noopener noreferrer" variant="ghost">
+        <Cta as="a" href="https://gonzalopiovi.com" target="_blank" rel="noopener noreferrer" variant="ghost">
           Ver una web
           <LineIcon name="ext" />
         </Cta>
@@ -85,7 +85,7 @@ const SportfolioSection = () => (
         bar="gonzalopiovi.com"
         position={{ base: "relative", md: "absolute" }}
         right="0"
-        top={{ md: "4%" }}
+        top={{ md: "14%" }}
         w={{ base: "100%", md: "88%" }}
       />
       <PhoneFrame
@@ -93,11 +93,11 @@ const SportfolioSection = () => (
         alt="Web de Guido Mainero vista en celular"
         position={{ base: "relative", md: "absolute" }}
         left={{ md: 0 }}
-        bottom={{ md: 0 }}
+        bottom={{ md: "8%" }}
         w={{ base: "42%", md: "clamp(170px, 15vw, 230px)" }}
         mt={{ base: "-30%", md: 0 }}
         ml={{ base: "6%", md: 0 }}
-        transform="rotate(-3deg)"
+        transform="rotate(-7deg)"
       />
     </MotionBox>
   </Grid>

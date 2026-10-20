@@ -25,14 +25,14 @@ const ParadisoSection = () => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <Box as="section" id="paradiso" aria-labelledby="paradiso-title" px={{ base: '12px', md: 'clamp(12px, 2vw, 28px)' }} py={{ base: '40px', md: 'clamp(40px, 8vh, 80px)' }}>
+    <Box as="section" id="paradiso" aria-labelledby="paradiso-title" px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }} py={{ base: '40px', md: 'clamp(40px, 8vh, 80px)' }}>
       <MotionBox
         position="relative"
         overflow="hidden"
         borderRadius={{ base: '24px', md: '32px' }}
         bg="#0a0a0a"
-        minH={{ base: '88svh', md: '0' }}
-        h={{ base: 'auto', md: 'min(92svh, 860px)' }}
+        // Alto mínimo, no fijo: si el contenido no entra (zoom 100%, pantallas bajas) la card crece en vez de desbordar
+        minH={{ base: '88svh', md: 'min(92svh, 860px)' }}
         display="flex"
         flexDirection="column"
         initial="hidden"
@@ -71,14 +71,13 @@ const ParadisoSection = () => {
 
         {/* Texto + CTA */}
         <MotionFlex
-          inset={{ md: 0 }}
+          position="relative"
           zIndex={2}
-          flex={{ base: '1', md: 'none' }}
-          flexDirection={{ base: 'column', md: 'row' }}
+          flex="1"
+          flexDirection="column"
           justifyContent={{ base: 'flex-end', md: 'center' }}
-          alignItems={{ base: 'flex-start', md: 'flex-end' }}
-          maxW="1960px"
-          p={{ base: '200px 22px 24px', md: 'clamp(24px, 5vw, 72px)' }}
+          alignItems="flex-start"
+          p={{ base: '200px 22px 24px', md: 'clamp(28px, 6svh, 64px) clamp(24px, 5vw, 72px)' }}
           variants={{ hidden: { opacity: 0, y: reduceMotion ? 0 : 22 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.8, delay: 0.2, ease: EASE_OUT }}
         >
@@ -103,12 +102,13 @@ const ParadisoSection = () => {
               as="h2"
               id="paradiso-title"
               mt="22px"
-              fontSize={{ base: '40px', md: 'clamp(40px, 5.4vw, 88px)' }}
+              // También escala con el alto: al 100% de zoom el viewport es bajo y el título no debe pasar de ~4 líneas
+              fontSize={{ base: '40px', md: 'clamp(36px, min(5vw, 8.5svh), 84px)' }}
               lineHeight=".95"
               fontWeight="700"
               letterSpacing="-0.03em"
               color="white"
-              w={{ base: '100%', md: '40%' }}
+              maxW={{ base: 'none', md: '14ch' }}
             >
               Dirigimos el marketing de un club{' '}
               <Text as="em" fontStyle="italic" color="orange.400">
@@ -148,10 +148,7 @@ const ParadisoSection = () => {
         {/* Datos del club */}
         <Grid
           as="dl"
-          position={{ base: 'relative', md: 'absolute' }}
-          left="0"
-          right="0"
-          bottom="0"
+          position="relative"
           zIndex={2}
           m="0"
           templateColumns={{ base: 'repeat(2, minmax(0, 1fr))', md: 'repeat(4, minmax(0, 1fr))' }}

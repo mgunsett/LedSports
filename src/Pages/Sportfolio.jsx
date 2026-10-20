@@ -25,11 +25,6 @@ import feedColab from "@/assets/sportfolio/feed_colaboracion.webp";
 import feedQueHace from "@/assets/sportfolio/feed_que_hace.webp";
 import feedArgentina from "@/assets/sportfolio/feed_argentina.webp";
 
-/*
- * Sportfolio Web + LED Sports — servicio extra de landing pages para jugadores.
- * Título + intro con reel, qué incluye, la colaboración, casos reales (src/data/sportfolio.js),
- * cómo funciona, piezas de redes y cierre. Contacto sin cambios.
- */
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -37,7 +32,8 @@ const MotionBox = motion(Box);
 
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const LINE = "rgba(255,255,255,.12)";
-const PX = { base: "20px", md: "clamp(20px, 6vw, 96px)" };
+// Mismo ancho de contenido que el resto de las páginas de servicios (ver Agentes)
+const CONTAINER = { w: "100%", maxW: "1280px", mx: "auto", px: { base: 5, md: 10 } };
 const reveal = (delay = 0) => ({
   initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
@@ -165,7 +161,6 @@ const Em = ({ children, color = CREAM }) => (
 
 const Eyebrow = ({ children, cream }) => (
   <Flex align="center" gap="10px" color={cream ? CREAM : "orange.400"} fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-    <Box w="22px" h="2px" bg={cream ? SAGE : "orange.500"} borderRadius="2px" />
     {children}
   </Flex>
 );
@@ -177,8 +172,8 @@ const H2 = ({ children, ...props }) => (
 );
 
 const Section = ({ children, ...props }) => (
-  <Box as="section" px={PX} py={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }} borderTop={`1px solid ${LINE}`} {...props}>
-    {children}
+  <Box as="section" py={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }} borderTop={`1px solid ${LINE}`} {...props}>
+    <Box {...CONTAINER}>{children}</Box>
   </Box>
 );
 
@@ -265,7 +260,8 @@ const Reel = () => {
 const CaseMedia = ({ c }) => {
   if (c.layout === "phones") {
     return (
-      <Flex justify="center" gap={{ base: "12px", md: "clamp(12px, 2vw, 24px)" }}>
+      // align flex-start: sin esto el primer celular se estira al alto del segundo (desplazado) y queda vacío abajo
+      <Flex justify="center" align="flex-start" gap={{ base: "12px", md: "clamp(12px, 2vw, 24px)" }}>
         {c.shots.map((s, i) => (
           <PhoneFrame key={s.alt} src={s.src} alt={s.alt} w="min(42%, 250px)" mt={i === 1 ? "12%" : 0} />
         ))}
@@ -326,12 +322,12 @@ const Sportfolio = () => {
         templateColumns={{ base: "1fr", md: "minmax(0, 1.1fr) minmax(0, .9fr)" }}
         gap={{ base: "40px", md: "clamp(32px, 5vw, 80px)" }}
         alignItems="center"
-        px={PX}
+        {...CONTAINER}
         pb={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }}
       >
         <MotionBox {...reveal(0.3)}>
           <NewBadge />
-          <Lockup mt="20px" />
+          <Lockup mt="40px" />
           <H2 mt="28px" fontSize={{ base: "34px", md: "clamp(34px, 4vw, 62px)" }}>
             Tu carrera, en una web <Em>única y propia</Em>
           </H2>
@@ -351,9 +347,7 @@ const Sportfolio = () => {
               Ver casos reales
             </Cta>
           </Flex>
-          <Text mt="16px" color="whiteAlpha.500" fontSize="13px">
-            Servicio extra: se contrata aparte y no forma parte de los planes actuales.
-          </Text>
+          
         </MotionBox>
         <MotionBox {...reveal(0.4)} position="relative" justifySelf="center" w="min(340px, 100%)">
           <Box
@@ -548,7 +542,7 @@ const Sportfolio = () => {
 
       {/* En redes */}
       <Section>
-        <Eyebrow cream>En redes</Eyebrow>
+        <Eyebrow cream># En redes</Eyebrow>
         <H2>
           Así lo <Em>contamos</Em>
         </H2>
@@ -572,42 +566,42 @@ const Sportfolio = () => {
       </Section>
 
       {/* Cierre */}
-      <MotionBox
-        as="section"
-        {...reveal()}
-        mx={{ base: "12px", md: "clamp(12px, 2vw, 28px)" }}
-        mb={{ base: "40px", md: "clamp(40px, 6vh, 70px)" }}
-        borderRadius={{ base: "24px", md: "32px" }}
-        bg={`radial-gradient(ellipse 80% 120% at 90% 50%, #2f6a4c, ${SPF_GREEN} 35%, ${SPF_DEEP} 85%)`}
-        p={{ base: "32px 22px", md: "clamp(40px, 6vw, 88px)" }}
-        display="grid"
-        gridTemplateColumns={{ base: "1fr", md: "minmax(0, 1fr) auto" }}
-        gap={{ base: "24px", md: "clamp(24px, 4vw, 64px)" }}
-        alignItems="center"
-      >
-        <Box>
-          <NewBadge>Servicio extra</NewBadge>
-          <Text mt="18px" fontSize={{ base: "32px", md: "clamp(32px, 4vw, 64px)" }} lineHeight=".98" fontWeight="700" letterSpacing="-0.03em" maxW="15ch">
-            ¿Querés tu <Em>propia web?</Em>
-          </Text>
-          <Text mt="14px" color="whiteAlpha.800" fontSize="15px" maxW="44ch" lineHeight="1.6">
-            Consultanos: lo sumamos a tu plan de LED Sports como servicio extra.
-          </Text>
-          <Flex wrap="wrap" gap="12px" mt="30px">
-            <Cta as="a" href="#contact" onClick={scrollTo("contact")} variant="cream">
-              Hablemos
-              <LineIcon name="down" />
-            </Cta>
-            <Cta as="a" href={SPORTFOLIO_URL} target="_blank" rel="noopener noreferrer" variant="ghost">
-              Conocé Sportfolio
-              <LineIcon name="ext" />
-            </Cta>
-          </Flex>
-        </Box>
-        <Image src={logoSportfolio} alt="Sportfolio Web" w={{ base: "70%", md: "clamp(220px, 26vw, 420px)" }} h="auto" />
-      </MotionBox>
+      <Box {...CONTAINER} mb={{ base: "40px", md: "clamp(40px, 6vh, 70px)" }}>
+        <MotionBox
+          as="section"
+          {...reveal()}
+          borderRadius={{ base: "24px", md: "32px" }}
+          bg={`radial-gradient(ellipse 80% 120% at 90% 50%, #2f6a4c, ${SPF_GREEN} 35%, ${SPF_DEEP} 85%)`}
+          p={{ base: "32px 22px", md: "clamp(40px, 6vw, 88px)" }}
+          display="grid"
+          gridTemplateColumns={{ base: "1fr", md: "minmax(0, 1fr) auto" }}
+          gap={{ base: "24px", md: "clamp(24px, 4vw, 64px)" }}
+          alignItems="center"
+        >
+          <Box>
+            <NewBadge>Servicio extra</NewBadge>
+            <Text mt="18px" fontSize={{ base: "32px", md: "clamp(32px, 4vw, 64px)" }} lineHeight=".98" fontWeight="700" letterSpacing="-0.03em" maxW="15ch">
+              ¿Querés tu <Em>propia web?</Em>
+            </Text>
+            <Text mt="14px" color="whiteAlpha.800" fontSize="15px" maxW="44ch" lineHeight="1.6">
+              Consultanos: lo sumamos a tu plan de LED Sports como servicio extra.
+            </Text>
+            <Flex wrap="wrap" gap={{ base: "5px", md: "12px" }} mt="30px">
+              <Cta as="a" href="#contact" onClick={scrollTo("contact")} variant="cream">
+                Hablemos
+                <LineIcon name="down" />
+              </Cta>
+              <Cta as="a" href={SPORTFOLIO_URL} target="_blank" rel="noopener noreferrer" variant="ghost">
+                Conocé Sportfolio
+                <LineIcon name="ext" />
+              </Cta>
+            </Flex>
+          </Box>
+          <Image m={{base:'10px auto', md:'auto'}} src={logoSportfolio} alt="Sportfolio Web" w={{ base: "50%", md: "clamp(220px, 26vw, 400px)" }} h="auto" />
+        </MotionBox>
+      </Box>
 
-      <MotionBox alignSelf="center" animate={{ y: [0, -15, 0] }} transition={{ duration: 1, repeat: Infinity }} display="flex" fontSize={{ base: "50px", md: "80px" }}>
+      <MotionBox mt="40px" alignSelf="center" animate={{ y: [0, -15, 0] }} transition={{ duration: 1, repeat: Infinity }} display="flex" fontSize={{ base: "50px", md: "80px" }}>
         <BsChevronDoubleDown color="orange" />
       </MotionBox>
       <Contact />

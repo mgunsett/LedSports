@@ -1,6 +1,7 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import logoSportfolio from "@/assets/sportfolio/logo_sportfolio.webp";
 import logoLed from "@/assets/branding/logo_firma.webp";
+import check from "@/assets/sportfolio/cheque.webp";
 
 /* Piezas visuales compartidas por la sección del Home y la página /sportfolio */
 
@@ -11,7 +12,7 @@ export const SPF_DEEP = "#0D1F16";
 export const EASE_OUT_CSS = "cubic-bezier(0.23, 1, 0.32, 1)";
 export const HOVER = "@media (hover: hover) and (pointer: fine)";
 
-export const NewBadge = ({ children = "Nuevo · Servicio extra" }) => (
+export const NewBadge = ({ children = "Nuevo Servicio" }) => (
   <Flex
     as="span"
     display="inline-flex"
@@ -19,23 +20,23 @@ export const NewBadge = ({ children = "Nuevo · Servicio extra" }) => (
     gap="8px"
     px="14px"
     py="7px"
-    borderRadius="full"
+    borderRadius="xl"
     border="1px solid rgba(242,233,184,.35)"
-    bg="rgba(242,233,184,.08)"
+    bg="rgba(31, 100, 58, 0.72)"
     color={CREAM}
-    fontSize="12px"
+    fontSize="10px"
     fontWeight="700"
     letterSpacing=".12em"
     textTransform="uppercase"
   >
-    <Box as="i" w="7px" h="7px" borderRadius="full" bg={SAGE} />
+    <Image src={check} alt="Nuevo" w="18px" h="16px" />
     {children}
   </Flex>
 );
 
 export const Lockup = (props) => (
   <Flex align="center" gap={{ base: "12px", md: "clamp(12px, 1.6vw, 20px)" }} {...props}>
-    <Image src={logoSportfolio} alt="Sportfolio Web" h={{ base: "30px", md: "clamp(30px, 3vw, 44px)" }} w="auto" />
+    <Image src={logoSportfolio} alt="Sportfolio Web" h={{ base: "30px", md: "clamp(30px, 3vw, 34px)" }} w="auto" />
     <Text as="span" aria-hidden="true" fontSize="24px" fontWeight="300" color="whiteAlpha.500">
       +
     </Text>
@@ -90,11 +91,11 @@ export const Cta = ({ variant = "orange", children, ...props }) => {
       display="inline-flex"
       alignItems="center"
       gap="10px"
-      minH="52px"
-      px="24px"
-      borderRadius="full"
+      minH={{ base: "42px", md: "52px" }}
+      px={{ base: "12px", md: "20px" }}
+      borderRadius="xl"
       fontWeight="600"
-      fontSize="15px"
+      fontSize={{ base: "13px", md: "15px" }}
       transition={`background-color 200ms ease, transform 160ms ${EASE_OUT_CSS}`}
       _active={{ transform: "scale(0.97)" }}
       _focusVisible={{ outline: "2px solid", outlineColor: "orange.400", outlineOffset: "3px" }}

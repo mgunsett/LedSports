@@ -14,17 +14,6 @@ import nacion_led from '@/assets/videos/video_nacionled.mp4';
 import nacion_led_poster from '@/assets/videos/NACIONLED-poster.jpg';
 import nacion_led_ambient from '@/assets/videos/NACIONLED-ambient.jpg';
 
-/*
- * "Sobre nosotros" · versión Cine (Marco y panel)
- * - El video arranca como tarjeta (16:9 en celular) sobre un fondo ambiente: el mismo video difuminado
- *   y un brillo naranja, para que se distinga aunque el video empiece en negro.
- * - Al entrar en la sección el video vuelve al inicio, así se ve el arranque mientras la tarjeta crece.
- * - Al terminar de crecer, el video se corre (a la derecha en desktop, hacia arriba en celular)
- *   y el texto aparece en un panel aparte: nunca se pisa con el texto ni los subtítulos del video.
- * - Requiere que ningún ancestro tenga overflow: hidden (usar overflow: clip), si no el sticky no funciona.
- * - Con "reducir movimiento" se muestra la versión final estática.
- */
-
 const MotionBox = motion(Box);
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
@@ -97,7 +86,8 @@ function useSectionVideo(containerRef) {
     preload: 'metadata',
     onPlay: () => setIsPlaying(true),
     onPause: () => setIsPlaying(false),
-    style: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
+    // objectFit lo define cada contenedor: inline le ganaría a sus reglas
+    style: { width: '100%', height: '100%', display: 'block' },
   };
 
   return { videoProps, isPlaying, isMuted, togglePlay, toggleMute };
@@ -145,7 +135,7 @@ const Copy = ({ compact, ...props }) => (
   <MotionBox
     position="absolute"
     zIndex={3}
-    left={{ base: '20px', md: '6vw' }}
+    left={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
     w={{ base: 'calc(100% - 40px)', md: 'min(430px, calc(100% - 40px))' }}
     p={{ base: '20px', md: 'clamp(22px, 2.6vw, 36px)' }}
     borderRadius="24px"
@@ -156,7 +146,7 @@ const Copy = ({ compact, ...props }) => (
     {...props}
   >
     <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-      <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
+      
       Somos familia
     </Flex>
     <Text as="h2" m="8px 0 16px" fontSize={{ base: '30px', md: 'clamp(30px, 3vw, 44px)' }} lineHeight="1" whiteSpace="nowrap">
@@ -171,7 +161,7 @@ const Copy = ({ compact, ...props }) => (
           key={p}
           px={{ base: '12px', md: '16px' }}
           py={{ base: '7px', md: '9px' }}
-          borderRadius="full"
+          borderRadius="xl"
           border="1px solid"
           borderColor={i === 0 ? 'orange.500' : 'whiteAlpha.400'}
           color={i === 0 ? 'orange.400' : 'white'}
@@ -223,10 +213,11 @@ const AboutStatic = () => {
         top={{ base: '8%', md: '8%' }}
         bottom={{ base: '52%', md: '8%' }}
         left={{ base: '20px', md: '36%' }}
-        right={{ base: '20px', md: '4%' }}
+        right={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
         borderRadius="20px"
         overflow="hidden"
         boxShadow="0 30px 80px rgba(0,0,0,.55)"
+        sx={{ '& video': { objectFit: 'contain' } }}
       >
         <video {...video.videoProps} />
         <VideoControls {...video} />
@@ -306,7 +297,8 @@ const AboutCine = () => {
             overflow="hidden"
             boxShadow="0 30px 80px rgba(0,0,0,.55)"
             style={{ transform: videoTransform, borderRadius: videoRadius }}
-            sx={{ '& video': { objectFit: isMobile ? 'contain !important' : 'cover' } }}
+            // Desktop: llena el ancho del marco manteniendo su alto (recorta arriba/abajo)
+            sx={{ '& video': { objectFit: isMobile ? 'contain' : 'cover' } }}
           >
             <video {...video.videoProps} />
           </MotionBox>
@@ -315,51 +307,7 @@ const AboutCine = () => {
 
         <MotionBox position="absolute" inset="0" zIndex={2} bg={SIDE_SHADE} pointerEvents="none" display={{ base: 'none', md: 'block' }} style={{ opacity: shadeOpacity }} />
 
-        {/* Etiqueta + indicación de scroll */}
-        <MotionBox
-          position="absolute"
-          zIndex={3}
-          display="flex"
-          alignItems="center"
-          gap="8px"
-          px="12px"
-          py="7px"
-          borderRadius="full"
-          bg="blackAlpha.600"
-          border="1px solid"
-          borderColor="whiteAlpha.200"
-          backdropFilter="blur(8px)"
-          fontSize="11px"
-          fontWeight="700"
-          letterSpacing=".14em"
-          textTransform="uppercase"
-          whiteSpace="nowrap"
-          pointerEvents="none"
-          style={{ left: chipLeft, top: chipTop, opacity: labelsOpacity }}
-        >
-          <Box w="7px" h="7px" borderRadius="full" bg="orange.500" />
-          Nación LED · Manifiesto
-        </MotionBox>
-        <MotionBox
-          position="absolute"
-          left="50%"
-          zIndex={3}
-          transform="translateX(-50%)"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          gap="8px"
-          color="whiteAlpha.600"
-          fontSize="11px"
-          fontWeight="600"
-          letterSpacing=".2em"
-          textTransform="uppercase"
-          pointerEvents="none"
-          style={{ top: hintTop, opacity: labelsOpacity }}
-        >
-          Deslizá
-          <Box w="1px" h="28px" bg="linear-gradient(180deg, rgba(255,255,255,.6), transparent)" />
-        </MotionBox>
+      
 
         <Copy
           top={{ base: 'auto', md: '50%' }}

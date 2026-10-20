@@ -19,12 +19,6 @@ import postGirone from "@/assets/paradiso/post_girone.webp";
 import tuttiSiamo from "@/assets/paradiso/tutti_siamo.webp";
 import capitanEscudo from "@/assets/paradiso/capitan_escudo.webp";
 
-/*
- * Caso FC Paradiso (Suiza)
- * Título + intro con ficha del club, nuestro rol, una semana en el club (entreno → resultado),
- * franja con la identidad del club, galería y cierre con CTA. Contacto sin cambios.
- */
-
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionBox = motion(Box);
@@ -32,7 +26,8 @@ const MotionBox = motion(Box);
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const EASE_OUT_CSS = "cubic-bezier(0.23, 1, 0.32, 1)";
 const LINE = "rgba(255,255,255,.12)";
-const PX = { base: "20px", md: "clamp(20px, 6vw, 96px)" };
+// Mismo ancho de contenido que el resto de las páginas de servicios (ver Agentes)
+const CONTAINER = { w: "100%", maxW: "1280px", mx: "auto", px: { base: 5, md: 10 } };
 const HOVER = "@media (hover: hover) and (pointer: fine)";
 const MOBILE = "@media (max-width: 47.99em)";
 const CLUB_YELLOW = "#F2D21B";
@@ -124,7 +119,7 @@ const Em = ({ children, color = "orange.400" }) => (
 
 const Eyebrow = ({ children, color = "orange.400" }) => (
   <Flex align="center" gap="10px" color={color} fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-    <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
+    
     {children}
   </Flex>
 );
@@ -136,8 +131,8 @@ const H2 = ({ children, ...props }) => (
 );
 
 const Section = ({ children, ...props }) => (
-  <Box as="section" px={PX} py={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }} borderTop={`1px solid ${LINE}`} {...props}>
-    {children}
+  <Box as="section" py={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }} borderTop={`1px solid ${LINE}`} {...props}>
+    <Box {...CONTAINER}>{children}</Box>
   </Box>
 );
 
@@ -235,7 +230,7 @@ const FcParadiso = () => {
         templateColumns={{ base: "1fr", md: "minmax(0, .9fr) minmax(0, 1.1fr)" }}
         gap={{ base: "32px", md: "clamp(32px, 5vw, 80px)" }}
         alignItems="center"
-        px={PX}
+        {...CONTAINER}
         pb={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }}
       >
         <MotionBox {...reveal(0.3)}>
@@ -409,17 +404,17 @@ const FcParadiso = () => {
         position="relative"
         overflow="hidden"
         bg="radial-gradient(ellipse 70% 90% at 80% 50%, #1f7a35, #0E3B1B 70%)"
-        px={PX}
         py={{ base: "60px", md: "clamp(60px, 10vh, 110px)" }}
       >
-        <Grid position="relative" templateColumns={{ base: "1fr", md: "minmax(0, 1fr) minmax(0, 1fr)" }} gap={{ base: "28px", md: "clamp(28px, 5vw, 80px)" }} alignItems="center">
+        {/* El fondo verde va a sangre; el contenido respeta el ancho del resto */}
+        <Grid {...CONTAINER} position="relative" templateColumns={{ base: "1fr", md: "minmax(0, 1fr) minmax(0, 1fr)" }} gap={{ base: "28px", md: "clamp(28px, 5vw, 80px)" }} alignItems="center">
           <MotionBox {...reveal()}>
             <Eyebrow color={CLUB_YELLOW}>La identidad del club</Eyebrow>
             <Text mt="14px" fontSize={{ base: "28px", md: "clamp(28px, 3.2vw, 50px)" }} lineHeight="1.05" fontWeight="700" letterSpacing="-0.02em" maxW="18ch">
-              Cada pieza habla <Em color={CLUB_YELLOW}>el idioma de Paradiso</Em>
+              De club a comunidad: <Em color={CLUB_YELLOW}>Tutti siamo Paradiso</Em>
             </Text>
             <Text mt="16px" color="whiteAlpha.800" fontSize="16px" lineHeight="1.6" maxW="44ch">
-              Verde, amarillo y el león del escudo: respetamos la identidad del club en redes, en el estadio y en cada publicación.
+              Transformamos la imagen del club alrededor de su lema. Con el verde, el amarillo y el león del escudo como bandera, cada pieza en redes, en el estadio y en cada publicación repite la misma idea: todos somos Paradiso.
             </Text>
           </MotionBox>
           <MotionBox {...reveal(0.1)} position="relative" display="grid" placeItems="center" justifySelf="center" w="100%" maxW="620px">
@@ -440,15 +435,7 @@ const FcParadiso = () => {
                 bg: "radial-gradient(closest-side, rgba(242,210,27,.16), rgba(242,210,27,.05) 55%, transparent 72%)",
               }}
             >
-              <Box position="absolute" inset="-15%" borderRadius="full" border="1px solid rgba(255,255,255,.07)" />
-              <Box
-                position="absolute"
-                inset="-7%"
-                borderRadius="full"
-                border="1px dashed rgba(242,210,27,.28)"
-                animation={reduceMotion ? "none" : `${spin} 90s linear infinite`}
-              />
-              <Image src={escudoLinea} alt="" position="absolute" inset="0" w="100%" h="100%" opacity={0.2} transform="rotate(-8deg)" />
+ 
             </Box>
             <Image src={tuttiSiamo} alt="Tutti siamo Paradiso" position="relative" w="100%" h="auto" filter="drop-shadow(0 20px 30px rgba(0,0,0,.35))" />
           </MotionBox>
@@ -500,55 +487,58 @@ const FcParadiso = () => {
       </Section>
 
       {/* Cierre */}
-      <Grid
+      <Box
         as="section"
-        templateColumns={{ base: "1fr", md: "minmax(0, 1fr) auto" }}
-        gap={{ base: "28px", md: "clamp(28px, 5vw, 80px)" }}
-        alignItems="center"
-        px={PX}
         pt={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }}
         pb={{ base: "40px", md: "clamp(40px, 6vh, 70px)" }}
         borderTop={`1px solid ${LINE}`}
       >
-        <MotionBox {...reveal()}>
-          <Eyebrow>Tu club</Eyebrow>
-          <Text mt="14px" fontSize={{ base: "32px", md: "clamp(32px, 4vw, 64px)" }} lineHeight=".98" fontWeight="700" letterSpacing="-0.03em" maxW="16ch">
-            ¿Querés este trabajo para <Em>tu institución?</Em>
-          </Text>
-          <Flex wrap="wrap" gap="12px" mt="28px">
-            <Box as="a" href="#contact" onClick={goToContact} {...ctaStyles} bg="orange.500" color="white" sx={{ [HOVER]: { "&:hover": { bg: "orange.400" } } }}>
-              Hablemos
-              <ArrowIcon d="M12 5v14M6 13l6 6 6-6" />
-            </Box>
-            <Box
-              as={RouterLink}
-              to="/entidades-deportivas"
-              {...ctaStyles}
-              border="1px solid rgba(255,255,255,.22)"
-              color="white"
-              sx={{ [HOVER]: { "&:hover": { bg: "rgba(255,255,255,.06)" } } }}
-            >
-              Servicio para entidades
-            </Box>
-          </Flex>
-        </MotionBox>
-        <MotionBox {...reveal(0.1)} justifySelf="center">
-          <Image
-            src={capitanEscudo}
-            alt="Capitán de FC Paradiso junto al escudo del club"
-            loading="lazy"
-            decoding="async"
-            w={{ base: "min(360px, 100%)", md: "auto" }}
-            h={{ base: "auto", md: "clamp(340px, 38vw, 560px)" }}
-            filter="drop-shadow(0 30px 40px rgba(0,0,0,.6))"
-            sx={{
-              maskImage: "linear-gradient(180deg, #000 75%, transparent)",
-              WebkitMaskImage: "linear-gradient(180deg, #000 75%, transparent)",
-              [MOBILE]: { maxW: "100%" },
-            }}
-          />
-        </MotionBox>
-      </Grid>
+        <Grid
+          {...CONTAINER}
+          templateColumns={{ base: "1fr", md: "minmax(0, 1fr) auto" }}
+          gap={{ base: "28px", md: "clamp(28px, 5vw, 80px)" }}
+          alignItems="center"
+        >
+          <MotionBox {...reveal()}>
+            <Eyebrow>Tu club</Eyebrow>
+            <Text mt="14px" fontSize={{ base: "32px", md: "clamp(32px, 4vw, 64px)" }} lineHeight=".98" fontWeight="700" letterSpacing="-0.03em" maxW="16ch">
+              ¿Querés este trabajo para <Em>tu institución?</Em>
+            </Text>
+            <Flex wrap="wrap" gap="12px" mt="28px">
+              <Box as="a" href="#contact" onClick={goToContact} {...ctaStyles} bg="orange.500" color="white" sx={{ [HOVER]: { "&:hover": { bg: "orange.400" } } }}>
+                Hablemos
+                <ArrowIcon d="M12 5v14M6 13l6 6 6-6" />
+              </Box>
+              <Box
+                as={RouterLink}
+                to="/entidades-deportivas"
+                {...ctaStyles}
+                border="1px solid rgba(255,255,255,.22)"
+                color="white"
+                sx={{ [HOVER]: { "&:hover": { bg: "rgba(255,255,255,.06)" } } }}
+              >
+                Servicio para entidades
+              </Box>
+            </Flex>
+          </MotionBox>
+          <MotionBox {...reveal(0.1)} justifySelf="center">
+            <Image
+              src={capitanEscudo}
+              alt="Capitán de FC Paradiso junto al escudo del club"
+              loading="lazy"
+              decoding="async"
+              w={{ base: "min(360px, 100%)", md: "auto" }}
+              h={{ base: "auto", md: "clamp(340px, 38vw, 560px)" }}
+              filter="drop-shadow(0 30px 40px rgba(0,0,0,.6))"
+              sx={{
+                maskImage: "linear-gradient(180deg, #000 75%, transparent)",
+                WebkitMaskImage: "linear-gradient(180deg, #000 75%, transparent)",
+                [MOBILE]: { maxW: "100%" },
+              }}
+            />
+          </MotionBox>
+        </Grid>
+      </Box>
 
       <MotionBox alignSelf="center" animate={{ y: [0, -15, 0] }} transition={{ duration: 1, repeat: Infinity }} display="flex" fontSize={{ base: "50px", md: "80px" }}>
         <BsChevronDoubleDown color="orange" />

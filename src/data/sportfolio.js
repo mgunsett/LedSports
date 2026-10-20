@@ -19,7 +19,7 @@ export const SPORTFOLIO_CASES = [
     name: "Guido Mainero",
     club: "Platense · Argentina",
     url: "https://guidomainero.com",
-    linkLabel: "guidomainero.com",
+    linkLabel: "Ver web",
     layout: "phones",
     shots: [
       { src: guidoHero, alt: "Inicio de la web de Guido Mainero" },
@@ -31,7 +31,7 @@ export const SPORTFOLIO_CASES = [
     name: "Gonzalo Piovi",
     club: "Cruz Azul · México",
     url: "https://gonzalopiovi.com",
-    linkLabel: "gonzalopiovi.com",
+    linkLabel: "Ver web",
     layout: "browser",
     shots: [
       { src: pioviHero, alt: "Inicio de la web de Gonzalo Piovi", bar: "gonzalopiovi.com" },
@@ -42,7 +42,7 @@ export const SPORTFOLIO_CASES = [
   {
     name: "Rony Martínez",
     club: "Vélez Sarsfield · Argentina",
-    url: null, // TODO: completar el dominio (se recibió "https://ronaldomartinez", sin terminación)
+    url: "https://ronaldomartinez.com",
     linkLabel: "Ver web",
     layout: "browser",
     shots: [{ src: ronyGaleria, alt: "Galería en la web de Rony Martínez", bar: "Galería" }],
@@ -52,7 +52,7 @@ export const SPORTFOLIO_CASES = [
     name: "Cain Fara",
     club: "Universitario de Deportes · Perú",
     url: "https://cainfara.netlify.app",
-    linkLabel: "cainfara.netlify.app",
+    linkLabel: "Ver web",
     layout: "browser",
     shots: [{ src: cainHero, alt: "Inicio de la web de Cain Fara", bar: "cainfara.netlify.app" }],
     points: ["Portada con identidad propia", "Estadísticas, videos y galería", "Sección de prensa"],
