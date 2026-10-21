@@ -178,14 +178,14 @@ const TrustSection = () => {
       id="trust"
       ref={sectionRef}
       aria-label="Nos eligieron"
-      bg="black"
+      bg="#0d0d0d"
       display="flex"
       flexDirection="column"
       gap={{ base: '16px', md: 'clamp(16px, 2.4vh, 26px)' }}
       px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
       pt={{ base: '20px', md: '32px' }}
-      pb={{ base: '20px', md: '28px' }}
-      mb={{ base: '80px', md: '300px' }}
+      pb={{ base: '20px', md: '78px' }}
+      mb={{ base: '80px', md: '150px' }}
       mt={{ base: '60px', md: '200px' }}
       scrollMarginTop={NAV_H}
       h={`calc(100svh - ${NAV_H})`}

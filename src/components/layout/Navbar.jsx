@@ -5,13 +5,6 @@ import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import { FiChevronDown } from 'react-icons/fi';
 import logo from '@/assets/branding/logo_firma.webp';
 
-/*
- * Navbar · versión "Panel lateral"
- * Logo arriba a la izquierda (se oculta al hacer scroll) y un botón redondo flotante que abre un panel desde la derecha.
- * El panel tiene los links principales (con la sección activa en naranja), "Servicios" desplegable con las 5 páginas,
- * el botón de WhatsApp y las redes. Se cierra con la X, con Esc, tocando el fondo o al elegir un link.
- */
-
 const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
 const EASE_DRAWER = 'cubic-bezier(0.32, 0.72, 0, 1)';
 const LINE = 'rgba(255,255,255,.12)';
@@ -21,7 +14,7 @@ const WHATSAPP = 'https://wa.link/v8wl84';
 const SOCIALS = [
   { label: 'Instagram', href: 'https://www.instagram.com/_ledsports/', icon: FaInstagram },
   { label: 'TikTok', href: 'https://www.tiktok.com/@led.sports', icon: FaTiktok },
-  { label: 'WhatsApp', href: WHATSAPP, icon: FaWhatsapp },
+
 ];
 const SERVICES = [
   { label: 'Deportistas', to: '/deportistas' },
@@ -35,6 +28,9 @@ const SERVICE_PATHS = SERVICES.map((s) => s.to);
 const SPY = [
   ['about', 'nosotros'],
   ['servicesButton', 'servicios'],
+  ['paradiso', 'paradiso'],
+  ['trust', 'eligieron'],
+  ['sportfolio', 'sportfolio'],
   ['contact', 'contacto'],
 ];
 
@@ -170,7 +166,7 @@ const Navbar = () => {
           transition={`opacity 300ms ease, transform 400ms ${EASE_OUT}`}
           _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '4px', borderRadius: '6px' }}
         >
-          <Image src={logo} alt="LED Sports" h={{ base: '26px', md: '30px' }} w="auto" draggable={false} />
+          <Image src={logo} alt="LED Sports" h={{ base: '26px', md: '20px' }} w="auto" draggable={false} />
         </Box>
 
         <Box
@@ -359,11 +355,21 @@ const Navbar = () => {
           </Box>
 
           <Box as="li">
-            <Box as={RouterLink} to="/jugadores" onClick={close} {...mainLinkStyles('eligieron')}>
+            <Box as="button" type="button" onClick={() => goToSection('paradiso')} {...mainLinkStyles('paradiso')}>
+              FC Paradiso
+            </Box>
+          </Box>
+          <Box as="li">
+            <Box as="button" type="button" onClick={() => goToSection('trust')} {...mainLinkStyles('eligieron')}>
               Nos eligieron
-              <Text as="span" fontSize="12px" fontWeight="600" color="orange.400" letterSpacing=".1em" textTransform="uppercase">
-                Jugadores
+              <Text as={RouterLink} to="/jugadores" onClick={close}  fontSize="12px" fontWeight="600" color="orange.400" letterSpacing=".1em" textTransform="uppercase">
+               + Jugadores
               </Text>
+            </Box>
+          </Box>
+          <Box as="li">
+            <Box as="button" type="button" onClick={() => goToSection('sportfolio')} {...mainLinkStyles('sportfolio')}>
+              Sportfolio
             </Box>
           </Box>
           <Box as="li">

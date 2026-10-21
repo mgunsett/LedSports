@@ -73,7 +73,7 @@ const PHOTOS = [
 
 const Eyebrow = ({ children }) => (
   <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-    <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
+    
     {children}
   </Flex>
 );

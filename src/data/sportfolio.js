@@ -51,10 +51,10 @@ export const SPORTFOLIO_CASES = [
   {
     name: "Cain Fara",
     club: "Universitario de Deportes · Perú",
-    url: "https://cainfara.netlify.app",
+    url: "https://cainfara.vercel.app",
     linkLabel: "Ver web",
     layout: "browser",
-    shots: [{ src: cainHero, alt: "Inicio de la web de Cain Fara", bar: "cainfara.netlify.app" }],
+    shots: [{ src: cainHero, alt: "Inicio de la web de Cain Fara", bar: "cainfara.vercel.app" }],
     points: ["Portada con identidad propia", "Estadísticas, videos y galería", "Sección de prensa"],
   },
 ];

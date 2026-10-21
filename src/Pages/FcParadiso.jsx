@@ -188,7 +188,7 @@ const FcParadiso = () => {
   return (
     <Flex bg="black" flexDirection="column" minHeight="100vh" pt={{ base: 40, md: 60 }} pb={{ base: "80px", md: "0" }} color="white">
       {/* Título */}
-      <Flex justifyContent="start" alignItems="start" gap={2} flexDirection="row" alignSelf="start" pl={{ base: 4, md: 16, lg: "250px" }} mb={{ base: 6, md: 10 }}>
+      <Flex justifyContent="start" alignItems="start" gap={2} flexDirection="row" alignSelf="start" pl={{ base: 4, md: 16, lg: "250px" }} mb={{ base: 6, md: 16 }}>
         <MotionBox
           w="2px"
           h={{ base: "70px", md: "80px" }}
@@ -234,9 +234,9 @@ const FcParadiso = () => {
         pb={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }}
       >
         <MotionBox {...reveal(0.3)}>
-          <Eyebrow>Caso real · Suiza</Eyebrow>
+          <Eyebrow>Profesionalización</Eyebrow>
           <H2 fontSize={{ base: "32px", md: "clamp(32px, 3.6vw, 56px)" }}>
-            Dirigimos el marketing de un club <Em>fundado en 1917</Em>
+            Trabajamos la imagen <Em>profesional del Club</Em>
           </H2>
           <Text mt="18px" maxW="46ch" color="whiteAlpha.800" fontSize={{ base: "16px", md: "clamp(16px, 1.4vw, 20px)" }} lineHeight="1.6">
             Desde LED Sports ocupamos la dirección del área de marketing de FC Paradiso. Fotografía, video, gestión de redes y el seguimiento del
@@ -334,7 +334,7 @@ const FcParadiso = () => {
       <Section>
         <Flex wrap="wrap" align="flex-end" justify="space-between" gap="20px">
           <Box>
-            <Eyebrow>Una semana en Paradiso</Eyebrow>
+            <Eyebrow>Linea Gráfica</Eyebrow>
             <H2>
               Del entrenamiento <Em>al resultado</Em>
             </H2>
@@ -409,12 +409,12 @@ const FcParadiso = () => {
         {/* El fondo verde va a sangre; el contenido respeta el ancho del resto */}
         <Grid {...CONTAINER} position="relative" templateColumns={{ base: "1fr", md: "minmax(0, 1fr) minmax(0, 1fr)" }} gap={{ base: "28px", md: "clamp(28px, 5vw, 80px)" }} alignItems="center">
           <MotionBox {...reveal()}>
-            <Eyebrow color={CLUB_YELLOW}>La identidad del club</Eyebrow>
+            <Eyebrow color={CLUB_YELLOW}>Creamos identidad</Eyebrow>
             <Text mt="14px" fontSize={{ base: "28px", md: "clamp(28px, 3.2vw, 50px)" }} lineHeight="1.05" fontWeight="700" letterSpacing="-0.02em" maxW="18ch">
-              De club a comunidad: <Em color={CLUB_YELLOW}>Tutti siamo Paradiso</Em>
+              De solo un club, <Em color={CLUB_YELLOW}>a una comunidad viva</Em>
             </Text>
             <Text mt="16px" color="whiteAlpha.800" fontSize="16px" lineHeight="1.6" maxW="44ch">
-              Transformamos la imagen del club alrededor de su lema. Con el verde, el amarillo y el león del escudo como bandera, cada pieza en redes, en el estadio y en cada publicación repite la misma idea: todos somos Paradiso.
+              Transformamos la imagen del club alrededor de un lema. Con el verde, el amarillo y el león de su escudo como bandera, cada pieza en redes, en el estadio y en cada publicación repite la misma idea: "TODOS SOMOS Paradiso".
             </Text>
           </MotionBox>
           <MotionBox {...reveal(0.1)} position="relative" display="grid" placeItems="center" justifySelf="center" w="100%" maxW="620px">

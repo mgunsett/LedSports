@@ -120,7 +120,7 @@ const Marcas = () => {
                 flexDirection="row"
                 alignSelf="start"
                 pl={{ base: 4, md: 16, lg: '250px' }}
-                mb={{ base: 6, md: 10 }}
+                mb={{ base: 6, md: 16 }}
             >
                 <MotionBox
                     w={'2px'}
@@ -376,6 +376,8 @@ const Marcas = () => {
         transition={{ duration: 1, repeat: Infinity }}
         display="flex"
         fontSize={{ base: "50px", md: "80px" }}
+        mt={6}
+        mb={10}
       >
         <BsChevronDoubleDown color="orange" />
       </MotionBox>

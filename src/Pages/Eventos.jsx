@@ -242,7 +242,7 @@ const Eventos = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: EASE_OUT }}
         >
-          
+            
           <Heading as="h2" mt="12px" fontSize={{ base: "34px", md: "clamp(32px, 3.6vw, 56px)" }} lineHeight=".95" fontWeight="700" letterSpacing="-0.03em">
             Transformamos cada evento en una <Em>experiencia única</Em>
           </Heading>
@@ -328,6 +328,8 @@ const Eventos = () => {
         transition={{ duration: 1, repeat: Infinity }}
         display="flex"
         fontSize={{ base: "50px", md: "100px" }}
+        mt={6}
+        mb={10}
       >
         <BsChevronDoubleDown color="orange" />
       </MotionBox>

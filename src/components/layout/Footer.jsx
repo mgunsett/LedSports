@@ -2,12 +2,8 @@ import { Box, Flex, Grid, Image, Link, Text } from '@chakra-ui/react';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaInstagram, FaLinkedin, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import logo_firma from '@/assets/branding/logo_firma.webp';
+import sportfolio from '@/assets/sportfolio/logo_sportfolio.webp';
 
-/*
- * Footer · versión "Firma"
- * Frase de marca + redes, columnas de Secciones / Servicios / Contacto,
- * el logo "LED SPORTS" enorme cortado al pie y la barra legal con el crédito de desarrollo.
- */
 
 const LINE = 'rgba(255,255,255,.12)';
 const hoverOnly = (styles) => ({ '@media (hover: hover) and (pointer: fine)': { '&:hover': styles } });
@@ -25,6 +21,11 @@ const SECTIONS = [
   { label: 'Servicios', id: 'servicesButton' },
   { label: 'Nos eligieron', to: '/jugadores' },
   { label: 'Contacto', id: 'contact' },
+];
+
+const NEWS = [
+  { label: 'FC Paradiso', id: 'paradiso' },
+  { label: 'Sportfolio', id: 'sportfolio' },
 ];
 
 const SERVICES = [
@@ -155,11 +156,11 @@ const Footer = () => {
           ))}
         </Column>
 
-        <Column title="Contacto">
-          {SOCIALS.map((s) => (
-            <Box as="li" key={s.label}>
-              <Link href={s.href} isExternal {...linkStyles}>
-                {s.label}
+        <Column title="Novedades">
+          {NEWS.map((n) => (
+            <Box as="li" key={n.label}>
+              <Link as="button" type="button" onClick={() => goToSection(n.id)} {...linkStyles}>
+                {n.label}
               </Link>
             </Box>
           ))}
@@ -196,7 +197,7 @@ const Footer = () => {
           transition="color 180ms ease"
           sx={hoverOnly({ color: 'white', textDecoration: 'none' })}
         >
-          Desarrollo web · Matías Gunsett <FaLinkedin size="14px" />
+          Desarrollo web   ·  <Image src={sportfolio} alt="Sportfolio Web" w="74px" h="24px" objectFit="contain" draggable={false} />
         </Link>
       </Flex>
     </Box>
