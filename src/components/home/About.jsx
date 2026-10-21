@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { Box, Flex, HStack, IconButton, Text, useBreakpointValue } from '@chakra-ui/react';
 import {
   motion,
@@ -130,8 +130,9 @@ const VideoControls = ({ isPlaying, isMuted, togglePlay, toggleMute, visible = t
   </HStack>
 );
 
-const Copy = ({ compact, ...props }) => (
+const Copy = forwardRef(({ compact, ...props }, ref) => (
   <MotionBox
+    ref={ref}
     position="absolute"
     zIndex={3}
     left={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
@@ -172,7 +173,8 @@ const Copy = ({ compact, ...props }) => (
       ))}
     </Flex>
   </MotionBox>
-);
+));
+Copy.displayName = 'Copy';
 
 // Fondo ambiente: el propio video difuminado + brillo naranja
 const Ambient = (props) => (
@@ -243,6 +245,29 @@ const AboutCine = () => {
 
   const { scrollYProgress: p } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
 
+  // Celular: medimos el panel para que video + panel ocupen la pantalla sin espacio vacío
+  const copyRef = useRef(null);
+  const [copyH, setCopyH] = useState(260);
+  useEffect(() => {
+    const el = copyRef.current;
+    if (!el || typeof ResizeObserver === 'undefined') return undefined;
+    const ro = new ResizeObserver(() => setCopyH(el.offsetHeight));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const mobile = (() => {
+    const side = 16;
+    const navH = 76; // alto del navbar fijo
+    const gap = 14;
+    const bottomSafe = 24;
+    const vw = w - side * 2;
+    const avail = h - navH - bottomSafe - copyH - gap;
+    const vh = Math.max(vw * 0.5625, Math.min(avail, vw * 1.05)); // más alto que 16:9, sin recortar de más
+    const groupH = vh + gap + copyH;
+    const top = navH + Math.max(0, (h - navH - bottomSafe - groupH) / 2);
+    return { rect: { l: side, t: top, w: vw, h: vh }, copyTop: top + vh + gap };
+  })();
+
   // Geometría del marco en px: tarjeta → pantalla completa → encuadre final 16:9
   const PANEL_W = Math.min(430, w - 40);
   const OVERLAP = 160; // cuánto se superpone el panel sobre el video (desktop)
@@ -253,9 +278,10 @@ const AboutCine = () => {
         return { l: (w - cw) / 2, t: (h - ch) / 2, w: cw, h: ch };
       })()
     : { l: w * 0.2, t: h * 0.16, w: w * 0.6, h: h * 0.68 };
-  const full = { l: 0, t: 0, w, h };
+  // En celular no pasa por pantalla completa: la tarjeta crece directo al encuadre final
+  const full = isMobile ? mobile.rect : { l: 0, t: 0, w, h };
   const { finalRect, panelLeft } = (() => {
-    if (isMobile) return { finalRect: full, panelLeft: 20 };
+    if (isMobile) return { finalRect: mobile.rect, panelLeft: 16 };
     // Video completo en 16:9 (sin recorte, se ven los subtítulos), lo más grande posible
     const margin = Math.max(20, h * 0.05);
     const right = Math.max(20, w * 0.03);
@@ -270,7 +296,6 @@ const AboutCine = () => {
   })();
 
   const g = useTransform(p, (v) => easeOutCubic(range(v, 0, 0.55))); // tarjeta → pantalla completa
-  const sh = useTransform(p, (v) => easeOutCubic(range(v, 0.55, 0.78))); // pantalla completa → encuadre final
   const rectAt = (v) => {
     const a = easeOutCubic(range(v, 0, 0.55));
     const b = easeOutCubic(range(v, 0.55, 0.78));
@@ -283,13 +308,11 @@ const AboutCine = () => {
   const frameH = useTransform(p, (v) => `${rectAt(v).h}px`);
   const radius = useTransform(p, (v) => {
     const { a, b } = rectAt(v);
-    return `${lerp(lerp(28, 0, a), isMobile ? 0 : 20, b)}px`;
+    return isMobile ? `${lerp(28, 20, a)}px` : `${lerp(lerp(28, 0, a), 20, b)}px`;
   });
   const borderColor = useTransform(g, (v) => `rgba(255,255,255,${0.16 * (1 - v)})`);
 
-  // Celular: el video (en contain) sube para dejarle lugar al panel
-  const videoTransform = useTransform(sh, (v) => (isMobile ? `translateY(${-v * 26}%)` : 'none'));
-  const frameBg = isMobile ? 'rgba(0,0,0,0)' : '#000';
+  const frameBg = '#000';
   const ambientOpacity = useTransform(p, (v) => (isMobile ? 1 : Math.max(1 - range(v, 0.35, 0.6), easeOutCubic(range(v, 0.55, 0.78)) * 0.7)));
 
   const copyOpacity = useTransform(p, [0.62, 0.8], [0, 1]);
@@ -313,22 +336,22 @@ const AboutCine = () => {
           boxShadow="0 40px 120px rgba(0,0,0,.7)"
           style={{ left: frameLeft, top: frameTop, width: frameW, height: frameH, borderRadius: radius, borderColor, background: frameBg }}
         >
-          <MotionBox
-            position="absolute"
-            inset="0"
-            style={{ transform: videoTransform }}
-            sx={{ '& video': { objectFit: isMobile ? 'contain' : 'cover' } }}
-          >
+          <Box position="absolute" inset="0" sx={{ '& video': { objectFit: 'cover' } }}>
             <video {...video.videoProps} />
-          </MotionBox>
+          </Box>
           <VideoControls {...video} visible={ready} />
         </MotionBox>
 
         <Copy
+          ref={copyRef}
           top={{ base: 'auto', md: '50%' }}
-          bottom={{ base: '84px', md: 'auto' }}
-          w={{ base: 'calc(100% - 40px)', md: `${PANEL_W}px` }}
-          style={{ opacity: copyOpacity, transform: copyTransform, left: isMobile ? undefined : `${panelLeft}px` }}
+          w={{ base: 'calc(100% - 32px)', md: `${PANEL_W}px` }}
+          style={{
+            opacity: copyOpacity,
+            transform: copyTransform,
+            left: `${panelLeft}px`,
+            top: isMobile ? `${mobile.copyTop}px` : undefined,
+          }}
         />
       </Box>
     </Box>
