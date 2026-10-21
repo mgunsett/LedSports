@@ -3,7 +3,6 @@ import { Box, Flex, HStack, IconButton, Text, useBreakpointValue } from '@chakra
 import {
   motion,
   useInView,
-  useMotionTemplate,
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
@@ -199,8 +198,6 @@ const Ambient = (props) => (
   </MotionBox>
 );
 
-const SIDE_SHADE = 'linear-gradient(90deg, rgba(0,0,0,.6), rgba(0,0,0,0) 55%)';
-
 /* Versión estática para "reducir movimiento" */
 const AboutStatic = () => {
   const ref = useRef(null);
@@ -246,37 +243,61 @@ const AboutCine = () => {
 
   const { scrollYProgress: p } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
 
-  // Tarjeta inicial → pantalla completa (primer 55% del recorrido)
-  const g = useTransform(p, (v) => easeOutCubic(range(v, 0, 0.55)));
-  const cardH = Math.min(60, ((w * 0.9 * 0.5625) / h) * 100); // 16:9 en celular
-  const start = isMobile ? { t: (100 - cardH) / 2, l: 5 } : { t: 16, l: 20 };
-  const top = useTransform(g, (v) => `${lerp(start.t, 0, v)}%`);
-  const side = useTransform(g, (v) => `${lerp(start.l, 0, v)}%`);
-  const radius = useTransform(g, (v) => `${lerp(28, 0, v)}px`);
+  // Geometría del marco en px: tarjeta → pantalla completa → encuadre final 16:9
+  const PANEL_W = Math.min(430, w - 40);
+  const OVERLAP = 160; // cuánto se superpone el panel sobre el video (desktop)
+  const card = isMobile
+    ? (() => {
+        const cw = w * 0.9;
+        const ch = Math.min(h * 0.6, cw * 0.5625);
+        return { l: (w - cw) / 2, t: (h - ch) / 2, w: cw, h: ch };
+      })()
+    : { l: w * 0.2, t: h * 0.16, w: w * 0.6, h: h * 0.68 };
+  const full = { l: 0, t: 0, w, h };
+  const { finalRect, panelLeft } = (() => {
+    if (isMobile) return { finalRect: full, panelLeft: 20 };
+    // Video completo en 16:9 (sin recorte, se ven los subtítulos), lo más grande posible
+    const margin = Math.max(20, h * 0.05);
+    const right = Math.max(20, w * 0.03);
+    const minPanelLeft = w * 0.06;
+    const fw = Math.min(w - (minPanelLeft + PANEL_W - OVERLAP) - right, ((h - margin * 2) * 16) / 9);
+    const fh = (fw * 9) / 16;
+    // Panel + video forman un bloque; en pantallas muy anchas se centra
+    const groupW = PANEL_W - OVERLAP + fw;
+    const groupLeft = Math.max(minPanelLeft, (w - groupW) / 2);
+    const fl = groupLeft + PANEL_W - OVERLAP;
+    return { finalRect: { l: fl, t: (h - fh) / 2, w: fw, h: fh }, panelLeft: groupLeft };
+  })();
+
+  const g = useTransform(p, (v) => easeOutCubic(range(v, 0, 0.55))); // tarjeta → pantalla completa
+  const sh = useTransform(p, (v) => easeOutCubic(range(v, 0.55, 0.78))); // pantalla completa → encuadre final
+  const rectAt = (v) => {
+    const a = easeOutCubic(range(v, 0, 0.55));
+    const b = easeOutCubic(range(v, 0.55, 0.78));
+    const mid = { l: lerp(card.l, full.l, a), t: lerp(card.t, full.t, a), w: lerp(card.w, full.w, a), h: lerp(card.h, full.h, a) };
+    return { l: lerp(mid.l, finalRect.l, b), t: lerp(mid.t, finalRect.t, b), w: lerp(mid.w, finalRect.w, b), h: lerp(mid.h, finalRect.h, b), a, b };
+  };
+  const frameLeft = useTransform(p, (v) => `${rectAt(v).l}px`);
+  const frameTop = useTransform(p, (v) => `${rectAt(v).t}px`);
+  const frameW = useTransform(p, (v) => `${rectAt(v).w}px`);
+  const frameH = useTransform(p, (v) => `${rectAt(v).h}px`);
+  const radius = useTransform(p, (v) => {
+    const { a, b } = rectAt(v);
+    return `${lerp(lerp(28, 0, a), isMobile ? 0 : 20, b)}px`;
+  });
   const borderColor = useTransform(g, (v) => `rgba(255,255,255,${0.16 * (1 - v)})`);
 
-  // Etiqueta y "Deslizá" acompañan a la tarjeta y se van al crecer
-  const labelsOpacity = useTransform(p, [0.05, 0.25], [1, 0]);
-  const chipLeft = useMotionTemplate`calc(${side} + 16px)`;
-  const chipTop = useMotionTemplate`calc(${top} + 16px)`;
-  const hintTop = useTransform(g, (v) => `calc(${100 - lerp(start.t, 0, v)}% + 18px)`);
-
-  // Al final el video se corre para dejarle lugar al panel
-  const sh = useTransform(p, (v) => easeOutCubic(range(v, 0.55, 0.78)));
-  const videoTransform = useTransform(sh, (v) =>
-    isMobile ? `translateY(${-v * 26}%)` : `translateX(${v * 16}%) scale(${1 - v * 0.34})`
-  );
-  const videoRadius = useTransform(sh, (v) => (isMobile ? '0px' : `${(v * 18) / (1 - v * 0.34)}px`));
-  const frameBg = useTransform(sh, (v) => (isMobile ? 'rgba(0,0,0,0)' : `rgba(0,0,0,${1 - v})`));
+  // Celular: el video (en contain) sube para dejarle lugar al panel
+  const videoTransform = useTransform(sh, (v) => (isMobile ? `translateY(${-v * 26}%)` : 'none'));
+  const frameBg = isMobile ? 'rgba(0,0,0,0)' : '#000';
   const ambientOpacity = useTransform(p, (v) => (isMobile ? 1 : Math.max(1 - range(v, 0.35, 0.6), easeOutCubic(range(v, 0.55, 0.78)) * 0.7)));
 
-  const shadeOpacity = useTransform(p, [0.5, 0.7], [0, 1]);
   const copyOpacity = useTransform(p, [0.62, 0.8], [0, 1]);
   const copyShift = useTransform(p, [0.62, 0.8], [24, 0]);
   const copyTransform = useTransform(copyShift, (v) => (isMobile ? `translateY(${v}px)` : `translateY(calc(-50% + ${v}px))`));
 
-  const [full, setFull] = useState(false);
-  useMotionValueEvent(g, 'change', (v) => setFull(v > 0.95));
+  const [ready, setReady] = useState(false);
+  useMotionValueEvent(p, 'change', (v) => setReady(isMobile ? v > 0.5 : v > 0.76));
 
   return (
     <Box id="about" ref={sectionRef} position="relative" h={{ base: '260vh', md: '300vh' }} bg="black" mt={{ base: 0, md: 20 }}>
@@ -286,33 +307,28 @@ const AboutCine = () => {
         {/* Marco que se expande */}
         <MotionBox
           position="absolute"
+          zIndex={1}
           overflow="hidden"
           border="1px solid"
           boxShadow="0 40px 120px rgba(0,0,0,.7)"
-          style={{ top, bottom: top, left: side, right: side, borderRadius: radius, borderColor, background: frameBg }}
+          style={{ left: frameLeft, top: frameTop, width: frameW, height: frameH, borderRadius: radius, borderColor, background: frameBg }}
         >
           <MotionBox
             position="absolute"
             inset="0"
-            overflow="hidden"
-            boxShadow="0 30px 80px rgba(0,0,0,.55)"
-            style={{ transform: videoTransform, borderRadius: videoRadius }}
-            // Desktop: llena el ancho del marco manteniendo su alto (recorta arriba/abajo)
+            style={{ transform: videoTransform }}
             sx={{ '& video': { objectFit: isMobile ? 'contain' : 'cover' } }}
           >
             <video {...video.videoProps} />
           </MotionBox>
-          <VideoControls {...video} visible={full} />
+          <VideoControls {...video} visible={ready} />
         </MotionBox>
-
-        <MotionBox position="absolute" inset="0" zIndex={2} bg={SIDE_SHADE} pointerEvents="none" display={{ base: 'none', md: 'block' }} style={{ opacity: shadeOpacity }} />
-
-      
 
         <Copy
           top={{ base: 'auto', md: '50%' }}
           bottom={{ base: '84px', md: 'auto' }}
-          style={{ opacity: copyOpacity, transform: copyTransform }}
+          w={{ base: 'calc(100% - 40px)', md: `${PANEL_W}px` }}
+          style={{ opacity: copyOpacity, transform: copyTransform, left: isMobile ? undefined : `${panelLeft}px` }}
         />
       </Box>
     </Box>
