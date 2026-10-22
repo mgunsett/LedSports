@@ -15,8 +15,8 @@ export const Home = () => {
             <Toaster />
             <About />
             <Services />
-            <ParadisoSection />
             <TrustSection />
+            <ParadisoSection />
             <SportfolioSection />
             <Contact path={window.location.pathname}/>
         </Box>

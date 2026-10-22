@@ -1,23 +1,12 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import { Box, Flex, HStack, IconButton, Text, useBreakpointValue } from '@chakra-ui/react';
-import {
-  motion,
-  useInView,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { FaPause, FaPlay, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 import nacion_led from '@/assets/videos/video_nacionled.mp4';
 import nacion_led_poster from '@/assets/videos/NACIONLED-poster.jpg';
 import nacion_led_ambient from '@/assets/videos/NACIONLED-ambient.jpg';
 
 const MotionBox = motion(Box);
-const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-const clamp01 = (v) => Math.min(1, Math.max(0, v));
-const range = (v, a, b) => clamp01((v - a) / (b - a));
-const lerp = (a, b, t) => a + (b - a) * t;
 
 const DESCRIPTION =
   'Somos una agencia de marketing deportivo. Creamos y potenciamos la marca de deportistas y entidades deportivas a través de la profesionalización de sus redes y web propia.';
@@ -95,7 +84,8 @@ function useSectionVideo(containerRef) {
 const VideoControls = ({ isPlaying, isMuted, togglePlay, toggleMute, visible = true }) => (
   <HStack
     position="absolute"
-    right={{ base: '14px', md: '20px' }}
+    // Abajo a la izquierda: abajo a la derecha queda el botón flotante de WhatsApp
+    left={{ base: '14px', md: '20px' }}
     bottom={{ base: '14px', md: '20px' }}
     zIndex={3}
     spacing={1}
@@ -178,7 +168,7 @@ Copy.displayName = 'Copy';
 
 // Fondo ambiente: el propio video difuminado + brillo naranja
 const Ambient = (props) => (
-  <MotionBox position="absolute" inset="0" pointerEvents="none" {...props}>
+  <Box position="absolute" inset="0" pointerEvents="none" {...props}>
     <Box
       position="absolute"
       inset="-10%"
@@ -197,34 +187,8 @@ const Ambient = (props) => (
       transform="translate(-50%, -50%)"
       bg="radial-gradient(closest-side, rgba(237,137,54,.22), transparent 70%)"
     />
-  </MotionBox>
+  </Box>
 );
-
-/* Versión estática para "reducir movimiento" */
-const AboutStatic = () => {
-  const ref = useRef(null);
-  const video = useSectionVideo(ref);
-  return (
-    <Box id="about" ref={ref} position="relative" h="100svh" minH="560px" overflow="hidden" bg="black">
-      <Ambient />
-      <Box
-        position="absolute"
-        top={{ base: '8%', md: '8%' }}
-        bottom={{ base: '52%', md: '8%' }}
-        left={{ base: '20px', md: '36%' }}
-        right={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
-        borderRadius="20px"
-        overflow="hidden"
-        boxShadow="0 30px 80px rgba(0,0,0,.55)"
-        sx={{ '& video': { objectFit: 'contain' } }}
-      >
-        <video {...video.videoProps} />
-        <VideoControls {...video} />
-      </Box>
-      <Copy top={{ base: 'auto', md: '50%' }} bottom={{ base: '40px', md: 'auto' }} transform={{ base: 'none', md: 'translateY(-50%)' }} />
-    </Box>
-  );
-};
 
 function useViewport() {
   const [vp, setVp] = useState(() => ({ w: typeof window !== 'undefined' ? window.innerWidth : 1440, h: typeof window !== 'undefined' ? window.innerHeight : 900 }));
@@ -236,16 +200,14 @@ function useViewport() {
   return vp;
 }
 
-const AboutCine = () => {
+const About = () => {
   const sectionRef = useRef(null);
-  const stickyRef = useRef(null);
+  const reduceMotion = useReducedMotion();
   const isMobile = useBreakpointValue({ base: true, md: false }, { ssr: false }) ?? false;
   const { w, h } = useViewport();
-  const video = useSectionVideo(stickyRef);
+  const video = useSectionVideo(sectionRef);
 
-  const { scrollYProgress: p } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
-
-  // Celular: medimos el panel para que video + panel ocupen la pantalla sin espacio vacío
+  // Medimos el panel: en celular para que video + panel ocupen la pantalla, en desktop para centrarlo
   const copyRef = useRef(null);
   const [copyH, setCopyH] = useState(260);
   useEffect(() => {
@@ -268,18 +230,9 @@ const AboutCine = () => {
     return { rect: { l: side, t: top, w: vw, h: vh }, copyTop: top + vh + gap };
   })();
 
-  // Geometría del marco en px: tarjeta → pantalla completa → encuadre final 16:9
+  // Geometría del marco en px: encuadre 16:9 con el panel superpuesto a la izquierda
   const PANEL_W = Math.min(430, w - 40);
   const OVERLAP = 160; // cuánto se superpone el panel sobre el video (desktop)
-  const card = isMobile
-    ? (() => {
-        const cw = w * 0.9;
-        const ch = Math.min(h * 0.6, cw * 0.5625);
-        return { l: (w - cw) / 2, t: (h - ch) / 2, w: cw, h: ch };
-      })()
-    : { l: w * 0.2, t: h * 0.16, w: w * 0.6, h: h * 0.68 };
-  // En celular no pasa por pantalla completa: la tarjeta crece directo al encuadre final
-  const full = isMobile ? mobile.rect : { l: 0, t: 0, w, h };
   const { finalRect, panelLeft } = (() => {
     if (isMobile) return { finalRect: mobile.rect, panelLeft: 16 };
     // Video completo en 16:9 (sin recorte, se ven los subtítulos), lo más grande posible
@@ -295,72 +248,42 @@ const AboutCine = () => {
     return { finalRect: { l: fl, t: (h - fh) / 2, w: fw, h: fh }, panelLeft: groupLeft };
   })();
 
-  const g = useTransform(p, (v) => easeOutCubic(range(v, 0, 0.55))); // tarjeta → pantalla completa
-  const rectAt = (v) => {
-    const a = easeOutCubic(range(v, 0, 0.55));
-    const b = easeOutCubic(range(v, 0.55, 0.78));
-    const mid = { l: lerp(card.l, full.l, a), t: lerp(card.t, full.t, a), w: lerp(card.w, full.w, a), h: lerp(card.h, full.h, a) };
-    return { l: lerp(mid.l, finalRect.l, b), t: lerp(mid.t, finalRect.t, b), w: lerp(mid.w, finalRect.w, b), h: lerp(mid.h, finalRect.h, b), a, b };
-  };
-  const frameLeft = useTransform(p, (v) => `${rectAt(v).l}px`);
-  const frameTop = useTransform(p, (v) => `${rectAt(v).t}px`);
-  const frameW = useTransform(p, (v) => `${rectAt(v).w}px`);
-  const frameH = useTransform(p, (v) => `${rectAt(v).h}px`);
-  const radius = useTransform(p, (v) => {
-    const { a, b } = rectAt(v);
-    return isMobile ? `${lerp(28, 20, a)}px` : `${lerp(lerp(28, 0, a), 20, b)}px`;
-  });
-  const borderColor = useTransform(g, (v) => `rgba(255,255,255,${0.16 * (1 - v)})`);
-
-  const frameBg = '#000';
-  const ambientOpacity = useTransform(p, (v) => (isMobile ? 1 : Math.max(1 - range(v, 0.35, 0.6), easeOutCubic(range(v, 0.55, 0.78)) * 0.7)));
-
-  const copyOpacity = useTransform(p, [0.62, 0.8], [0, 1]);
-  const copyShift = useTransform(p, [0.62, 0.8], [24, 0]);
-  const copyTransform = useTransform(copyShift, (v) => (isMobile ? `translateY(${v}px)` : `translateY(calc(-50% + ${v}px))`));
-
-  const [ready, setReady] = useState(false);
-  useMotionValueEvent(p, 'change', (v) => setReady(isMobile ? v > 0.5 : v > 0.76));
+  const rect = isMobile ? mobile.rect : finalRect;
 
   return (
-    <Box id="about" ref={sectionRef} position="relative" h={{ base: '260vh', md: '300vh' }} bg="black" mt={{ base: 0, md: 20 }}>
-      <Box ref={stickyRef} position="sticky" top="0" h="100svh" overflow="hidden" sx={{ isolation: 'isolate' }}>
-        <Ambient style={{ opacity: ambientOpacity }} />
-
-        {/* Marco que se expande */}
-        <MotionBox
-          position="absolute"
-          zIndex={1}
-          overflow="hidden"
-          border="1px solid"
-          boxShadow="0 40px 120px rgba(0,0,0,.7)"
-          style={{ left: frameLeft, top: frameTop, width: frameW, height: frameH, borderRadius: radius, borderColor, background: frameBg }}
-        >
-          <Box position="absolute" inset="0" sx={{ '& video': { objectFit: 'cover' } }}>
-            <video {...video.videoProps} />
-          </Box>
-          <VideoControls {...video} visible={ready} />
-        </MotionBox>
-
-        <Copy
-          ref={copyRef}
-          top={{ base: 'auto', md: '50%' }}
-          w={{ base: 'calc(100% - 32px)', md: `${PANEL_W}px` }}
-          style={{
-            opacity: copyOpacity,
-            transform: copyTransform,
-            left: `${panelLeft}px`,
-            top: isMobile ? `${mobile.copyTop}px` : undefined,
-          }}
-        />
+    <Box id="about" ref={sectionRef} position="relative" h="100svh" overflow="hidden" bg="black" mt={{ base: 0, md: 20 }} sx={{ isolation: 'isolate' }}>
+      <Box position="absolute" inset="0" opacity={isMobile ? 1 : 0.7}>
+        <Ambient />
       </Box>
+
+      {/* Marco del video: fijo en su encuadre final */}
+      <Box
+        position="absolute"
+        zIndex={1}
+        overflow="hidden"
+        borderRadius="20px"
+        bg="#000"
+        boxShadow="0 40px 120px rgba(0,0,0,.7)"
+        style={{ left: `${rect.l}px`, top: `${rect.t}px`, width: `${rect.w}px`, height: `${rect.h}px` }}
+      >
+        <Box position="absolute" inset="0" sx={{ '& video': { objectFit: 'cover' } }}>
+          <video {...video.videoProps} />
+        </Box>
+        <VideoControls {...video} />
+      </Box>
+
+      {/* Único movimiento: el panel de descripción aparece al entrar en pantalla */}
+      <Copy
+        ref={copyRef}
+        w={{ base: 'calc(100% - 32px)', md: `${PANEL_W}px` }}
+        style={{ left: `${panelLeft}px`, top: `${isMobile ? mobile.copyTop : (h - copyH) / 2}px` }}
+        initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
+      />
     </Box>
   );
-};
-
-const About = () => {
-  const reduceMotion = useReducedMotion();
-  return reduceMotion ? <AboutStatic /> : <AboutCine />;
 };
 
 export default About;

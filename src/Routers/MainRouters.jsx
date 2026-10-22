@@ -11,7 +11,9 @@ const Jugadores = lazy(() => import("../Pages/Jugadores"));
 const FcParadiso = lazy(() => import("../Pages/FcParadiso"));
 const Sportfolio = lazy(() => import("../Pages/Sportfolio"));
 import Footer from "@/components/layout/Footer";     
-import { ScrollToTop } from "./ScrollToTop";     
+import { ScrollToTop } from "./ScrollToTop";
+import { RouteSeo } from "./RouteSeo";
+import { WhatsAppButton } from "@/components/common/WhatsAppButton";     
 import Loading2 from "@/components/layout/Loading2";
       
 
@@ -20,7 +22,9 @@ export const MainRouters = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <RouteSeo />
       <Navbar />
+      <main id="main">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home/:id" element={<Home />} />
@@ -65,7 +69,9 @@ export const MainRouters = () => {
           </Suspense>
         } />
       </Routes>
+      </main>
       <Footer />
+      <WhatsAppButton />
     </BrowserRouter>
   );
 };

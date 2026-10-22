@@ -110,9 +110,9 @@ const ParadisoSection = () => {
               color="white"
               maxW={{ base: 'none', md: '14ch' }}
             >
-              Dirigimos el marketing de un club{' '}
+              Gestionamos el marketing del club{' '}
               <Text as="em" fontStyle="italic" color="orange.400">
-                con historia
+                desde adentro
               </Text>
             </Heading>
             <Text mt="18px" maxW="46ch" color="whiteAlpha.800" fontSize={{ base: '16px', md: 'clamp(16px, 1.4vw, 20px)' }} lineHeight="1.6">

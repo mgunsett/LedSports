@@ -118,21 +118,17 @@ const Intro = () => (
     <Heading
       as="h2"
       m="14px 0 0"
-      fontSize={{ base: '44px', md: 'clamp(42px, 6vw, 96px)' }}
+      fontSize={{ base: '44px', md: '70px' }}
       lineHeight=".92"
       fontWeight="700"
       letterSpacing="-0.03em"
       color="white"
     >
-      Nuestros{' '}
+      Nuestros{'  '} 
       <Text as="em" fontStyle="italic" color="orange.400">
-        servicios
+        Servicios
       </Text>
     </Heading>
-    <Text mt="18px" maxW="46ch" color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.25vw, 18px)' }} lineHeight="1.6">
-      Llevamos la imagen más allá: creamos contenido visual de calidad para deportistas, clubes, ligas, agencias, marcas y eventos que
-      buscan conectar y destacar.
-    </Text>
   </>
 );
 
@@ -158,7 +154,6 @@ const Services = () => {
       bg="black"
       display="grid"
       gridTemplateColumns={{ base: '1fr', md: 'minmax(0, .9fr) minmax(0, 1.1fr)' }}
-      columnGap={{ md: 'clamp(28px, 5vw, 90px)' }}
       px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
       py={{ base: 'clamp(40px, 8vw, 80px)', md: 'clamp(60px, 12vw, 120px)' }}
     >

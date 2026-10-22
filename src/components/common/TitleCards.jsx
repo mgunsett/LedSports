@@ -29,6 +29,7 @@ export const TitleCards = ({ name, club, img, onClick }) => {
         <Image
           src={img}
           alt={name}
+          loading="lazy"
           w="110%"
           h="110%"
           objectFit="contain"

@@ -28,8 +28,8 @@ const SERVICE_PATHS = SERVICES.map((s) => s.to);
 const SPY = [
   ['about', 'nosotros'],
   ['servicesButton', 'servicios'],
-  ['paradiso', 'paradiso'],
   ['trust', 'eligieron'],
+  ['paradiso', 'paradiso'],
   ['sportfolio', 'sportfolio'],
   ['contact', 'contacto'],
 ];
@@ -355,16 +355,16 @@ const Navbar = () => {
           </Box>
 
           <Box as="li">
-            <Box as="button" type="button" onClick={() => goToSection('paradiso')} {...mainLinkStyles('paradiso')}>
-              FC Paradiso
-            </Box>
-          </Box>
-          <Box as="li">
             <Box as="button" type="button" onClick={() => goToSection('trust')} {...mainLinkStyles('eligieron')}>
               Nos eligieron
               <Text as={RouterLink} to="/jugadores" onClick={close}  fontSize="12px" fontWeight="600" color="orange.400" letterSpacing=".1em" textTransform="uppercase">
                + Jugadores
               </Text>
+            </Box>
+          </Box>
+          <Box as="li">
+            <Box as="button" type="button" onClick={() => goToSection('paradiso')} {...mainLinkStyles('paradiso')}>
+              FC Paradiso
             </Box>
           </Box>
           <Box as="li">

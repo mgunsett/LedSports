@@ -23,7 +23,7 @@ const FEATURED = [
 ];
 
 const ROTATE_MS = 6000;
-const NAV_H = '80px'; // alto del Navbar fijo
+const NAV_H = '60px'; // alto del Navbar fijo
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const LINE = 'rgba(255,255,255,.12)';
 const MD = '@media (min-width: 48em)';
@@ -178,13 +178,13 @@ const TrustSection = () => {
       id="trust"
       ref={sectionRef}
       aria-label="Nos eligieron"
-      bg="#0d0d0d"
+      bg="radial-gradient(ellipse 70% 80% at 30% 100%, #2a1606 0%, #0d0d0d 60%, #050505 100%)"
       display="flex"
       flexDirection="column"
       gap={{ base: '16px', md: 'clamp(16px, 2.4vh, 26px)' }}
       px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
-      pt={{ base: '20px', md: '32px' }}
-      pb={{ base: '20px', md: '78px' }}
+      pt={{ base: '20px', md: '132px' }}
+      pb={{ base: '20px', md: '100px' }}
       mb={{ base: '80px', md: '150px' }}
       mt={{ base: '60px', md: '200px' }}
       scrollMarginTop={NAV_H}
@@ -271,6 +271,8 @@ const TrustSection = () => {
               <Image
                 src={p.img}
                 alt={p.name}
+                loading="lazy"
+                decoding="async"
                 draggable={false}
                 display="block"
                 w="auto"
@@ -302,6 +304,7 @@ const TrustSection = () => {
                   <Image
                     src={crest}
                     alt={p.club}
+                    loading="lazy"
                     w={{ base: '28px', md: '48px' }}
                     h={{ base: '28px', md: '48px' }}
                     objectFit="contain"

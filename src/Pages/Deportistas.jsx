@@ -369,7 +369,7 @@ const Feature = ({ item, flip }) => (
   </MotionBox>
 );
 
-const Stage = ({ stage }) => {
+const   Stage = ({ stage }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start center", "end center"] });
 
@@ -386,9 +386,7 @@ const Stage = ({ stage }) => {
       scrollMarginTop="90px"
     >
       <Box position={{ base: "relative", xl: "sticky" }} top={{ xl: "100px" }} alignSelf="start">
-        <Text color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".16em" textTransform="uppercase">
-          {stage.label}
-        </Text>
+        
         <Heading as="h2" mt="12px" fontSize={{ base: "38px", md: "clamp(34px, 3.4vw, 56px)" }} lineHeight=".95" fontWeight="700" letterSpacing="-0.03em" color="white">
           {stage.title}{" "}
           <Text as="em" fontStyle="italic" color="orange.400">
@@ -485,34 +483,7 @@ const Deportistas = () => {
           </Text>{" "}
           que confiaron en nosotros, y los acompañamos en las principales competiciones de América y el mundo.
         </Text>
-        <Flex wrap="wrap" gap="10px" mt={{ base: "26px", md: "34px" }}>
-          {STAGES.map((s) => (
-            <Box
-              key={s.id}
-              as="a"
-              href={`#st-${s.id}`}
-              onClick={(e) => goTo(e, s.id)}
-              display="inline-flex"
-              alignItems="center"
-              gap="10px"
-              minH="46px"
-              px="18px"
-              borderRadius="full"
-              border={`1px solid ${LINE}`}
-              fontWeight="600"
-              fontSize="14px"
-              transition="border-color 200ms ease, background-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)"
-              _active={{ transform: "scale(0.97)" }}
-              _focusVisible={{ outline: "2px solid", outlineColor: "orange.400", outlineOffset: "3px" }}
-              sx={{ [HOVER]: { "&:hover": { borderColor: "orange.500", bg: "rgba(237,137,54,.08)" } } }}
-            >
-              {s.label}
-              <Text as="span" color="orange.400" sx={{ fontVariantNumeric: "tabular-nums" }}>
-                {String(s.items.length).padStart(2, "0")}
-              </Text>
-            </Box>
-          ))}
-        </Flex>
+       
       </MotionBox>
 
       {STAGES.map((s) => (
