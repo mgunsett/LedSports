@@ -117,7 +117,7 @@ const Intro = () => (
     
     <Heading
       as="h2"
-      m="14px 0 0"
+      m="14px 0 40px 0"
       fontSize={{ base: '44px', md: '70px' }}
       lineHeight=".92"
       fontWeight="700"
@@ -155,7 +155,7 @@ const Services = () => {
       display="grid"
       gridTemplateColumns={{ base: '1fr', md: 'minmax(0, .9fr) minmax(0, 1.1fr)' }}
       px={{ base: '20px', md: 'clamp(20px, 6vw, 96px)' }}
-      py={{ base: 'clamp(40px, 8vw, 80px)', md: 'clamp(60px, 12vw, 120px)' }}
+      py={{ base: 'clamp(40px, 8vw, 80px)', md: '60px' }} 
     >
       {/* Ancla que usa el Navbar ("Servicios") */}
       <Box id="servicesButton" position="absolute" top="0" left="0" />

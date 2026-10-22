@@ -132,9 +132,31 @@ const Media = ({ s, ...props }) => {
         transition={`transform 400ms ${EASE_OUT_CSS}, filter 300ms ease`}
       />
     );
+  // Fondo: la misma imagen ampliada y desenfocada, para que los mockups (verticales u horizontales) no dejen bandas vacías
+  const bgSrc = m.img || (m.fan && m.fan[1]) || (m.perfil && m.perfil[0]);
   return (
-    <Box position="relative" display="grid" placeItems="center" overflow="hidden" bg={PANEL} sx={{ containerType: "size" }} {...props}>
-      {inner}
+    <Box position="relative" overflow="hidden" bg={PANEL} sx={{ containerType: "size" }} {...props}>
+      {bgSrc && (
+        <Image
+          src={bgSrc}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          position="absolute"
+          inset="-10%"
+          w="120%"
+          h="120%"
+          maxW="none"
+          objectFit="cover"
+          filter="blur(36px) brightness(.38) saturate(1.2)"
+          pointerEvents="none"
+        />
+      )}
+      <Box position="relative" display="grid" placeItems="center" w="100%" h="100%">
+        {inner}
+      </Box>
     </Box>
   );
 };
@@ -206,21 +228,6 @@ const ServiceGrid = () => {
 
   return (
     <Box as="section" w="min(1180px, calc(100% - 40px))" mx="auto" aria-labelledby="servicios-title">
-      <Heading
-        as="h2"
-        id="servicios-title"
-        textAlign="center"
-        m={{ base: "10px 0 28px", md: "0 0 44px" }}
-        fontSize={{ base: "30px", md: "clamp(30px, 3.6vw, 48px)" }}
-        fontWeight="700"
-        letterSpacing="-0.02em"
-        color="white"
-      >
-        Así potenciamos{" "}
-        <Text as="span" color="orange.400">
-          tu marca
-        </Text>
-      </Heading>
 
       <Grid templateColumns={{ base: "1fr", md: "repeat(2, minmax(0, 1fr))", lg: "repeat(3, minmax(0, 1fr))" }} gap={{ base: "16px", md: "clamp(16px, 1.8vw, 24px)" }}>
         {/* Resumen del plan integral */}
@@ -237,10 +244,7 @@ const ServiceGrid = () => {
           bg="radial-gradient(ellipse 60% 120% at 0% 50%, rgba(237,137,54,.16), transparent 70%), #0b0b0b"
         >
           <Box>
-            <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
-              <Box w="22px" h="2px" bg="orange.500" borderRadius="2px" />
-              Servicio integral
-            </Flex>
+            
             <Text mt="12px" fontSize={{ base: "28px", md: "clamp(26px, 2.8vw, 42px)" }} lineHeight="1" fontWeight="700" letterSpacing="-0.03em" color="white">
               Un plan,{" "}
               <Text as="em" fontStyle="italic" color="orange.400">
@@ -248,7 +252,7 @@ const ServiceGrid = () => {
               </Text>
             </Text>
             <Text mt="12px" color="whiteAlpha.700" fontSize="15px" lineHeight="1.6" maxW="42ch">
-              No contratás piezas sueltas: estos 11 servicios trabajan juntos, coordinados por el mismo equipo.
+              Todos los servicios que necesitas conforman un plan integral de marketing y comunicación adaptado.
             </Text>
             <Box
               as="a"
@@ -260,11 +264,13 @@ const ServiceGrid = () => {
               mt="20px"
               minH="50px"
               px="22px"
-              borderRadius="full"
-              bg="orange.500"
+              borderRadius="xl"
+              bg="transparent "
               color="white"
               fontWeight="600"
               fontSize="15px"
+              outline="2px solid"
+              outlineColor="orange.400"
               transition={`background-color 200ms ease, transform 160ms ${EASE_OUT_CSS}`}
               _active={{ transform: "scale(0.97)" }}
               _focusVisible={{ outline: "2px solid", outlineColor: "orange.400", outlineOffset: "3px" }}

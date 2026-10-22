@@ -212,7 +212,7 @@ const FcParadiso = () => {
             Trabajamos la imagen <Em>profesional del Club</Em>
           </H2>
           <Text mt="18px" maxW="46ch" color="whiteAlpha.800" fontSize={{ base: "16px", md: "clamp(16px, 1.4vw, 20px)" }} lineHeight="1.6">
-            Desde LED Sports ocupamos la dirección del área de marketing de FC Paradiso. Fotografía, video, gestión de redes y el seguimiento del
+            Desde LED Sports nos ocupamos la gestión integral de marketing de FC Paradiso. Identidad, fotografía, video, gestión de redes y el seguimiento del
             club{" "}
             <Text as="b" color="white" fontWeight="600">
               día a día, partido a partido
@@ -295,9 +295,7 @@ const FcParadiso = () => {
               <Heading as="h3" mt={{ base: "4px", md: "auto" }} fontSize={{ base: "20px", md: "clamp(20px, 1.7vw, 24px)" }} lineHeight="1.1" letterSpacing="-0.01em" fontWeight="700">
                 {r.title}
               </Heading>
-              <Text m="0" fontSize="14px" lineHeight="1.55" color={r.lead ? "blackAlpha.800" : "whiteAlpha.700"}>
-                {r.text}
-              </Text>
+              
             </MotionBox>
           ))}
         </Grid>
@@ -387,7 +385,7 @@ const FcParadiso = () => {
               De solo un club, <Em color={CLUB_YELLOW}>a una comunidad viva</Em>
             </Text>
             <Text mt="16px" color="whiteAlpha.800" fontSize="16px" lineHeight="1.6" maxW="44ch">
-              Transformamos la imagen del club alrededor de un lema. Con el verde, el amarillo y el león de su escudo como bandera, cada pieza en redes, en el estadio y en cada publicación repite la misma idea: "TODOS SOMOS Paradiso".
+              Transformamos la cultura del club alrededor de un lema. Con el verde, el amarillo y el león como bandera, cada pieza en redes, en el estadio y en cada publicación repite la misma idea: "TODOS SOMOS Paradiso".
             </Text>
           </MotionBox>
           <MotionBox {...reveal(0.1)} position="relative" display="grid" placeItems="center" justifySelf="center" w="100%" maxW="620px">
@@ -473,12 +471,12 @@ const FcParadiso = () => {
           alignItems="center"
         >
           <MotionBox {...reveal()} minW="0">
-            <Eyebrow>Paradiso</Eyebrow>
+            
             <Text mt="14px" fontSize={{ base: "32px", md: "clamp(32px, 4vw, 64px)" }} lineHeight=".98" fontWeight="700" letterSpacing="-0.03em" maxW="16ch">
               Orgullosos de contar <Em>su historia.</Em>
             </Text>
             <Text mt="20px" color="whiteAlpha.800" fontSize={{ base: "16px", md: "clamp(16px, 1.25vw, 19px)" }} lineHeight="1.55" maxW="44ch">
-              Gracias al club, al plantel y a su gente por abrirnos las puertas, día a día y partido a partido.
+              Gracias al club, al plantel y a su gente por permitirnos ser parte.
             </Text>
             {/* Firma: LED Sports × FC Paradiso */}
             <Flex
@@ -503,7 +501,7 @@ const FcParadiso = () => {
               </Text>
               <Image src={escudo} alt="FC Paradiso" h="30px" w="auto" />
               <Text as="span" flexBasis={{ base: "100%", md: "auto" }}>
-                LED Sports × FC Paradiso
+                FC Paradiso
               </Text>
             </Flex>
           </MotionBox>
