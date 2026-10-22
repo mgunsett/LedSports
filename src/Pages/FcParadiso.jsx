@@ -306,9 +306,7 @@ const FcParadiso = () => {
               <Heading as="h3" mt="16px" fontSize={{ base: "20px", md: "clamp(20px, 1.7vw, 24px)" }} lineHeight="1.1" letterSpacing="-0.01em" fontWeight="700">
                 {d.title}
               </Heading>
-              <Text mt="6px" color="whiteAlpha.700" fontSize="14px" lineHeight="1.55">
-                {d.text}
-              </Text>
+              
             </MotionBox>
           ))}
         </Box>
@@ -323,9 +321,7 @@ const FcParadiso = () => {
               El equipo detrás <Em>de cada imagen</Em>
             </H2>
           </Box>
-          <Text m="0" maxW="40ch" color="whiteAlpha.700" fontSize={{ base: "16px", md: "clamp(16px, 1.4vw, 20px)" }} lineHeight="1.6">
-            Tres perfiles, un mismo objetivo: que el club se vea como se vive. Todos los días, en cada entrenamiento y en cada partido.
-          </Text>
+          
         </Flex>
         <Box
           mt={{ base: "28px", md: "clamp(28px, 4vw, 48px)" }}
@@ -565,10 +561,7 @@ const FcParadiso = () => {
         </Grid>
       </Box>
 
-      <MotionBox alignSelf="center" animate={{ y: [0, -15, 0] }} transition={{ duration: 1, repeat: Infinity }} display="flex" fontSize={{ base: "50px", md: "80px" }}>
-        <BsChevronDoubleDown color="orange" />
-      </MotionBox>
-      <Contact />
+      
     </Flex>
   );
 };
