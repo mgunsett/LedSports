@@ -1,6 +1,5 @@
-import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Grid, Heading, Image, Text, keyframes } from "@chakra-ui/react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import Contact from "@/components/common/Contact";
 
@@ -18,6 +17,7 @@ import postFulltime from "@/assets/paradiso/post_fulltime.webp";
 import postGirone from "@/assets/paradiso/post_girone.webp";
 import tuttiSiamo from "@/assets/paradiso/tutti_siamo.webp";
 import capitanEscudo from "@/assets/paradiso/capitan_escudo.webp";
+import logoLed from "@/assets/branding/logo_firma.webp";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -157,34 +157,7 @@ const Tag = ({ children }) => (
   </Text>
 );
 
-const ArrowIcon = ({ d }) => (
-  <Box as="svg" viewBox="0 0 24 24" w="16px" h="16px" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-    <path d={d} />
-  </Box>
-);
-
-const ctaStyles = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "10px",
-  minH: "52px",
-  px: "24px",
-  borderRadius: "full",
-  fontWeight: "600",
-  fontSize: "15px",
-  transition: `background-color 200ms ease, transform 160ms ${EASE_OUT_CSS}`,
-  _active: { transform: "scale(0.97)" },
-  _focusVisible: { outline: "2px solid", outlineColor: "orange.400", outlineOffset: "3px" },
-};
-
 const FcParadiso = () => {
-  const reduceMotion = useReducedMotion();
-
-  const goToContact = (e) => {
-    e.preventDefault();
-    document.getElementById("contact")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-  };
-
   return (
     <Flex bg="black" flexDirection="column" minHeight="100vh" pt={{ base: 40, md: 60 }} pb={{ base: "80px", md: "0" }} color="white">
       {/* Título */}
@@ -495,30 +468,43 @@ const FcParadiso = () => {
       >
         <Grid
           {...CONTAINER}
-          templateColumns={{ base: "1fr", md: "minmax(0, 1fr) auto" }}
+          templateColumns={{ base: "minmax(0, 1fr)", md: "minmax(0, 1fr) auto" }}
           gap={{ base: "28px", md: "clamp(28px, 5vw, 80px)" }}
           alignItems="center"
         >
-          <MotionBox {...reveal()}>
-            <Eyebrow>Tu club</Eyebrow>
+          <MotionBox {...reveal()} minW="0">
+            <Eyebrow>Paradiso</Eyebrow>
             <Text mt="14px" fontSize={{ base: "32px", md: "clamp(32px, 4vw, 64px)" }} lineHeight=".98" fontWeight="700" letterSpacing="-0.03em" maxW="16ch">
-              ¿Querés este trabajo para <Em>tu institución?</Em>
+              Orgullosos de contar <Em>su historia.</Em>
             </Text>
-            <Flex wrap="wrap" gap="12px" mt="28px">
-              <Box as="a" href="#contact" onClick={goToContact} {...ctaStyles} bg="orange.500" color="white" sx={{ [HOVER]: { "&:hover": { bg: "orange.400" } } }}>
-                Hablemos
-                <ArrowIcon d="M12 5v14M6 13l6 6 6-6" />
-              </Box>
-              <Box
-                as={RouterLink}
-                to="/entidades-deportivas"
-                {...ctaStyles}
-                border="1px solid rgba(255,255,255,.22)"
-                color="white"
-                sx={{ [HOVER]: { "&:hover": { bg: "rgba(255,255,255,.06)" } } }}
-              >
-                Servicio para entidades
-              </Box>
+            <Text mt="20px" color="whiteAlpha.800" fontSize={{ base: "16px", md: "clamp(16px, 1.25vw, 19px)" }} lineHeight="1.55" maxW="44ch">
+              Gracias al club, al plantel y a su gente por abrirnos las puertas, día a día y partido a partido.
+            </Text>
+            {/* Firma: LED Sports × FC Paradiso */}
+            <Flex
+              mt="32px"
+              pt="24px"
+              borderTop={`1px solid ${LINE}`}
+              w={{ base: "100%", md: "max-content" }}
+              maxW="100%"
+              align="center"
+              wrap="wrap"
+              columnGap="14px"
+              rowGap="10px"
+              color="whiteAlpha.500"
+              fontSize="12px"
+              fontWeight="600"
+              letterSpacing=".16em"
+              textTransform="uppercase"
+            >
+              <Image src={logoLed} alt="LED Sports" h="18px" w="auto" />
+              <Text as="span" color="orange.400" fontSize="16px" letterSpacing="0" aria-hidden="true">
+                ×
+              </Text>
+              <Image src={escudo} alt="FC Paradiso" h="30px" w="auto" />
+              <Text as="span" flexBasis={{ base: "100%", md: "auto" }}>
+                LED Sports × FC Paradiso
+              </Text>
             </Flex>
           </MotionBox>
           <MotionBox {...reveal(0.1)} justifySelf="center">
