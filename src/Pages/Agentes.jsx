@@ -1,16 +1,22 @@
 import { useRef, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { Box, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { BsChevronDoubleDown } from "react-icons/bs";
-import agentes from "@/assets/agentes/agentes.webp";
-import agentes1 from "@/assets/agentes/agentes1.webp";
-import agentes2 from "@/assets/agentes/agentes2.webp";
+import moonTraspaso from "@/assets/agentes/moon_traspaso.webp";
+import moonFecha from "@/assets/agentes/moon_fecha.webp";
+import moonSemana from "@/assets/agentes/moon_semana.webp";
+import moonLogo from "@/assets/agentes/moon_logo.webp";
+import corner100 from "@/assets/agentes/corner_100.webp";
+import cornerCalendario from "@/assets/agentes/corner_calendario.webp";
+import cornerLogo from "@/assets/agentes/corner_logo.webp";
 import Contact from "@/components/common/Contact";
 
 /*
- * Agentes · versión "Dos frentes"
- * Título original + intro con notebook, selector "Tus representados / Tu agencia"
- * (cambia imagen, texto y servicios) y frase de cierre. Contacto sin cambios.
+ * Agentes · "Abanico + casos"
+ * Título original + intro con abanico de piezas, selector "Tus representados / Tu agencia",
+ * agencias con las que trabajamos (Moon Sports Group y Corner Football Agency),
+ * frase de cierre y Contacto sin cambios. Las piezas son 4:5 y se ven enteras.
  */
 
 const MotionHeading = motion(Heading);
@@ -22,6 +28,7 @@ const EASE_OUT_CSS = "cubic-bezier(0.23, 1, 0.32, 1)";
 const LINE = "rgba(255,255,255,.12)";
 // Mismo contenedor que EntidadesDeportivas
 const CONTAINER = { w: "100%", maxW: "1280px", mx: "auto", px: { base: 5, md: 10 } };
+const HOVER = "@media (hover: hover) and (pointer: fine)";
 const reveal = (delay = 0) => ({
   initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
@@ -37,8 +44,10 @@ const FRONTS = [
     em: "cada jugador",
     text: "Entendemos que la comunicación es una herramienta clave dentro del deporte profesional. Desarrollamos estrategias visuales y de marketing que permiten profesionalizar la imagen de cada jugador, destacando su trayectoria, logros y valores.",
     chips: ["Contenidos de calidad", "Diseños gráficos personalizados", "Producciones fotográficas y audiovisuales", "Gestión estratégica de redes"],
-    img: agentes1,
-    alt: "Piezas de bienvenida y nuevo equipo para un jugador",
+    media: [
+      { src: corner100, alt: "Pieza: 100 partidos con Platense · Corner Football Agency" },
+      { src: moonFecha, alt: "Pieza: jugador de la fecha · Moon Sports Group" },
+    ],
   },
   {
     id: "agencia",
@@ -47,9 +56,47 @@ const FRONTS = [
     em: "tu agencia",
     text: "Trabajamos junto a las agencias para fortalecer su identidad corporativa dentro del mercado deportivo, generando una presencia sólida, moderna y diferenciada, que potencia su alcance y su posicionamiento.",
     chips: ["Identidad corporativa", "Campañas personalizadas", "Planes de marketing", "Materiales visuales", "Presupuestos a medida"],
-    img: agentes,
-    alt: "Pieza: Elevamos tu presencia digital y la de tus talentos al siguiente nivel",
-    poster: true,
+    media: [
+      { logo: cornerLogo, alt: "Logo de Corner Football Agency" },
+      { src: moonSemana, alt: "Pieza: partidos de la semana · Moon Sports Group" },
+    ],
+  },
+];
+
+const AGENCIES = [
+  {
+    id: "moon",
+    name: "Moon Sports Group",
+    logo: moonLogo,
+    tint: "rgba(217,185,140,.22)",
+    title: "Cada movimiento,",
+    em: "bien contado",
+    text: "Agencia dedicada a la representación de futbolistas y directores técnicos: contratos, transferencias internacionales y marca personal. Juntos comunicamos cada paso de sus representados, desde los traspasos y el jugador de la fecha hasta la agenda semanal de partidos.",
+    chips: ["Traspasos", "Jugador de la fecha", "Partidos de la semana"],
+    media: [
+      { src: moonTraspaso, alt: "Pieza de traspaso · Moon Sports Group" },
+      { src: moonFecha, alt: "Pieza jugador de la fecha · Moon Sports Group" },
+      { src: moonSemana, alt: "Pieza partidos de la semana · Moon Sports Group" },
+    ],
+    sportfolio: true,
+    url: "https://moonsportsgroup1.netlify.app/",
+  },
+  {
+    id: "corner",
+    name: "Corner Football Agency",
+    logo: cornerLogo,
+    tint: "rgba(31,166,122,.22)",
+    title: "Una trayectoria,",
+    em: "una voz propia",
+    text: "Hace más de 40 años que representa a jugadores y técnicos de fútbol. Acompañamos su comunicación con piezas para cada hito de carrera, el calendario semanal de sus representados y una identidad visual propia.",
+    chips: ["Hitos de carrera", "Calendario semanal", "Identidad visual"],
+    media: [
+      { logo: cornerLogo, alt: "Logo de Corner Football Agency" },
+      { src: corner100, alt: "Pieza 100 partidos con Platense · Corner Football Agency" },
+      { src: cornerCalendario, alt: "Pieza calendario semanal · Corner Football Agency" },
+    ],
+    stat: { value: "+40", label: "años representando jugadores y técnicos" },
+    reverse: true,
   },
 ];
 
@@ -63,6 +110,50 @@ const Eyebrow = ({ children }) => (
   <Flex align="center" gap="10px" color="orange.400" fontSize="13px" fontWeight="600" letterSpacing=".18em" textTransform="uppercase">
     
     {children}
+  </Flex>
+);
+
+/* Pieza 4:5 (formato de post: se muestra entera) o placa con el logo de la agencia */
+const Post = ({ item, ...props }) => (
+  <Box
+    position="relative"
+    aspectRatio="4 / 5"
+    borderRadius="14px"
+    overflow="hidden"
+    bg={item.logo ? "radial-gradient(circle at 50% 40%, #123d2f, #0a1712)" : "#111"}
+    border="1px solid rgba(255,255,255,.08)"
+    boxShadow="0 24px 50px rgba(0,0,0,.55)"
+    display={item.logo ? "grid" : "block"}
+    placeItems="center"
+    {...props}
+  >
+    {item.logo ? (
+      <Image src={item.logo} alt={item.alt} loading="lazy" w="66%" h="auto" />
+    ) : (
+      <Image src={item.src} alt={item.alt} loading="lazy" decoding="async" w="100%" h="100%" objectFit="cover" />
+    )}
+  </Box>
+);
+
+const Chips = ({ items }) => (
+  <Flex as="ul" wrap="wrap" gap="8px" mt="22px" p="0" listStyleType="none">
+    {items.map((c, i) => (
+      <Box
+        as="li"
+        key={c}
+        px="14px"
+        py="9px"
+        borderRadius="full"
+        border="1px solid"
+        borderColor={i === 0 ? "orange.500" : LINE}
+        color={i === 0 ? "orange.400" : "white"}
+        bg="rgba(255,255,255,.04)"
+        fontSize="14px"
+        fontWeight="600"
+      >
+        {c}
+      </Box>
+    ))}
   </Flex>
 );
 
@@ -157,27 +248,17 @@ const FrontPanel = ({ front, on }) => (
       display="grid"
       placeItems="center"
       minH={{ base: "0", md: "clamp(300px, 34vw, 520px)" }}
-      p={{ base: "8%", md: "5%" }}
+      p={{ base: "10% 8%", md: "5%" }}
       borderRadius={{ base: "22px", md: "28px" }}
       border={`1px solid ${LINE}`}
       bg="radial-gradient(ellipse 80% 70% at 50% 60%, #241306, #0b0b0b 70%)"
       overflow="hidden"
     >
-      {front.poster ? (
-        <Image
-          src={front.img}
-          alt={front.alt}
-          loading="lazy"
-          h={{ base: "300px", md: "clamp(280px, 32vw, 480px)" }}
-          w="auto"
-          maxW="100%"
-          borderRadius="6px"
-          transform="rotate(-3deg)"
-          boxShadow="0 30px 60px rgba(0,0,0,.6)"
-        />
-      ) : (
-        <Image src={front.img} alt={front.alt} loading="lazy" w="100%" h="auto" filter="drop-shadow(0 40px 60px rgba(0,0,0,.75))" />
-      )}
+      <Flex w="88%" maxW="520px" gap="4%" justify="center">
+        {front.media.map((m, i) => (
+          <Post key={m.alt} item={m} w="46%" transform={i === 0 ? "rotate(-4deg) translateY(4%)" : "rotate(4deg)"} />
+        ))}
+      </Flex>
     </Box>
     <Box>
       <Heading as="h3" m="0" fontSize={{ base: "26px", md: "clamp(26px, 2.6vw, 40px)" }} lineHeight="1.05" letterSpacing="-0.02em" fontWeight="700" color="white">
@@ -186,25 +267,7 @@ const FrontPanel = ({ front, on }) => (
       <Text mt="14px" color="whiteAlpha.700" fontSize="16px" lineHeight="1.65" maxW="44ch">
         {front.text}
       </Text>
-      <Flex as="ul" wrap="wrap" gap="8px" mt="22px" p="0" listStyleType="none">
-        {front.chips.map((c, i) => (
-          <Box
-            as="li"
-            key={c}
-            px="14px"
-            py="9px"
-            borderRadius="full"
-            border="1px solid"
-            borderColor={i === 0 ? "orange.500" : LINE}
-            color={i === 0 ? "orange.400" : "white"}
-            bg="rgba(255,255,255,.04)"
-            fontSize="14px"
-            fontWeight="600"
-          >
-            {c}
-          </Box>
-        ))}
-      </Flex>
+      <Chips items={front.chips} />
     </Box>
   </Grid>
 );
@@ -282,17 +345,14 @@ const Agentes = () => {
           <Box position="absolute" inset="8% 4% 0" bg="radial-gradient(closest-side, rgba(237,137,54,.22), transparent)" aria-hidden="true" />
           <MotionBox
             position="relative"
+            aspectRatio={{ base: "1.15 / 1", md: "1.3 / 1" }}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.4, ease: EASE_OUT }}
           >
-            <Image
-              src={agentes2}
-              alt="Piezas de convocatoria y clasificación para una selección"
-              w="100%"
-              h="auto"
-              filter="drop-shadow(0 40px 60px rgba(0,0,0,.75))"
-            />
+            <Post item={{ src: moonTraspaso, alt: "Pieza de traspaso · Moon Sports Group" }} position="absolute" w="44%" left="2%" top="10%" transform="rotate(-8deg)" />
+            <Post item={{ src: corner100, alt: "Pieza 100 partidos con Platense · Corner Football Agency" }} position="absolute" w="44%" right="2%" top="10%" transform="rotate(8deg)" />
+            <Post item={{ src: moonFecha, alt: "Pieza jugador de la fecha · Moon Sports Group" }} position="absolute" w="46%" left="27%" top="0" zIndex={2} />
           </MotionBox>
         </Box>
       </Grid>
@@ -320,6 +380,136 @@ const Agentes = () => {
               <FrontPanel key={f.id} front={f} on={front === i} />
             ))}
           </Grid>
+        </Box>
+      </Box>
+
+      {/* Agencias con las que trabajamos */}
+      <Box as="section" py={{ base: "60px", md: "clamp(60px, 9vh, 100px)" }} borderTop={`1px solid ${LINE}`}>
+        <Box {...CONTAINER}>
+          <Flex wrap="wrap" direction={{ base: "column", md: "row" }} align={{ base: "flex-start", md: "flex-end" }} justify="space-between" gap="24px">
+            <Box>
+              <Eyebrow>Trabajo en conjunto</Eyebrow>
+              <Heading as="h2" mt="12px" fontSize={{ base: "36px", md: "clamp(36px, 4.4vw, 68px)" }} lineHeight=".95" fontWeight="700" letterSpacing="-0.03em">
+                Agencias que <Em>confían en nosotros</Em>
+              </Heading>
+            </Box>
+            <Text m="0" maxW="40ch" color="whiteAlpha.700" fontSize={{ base: "16px", md: "clamp(16px, 1.3vw, 19px)" }} lineHeight="1.6">
+              Trabajamos codo a codo con agencias de representación para comunicar cada paso de sus jugadores y técnicos.
+            </Text>
+          </Flex>
+          <Box mt={{ base: "36px", md: "clamp(36px, 5vw, 64px)" }}>
+            {AGENCIES.map((a, idx) => (
+              <MotionBox
+                key={a.id}
+                as="article"
+                {...reveal()}
+                display="grid"
+                gridTemplateColumns={{ base: "minmax(0, 1fr)", md: "minmax(0, 1.15fr) minmax(0, .85fr)" }}
+                gap={{ base: "24px", md: "clamp(28px, 5vw, 80px)" }}
+                alignItems="center"
+                mt={idx ? { base: "64px", md: "clamp(56px, 8vw, 110px)" } : 0}
+              >
+                <Grid
+                  order={{ base: 0, md: a.reverse ? 2 : 0 }}
+                  templateColumns="repeat(3, minmax(0, 1fr))"
+                  gap={{ base: "8px", md: "12px" }}
+                  p={{ base: "16px", md: "clamp(18px, 2.4vw, 30px)" }}
+                  borderRadius={{ base: "22px", md: "28px" }}
+                  border={`1px solid ${LINE}`}
+                  bg={`radial-gradient(ellipse 90% 80% at 50% 100%, ${a.tint}, #0b0b0b 70%)`}
+                >
+                  {a.media.map((m, i) => (
+                    <Post key={m.alt} item={m} transform={i === 1 ? "translateY(-6%)" : "none"} borderRadius={{ base: "10px", md: "14px" }} />
+                  ))}
+                </Grid>
+                <Box>
+                  <Flex align="center" gap="14px">
+                    <Image
+                      src={a.logo}
+                      alt=""
+                      w="52px"
+                      h="52px"
+                      flex="none"
+                      borderRadius="full"
+                      p={a.id === "moon" ? "4px" : 0}
+                      bg={a.id === "moon" ? "#121212" : "transparent"}
+                      border={a.id === "moon" ? "1px solid rgba(217,185,140,.35)" : "none"}
+                    />
+                    <Box>
+                      <Text m="0" fontWeight="700" fontSize="18px" lineHeight="1.1">
+                        {a.name}
+                      </Text>
+                      <Text m="0" mt="4px" color="whiteAlpha.500" fontSize="12px" fontWeight="600" letterSpacing=".12em" textTransform="uppercase">
+                        Representación de futbolistas y técnicos
+                      </Text>
+                    </Box>
+                  </Flex>
+                  <Heading as="h3" mt="20px" fontSize={{ base: "26px", md: "clamp(26px, 2.6vw, 40px)" }} lineHeight="1.05" letterSpacing="-0.02em" fontWeight="700">
+                    {a.title} <Em>{a.em}</Em>
+                  </Heading>
+                  <Text mt="14px" color="whiteAlpha.700" fontSize="16px" lineHeight="1.65" maxW="46ch">
+                    {a.text}
+                  </Text>
+                  {a.stat && (
+                    <Flex align="baseline" gap="12px" mt="20px">
+                      <Text as="span" fontSize={{ base: "48px", md: "clamp(48px, 5vw, 72px)" }} lineHeight=".9" letterSpacing="-0.04em" color="orange.400" fontStyle="italic" fontWeight="700">
+                        {a.stat.value}
+                      </Text>
+                      <Text as="span" color="whiteAlpha.800" fontSize="15px" lineHeight="1.35" maxW="18ch">
+                        {a.stat.label}
+                      </Text>
+                    </Flex>
+                  )}
+                  <Chips items={a.chips} />
+                  {a.sportfolio && (
+                    <Flex
+                      gap="12px"
+                      align="flex-start"
+                      mt="20px"
+                      p="14px 16px"
+                      borderRadius="16px"
+                      border="1px solid rgba(237,137,54,.35)"
+                      bg="rgba(237,137,54,.07)"
+                      fontSize="14px"
+                      lineHeight="1.5"
+                      color="whiteAlpha.900"
+                    >
+                      <Box as="svg" viewBox="0 0 24 24" w="20px" h="20px" flex="none" mt="1px" color="orange.400" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="14" rx="2" />
+                        <path d="M3 8h18M8 21h8" />
+                      </Box>
+                      <Text as="span" m="0">
+                        Todos sus jugadores cuentan con su propia landing page profesional, creada junto a Sportfolio.{" "}
+                        <Box as={RouterLink} to="/sportfolio" color="orange.400" fontWeight="700" whiteSpace="nowrap" sx={{ [HOVER]: { "&:hover": { textDecoration: "underline" } } }}>
+                          Conocé Sportfolio →
+                        </Box>
+                      </Text>
+                    </Flex>
+                  )}
+                  {a.url && (
+                    <Box
+                      as="a"
+                      href={a.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      display="inline-flex"
+                      alignItems="center"
+                      gap="8px"
+                      mt="22px"
+                      pb="3px"
+                      fontWeight="700"
+                      fontSize="15px"
+                      borderBottom="1px solid rgba(255,255,255,.3)"
+                      transition="color 200ms ease, border-color 200ms ease"
+                      sx={{ [HOVER]: { "&:hover": { color: "orange.400", borderColor: "orange.400" } } }}
+                    >
+                      Visitar su web <span aria-hidden="true">↗</span>
+                    </Box>
+                  )}
+                </Box>
+              </MotionBox>
+            ))}
+          </Box>
         </Box>
       </Box>
 
