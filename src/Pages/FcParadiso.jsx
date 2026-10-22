@@ -18,6 +18,9 @@ import postGirone from "@/assets/paradiso/post_girone.webp";
 import tuttiSiamo from "@/assets/paradiso/tutti_siamo.webp";
 import capitanEscudo from "@/assets/paradiso/capitan_escudo.webp";
 import logoLed from "@/assets/branding/logo_firma.webp";
+import staffLeo from "@/assets/paradiso/staff_leo.webp";
+import staffFran from "@/assets/paradiso/staff_fran.webp";
+import staffMela from "@/assets/paradiso/staff_mela.webp";
 
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
@@ -47,49 +50,29 @@ const FICHA = [
   { label: "Estadio", value: "Football Center Pian Scairolo" },
 ];
 
-const icon = (paths) => (
-  <Box as="svg" viewBox="0 0 24 24" w="24px" h="24px" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    {paths}
-  </Box>
-);
-
-const ROLES = [
+// Staff de LED Sports en el club (fotos 3:4, se muestran enteras)
+const STAFF = [
   {
-    title: "Dirección de marketing",
-    text: "Lideramos el área dentro del club: estrategia, comunicación e imagen.",
-    icon: icon(<path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z" />),
+    name: "Leo",
+    role: ["Dirección general ", "de marketing"],
+    text: "Define la estrategia, coordina al equipo y cuida la imagen del club en cada canal.",
+    img: staffLeo,
+    alt: "Leo, director general de marketing de FC Paradiso",
     lead: true,
   },
   {
-    title: "Fotografía",
-    text: "Partidos, entrenamientos, sesiones de plantel y presentación de indumentaria.",
-    icon: icon(
-      <>
-        <path d="M4 7h3l2-3h6l2 3h3v12H4z" />
-        <circle cx="12" cy="13" r="3.5" />
-      </>
-    ),
+    name: "Fran",
+    role: ["Filmmaker, ", "video y edición"],
+    text: "Filma el día a día y cada partido, y lo convierte en piezas para las redes del club.",
+    img: staffFran,
+    alt: "Fran, filmmaker de FC Paradiso",
   },
   {
-    title: "Video",
-    text: "Piezas audiovisuales del día a día y de cada fecha para redes.",
-    icon: icon(
-      <>
-        <rect x="3" y="6" width="13" height="12" rx="2" />
-        <path d="m16 10 5-3v10l-5-3" />
-      </>
-    ),
-  },
-  {
-    title: "Gestión de redes",
-    text: "Matchday, formaciones, resultados y la comunicación diaria del club.",
-    icon: icon(
-      <>
-        <rect x="4" y="3" width="16" height="18" rx="4" />
-        <circle cx="12" cy="12" r="3.5" />
-        <circle cx="16.5" cy="7.5" r=".8" fill="currentColor" />
-      </>
-    ),
+    name: "Mela",
+    role: ["Fotografía ", "y edición"],
+    text: "Retrata entrenamientos, partidos y sesiones, y edita cada imagen con la identidad del club.",
+    img: staffMela,
+    alt: "Mela, fotógrafa de FC Paradiso",
   },
 ];
 
@@ -263,44 +246,6 @@ const FcParadiso = () => {
         </MotionBox>
       </Grid>
 
-      {/* Nuestro rol */}
-      <Section>
-        <Eyebrow>Nuestro rol</Eyebrow>
-        <H2>
-          Todo el marketing del club, <Em>en un solo equipo</Em>
-        </H2>
-        <Grid templateColumns={{ base: "1fr", md: "repeat(2, minmax(0, 1fr))", lg: "repeat(4, minmax(0, 1fr))" }} gap="14px" mt={{ base: "28px", md: "clamp(28px, 4vw, 48px)" }}>
-          {ROLES.map((r, i) => (
-            <MotionBox
-              key={r.title}
-              as="article"
-              {...reveal(i * 0.06)}
-              display="flex"
-              flexDirection="column"
-              gap="14px"
-              minH={{ base: "0", md: "230px" }}
-              p="22px"
-              borderRadius="22px"
-              border="1px solid"
-              borderColor={r.lead ? "transparent" : LINE}
-              bg={r.lead ? "linear-gradient(150deg, #F6AD55, #DD6B20 60%, #4a2205)" : "#0d0d0d"}
-              color={r.lead ? "black" : "white"}
-              transitionProperty="border-color"
-              transitionDuration="200ms"
-              sx={r.lead ? {} : { [HOVER]: { "&:hover": { borderColor: "rgba(237,137,54,.5)" } } }}
-            >
-              <Box w="52px" h="52px" borderRadius="14px" display="grid" placeItems="center" bg={r.lead ? "rgba(0,0,0,.12)" : "rgba(237,137,54,.12)"} color={r.lead ? "black" : "orange.400"}>
-                {r.icon}
-              </Box>
-              <Heading as="h3" mt={{ base: "4px", md: "auto" }} fontSize={{ base: "20px", md: "clamp(20px, 1.7vw, 24px)" }} lineHeight="1.1" letterSpacing="-0.01em" fontWeight="700">
-                {r.title}
-              </Heading>
-              
-            </MotionBox>
-          ))}
-        </Grid>
-      </Section>
-
       {/* Una semana en Paradiso */}
       <Section>
         <Flex wrap="wrap" align="flex-end" justify="space-between" gap="20px">
@@ -364,6 +309,102 @@ const FcParadiso = () => {
               <Text mt="6px" color="whiteAlpha.700" fontSize="14px" lineHeight="1.55">
                 {d.text}
               </Text>
+            </MotionBox>
+          ))}
+        </Box>
+      </Section>
+
+      {/* Staff */}
+      <Section>
+        <Flex wrap="wrap" align="flex-end" justify="space-between" gap="20px">
+          <Box>
+            <Eyebrow>El staff</Eyebrow>
+            <H2>
+              El equipo detrás <Em>de cada imagen</Em>
+            </H2>
+          </Box>
+          <Text m="0" maxW="40ch" color="whiteAlpha.700" fontSize={{ base: "16px", md: "clamp(16px, 1.4vw, 20px)" }} lineHeight="1.6">
+            Tres perfiles, un mismo objetivo: que el club se vea como se vive. Todos los días, en cada entrenamiento y en cada partido.
+          </Text>
+        </Flex>
+        <Box
+          mt={{ base: "28px", md: "clamp(28px, 4vw, 48px)" }}
+          display={{ base: "flex", md: "grid" }}
+          gridTemplateColumns="repeat(3, minmax(0, 1fr))"
+          gap={{ base: "12px", md: "14px" }}
+          overflowX={{ base: "auto", md: "visible" }}
+          mx={{ base: "-20px", md: 0 }}
+          px={{ base: "20px", md: 0 }}
+          pb={{ base: "8px", md: 0 }}
+          sx={{ scrollSnapType: "x mandatory", scrollbarWidth: "none", "&::-webkit-scrollbar": { display: "none" } }}
+        >
+          {STAFF.map((s, i) => (
+            <MotionBox
+              key={s.name}
+              as="article"
+              {...reveal(i * 0.07)}
+              position="relative"
+              flex={{ base: "none", md: "initial" }}
+              w={{ base: "78vw", md: "auto" }}
+              maxW={{ base: "340px", md: "none" }}
+              borderRadius="22px"
+              overflow="hidden"
+              border={`1px solid ${LINE}`}
+              bg="#0E3B1B"
+              sx={{
+                scrollSnapAlign: "start",
+                isolation: "isolate",
+                "& .staff-more": { display: "grid", gridTemplateRows: "1fr", transition: `grid-template-rows 450ms ${EASE_OUT_CSS}` },
+                [HOVER]: {
+                  "& .staff-more": { gridTemplateRows: "0fr" },
+                  "&:hover .staff-more": { gridTemplateRows: "1fr" },
+                  "&:hover img": { transform: "scale(1.04)" },
+                },
+              }}
+            >
+              {s.lead && (
+                <Text
+                  as="span"
+                  position="absolute"
+                  top="16px"
+                  left="16px"
+                  zIndex={2}
+                  px="12px"
+                  py="7px"
+                  borderRadius="full"
+                  bg="orange.500"
+                  color="black"
+                  fontSize="11px"
+                  fontWeight="700"
+                  letterSpacing=".12em"
+                  textTransform="uppercase"
+                >
+                  Dirección
+                </Text>
+              )}
+              <Box
+                position="relative"
+                aspectRatio="3 / 4"
+                sx={{ "&::after": { content: '""', position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 45%, rgba(0,0,0,.55) 68%, rgba(0,0,0,.92))" } }}
+              >
+                <Image src={s.img} alt={s.alt} loading="lazy" decoding="async" w="100%" h="100%" objectFit="cover" transition={`transform 800ms ${EASE_OUT_CSS}`} />
+              </Box>
+              <Flex position="absolute" left="0" right="0" bottom="0" zIndex={1} direction="column" gap="8px" p={{ base: "18px", md: "clamp(18px, 2vw, 26px)" }}>
+                <Text m="0" color="orange.400" fontSize="14px" fontWeight="700" letterSpacing=".16em" textTransform="uppercase">
+                  {s.name}
+                </Text>
+                <Heading as="h3" fontSize={{ base: "22px", md: "clamp(20px, 2vw, 30px)" }} lineHeight="1.02" letterSpacing="-0.015em" fontWeight="700">
+                  {s.role[0]}
+                  <Em>{s.role[1]}</Em>
+                </Heading>
+                <Box className="staff-more">
+                  <Box overflow="hidden">
+                    <Text m="0" pt="4px" color="whiteAlpha.800" fontSize="14px" lineHeight="1.55">
+                      {s.text}
+                    </Text>
+                  </Box>
+                </Box>
+              </Flex>
             </MotionBox>
           ))}
         </Box>
