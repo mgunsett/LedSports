@@ -62,7 +62,17 @@ const Navbar = () => {
   }, [pathname]);
 
   const activeKey =
-    pathname === '/' ? spyKey : pathname === '/jugadores' ? 'eligieron' : SERVICE_PATHS.includes(pathname) ? 'servicios' : null;
+    pathname === '/'
+      ? spyKey
+      : pathname === '/jugadores'
+        ? 'eligieron'
+        : pathname === '/fc-paradiso'
+          ? 'paradiso'
+          : pathname === '/sportfolio'
+            ? 'sportfolio'
+            : SERVICE_PATHS.includes(pathname)
+              ? 'servicios'
+              : null;
 
   const close = useCallback(() => {
     setIsOpen(false);
@@ -119,10 +129,12 @@ const Navbar = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    py: '16px',
+    // Tamaño y espaciado según el alto de pantalla, para que el panel entre sin scroll
+    py: 'clamp(8px, 1.6vh, 16px)',
     px: '4px',
     borderBottom: `1px solid ${LINE}`,
-    fontSize: 'clamp(24px, 2.4vw, 30px)',
+    fontSize: 'clamp(20px, min(2.4vw, 3.4vh), 30px)',
+    lineHeight: '1.2',
     fontWeight: '700',
     letterSpacing: '-0.01em',
     textAlign: 'left',
@@ -186,8 +198,14 @@ const Navbar = () => {
           bg="rgba(10,10,10,.7)"
           backdropFilter="blur(12px)"
           boxShadow="0 10px 26px rgba(0,0,0,.45)"
-          transition={`border-color 200ms ease, transform 160ms ${EASE_OUT}`}
-          _active={{ transform: 'scale(0.94)' }}
+          // Abierto: se mueve a la esquina superior derecha del panel (16px por dentro de su borde)
+          transform={
+            isOpen
+              ? { base: 'translate(-8px, 16px)', md: 'translate(calc(clamp(20px, 5vw, 72px) - 28px), 16px)' }
+              : 'none'
+          }
+          transition={`border-color 200ms ease, transform 450ms ${EASE_DRAWER}`}
+          _active={isOpen ? undefined : { transform: 'scale(0.94)' }}
           _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '3px' }}
           sx={hoverOnly({ borderColor: 'orange.500' })}
         >
@@ -251,7 +269,7 @@ const Navbar = () => {
         zIndex="1060"
         w="min(440px, calc(100vw - 24px))"
         direction="column"
-        p="96px 28px 26px"
+        p="clamp(84px, 13vh, 100px) 28px clamp(18px, 3vh, 26px)"
         overflowY="auto"
         borderRadius="28px"
         border={`1px solid ${LINE}`}
@@ -363,12 +381,12 @@ const Navbar = () => {
             </Box>
           </Box>
           <Box as="li">
-            <Box as="button" type="button" onClick={() => goToSection('paradiso')} {...mainLinkStyles('paradiso')}>
+            <Box as={RouterLink} to="/fc-paradiso" onClick={close} {...mainLinkStyles('paradiso')}>
               FC Paradiso
             </Box>
           </Box>
           <Box as="li">
-            <Box as="button" type="button" onClick={() => goToSection('sportfolio')} {...mainLinkStyles('sportfolio')}>
+            <Box as={RouterLink} to="/sportfolio" onClick={close} {...mainLinkStyles('sportfolio')}>
               Sportfolio
             </Box>
           </Box>
@@ -380,7 +398,7 @@ const Navbar = () => {
         </Box>
 
         {/* Pie del panel */}
-        <Flex direction="column" gap="18px" mt="auto" pt="28px">
+        <Flex direction="column" gap="clamp(12px, 2vh, 18px)" mt="auto" pt="clamp(16px, 3vh, 28px)">
           <Flex
             as="a"
             href={WHATSAPP}

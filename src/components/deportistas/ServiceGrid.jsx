@@ -39,11 +39,11 @@ const SERVICES = [
   { k: "logos", t: "Logos", d: "Creamos tu logo propio para identificar todo tu contenido profesionalmente.", span: 1, media: { img: deportistas_logos } },
   { k: "match", t: "Matchday", d: "Anunciá tu próximo partido con placas estáticas o animadas de alta calidad.", span: 2, h: true, media: { fan: [deportistas_prematch, deportistas_prematch1, deportistas_prematch2] } },
   { k: "reels", t: "Reels", d: "Generamos videos profesionales para tus redes sociales.", span: 2, h: true, big: true, media: { video: true } },
-  { k: "post", t: "Post partido", d: "Comunicá tus sensaciones de manera profesional con imágenes o videos.", span: 1, media: { img: deportistas_postpartido } },
+  { k: "post", t: "Post partido", d: "Comunicá tus sensaciones de manera profesional con imágenes o videos.", span: 1, tall: true, media: { img: deportistas_postpartido } },
   { k: "perfil", t: "Optimización de perfil", d: "Organizamos tu perfil con biografía, portada e historias destacadas profesionales.", span: 3, h: true, big: true, media: { perfil: [deportistas_perfil, deportistas_perfil3, deportistas_perfil4] } },
-  { k: "conme", t: "Conmemorativas", d: "Contenido especial para fechas importantes y aniversarios de clubes.", span: 1, media: { img: deportistas_aniversario } },
-  { k: "stats", t: "Estadísticas", d: "Análisis visual de tu rendimiento, progresos y logros deportivos.", span: 1, media: { img: deportistas_estadis } },
-  { k: "foto", t: "Fotografía", d: "Fotógrafos y filmmakers en todo el mundo para contenido de alta calidad.", span: 1, media: { img: deportistas_fotografia } },
+  { k: "conme", t: "Conmemorativas", d: "Contenido especial para fechas importantes y aniversarios de clubes.", span: 1, tall: true, mediaH: "clamp(260px, 26vw, 340px)", media: { img: deportistas_aniversario } },
+  { k: "stats", t: "Estadísticas", d: "Análisis visual de tu rendimiento, progresos y logros deportivos.", span: 1, tall: true, mediaH: "clamp(260px, 26vw, 340px)", media: { img: deportistas_estadis } },
+  { k: "foto", t: "Fotografía", d: "Fotógrafos y filmmakers en todo el mundo para contenido de alta calidad.", span: 1, tall: true, mediaH: "clamp(260px, 26vw, 340px)", media: { img: deportistas_fotografia } },
   { k: "carpeta", t: "Carpeta comercial", d: "Destacamos tus beneficios para acercar tu imagen a marcas comerciales.", span: 3, h: true, media: { img: deportistas_carpetacom } },
 ];
 
@@ -127,8 +127,8 @@ const Media = ({ s, ...props }) => {
         src={m.img}
         alt={s.t}
         {...IMG}
-        maxW="78cqw"
-        maxH="80cqh"
+        maxW={s.tall ? "86cqw" : "78cqw"}
+        maxH={s.tall ? "88cqh" : "80cqh"}
         transition={`transform 400ms ${EASE_OUT_CSS}, filter 300ms ease`}
       />
     );
@@ -184,12 +184,17 @@ const ServiceCard = ({ s, i, flash }) => (
       },
     }}
   >
-    <Media
-      s={s}
-      flex={{ base: "none", md: s.h ? "1.6" : "none" }}
-      h={{ base: "240px", md: s.h ? "auto" : "clamp(210px, 19vw, 260px)" }}
-      minH={{ md: s.h ? (s.big ? "clamp(300px, 28vw, 400px)" : "clamp(240px, 22vw, 300px)") : undefined }}
-    />
+    {s.media.video ? (
+      // El reel es 4:5: la caja respeta esa proporción para que se vea entero
+      <Media s={s} flex="none" w={{ base: "100%", md: "52%" }} aspectRatio="4 / 5" />
+    ) : (
+      <Media
+        s={s}
+        flex={{ base: "none", md: s.h ? "1.6" : "1 1 auto" }}
+        h={{ base: s.tall ? "340px" : "240px", md: s.h ? "auto" : s.mediaH || "clamp(210px, 19vw, 260px)" }}
+        minH={{ md: s.h ? (s.big ? "clamp(300px, 28vw, 400px)" : "clamp(240px, 22vw, 300px)") : undefined }}
+      />
+    )}
     <Flex flex={{ md: s.h ? "1" : "initial" }} direction="column" justify="center" gap="8px" p={{ base: "22px", md: "clamp(22px, 2.4vw, 32px)" }}>
       <Flex align="center" gap="10px">
         <Check />

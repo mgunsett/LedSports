@@ -12,13 +12,6 @@ import cornerCalendario from "@/assets/agentes/corner_calendario.webp";
 import cornerLogo from "@/assets/agentes/corner_logo.webp";
 import Contact from "@/components/common/Contact";
 
-/*
- * Agentes · "Abanico + casos"
- * Título original + intro con abanico de piezas, selector "Tus representados / Tu agencia",
- * agencias con las que trabajamos (Moon Sports Group y Corner Football Agency),
- * frase de cierre y Contacto sin cambios. Las piezas son 4:5 y se ven enteras.
- */
-
 const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
@@ -71,7 +64,7 @@ const AGENCIES = [
     tint: "rgba(217,185,140,.22)",
     title: "Cada movimiento,",
     em: "bien contado",
-    text: "Agencia dedicada a la representación de futbolistas y directores técnicos: contratos, transferencias internacionales y marca personal. Juntos comunicamos cada paso de sus representados, desde los traspasos y el jugador de la fecha hasta la agenda semanal de partidos.",
+    text: "Agencia que ayuda a futbolistas y directores técnicos en la gestión de: contratos, transferencias y marca personal. Juntos comunicamos cada paso de sus representados, desde los traspasos y el jugador de la fecha hasta la agenda semanal de partidos.",
     chips: ["Traspasos", "Jugador de la fecha", "Partidos de la semana"],
     media: [
       { src: moonTraspaso, alt: "Pieza de traspaso · Moon Sports Group" },
@@ -88,15 +81,16 @@ const AGENCIES = [
     tint: "rgba(31,166,122,.22)",
     title: "Una trayectoria,",
     em: "una voz propia",
-    text: "Hace más de 40 años que representa a jugadores y técnicos de fútbol. Acompañamos su comunicación con piezas para cada hito de carrera, el calendario semanal de sus representados y una identidad visual propia.",
+    text: "Agencia con gran carrera en representación de jugadores y técnicos de fútbol. Acompañamos su comunicación con piezas para cada hito de carrera, el calendario semanal de sus representados y una identidad visual propia.",
     chips: ["Hitos de carrera", "Calendario semanal", "Identidad visual"],
     media: [
       { logo: cornerLogo, alt: "Logo de Corner Football Agency" },
       { src: corner100, alt: "Pieza 100 partidos con Platense · Corner Football Agency" },
       { src: cornerCalendario, alt: "Pieza calendario semanal · Corner Football Agency" },
     ],
-    stat: { value: "+40", label: "años representando jugadores y técnicos" },
+    stat: { value: "+40", label: "años representando profesionalmente" },
     reverse: true,
+    url: "https://www.instagram.com/cornerfootballagency/"
   },
 ];
 
@@ -143,7 +137,7 @@ const Chips = ({ items }) => (
         key={c}
         px="14px"
         py="9px"
-        borderRadius="full"
+        borderRadius="xl"
         border="1px solid"
         borderColor={i === 0 ? "orange.500" : LINE}
         color={i === 0 ? "orange.400" : "white"}
@@ -404,7 +398,10 @@ const Agentes = () => {
                 as="article"
                 {...reveal()}
                 display="grid"
-                gridTemplateColumns={{ base: "minmax(0, 1fr)", md: "minmax(0, 1.15fr) minmax(0, .85fr)" }}
+                gridTemplateColumns={{
+                  base: "minmax(0, 1fr)",
+                  md: a.reverse ? "minmax(0, .85fr) minmax(0, 1.15fr)" : "minmax(0, 1.15fr) minmax(0, .85fr)",
+                }}
                 gap={{ base: "24px", md: "clamp(28px, 5vw, 80px)" }}
                 alignItems="center"
                 mt={idx ? { base: "64px", md: "clamp(56px, 8vw, 110px)" } : 0}
@@ -436,7 +433,7 @@ const Agentes = () => {
                       border={a.id === "moon" ? "1px solid rgba(217,185,140,.35)" : "none"}
                     />
                     <Box>
-                      <Text m="0" fontWeight="700" fontSize="18px" lineHeight="1.1">
+                      <Text as="h3" m="0" fontFamily="heading" fontWeight="600" fontSize="35px" lineHeight="1.1">
                         {a.name}
                       </Text>
                       <Text m="0" mt="4px" color="whiteAlpha.500" fontSize="12px" fontWeight="600" letterSpacing=".12em" textTransform="uppercase">
@@ -444,18 +441,16 @@ const Agentes = () => {
                       </Text>
                     </Box>
                   </Flex>
-                  <Heading as="h3" mt="20px" fontSize={{ base: "26px", md: "clamp(26px, 2.6vw, 40px)" }} lineHeight="1.05" letterSpacing="-0.02em" fontWeight="700">
-                    {a.title} <Em>{a.em}</Em>
-                  </Heading>
+                  
                   <Text mt="14px" color="whiteAlpha.700" fontSize="16px" lineHeight="1.65" maxW="46ch">
                     {a.text}
                   </Text>
                   {a.stat && (
-                    <Flex align="baseline" gap="12px" mt="20px">
+                    <Flex align="center" gap="12px" mt="20px">
                       <Text as="span" fontSize={{ base: "48px", md: "clamp(48px, 5vw, 72px)" }} lineHeight=".9" letterSpacing="-0.04em" color="orange.400" fontStyle="italic" fontWeight="700">
                         {a.stat.value}
                       </Text>
-                      <Text as="span" color="whiteAlpha.800" fontSize="15px" lineHeight="1.35" maxW="18ch">
+                      <Text as="span" color="whiteAlpha.800" fontSize="15px" fontFamily="heading" fontWeight="600" fontStyle={'italic'} lineHeight="1.35" maxW="18ch">
                         {a.stat.label}
                       </Text>
                     </Flex>

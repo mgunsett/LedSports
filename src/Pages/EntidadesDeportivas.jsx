@@ -1,5 +1,6 @@
 import { Box, Flex, Text, Heading, Image, Grid } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { Link as RouterLink } from "react-router-dom";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import entidades_deportivas from "@/assets/banners/entidades_deportivas.webp";
 import entidades_matchday from "@/assets/entidades/entidades_matchday.jpg";
@@ -250,33 +251,60 @@ const EntidadesDeportivas = () => {
                   Acompañamos a cada entidad en la construcción de una <Em>estrategia de comunicación completa</Em>, que refleje su historia,
                   su esencia y su visión de crecimiento.
                 </Text>
-                <Text mt="18px" color="whiteAlpha.500" fontSize="13px">
+                <Flex
+                  as={RouterLink}
+                  to="/fc-paradiso"
+                  display="inline-flex"
+                  align="center"
+                  gap="10px"
+                  mt="28px"
+                  minH="50px"
+                  px="22px"
+                  borderRadius="xl"
+                  border="2px solid"
+                  borderColor="orange.400"
+                  color="white"
+                  fontWeight="600"
+                  fontSize="15px"
+                  transition="background-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1)"
+                  _active={{ transform: "scale(0.97)" }}
+                  _focusVisible={{ outline: "2px solid", outlineColor: "orange.400", outlineOffset: "3px" }}
+                  sx={hoverOnly({ bg: "orange.400", textDecoration: "none" })}
+                >
+                  Nuestro trabajo en FC Paradiso
+                  <Box as="svg" viewBox="0 0 24 24" w="16px" h="16px" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </Box>
+                </Flex>
+              </Box>
+              <Box as="figure" m="0" w="100%" maxW="560px" mx="auto">
+                <Box position="relative" w="100%" aspectRatio="10 / 9">
+                  {PHOTOS.map((p) => (
+                    <Image
+                      key={p.alt}
+                      src={p.src}
+                      alt={p.alt}
+                      loading="lazy"
+                      position="absolute"
+                      {...p.pos}
+                      w={p.w}
+                      aspectRatio={p.ratio}
+                      objectFit="cover"
+                      zIndex={p.z}
+                      borderRadius={{ base: "10px", md: "14px" }}
+                      border="1px solid rgba(255,255,255,.14)"
+                      boxShadow="0 24px 40px rgba(0,0,0,.65)"
+                      transform={`rotate(${p.rot}deg)`}
+                      transitionProperty="transform"
+                      transitionDuration="300ms"
+                      transitionTimingFunction="cubic-bezier(0.23, 1, 0.32, 1)"
+                      sx={hoverOnly({ transform: "rotate(0deg) scale(1.04)", zIndex: 10 })}
+                    />
+                  ))}
+                </Box>
+                <Text as="figcaption" mt="24px" textAlign="center" color="whiteAlpha.500" fontSize="13px">
                   Piezas realizadas por LED Sports para instituciones.
                 </Text>
-              </Box>
-              <Box position="relative" w="100%" maxW="560px" mx="auto" aspectRatio="10 / 9">
-                {PHOTOS.map((p) => (
-                  <Image
-                    key={p.alt}
-                    src={p.src}
-                    alt={p.alt}
-                    loading="lazy"
-                    position="absolute"
-                    {...p.pos}
-                    w={p.w}
-                    aspectRatio={p.ratio}
-                    objectFit="cover"
-                    zIndex={p.z}
-                    borderRadius={{ base: "10px", md: "14px" }}
-                    border="1px solid rgba(255,255,255,.14)"
-                    boxShadow="0 24px 40px rgba(0,0,0,.65)"
-                    transform={`rotate(${p.rot}deg)`}
-                    transitionProperty="transform"
-                    transitionDuration="300ms"
-                    transitionTimingFunction="cubic-bezier(0.23, 1, 0.32, 1)"
-                    sx={hoverOnly({ transform: "rotate(0deg) scale(1.04)", zIndex: 10 })}
-                  />
-                ))}
               </Box>
             </Grid>
           </MotionBox>
