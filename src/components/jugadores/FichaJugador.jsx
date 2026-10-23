@@ -31,6 +31,8 @@ const MotionFlex = motion(Flex);
 
 function FichaJugador({ isOpen, onClose, jugador }) {
   const jugadorData = jugador || {};
+  // Directores técnicos (data/tecnicos.js): sin dorsal, pie hábil ni posición en cancha
+  const isDT = Boolean(jugadorData.dt);
 // Circulos de progreso
   const aereo = jugadorData.aereo;
   const recuperos = jugadorData.recuperos;
@@ -187,7 +189,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           textTransform="uppercase"
                           letterSpacing="wider"
                         >
-                          {jugadorData.position || 'Forward'}
+                          {isDT ? 'Director técnico' : jugadorData.position || 'Forward'}
                         </Text>
                       </Flex>
                       <Flex
@@ -236,7 +238,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         letterSpacing="tight"
                         lineHeight="1"
                       >
-                        {jugadorData.number || '10'}
+                        {isDT ? 'DT' : jugadorData.number || '10'}
                       </Text>
                     </Flex>
                     <Heading
@@ -328,7 +330,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                       ESTATURA
                     </Text>
                     <Text fontSize={{base: "12px", md: "sm"}} color="white" fontWeight="bold">
-                      {jugadorData.altura || '1.80 m'}
+                      {jugadorData.altura || (isDT ? '—' : '1.80 m')}
                     </Text>
                   </Box>
                 </Grid>
@@ -463,21 +465,24 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               ) : null}
                               <Flex justify="space-between" mb={2}>
                                 <Text fontSize="xs" color="whiteAlpha.700">
-                                  Partidos
+                                  {isDT ? 'Partidos dirigidos' : 'Partidos'}
                                 </Text>
                                 <Text fontSize="xs" color="white" fontWeight="bold">
                                   {partidos}
                                 </Text>
                               </Flex>
-                              <Flex justify="space-between" mb={2}>
-                                <Text fontSize="xs" color="whiteAlpha.700">
-                                  Pie hábil
-                                </Text>
-                                <Text fontSize="xs" color="white" fontWeight="bold">
-                                  {jugadorData.pieHabil}
-                                </Text>
-                              </Flex>
+                              {!isDT && (
+                                <Flex justify="space-between" mb={2}>
+                                  <Text fontSize="xs" color="whiteAlpha.700">
+                                    Pie hábil
+                                  </Text>
+                                  <Text fontSize="xs" color="white" fontWeight="bold">
+                                    {jugadorData.pieHabil}
+                                  </Text>
+                                </Flex>
+                              )}
                             </Flex>
+                            {!isDT && (
                             <Box
                               className='cancha_position'
                               bg="whiteAlpha.50"
@@ -490,7 +495,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               transform="rotate(90deg)"
                             >
                               <SoccerFieldPosition position={jugadorData.position} />
-                            </Box>         
+                            </Box>
+                            )}
                           </Flex>
                         <Flex
                             w="100%"
@@ -631,20 +637,22 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             ) : null}
                             <Flex justify="space-between" mb={2}>
                               <Text fontSize="xs" color="whiteAlpha.700">
-                                Partidos
+                                {isDT ? 'Partidos dirigidos' : 'Partidos'}
                               </Text>
                               <Text fontSize="xs" color="white" fontWeight="bold">
                                 {partidos}
                               </Text>
                             </Flex>
-                            <Flex justify="space-between" mb={2}>
-                              <Text fontSize="xs" color="whiteAlpha.700">
-                                Pie hábil
-                              </Text>
-                              <Text fontSize="xs" color="white" fontWeight="bold">
-                                {jugadorData.pieHabil}
-                              </Text>
-                            </Flex>
+                            {!isDT && (
+                              <Flex justify="space-between" mb={2}>
+                                <Text fontSize="xs" color="whiteAlpha.700">
+                                  Pie hábil
+                                </Text>
+                                <Text fontSize="xs" color="white" fontWeight="bold">
+                                  {jugadorData.pieHabil}
+                                </Text>
+                              </Flex>
+                            )}
                           </MotionFlex>
                           <MotionFlex
                             w="100%"
@@ -773,6 +781,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           ) : null}
                         </Flex>
 
+                        {!isDT && (
                         <MotionBox
                           position="relative"
                           bg="whiteAlpha.50"
@@ -785,6 +794,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         >
                           <SoccerFieldPosition position={jugadorData.position} />
                         </MotionBox>
+                        )}
                       </MotionFlex>
                     </Flex> 
                   </Box>

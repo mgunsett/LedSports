@@ -1,9 +1,10 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Box, Flex, Heading, Image, Text, useDisclosure } from '@chakra-ui/react';
 import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import { GoArrowRight } from 'react-icons/go';
 import { brands } from '@/data/jugadores';
+import { tecnicos } from '@/data/tecnicos';
 
 const FichaJugador = lazy(() => import('@/components/jugadores/FichaJugador'));
 
@@ -29,6 +30,9 @@ const LINE = 'rgba(255,255,255,.12)';
 const MD = '@media (min-width: 48em)';
 // Tamaño de miniatura en desktop: 4 filas que entran en el alto del escenario
 const THUMB = 'clamp(60px, calc((100cqh - 72px) / 4), 112px)';
+// Con DT, la grilla suma el rótulo "Directores técnicos" (≈26px): las miniaturas se achican para entrar igual
+const THUMB_DT = 'clamp(56px, calc((100cqh - 98px) / 4), 104px)';
+const MAX_DT = 3;
 const MotionBox = motion(Box);
 const hoverOnly = (styles) => ({ '@media (hover: hover) and (pointer: fine)': { '&:hover': styles } });
 
@@ -64,7 +68,11 @@ const Header = () => (
     </Box>
     <Flex direction={{ base: 'column', md: 'row' }} align={{ base: 'flex-start', md: 'flex-end' }} gap={{ base: '12px', md: '24px' }}>
       <Text m="0" maxW="35ch" textAlign={{ base: 'left', md: 'right' }} color="whiteAlpha.700" fontSize={{ base: '15px', md: 'clamp(15px, 1.15vw, 17px)' }} lineHeight="1.55">
-        Más de 350 deportistas confiaron su marca en nosotros. Estos son algunos.
+        Más de 350{' '}
+        <Text as="b" color="white" fontWeight="600">
+          jugadores y DT
+        </Text>{' '}
+        confiaron su marca en nosotros. Estos son algunos.
       </Text>
       <Flex
         as={RouterLink}
@@ -103,8 +111,13 @@ const TrustSection = () => {
   const players = useMemo(() => {
     const byName = new Map(brands.map((b) => [b.name, b]));
     const picked = FEATURED.map((n) => byName.get(n)).filter(Boolean);
-    return picked.length ? picked : brands.slice(0, 12);
+    const dts = tecnicos.slice(0, MAX_DT);
+    // Con DT: 3 filas de jugadores + fila de DT; sin DT: 4 filas de jugadores
+    const list = picked.length ? picked : brands.slice(0, 12);
+    return dts.length ? [...list.slice(0, 9), ...dts] : list;
   }, []);
+  const firstDT = players.findIndex((pl) => pl.dt);
+  const thumb = firstDT >= 0 ? THUMB_DT : THUMB;
 
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -125,7 +138,7 @@ const TrustSection = () => {
       setIndex(next);
       // En mobile la tira se desliza: mantener visible la tarjeta activa (sin mover la página)
       const rail = railRef.current;
-      const card = rail?.children[next];
+      const card = rail?.querySelector(`[data-idx="${next}"]`);
       if (rail && card && rail.scrollWidth > rail.clientWidth) {
         rail.scrollTo({ left: Math.max(0, card.offsetLeft - 20), behavior: reduceMotion ? 'auto' : 'smooth' });
       }
@@ -241,7 +254,7 @@ const TrustSection = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
           >
-            {p.number}
+            {p.dt ? 'DT' : p.number}
           </MotionBox>
         </AnimatePresence>
 
@@ -311,7 +324,7 @@ const TrustSection = () => {
                   />
                 )}
                 <Text color="orange.400" fontSize="12px" fontWeight="600" letterSpacing=".16em" textTransform="uppercase">
-                  {capitalize(p.position)}
+                  {p.dt ? 'Director técnico' : capitalize(p.position)}
                 </Text>
               </Flex>
               <Heading
@@ -326,9 +339,11 @@ const TrustSection = () => {
                 {p.name}
               </Heading>
               <Flex display={{ base: 'none', md: 'flex' }} wrap="wrap" gap="8px" m="18px 0 22px">
-                <MetaPill>
-                  #<Text as="b" color="white" fontWeight="600">{p.number}</Text>
-                </MetaPill>
+                {!p.dt && p.number && (
+                  <MetaPill>
+                    #<Text as="b" color="white" fontWeight="600">{p.number}</Text>
+                  </MetaPill>
+                )}
                 <MetaPill>
                   <Text as="b" color="white" fontWeight="600">{p.club}</Text>
                 </MetaPill>
@@ -363,7 +378,7 @@ const TrustSection = () => {
         <Box
           ref={railRef}
           role="tablist"
-          aria-label="Jugadores destacados"
+          aria-label="Jugadores y DT destacados"
           position="relative"
           gridRow={{ base: 2, md: 'auto' }}
           bg={{ base: 'rgba(8,8,8,.94)', md: 'none' }}
@@ -381,8 +396,10 @@ const TrustSection = () => {
             [MD]: {
               alignSelf: 'center',
               display: 'grid',
-              gridTemplateColumns: `repeat(3, ${THUMB})`,
-              gridAutoRows: THUMB,
+              gridTemplateColumns: `repeat(3, ${thumb})`,
+              gridAutoRows: thumb,
+              // Con DT: 3 filas de jugadores, rótulo y fila de DT
+              gridTemplateRows: firstDT >= 0 ? `repeat(3, ${thumb}) 16px ${thumb}` : 'none',
               overflow: 'visible',
               padding: '0 22px 0 6px',
               WebkitMaskImage: 'none',
@@ -393,11 +410,39 @@ const TrustSection = () => {
           {players.map((pl, i) => {
             const active = i === index;
             return (
+              <Fragment key={pl.name}>
+              {i === firstDT && (
+                <Flex
+                  aria-hidden="true"
+                  flex="none"
+                  align="center"
+                  gap="10px"
+                  color="orange.400"
+                  fontSize="11px"
+                  fontWeight="700"
+                  letterSpacing=".16em"
+                  textTransform="uppercase"
+                  sx={{
+                    writingMode: 'vertical-rl',
+                    transform: 'rotate(180deg)',
+                    [MD]: {
+                      writingMode: 'horizontal-tb',
+                      transform: 'none',
+                      gridColumn: '1 / -1',
+                      height: '16px',
+                      alignSelf: 'center',
+                      '&::after': { content: '""', flex: 1, height: '1px', bg: 'rgba(237,137,54,.35)' },
+                    },
+                  }}
+                >
+                  Directores técnicos
+                </Flex>
+              )}
               <Box
+                data-idx={i}
                 as="button"
                 type="button"
                 role="tab"
-                key={pl.name}
                 aria-selected={active}
                 aria-label={pl.name}
                 onClick={() => goTo(i)}
@@ -417,7 +462,7 @@ const TrustSection = () => {
                   scrollSnapAlign: 'start',
                   '& img': { filter: active ? 'none' : 'grayscale(1) brightness(.7)', transition: 'filter 250ms ease' },
                   ...hoverOnly({ '& img': { filter: 'none' } }),
-                  [MD]: { width: THUMB, height: THUMB, flex: 'none', display: 'block', bg: '#111' },
+                  [MD]: { width: thumb, height: thumb, flex: 'none', display: 'block', bg: '#111' },
                 }}
               >
                 <Image
@@ -457,6 +502,7 @@ const TrustSection = () => {
                   style={{ transform: 'scaleX(0)' }}
                 />
               </Box>
+              </Fragment>
             );
           })}
         </Box>
