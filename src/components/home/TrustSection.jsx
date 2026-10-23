@@ -23,7 +23,7 @@ const FEATURED = [
 ];
 
 const ROTATE_MS = 6000;
-const NAV_H = '60px'; // alto del Navbar fijo
+const NAV_H = '280vh'; // alto del Navbar fijo
 const EASE_OUT = [0.23, 1, 0.32, 1];
 const LINE = 'rgba(255,255,255,.12)';
 const MD = '@media (min-width: 48em)';
@@ -188,7 +188,7 @@ const TrustSection = () => {
       mb={{ base: '80px', md: '150px' }}
       mt={{ base: '60px', md: '200px' }}
       scrollMarginTop={NAV_H}
-      h={`calc(100svh - ${NAV_H})`}
+      h={NAV_H}
       minH={{ base: '620px', md: '600px' }}
       maxH="860px"
     >

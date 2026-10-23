@@ -4,10 +4,6 @@ import { BsChevronDoubleDown } from "react-icons/bs";
 import Contact from "@/components/common/Contact";
 import ServiceGrid from "@/components/deportistas/ServiceGrid";
 
-/*
- * Deportistas · versión "Grilla + plan"
- * Título e intro actuales + resumen del plan integral y grilla de servicios (ServiceGrid).
- */
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);

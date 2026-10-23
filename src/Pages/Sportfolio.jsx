@@ -519,12 +519,13 @@ const Sportfolio = () => {
                 mt="18px"
                 px="10px"
                 py="5px"
-                borderRadius="full"
+                borderRadius="xl"
                 fontSize="11px"
                 fontWeight="700"
                 letterSpacing=".12em"
                 textTransform="uppercase"
-                bg={s.led ? "rgba(237,137,54,.14)" : "rgba(134,192,162,.14)"}
+                border={`1px solid ${s.led ? "rgba(237,137,54,.14)" : "rgba(134,192,162,.14)"}`}
+                
                 color={s.led ? "orange.400" : SAGE}
               >
                 {s.who}

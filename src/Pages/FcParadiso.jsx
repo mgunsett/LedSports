@@ -241,7 +241,7 @@ const FcParadiso = () => {
             fontSize="13px"
             color="whiteAlpha.800"
           >
-            Plantel de la temporada · Football Center Pian Scairolo
+            Plantel de la temporada · 2026
           </Text>
         </MotionBox>
       </Grid>
@@ -312,7 +312,7 @@ const FcParadiso = () => {
         </Box>
       </Section>
 
-      {/* Staff */}
+      {/* Staff
       <Section>
         <Flex wrap="wrap" align="flex-end" justify="space-between" gap="20px">
           <Box>
@@ -404,7 +404,7 @@ const FcParadiso = () => {
             </MotionBox>
           ))}
         </Box>
-      </Section>
+      </Section> */}
 
       {/* Identidad del club */}
       <Box
@@ -413,6 +413,7 @@ const FcParadiso = () => {
         overflow="hidden"
         bg="radial-gradient(ellipse 70% 90% at 80% 50%, #1f7a35, #0E3B1B 70%)"
         py={{ base: "60px", md: "clamp(60px, 10vh, 110px)" }}
+        my={{ base: "60px", md: "clamp(60px, 10vh, 110px)" }}
       >
         {/* El fondo verde va a sangre; el contenido respeta el ancho del resto */}
         <Grid {...CONTAINER} position="relative" templateColumns={{ base: "1fr", md: "minmax(0, 1fr) minmax(0, 1fr)" }} gap={{ base: "28px", md: "clamp(28px, 5vw, 80px)" }} alignItems="center">
