@@ -81,7 +81,7 @@ const Header = () => (
         gap="10px"
         minH="48px"
         px="22px"
-        borderRadius="full"
+        borderRadius="xl"
         border="1.5px solid"
         borderColor="whiteAlpha.500"
         fontWeight="600"
@@ -102,7 +102,7 @@ const Header = () => (
 );
 
 const MetaPill = ({ children }) => (
-  <Box as="span" px="13px" py="8px" borderRadius="full" border={`1px solid ${LINE}`} bg="blackAlpha.400" fontSize="13px" color="whiteAlpha.800">
+  <Box as="span" px="13px" py="8px" borderRadius="xl" border={`1px solid ${LINE}`} bg="blackAlpha.400" fontSize="13px" color="whiteAlpha.800">
     {children}
   </Box>
 );

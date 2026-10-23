@@ -64,7 +64,7 @@ const ViewTabs = ({ active, onChange }) => {
       w={{ base: '100%', md: 'auto' }}
       p="5px"
       mb="26px"
-      borderRadius="full"
+      borderRadius="xl"
       border="1px solid rgba(255,255,255,.12)"
       bg="#0b0b0b"
       onKeyDown={onKeyDown}
@@ -76,7 +76,7 @@ const ViewTabs = ({ active, onChange }) => {
         bottom="5px"
         left="5px"
         w="calc(50% - 5px)"
-        borderRadius="full"
+        borderRadius="xl"
         bg="orange.400"
         transform={active === 1 ? 'translateX(100%)' : 'none'}
         transition={`transform 450ms ${EASE_OUT_CSS}`}
@@ -201,19 +201,7 @@ const Jugadores = () => {
              dores
             </MotionText>
           </MotionHeading>
-          <MotionText
-            mt="6px"
-            maxW="42ch"
-            fontSize="16px"
-            fontWeight="400"
-            lineHeight="1.5"
-            color="whiteAlpha.700"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-          >
-            Jugadores y directores técnicos que confían su marca en nosotros.
-          </MotionText>
+          
           </Box>
         </Flex>
 
@@ -255,7 +243,7 @@ const Jugadores = () => {
                   gap="8px"
                   minH="42px"
                   px="16px"
-                  borderRadius="full"
+                  borderRadius="xl"
                   border="1px solid"
                   borderColor={active ? 'orange.500' : 'rgba(255,255,255,.12)'}
                   bg={active ? 'orange.500' : 'rgba(255,255,255,.04)'}
@@ -287,7 +275,7 @@ const Jugadores = () => {
               aria-label="Buscar jugador o club"
               autoComplete="off"
               h="44px"
-              borderRadius="full"
+              borderRadius="xl"
               borderColor="rgba(255,255,255,.12)"
               bg="#0b0b0b"
               color="white"

@@ -22,17 +22,15 @@ export const WhatsAppButton = () => {
       display="grid"
       placeItems="center"
       boxSize={{ base: 14, md: 16 }}
-      borderRadius="full"
+      borderRadius="xl"
       bg="#25D366"
       color="white"
-      boxShadow="0 12px 30px -6px rgba(37,211,102,.55), 0 6px 16px rgba(0,0,0,.45)"
       _focusVisible={{ outline: '2px solid', outlineColor: 'orange.400', outlineOffset: '3px' }}
-      sx={{ transitionProperty: 'box-shadow', transitionDuration: '200ms', '@media (hover: hover) and (pointer: fine)': { '&:hover': { boxShadow: '0 14px 36px -4px rgba(37,211,102,.7), 0 6px 16px rgba(0,0,0,.45)' } } }}
       initial={reduceMotion ? false : { opacity: 0, scale: 0.6 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1], delay: 2.6 }}
-      whileHover={reduceMotion ? undefined : { scale: 1.06 }}
-      whileTap={{ scale: 0.94 }}
+      animate={{ opacity: 1, scale: 1, transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1], delay: 2.6 } }}
+      // El delay de la aparición va dentro de animate: así no retrasa el hover ni el tap
+      whileHover={reduceMotion ? undefined : { scale: 1.06, y: -2, boxShadow: '0 10px 28px rgba(37, 211, 101, 0.2)', transition: { duration: 0.2 } }}
+      whileTap={{ scale: 0.94, transition: { duration: 0.12 } }}
     >
       <Box as={FaWhatsapp} boxSize={{ base: 7, md: 8 }} />
     </MotionBox>
