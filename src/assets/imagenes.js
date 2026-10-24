@@ -30,6 +30,8 @@ import jugador_fara from "@/assets/jugadores/jugador_fara.webp";
 import jugador_romero from "@/assets/jugadores/jugador_romero.webp";
 import jugador_maffini from "@/assets/jugadores/jugador_maffini.webp";
 import jugador_alzugaray from "@/assets/jugadores/jugador_alzugaray.webp";
+import jugador_fertoli from "@/assets/jugadores/jugador_fertoli.webp";
+import jugador_dibenedetto from "@/assets/jugadores/jugador_dibenedetto.webp";
 import escudo_venados from "@/assets/escudos/escudo_venados.webp";
 import escudo_spameliano from "@/assets/escudos/escudo_spameliano.webp";
 import escudo_racing1 from "@/assets/escudos/escudo_racing1.webp";
@@ -178,6 +180,10 @@ import escudo_alhali from  "@/assets/escudos/escudo_alhali.webp";
 import escudo_newells from  "@/assets/escudos/escudo_newells.webp";
 import escudo_chaco from  "@/assets/escudos/escudo_chaco.webp";
 import escudo_sanjose from  "@/assets/escudos/escudo_sanjose.webp";
+import escudo_sanlorenzo from  "@/assets/escudos/escudo_sanlorenzo.webp";
+import escudo_temuco from  "@/assets/escudos/escudo_temuco.webp";
+import escudo_villasancarlos from  "@/assets/escudos/escudo_villasancarlos.webp";
+import escudo_unimardel from  "@/assets/escudos/escudo_unimardel.webp";
 import descarga from "@/assets/documentos/descarga.pdf";
 
 
@@ -193,7 +199,9 @@ export const JUGADORES = {
     carmelo: jugador_carmelo,
     contin: jugador_contin,
     correa: jugador_correa,
+    dibenedetto: jugador_dibenedetto,
     fara: jugador_fara,
+    fertoli: jugador_fertoli,
     gonzapiovi: jugador_gonzapiovi,
     gudiño: jugador_gudiño,
     jonitorres: jugador_jonitorres,
@@ -344,6 +352,7 @@ export const ESCUDOS = {
     sanjorge: escudo_sanjorge,
     sanjose: escudo_sanjose,
     sanluis: escudo_sanluis,
+    sanlorenzo: escudo_sanlorenzo,
     sanmartinsj: escudo_sanmartinsj,
     solamerica: escudo_solamerica,
     sportboys: escudo_sportboys,
@@ -355,6 +364,7 @@ export const ESCUDOS = {
     strongest: escudo_strongest,
     tampa: escudo_tampa,
     temperley: escudo_temperley,
+    temuco: escudo_temuco,
     tepatitlan: escudo_tepatitlan,
     tigre: escudo_tigre,
     talleres: escudo_talleres,
@@ -364,8 +374,10 @@ export const ESCUDOS = {
     unionlacalera: escudo_unionlacalera,
     univconcep: escudo_univconcep,
     universitario: escudo_universitario,
+    unimardel: escudo_unimardel,
     yeni: escudo_yeni,
     venados: escudo_venados,
     velez: escudo_velez,
     viterbese: escudo_viterbese,
+    villasancarlos: escudo_villasancarlos,
 };

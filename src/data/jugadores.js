@@ -306,7 +306,38 @@ export const brands = [
       { logo: ESCUDOS.estudiantes, name: "Estudiantes LP", years: "2024", trophies: [{name: 'Copa de la Liga 2024'}] },
     ],
   },
- 
+  {
+    img: JUGADORES.fertoli,
+    name: 'Hector Fertoli',
+    Firstname: 'Hector',
+    Lastname: 'Fertoli',
+    birthDate: '03/12/1994 (31)',
+    country: 'El Trebol, Argentina',
+    instagram: 'rayofertoli',
+    threads: '@hector.fertoli',
+    position: 'Mediocampista',
+    club: 'Universitario',
+    number: '8',
+    altura: '1,74 m',
+    goals: 31,
+    partidos: 278,
+    pieHabil: 'Derecho',
+    tiros: 89.3,
+    pases: 70.5,
+    fitness: 89.1,
+    clubLogoActual: [
+      { logo: ESCUDOS.universitario, name: "Universitario", years: "2026- Actualidad (Préstamo)", trophies: [] }
+    ],
+    trayectoria: [
+      { logo: ESCUDOS.tigre, name: "Tigre", years: "2025 (Préstamo)", trophies: [] },
+      { logo: ESCUDOS.huracan, name: "Huracán", years: "2023-2024 (Préstamo)", trophies: [] },
+      { logo: ESCUDOS.talleres, name : "Talleres", years: "2021-2022 (Préstamo)", trophies: [] },
+      { logo: ESCUDOS.racing1, name: "Racing Club", years: "20120-Actualidad", trophies: [{name: 'Supercopa Internacional 2023'}] },
+      { logo: ESCUDOS.sanlorenzo, name: "San Lorenzo", years: "2019", trophies: [] },
+      { logo: ESCUDOS.newells, name: "Newell's Old Boys", years: "2014-20218", datoInfo: "Debút Profesional", trophies: [] },
+
+    ],
+  },
   {
     img: JUGADORES.carmelo,
     name: 'Carmelo Algarañaz',
@@ -338,7 +369,42 @@ export const brands = [
       { logo: ESCUDOS.bolivia, name: "Selección de Bolivia", years: "2016-Actualidad", trophies: [] },
     ],
   },
-  
+  {
+    img: JUGADORES.dibenedetto,
+    name: 'Matias Di Benedetto',
+    Firstname: 'Matias',
+    Lastname: 'Di Benedetto',
+    birthDate: '19/11/1992 (33)',
+    country: 'José Marmol, Argentina',
+    instagram: 'rayofertoli',
+    threads: '@hector.fertoli',
+    position: 'Defensor Central',
+    club: 'Universitario',
+    number: '5',
+    altura: '1,84 m',
+    goals: 11,
+    partidos: 281,
+    pieHabil: 'Izquierdo',
+    recuperos: 84.3,
+    pases: 70.5,
+    fitness: 89.1,
+    clubLogoActual: [
+      { logo: ESCUDOS.universitario, name: "Universitario", years: "2026- Actualidad (Préstamo)", trophies: [
+        {name: "Campeón de la Liga 1 2023"},
+        {name: "Campeón de la Liga 1 2024"},
+        {name: "Campeón de la Liga 1 2025"}
+      ] }
+    ],
+    trayectoria: [
+      { logo: ESCUDOS.centralcordoba, name: "Central Córdoba", years: "2022", trophies: [] },
+      { logo: ESCUDOS.temuco, name: "Deportes Temuco", years: "2019-2022", trophies: [] },
+      { logo: ESCUDOS.gimnasiajujuy, name : "Gimnasia Jujuy", years: "2018 (Préstamo)", trophies: [] }
+      { logo: ESCUDOS.almagro, name: "Almagro", years: "2015-2018", trophies: [] },
+      { logo: ESCUDOS.villasancarlos, name: "Villa San Carlos", years: "2014-2015", trophies: [] },
+      { logo: ESCUDOS.unimardel, name: "Union Mar del Plata", years: "2013-2014", datoInfo: "Debút Profesional", trophies: [] },
+
+    ],
+  },
   {
     img: JUGADORES.jonitorres,
     name: 'Jonatan Torres',
