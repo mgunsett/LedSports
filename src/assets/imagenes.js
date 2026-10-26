@@ -32,6 +32,8 @@ import jugador_maffini from "@/assets/jugadores/jugador_maffini.webp";
 import jugador_alzugaray from "@/assets/jugadores/jugador_alzugaray.webp";
 import jugador_fertoli from "@/assets/jugadores/jugador_fertoli.webp";
 import jugador_dibenedetto from "@/assets/jugadores/jugador_dibenedetto.webp";
+import jugador_medina from "@/assets/jugadores/jugador_medina.webp";
+import jugador_colitto from "@/assets/jugadores/jugador_colitto.webp";
 import escudo_venados from "@/assets/escudos/escudo_venados.webp";
 import escudo_spameliano from "@/assets/escudos/escudo_spameliano.webp";
 import escudo_racing1 from "@/assets/escudos/escudo_racing1.webp";
@@ -184,6 +186,13 @@ import escudo_sanlorenzo from  "@/assets/escudos/escudo_sanlorenzo.webp";
 import escudo_temuco from  "@/assets/escudos/escudo_temuco.webp";
 import escudo_villasancarlos from  "@/assets/escudos/escudo_villasancarlos.webp";
 import escudo_unimardel from  "@/assets/escudos/escudo_unimardel.webp";
+import escudo_leones from  "@/assets/escudos/escudo_leones.webp";
+import escudo_zaragoza from  "@/assets/escudos/escudo_zaragoza.webp";
+import escudo_america from  "@/assets/escudos/escudo_america.webp";
+import escudo_pasto from  "@/assets/escudos/escudo_pasto.webp";
+import escudo_alshamal from  "@/assets/escudos/escudo_alshamal.webp";
+import escudo_lamia from  "@/assets/escudos/escudo_lamia.webp";
+import escudo_indmedellin from  "@/assets/escudos/escudo_indmedellin.webp";
 import descarga from "@/assets/documentos/descarga.pdf";
 
 
@@ -199,6 +208,7 @@ export const JUGADORES = {
     carmelo: jugador_carmelo,
     contin: jugador_contin,
     correa: jugador_correa,
+    colitto: jugador_colitto,
     dibenedetto: jugador_dibenedetto,
     fara: jugador_fara,
     fertoli: jugador_fertoli,
@@ -211,6 +221,7 @@ export const JUGADORES = {
     mainero: jugador_mainero,
     maffini: jugador_maffini,
     manulopez: jugador_manulopez,
+    medina: jugador_medina,
     monteagudo: jugador_monteagudo,
     oyanedel: jugador_oyanedel,
     papaleo: jugador_papaleo,
@@ -233,6 +244,8 @@ export const ESCUDOS = {
     alaves: escudo_alaves,
     allboys: escudo_allboys,
     alhali: escudo_alhali,
+    alshamal: escudo_alshamal,
+    america: escudo_america,
     agropecuario: escudo_agropecuario,
     cerro: escudo_cerro,
     colegiales: escudo_colegiales,
@@ -306,6 +319,7 @@ export const ESCUDOS = {
     huracan: escudo_huracan,
     independientedv: escudo_independientedv,
     independienteriv: escudo_independienteriv,
+    indmedellin: escudo_indmedellin,
     instituto: escudo_instituto,
     iquique: escudo_iquique,
     ismailySC: escudo_ismailySC,
@@ -315,10 +329,12 @@ export const ESCUDOS = {
     lamadrid: escudo_lamadrid,
     lasparejas: escudo_lasparejas,
     lazio: escudo_lazio,
+    leones: escudo_leones,
     ligaquito: escudo_ligaquito,
     ligaloja: escudo_ligaloja,
     luqueno: escudo_luqueno,
     lanus: escudo_lanus,
+    lamia: escudo_lamia,
     macara: escudo_macara,
     magallanes: escudo_magallanes,
     milan: escudo_milan,
@@ -334,6 +350,7 @@ export const ESCUDOS = {
     olimpia: escudo_olimpia,
     orientepetro: escudo_orientepetro,
     patronato: escudo_patronato,
+    pasto: escudo_pasto,
     petrolero: escudo_petrolero,
     platense: escudo_platense,
     psv: escudo_psv,
@@ -380,4 +397,5 @@ export const ESCUDOS = {
     velez: escudo_velez,
     viterbese: escudo_viterbese,
     villasancarlos: escudo_villasancarlos,
+    zaragoza: escudo_zaragoza,
 };
