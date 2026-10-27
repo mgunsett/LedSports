@@ -34,6 +34,8 @@ import jugador_fertoli from "@/assets/jugadores/jugador_fertoli.webp";
 import jugador_dibenedetto from "@/assets/jugadores/jugador_dibenedetto.webp";
 import jugador_medina from "@/assets/jugadores/jugador_medina.webp";
 import jugador_colitto from "@/assets/jugadores/jugador_colitto.webp";
+import jugador_colman from "@/assets/jugadores/jugador_colman.webp";
+import jugador_larralde from "@/assets/jugadores/jugador_larralde.webp";
 import escudo_venados from "@/assets/escudos/escudo_venados.webp";
 import escudo_spameliano from "@/assets/escudos/escudo_spameliano.webp";
 import escudo_racing1 from "@/assets/escudos/escudo_racing1.webp";
@@ -193,6 +195,11 @@ import escudo_pasto from  "@/assets/escudos/escudo_pasto.webp";
 import escudo_alshamal from  "@/assets/escudos/escudo_alshamal.webp";
 import escudo_lamia from  "@/assets/escudos/escudo_lamia.webp";
 import escudo_indmedellin from  "@/assets/escudos/escudo_indmedellin.webp";
+import escudo_depcuenca from  "@/assets/escudos/escudo_depcuenca.webp";
+import escudo_gualaceo from  "@/assets/escudos/escudo_gualaceo.webp";
+import escudo_herediano from  "@/assets/escudos/escudo_herediano.webp";
+import escudo_arouca from "@/assets/escudos/escudo_arouca.webp";
+import escudo_sanmartintuc from "@/assets/escudos/escudo_sanmartintuc.webp";
 import descarga from "@/assets/documentos/descarga.pdf";
 
 
@@ -209,6 +216,8 @@ export const JUGADORES = {
     contin: jugador_contin,
     correa: jugador_correa,
     colitto: jugador_colitto,
+    colman: jugador_colman,
+    larralde: jugador_larralde,
     dibenedetto: jugador_dibenedetto,
     fara: jugador_fara,
     fertoli: jugador_fertoli,
@@ -246,6 +255,8 @@ export const ESCUDOS = {
     alhali: escudo_alhali,
     alshamal: escudo_alshamal,
     america: escudo_america,
+    arouca: escudo_arouca,
+    sanmartintuc: escudo_sanmartintuc,
     agropecuario: escudo_agropecuario,
     cerro: escudo_cerro,
     colegiales: escudo_colegiales,
@@ -295,6 +306,7 @@ export const ESCUDOS = {
     depconcepcion: escudo_depconcepcion,
     deplaserena: escudo_deplaserena,
     depcali: escudo_depcali,
+    depcuenca: escudo_depcuenca,
     defensa: escudo_defensa,
     defensores: escudo_defensores,
     emelec: escudo_emelec,
@@ -316,7 +328,9 @@ export const ESCUDOS = {
     gimnasia_cdu: escudo_gimansia_cdu,
     gralpaz: escudo_gralpaz,
     guillermobrown: escudo_guillermobrown,
+    gualaceo: escudo_gualaceo,
     huracan: escudo_huracan,
+    herediano: escudo_herediano,
     independientedv: escudo_independientedv,
     independienteriv: escudo_independienteriv,
     indmedellin: escudo_indmedellin,
