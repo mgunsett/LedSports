@@ -40,6 +40,13 @@ import jugador_barcos from "@/assets/jugadores/jugador_barcos.webp";
 import jugador_flores from "@/assets/jugadores/jugador_flores.webp";
 import jugador_obando from "@/assets/jugadores/jugador_obando.webp";
 import jugador_castet from "@/assets/jugadores/jugador_castet.webp";
+import jugador_pedroramirez from "@/assets/jugadores/jugador_pedroramirez.webp";
+import jugador_ramirogonzalez from "@/assets/jugadores/jugador_ramirogonzalez.webp";
+import jugador_juangarcia from "@/assets/jugadores/jugador_juangarcia.webp";
+import jugador_matiaslugo from "@/assets/jugadores/jugador_matiaslugo.webp";
+import jugador_dening from "@/assets/jugadores/jugador_dening.webp";
+import jugador_juanpabloruiz from "@/assets/jugadores/jugador_juanpabloruiz.webp";
+import jugador_fydriszewski from "@/assets/jugadores/jugador_fydriszewski.webp";
 import escudo_venados from "@/assets/escudos/escudo_venados.webp";
 import escudo_spameliano from "@/assets/escudos/escudo_spameliano.webp";
 import escudo_racing1 from "@/assets/escudos/escudo_racing1.webp";
@@ -161,6 +168,27 @@ import escudo_river from  "@/assets/escudos/escudo_river.webp";
 import escudo_depconcepcion from  "@/assets/escudos/escudo_depconcepcion.webp";
 import escudo_guillermobrown from  "@/assets/escudos/escudo_guillermobrown.webp";
 import escudo_sanluis from  "@/assets/escudos/escudo_sanluis.webp";
+import escudo_guarani from "@/assets/escudos/escudo_guarani.webp";
+import escudo_panetolikos from "@/assets/escudos/escudo_panetolikos.webp";
+import escudo_volos from "@/assets/escudos/escudo_volos.webp";
+import escudo_barcelonasc from "@/assets/escudos/escudo_barcelonasc.webp";
+import escudo_delfin from "@/assets/escudos/escudo_delfin.webp";
+import escudo_villadalmine from "@/assets/escudos/escudo_villadalmine.webp";
+import escudo_portoviejo from "@/assets/escudos/escudo_portoviejo.webp";
+import escudo_lugo from "@/assets/escudos/escudo_lugo.webp";
+import escudo_junior from "@/assets/escudos/escudo_junior.webp";
+import escudo_sanmiguel from "@/assets/escudos/escudo_sanmiguel.webp";
+import escudo_enosis from "@/assets/escudos/escudo_enosis.webp";
+import escudo_sanliurfaspor from "@/assets/escudos/escudo_sanliurfaspor.webp";
+import escudo_yenimalatyaspor from "@/assets/escudos/escudo_yenimalatyaspor.webp";
+import escudo_bocaunidos from "@/assets/escudos/escudo_bocaunidos.webp";
+
+import escudo_riestra from "@/assets/escudos/escudo_riestra.webp";
+import escudo_everton from "@/assets/escudos/escudo_everton.webp";
+import escudo_unionespanola from "@/assets/escudos/escudo_unionespanola.webp";
+import escudo_unionaconquija from "@/assets/escudos/escudo_unionaconquija.webp";
+import escudo_juventudunida from "@/assets/escudos/escudo_juventudunida.webp";
+import escudo_leon from "@/assets/escudos/escudo_leon.webp";
 import escudo_bostonriver from  "@/assets/escudos/escudo_bostonriver.webp";
 import escudo_argentina from  "@/assets/escudos/escudo_argentina.webp";
 import escudo_akron from  "@/assets/escudos/escudo_akron.webp";
@@ -243,6 +271,13 @@ export const JUGADORES = {
     flores: jugador_flores,
     obando: jugador_obando,
     castet: jugador_castet,
+    pedroramirez: jugador_pedroramirez,
+    ramirogonzalez: jugador_ramirogonzalez,
+    juangarcia: jugador_juangarcia,
+    matiaslugo: jugador_matiaslugo,
+    dening: jugador_dening,
+    juanpabloruiz: jugador_juanpabloruiz,
+    fydriszewski: jugador_fydriszewski,
     dibenedetto: jugador_dibenedetto,
     fara: jugador_fara,
     fertoli: jugador_fertoli,
@@ -416,6 +451,7 @@ export const ESCUDOS = {
     rangers: escudo_rangers,
     resistencia: escudo_resistencia,
     river: escudo_river,
+    riestra: escudo_riestra,
     sarmiento: escudo_sarmiento,
     santoslaguna: escudo_santoslaguna,
     santiagoarica: escudo_santiagoarica,
@@ -425,6 +461,25 @@ export const ESCUDOS = {
     sanjorge: escudo_sanjorge,
     sanjose: escudo_sanjose,
     sanluis: escudo_sanluis,
+    guarani: escudo_guarani,
+    panetolikos: escudo_panetolikos,
+    volos: escudo_volos,
+    barcelonasc: escudo_barcelonasc,
+    delfin: escudo_delfin,
+    villadalmine: escudo_villadalmine,
+    portoviejo: escudo_portoviejo,
+    lugo: escudo_lugo,
+    junior: escudo_junior,
+    sanmiguel: escudo_sanmiguel,
+    enosis: escudo_enosis,
+    sanliurfaspor: escudo_sanliurfaspor,
+    yenimalatyaspor: escudo_yenimalatyaspor,
+    bocaunidos: escudo_bocaunidos,
+    everton: escudo_everton,
+    unionespanola: escudo_unionespanola,
+    unionaconquija: escudo_unionaconquija,
+    juventudunida: escudo_juventudunida,
+    leon: escudo_leon,
     sanlorenzo: escudo_sanlorenzo,
     sanmartinsj: escudo_sanmartinsj,
     solamerica: escudo_solamerica,
