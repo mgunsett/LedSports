@@ -36,6 +36,10 @@ import jugador_medina from "@/assets/jugadores/jugador_medina.webp";
 import jugador_colitto from "@/assets/jugadores/jugador_colitto.webp";
 import jugador_colman from "@/assets/jugadores/jugador_colman.webp";
 import jugador_larralde from "@/assets/jugadores/jugador_larralde.webp";
+import jugador_barcos from "@/assets/jugadores/jugador_barcos.webp";
+import jugador_flores from "@/assets/jugadores/jugador_flores.webp";
+import jugador_obando from "@/assets/jugadores/jugador_obando.webp";
+import jugador_castet from "@/assets/jugadores/jugador_castet.webp";
 import escudo_venados from "@/assets/escudos/escudo_venados.webp";
 import escudo_spameliano from "@/assets/escudos/escudo_spameliano.webp";
 import escudo_racing1 from "@/assets/escudos/escudo_racing1.webp";
@@ -200,6 +204,23 @@ import escudo_gualaceo from  "@/assets/escudos/escudo_gualaceo.webp";
 import escudo_herediano from  "@/assets/escudos/escudo_herediano.webp";
 import escudo_arouca from "@/assets/escudos/escudo_arouca.webp";
 import escudo_sanmartintuc from "@/assets/escudos/escudo_sanmartintuc.webp";
+import escudo_sportingcristal from "@/assets/escudos/escudo_sportingcristal.webp";
+import escudo_cajamarca from "@/assets/escudos/escudo_cajamarca.webp";
+import escudo_alianzalima from "@/assets/escudos/escudo_alianzalima.webp";
+import escudo_bashundhara from "@/assets/escudos/escudo_bashundhara.webp";
+import escudo_atleticonacional from "@/assets/escudos/escudo_atleticonacional.webp";
+import escudo_cruzeiro from "@/assets/escudos/escudo_cruzeiro.webp";
+import escudo_sportingcp from "@/assets/escudos/escudo_sportingcp.webp";
+import escudo_tianjin from "@/assets/escudos/escudo_tianjin.webp";
+import escudo_gremio from "@/assets/escudos/escudo_gremio.webp";
+import escudo_palmeiras from "@/assets/escudos/escudo_palmeiras.webp";
+import escudo_shenzhen from "@/assets/escudos/escudo_shenzhen.webp";
+import escudo_shanghai from "@/assets/escudos/escudo_shanghai.webp";
+import escudo_crvenazvezda from "@/assets/escudos/escudo_crvenazvezda.webp";
+import escudo_rafaela from "@/assets/escudos/escudo_rafaela.webp";
+import escudo_banfield from "@/assets/escudos/escudo_banfield.webp";
+import escudo_almirantebrown from "@/assets/escudos/escudo_almirantebrown.webp";
+import escudo_brownadrogue from "@/assets/escudos/escudo_brownadrogue.png";
 import descarga from "@/assets/documentos/descarga.pdf";
 
 
@@ -218,6 +239,10 @@ export const JUGADORES = {
     colitto: jugador_colitto,
     colman: jugador_colman,
     larralde: jugador_larralde,
+    barcos: jugador_barcos,
+    flores: jugador_flores,
+    obando: jugador_obando,
+    castet: jugador_castet,
     dibenedetto: jugador_dibenedetto,
     fara: jugador_fara,
     fertoli: jugador_fertoli,
@@ -257,6 +282,23 @@ export const ESCUDOS = {
     america: escudo_america,
     arouca: escudo_arouca,
     sanmartintuc: escudo_sanmartintuc,
+    sportingcristal: escudo_sportingcristal,
+    cajamarca: escudo_cajamarca,
+    alianzalima: escudo_alianzalima,
+    bashundhara: escudo_bashundhara,
+    atleticonacional: escudo_atleticonacional,
+    cruzeiro: escudo_cruzeiro,
+    sportingcp: escudo_sportingcp,
+    tianjin: escudo_tianjin,
+    gremio: escudo_gremio,
+    palmeiras: escudo_palmeiras,
+    shenzhen: escudo_shenzhen,
+    shanghai: escudo_shanghai,
+    crvenazvezda: escudo_crvenazvezda,
+    rafaela: escudo_rafaela,
+    banfield: escudo_banfield,
+    almirantebrown: escudo_almirantebrown,
+    brownadrogue: escudo_brownadrogue,
     agropecuario: escudo_agropecuario,
     cerro: escudo_cerro,
     colegiales: escudo_colegiales,

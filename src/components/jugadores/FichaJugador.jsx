@@ -174,8 +174,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                 transition={isMobile ? { duration: 0, delay: 0 } : { duration: 0.6, delay: 0.3 }}
               >
                   <Box mb={{ base: 4, md: 6 }}>
-                    <Flex align="center" justify="space-between" mb={2} w="100%">
-                      <Flex align="center" gap={3}>
+                    <Flex align="center" justify="space-between" gap={4} mb={2} w="100%">
+                      <Flex align="center" gap={3} flexShrink={0}>
                         <Box
                           w="40px"
                           h="2px"
@@ -193,11 +193,13 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         </Text>
                       </Flex>
                       <Flex
-                      w={{base: '50%', md: 'auto'}} 
-                      gap={2} 
-                      align={{base:"flex-end" , md:'center'}} 
-                      justify={'end'} 
-                      wrap={{base: 'wrap', md:'nowrap'}}
+                      flex="1"
+                      minW={0}
+                      maxW={{ base: '50%', md: '60%' }}
+                      gap={2}
+                      align="center"
+                      justify="flex-end"
+                      wrap="wrap"
                       >
                         {jugadorData.trayectoria ? (
                             jugadorData.trayectoria.map((club, index) => (
