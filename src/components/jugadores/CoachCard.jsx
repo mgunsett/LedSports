@@ -61,10 +61,15 @@ const CoachCard = ({ coach, onClick }) => {
             alt=""
             loading="lazy"
             decoding="async"
-            position="relative"
-            maxH="88%"
-            maxW="100%"
+            /* Absoluta para no estirar la card. Misma altura para todas las fotos: apoyadas abajo y
+               centradas; si una es más ancha se recortan los costados. */
+            position="absolute"
+            bottom="0"
+            left="50%"
+            sx={{ translate: '-50% 0' }}
+            h="92%"
             w="auto"
+            maxW="none"
             objectFit="contain"
             objectPosition="50% 100%"
             transformOrigin="50% 100%"

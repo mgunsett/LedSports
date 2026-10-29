@@ -46,6 +46,7 @@ import jugador_funez from "@/assets/jugadores/jugador_funez.webp";
 import jugador_miranda from "@/assets/jugadores/jugador_miranda.webp";
 import tecnico_pellerano from "@/assets/tecnicos/tecnico_pellerano.webp";
 import tecnico_cpellerano from "@/assets/tecnicos/tecnico_cpellerano.webp";
+import tecnico_rondelli from "@/assets/tecnicos/tecnico_rondelli.webp";
 import jugador_pedroramirez from "@/assets/jugadores/jugador_pedroramirez.webp";
 import jugador_ramirogonzalez from "@/assets/jugadores/jugador_ramirogonzalez.webp";
 import jugador_juangarcia from "@/assets/jugadores/jugador_juangarcia.webp";
@@ -53,6 +54,10 @@ import jugador_matiaslugo from "@/assets/jugadores/jugador_matiaslugo.webp";
 import jugador_dening from "@/assets/jugadores/jugador_dening.webp";
 import jugador_juanpabloruiz from "@/assets/jugadores/jugador_juanpabloruiz.webp";
 import jugador_fydriszewski from "@/assets/jugadores/jugador_fydriszewski.webp";
+import jugador_delvalle from "@/assets/jugadores/jugador_delvalle.webp";
+import jugador_agustinjara from "@/assets/jugadores/jugador_agustinjara.webp";
+import jugador_graneros from "@/assets/jugadores/jugador_graneros.webp";
+import jugador_valverde from "@/assets/jugadores/jugador_valverde.webp";
 import escudo_venados from "@/assets/escudos/escudo_venados.webp";
 import escudo_spameliano from "@/assets/escudos/escudo_spameliano.webp";
 import escudo_racing1 from "@/assets/escudos/escudo_racing1.webp";
@@ -183,6 +188,19 @@ import escudo_villadalmine from "@/assets/escudos/escudo_villadalmine.webp";
 import escudo_portoviejo from "@/assets/escudos/escudo_portoviejo.webp";
 import escudo_lugo from "@/assets/escudos/escudo_lugo.webp";
 import escudo_junior from "@/assets/escudos/escudo_junior.webp";
+import escudo_miamisa from "@/assets/escudos/escudo_miamisa.webp";
+import escudo_gables from "@/assets/escudos/escudo_gables.webp";
+import escudo_universitariovinto from "@/assets/escudos/escudo_universitariovinto.webp";
+import escudo_fcdallas from "@/assets/escudos/escudo_fcdallas.webp";
+import escudo_bermejo from "@/assets/escudos/escudo_bermejo.webp";
+import escudo_nuevedeoctubre from "@/assets/escudos/escudo_nuevedeoctubre.webp";
+import escudo_garcilaso from "@/assets/escudos/escudo_garcilaso.webp";
+import escudo_alianzaatletico from "@/assets/escudos/escudo_alianzaatletico.webp";
+import escudo_tomayapo from "@/assets/escudos/escudo_tomayapo.webp";
+import escudo_santelmo from "@/assets/escudos/escudo_santelmo.webp";
+import escudo_argentinoquilmes from "@/assets/escudos/escudo_argentinoquilmes.webp";
+import escudo_talleresre from "@/assets/escudos/escudo_talleresre.webp";
+import escudo_merlo from "@/assets/escudos/escudo_merlo.webp";
 import escudo_sanmiguel from "@/assets/escudos/escudo_sanmiguel.webp";
 import escudo_enosis from "@/assets/escudos/escudo_enosis.webp";
 import escudo_sanliurfaspor from "@/assets/escudos/escudo_sanliurfaspor.webp";
@@ -233,6 +251,10 @@ import escudo_unimardel from  "@/assets/escudos/escudo_unimardel.webp";
 import escudo_leones from  "@/assets/escudos/escudo_leones.webp";
 import escudo_zaragoza from  "@/assets/escudos/escudo_zaragoza.webp";
 import escudo_america from  "@/assets/escudos/escudo_america.webp";
+import escudo_americamx from "@/assets/escudos/escudo_americamx.webp";
+import escudo_morelia from "@/assets/escudos/escudo_morelia.webp";
+import escudo_tapachula from "@/assets/escudos/escudo_tapachula.webp";
+import escudo_veracruz from "@/assets/escudos/escudo_verzacruz.webp";
 import escudo_pasto from  "@/assets/escudos/escudo_pasto.webp";
 import escudo_alshamal from  "@/assets/escudos/escudo_alshamal.webp";
 import escudo_lamia from  "@/assets/escudos/escudo_lamia.webp";
@@ -292,6 +314,10 @@ export const JUGADORES = {
     dening: jugador_dening,
     juanpabloruiz: jugador_juanpabloruiz,
     fydriszewski: jugador_fydriszewski,
+    delvalle: jugador_delvalle,
+    agustinjara: jugador_agustinjara,
+    graneros: jugador_graneros,
+    valverde: jugador_valverde,
     dibenedetto: jugador_dibenedetto,
     fara: jugador_fara,
     fertoli: jugador_fertoli,
@@ -321,6 +347,7 @@ export const JUGADORES = {
 export const TECNICOS = {
     pellerano: tecnico_pellerano,
     cpellerano: tecnico_cpellerano,
+    rondelli: tecnico_rondelli,
 };
 
 export const FICHAS ={ descarga: descarga };
@@ -334,6 +361,10 @@ export const ESCUDOS = {
     alhali: escudo_alhali,
     alshamal: escudo_alshamal,
     america: escudo_america,
+    americamx: escudo_americamx,
+    morelia: escudo_morelia,
+    tapachula: escudo_tapachula,
+    veracruz: escudo_veracruz,
     arouca: escudo_arouca,
     sanmartintuc: escudo_sanmartintuc,
     sportingcristal: escudo_sportingcristal,
@@ -494,6 +525,19 @@ export const ESCUDOS = {
     portoviejo: escudo_portoviejo,
     lugo: escudo_lugo,
     junior: escudo_junior,
+    miamisa: escudo_miamisa,
+    gables: escudo_gables,
+    universitariovinto: escudo_universitariovinto,
+    fcdallas: escudo_fcdallas,
+    bermejo: escudo_bermejo,
+    nuevedeoctubre: escudo_nuevedeoctubre,
+    garcilaso: escudo_garcilaso,
+    alianzaatletico: escudo_alianzaatletico,
+    tomayapo: escudo_tomayapo,
+    santelmo: escudo_santelmo,
+    argentinoquilmes: escudo_argentinoquilmes,
+    talleresre: escudo_talleresre,
+    merlo: escudo_merlo,
     sanmiguel: escudo_sanmiguel,
     enosis: escudo_enosis,
     sanliurfaspor: escudo_sanliurfaspor,

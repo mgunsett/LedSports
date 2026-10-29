@@ -50,7 +50,7 @@ export const tecnicos = [
     club: 'Atlanta',
     partidos: 36,
     debutDT: '2025',
-    statsDT: { partidos: 36, ganados: 19, empatados: 4, perdidos: 13 },
+    statsDT: { partidos: 36, ganados: 19, empatados: 4, perdidos: 13, golesFavor: 42, golesContra: 36 },
     clubLogoActual: [
       { logo: ESCUDOS.atlanta, name: "Atlanta", years: "2025- Actualidad", trophies: [] },
     ],
@@ -75,6 +75,29 @@ export const tecnicos = [
       { logo: ESCUDOS.chicago, name: "Nueva Chicago", years: "2005-2006", trophies: [] },
       { logo: ESCUDOS.defensores, name: "Defensores de Belgrano", years: "2005", trophies: [] },
       { logo: ESCUDOS.atlanta, name: "Atlanta", years: "2001-2004 (Jugador)", datoInfo: "Debút Profesional", trophies: [] },
+    ],
+  },
+  {
+    dt: true,
+    img: TECNICOS.rondelli,
+    name: 'Miguel Rondelli',
+    Firstname: 'Miguel',
+    Lastname: 'Rondelli',
+    birthDate: '24/01/1978 (48)',
+    country: 'Buenos Aires, Argentina',
+    instagram: "rondellidt",
+    club: 'FBC Melgar',
+    partidos: 24,
+    debutDT: '2021',
+    statsDT: { partidos: 24, ganados: 12, empatados: 7, perdidos: 5, golesFavor: 43, golesContra: 27 },
+    clubLogoActual: [
+      { logo: ESCUDOS.melgar, name: "FBC Melgar", years: "2026- Actualidad", trophies: [] },
+    ],
+    trayectoria: [
+      { logo: ESCUDOS.cusco, name: "Cusco FC", years: "2024-2026", trophies: [] },
+      { logo: ESCUDOS.emelec, name: "Emelec", years: "2023", trophies: [] },
+      { logo: ESCUDOS.ucatolica, name: "Universidad Católica (Ecuador)", years: "2021-2022", datoInfo: "Debút como DT (interino)", trophies: [] },
+      { logo: ESCUDOS.velez, name: "Vélez Sarsfield", years: "2010-2017 (Juveniles)", trophies: [] },
     ],
   },
 ];
