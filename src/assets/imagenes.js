@@ -40,6 +40,12 @@ import jugador_barcos from "@/assets/jugadores/jugador_barcos.webp";
 import jugador_flores from "@/assets/jugadores/jugador_flores.webp";
 import jugador_obando from "@/assets/jugadores/jugador_obando.webp";
 import jugador_castet from "@/assets/jugadores/jugador_castet.webp";
+import jugador_blando from "@/assets/jugadores/jugador_blando.webp";
+import jugador_zuliani from "@/assets/jugadores/jugador_zuliani.webp";
+import jugador_funez from "@/assets/jugadores/jugador_funez.webp";
+import jugador_miranda from "@/assets/jugadores/jugador_miranda.webp";
+import tecnico_pellerano from "@/assets/tecnicos/tecnico_pellerano.webp";
+import tecnico_cpellerano from "@/assets/tecnicos/tecnico_cpellerano.webp";
 import jugador_pedroramirez from "@/assets/jugadores/jugador_pedroramirez.webp";
 import jugador_ramirogonzalez from "@/assets/jugadores/jugador_ramirogonzalez.webp";
 import jugador_juangarcia from "@/assets/jugadores/jugador_juangarcia.webp";
@@ -182,7 +188,11 @@ import escudo_enosis from "@/assets/escudos/escudo_enosis.webp";
 import escudo_sanliurfaspor from "@/assets/escudos/escudo_sanliurfaspor.webp";
 import escudo_yenimalatyaspor from "@/assets/escudos/escudo_yenimalatyaspor.webp";
 import escudo_bocaunidos from "@/assets/escudos/escudo_bocaunidos.webp";
-
+import escudo_melgar from "@/assets/escudos/escudo_melgar.webp";
+import escudo_madryn from "@/assets/escudos/escudo_madryn.webp";
+import escudo_desamparados from "@/assets/escudos/escudo_desamparados.webp";
+import escudo_independiente from "@/assets/escudos/escudo_independiente.webp";
+import escudo_tijuana from "@/assets/escudos/escudo_tijuana.webp";
 import escudo_riestra from "@/assets/escudos/escudo_riestra.webp";
 import escudo_everton from "@/assets/escudos/escudo_everton.webp";
 import escudo_unionespanola from "@/assets/escudos/escudo_unionespanola.webp";
@@ -271,6 +281,10 @@ export const JUGADORES = {
     flores: jugador_flores,
     obando: jugador_obando,
     castet: jugador_castet,
+    blando: jugador_blando,
+    zuliani: jugador_zuliani,
+    funez: jugador_funez,
+    miranda: jugador_miranda,
     pedroramirez: jugador_pedroramirez,
     ramirogonzalez: jugador_ramirogonzalez,
     juangarcia: jugador_juangarcia,
@@ -304,7 +318,12 @@ export const JUGADORES = {
     zuqi: jugador_zuqi,
 };
 
-export const FICHAS = { descarga: descarga };
+export const TECNICOS = {
+    pellerano: tecnico_pellerano,
+    cpellerano: tecnico_cpellerano,
+};
+
+export const FICHAS ={ descarga: descarga };
 
 export const ESCUDOS = {    
     acassuso: escudo_acassuso,
@@ -430,6 +449,11 @@ export const ESCUDOS = {
     magallanes: escudo_magallanes,
     milan: escudo_milan,
     mallorca: escudo_mallorca,
+    melgar: escudo_melgar,
+    madryn: escudo_madryn,
+    desamparados: escudo_desamparados,
+    independiente: escudo_independiente,
+    tijuana: escudo_tijuana,
     mont: escudo_mont,
     miamifc: escudo_miamifc,
     miamiunited: escudo_miamiunited,

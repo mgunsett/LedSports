@@ -19,6 +19,7 @@ import { motion } from 'framer-motion';
 import ClubInfo from '@/components/jugadores/ClubInfo';
 import CircularProgress from '@/components/jugadores/CircularProgress';
 import SoccerFieldPosition from '@/components/jugadores/SoccerFieldPosition';
+import { DTStats } from '@/components/jugadores/DTStats';
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter, FaThreads } from "react-icons/fa6";
@@ -50,8 +51,17 @@ function FichaJugador({ isOpen, onClose, jugador }) {
   const tiktok = jugadorData.tiktok;
   const twitter = jugadorData.twitter;
   const threads = jugadorData.threads;
+  const hasRedes = Boolean(instagram || tiktok || twitter || threads);
 // Ficha PDF
   const ficha = jugadorData.ficha;
+// Datos extra de la carrera para DT (completan "Estadísticas Generales")
+  const carrera = [...(jugadorData.clubLogoActual || []), ...(jugadorData.trayectoria || [])];
+  const dtRows = isDT ? [
+    jugadorData.debutDT && { label: 'Debut como DT', value: jugadorData.debutDT },
+    jugadorData.statsDT?.ganados != null && { label: 'Partidos ganados', value: jugadorData.statsDT.ganados },
+    { label: 'Clubes en su carrera', value: new Set(carrera.map((c) => c.name)).size },
+    { label: 'Títulos', value: carrera.reduce((n, c) => n + (c.trophies?.length || 0), 0) },
+  ].filter(Boolean) : [];
 
   const isMobile = useBreakpointValue({ base: true, sm: false, md: false });
 
@@ -473,6 +483,12 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                   {partidos}
                                 </Text>
                               </Flex>
+                              {dtRows.map((row) => (
+                                <Flex key={row.label} justify="space-between" mb={2}>
+                                  <Text fontSize="xs" color="whiteAlpha.700">{row.label}</Text>
+                                  <Text fontSize="xs" color="white" fontWeight="bold">{row.value}</Text>
+                                </Flex>
+                              ))}
                               {!isDT && (
                                 <Flex justify="space-between" mb={2}>
                                   <Text fontSize="xs" color="whiteAlpha.700">
@@ -500,6 +516,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             </Box>
                             )}
                           </Flex>
+                          {isDT && <DTStats stats={jugadorData.statsDT} compact />}
                         <Flex
                             w="100%"
                             h="40%"
@@ -573,7 +590,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                   >
                     <Flex
                       flexDirection= 'row'
-                      alignItems="flex-start"
+                      alignItems={isDT ? 'stretch' : 'flex-start'}
                       justifyContent='center'
                       h="100%"
                       gap={8}
@@ -588,9 +605,10 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                         >
                           <MotionFlex
                             w="100%"
+                            flex={isDT ? '1' : undefined}
                             flexDirection='column'
                             alignItems="space-between"
-                            justifyContent="center"
+                            justifyContent={isDT ? 'flex-start' : 'center'}
                             bg="whiteAlpha.50"
                             borderRadius="lg"
                             p={4}
@@ -645,6 +663,12 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                                 {partidos}
                               </Text>
                             </Flex>
+                            {dtRows.map((row) => (
+                              <Flex key={row.label} justify="space-between" mb={2}>
+                                <Text fontSize="xs" color="whiteAlpha.700">{row.label}</Text>
+                                <Text fontSize="xs" color="white" fontWeight="bold">{row.value}</Text>
+                              </Flex>
+                            ))}
                             {!isDT && (
                               <Flex justify="space-between" mb={2}>
                                 <Text fontSize="xs" color="whiteAlpha.700">
@@ -658,18 +682,20 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           </MotionFlex>
                           <MotionFlex
                             w="100%"
-                            h="40%"
-                            flexDirection='column'
-                            alignItems="space-between"
-                            justifyContent="center"
+                            h={isDT ? 'auto' : '40%'}
+                            flexDirection={isDT ? 'row' : 'column'}
+                            alignItems={isDT ? 'center' : 'space-between'}
+                            justifyContent={isDT ? 'space-between' : 'center'}
                             bg="whiteAlpha.50"
                             borderRadius="lg"
-                            p={4}
-                            pb={2}
+                            p={isDT ? 3 : 4}
+                            pb={isDT ? 3 : 2}
                             border="1px solid"
                             borderColor="whiteAlpha.200"
                             transition={{ duration: 0.3 }}
                           >
+                            {!isDT && (
+                            <>
                             <Text
                               fontSize="xs"
                               color="orange.300"
@@ -677,7 +703,7 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               textTransform="uppercase"
                               mb={'5px'}
                             >
-                              Ficha 
+                              Ficha
                             </Text>
                             <Flex justify="space-between" mb={2}>
                               <Text fontSize="xs" color="whiteAlpha.700">
@@ -686,12 +712,25 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               <Link href={jugadorData.ficha} isExternal>
                                 <Icon
                                 as={MdOutlineFileDownload}
-                                size={16} 
-                                color="white" 
+                                size={16}
+                                color="white"
                                 _hover={{ color: 'orange.300' }}
                                 />
                               </Link>
                             </Flex>
+                            </>
+                            )}
+                            {isDT && (
+                            <Text fontSize="xs" color="orange.300" fontWeight="bold" textTransform="uppercase">
+                              Redes
+                            </Text>
+                            )}
+                            {isDT && !hasRedes && (
+                            <Text fontSize="xs" color="whiteAlpha.500">Sin redes cargadas</Text>
+                            )}
+                            {hasRedes && (
+                            <>
+                            {!isDT && (
                             <Text
                               fontSize="xs"
                               color="orange.300"
@@ -701,7 +740,8 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                             >
                               Redes Sociales
                             </Text>
-                            <Flex justify="flex-start" mb={2} gap={3}>
+                            )}
+                            <Flex justify="flex-start" mb={isDT ? 0 : 2} gap={3}>
                               { instagram ? (
                               <Link href={`https://www.instagram.com/${instagram}`} isExternal>
                                 <Icon as={FaInstagram} color="white" boxSize='15px' transition="all 0.4s ease" _hover={{ color: 'orange.300' }} />
@@ -723,17 +763,20 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                               </Link>
                               ) : null}
                             </Flex>
+                            </>
+                            )}
                           </MotionFlex>
                       </Flex>
                       <MotionFlex
                         order={{ base: 1, md: 0 }}
                         transition={{ duration: 0.3 }}
                         flexDirection= 'column'
-                        alignItems="center"
+                        alignItems={isDT ? 'stretch' : 'center'}
                         justifyContent="center"
                         w="70%"
                       >
                         <Flex
+                          display={isDT ? 'none' : 'flex'}
                           gap={{ base: 3, md: 6 }}
                           mb={{ base: 4, md: 6 }}
                           justify="end"
@@ -783,7 +826,9 @@ function FichaJugador({ isOpen, onClose, jugador }) {
                           ) : null}
                         </Flex>
 
-                        {!isDT && (
+                        {isDT ? (
+                          <DTStats stats={jugadorData.statsDT} />
+                        ) : (
                         <MotionBox
                           position="relative"
                           bg="whiteAlpha.50"
