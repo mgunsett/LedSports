@@ -299,6 +299,15 @@ import escudo_rafaela from "@/assets/escudos/escudo_rafaela.webp";
 import escudo_banfield from "@/assets/escudos/escudo_banfield.webp";
 import escudo_almirantebrown from "@/assets/escudos/escudo_almirantebrown.webp";
 import escudo_brownadrogue from "@/assets/escudos/escudo_brownadrogue.png";
+import escudo_boyacachico from "@/assets/escudos/escudo_boyacachico.webp";
+import escudo_millonarios from "@/assets/escudos/escudo_millonarios.webp";
+import escudo_univpopayan from "@/assets/escudos/escudo_univpopayan.webp";
+import escudo_llaneros from "@/assets/escudos/escudo_llaneros.webp";
+import escudo_interpalmira from "@/assets/escudos/escudo_interpalmira.webp";
+import escudo_bucaramanga from "@/assets/escudos/escudo_bucaramanga.webp";
+import escudo_tigresfc from "@/assets/escudos/escudo_tigresfc.webp";
+import escudo_santafe from "@/assets/escudos/escudo_santafe.webp";
+import escudo_envigado from "@/assets/escudos/escudo_envigado.webp";
 import descarga from "@/assets/documentos/descarga.pdf";
 
 
@@ -392,17 +401,26 @@ export const ESCUDOS = {
     veracruz: escudo_veracruz,
     arouca: escudo_arouca,
     sanmartintuc: escudo_sanmartintuc,
+    millonarios: escudo_millonarios,
     sportingcristal: escudo_sportingcristal,
     cajamarca: escudo_cajamarca,
+    bucaramanga: escudo_bucaramanga,
+    tigresfc: escudo_tigresfc,
     alianzalima: escudo_alianzalima,
     bashundhara: escudo_bashundhara,
+    boyacachico: escudo_boyacachico,
     atleticonacional: escudo_atleticonacional,
     cruzeiro: escudo_cruzeiro,
+    interpalmira: escudo_interpalmira,
     sportingcp: escudo_sportingcp,
     tianjin: escudo_tianjin,
+    llaneros: escudo_llaneros,
+    univpopayan: escudo_univpopayan,
     gremio: escudo_gremio,
     palmeiras: escudo_palmeiras,
     shenzhen: escudo_shenzhen,
+    santafe: escudo_santafe,
+    envigado: escudo_envigado,
     shanghai: escudo_shanghai,
     crvenazvezda: escudo_crvenazvezda,
     rafaela: escudo_rafaela,
