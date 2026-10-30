@@ -44,6 +44,12 @@ import jugador_blando from "@/assets/jugadores/jugador_blando.webp";
 import jugador_zuliani from "@/assets/jugadores/jugador_zuliani.webp";
 import jugador_funez from "@/assets/jugadores/jugador_funez.webp";
 import jugador_miranda from "@/assets/jugadores/jugador_miranda.webp";
+import jugador_nardelli from "@/assets/jugadores/jugador_nardelli.webp";
+import jugador_ferrero from "@/assets/jugadores/jugador_ferrero.webp";
+import jugador_verges from "@/assets/jugadores/jugador_verges.webp";
+import jugador_ojeda from "@/assets/jugadores/jugador_ojeda.webp";
+import jugador_henry from "@/assets/jugadores/jugador_henry.webp";
+import jugador_alonso from "@/assets/jugadores/jugador_alonso.webp";
 import tecnico_pellerano from "@/assets/tecnicos/tecnico_pellerano.webp";
 import tecnico_cpellerano from "@/assets/tecnicos/tecnico_cpellerano.webp";
 import tecnico_rondelli from "@/assets/tecnicos/tecnico_rondelli.webp";
@@ -58,6 +64,7 @@ import jugador_delvalle from "@/assets/jugadores/jugador_delvalle.webp";
 import jugador_agustinjara from "@/assets/jugadores/jugador_agustinjara.webp";
 import jugador_graneros from "@/assets/jugadores/jugador_graneros.webp";
 import jugador_valverde from "@/assets/jugadores/jugador_valverde.webp";
+import jugador_moreno from "@/assets/jugadores/jugador_moreno.webp";
 import escudo_venados from "@/assets/escudos/escudo_venados.webp";
 import escudo_spameliano from "@/assets/escudos/escudo_spameliano.webp";
 import escudo_racing1 from "@/assets/escudos/escudo_racing1.webp";
@@ -211,6 +218,17 @@ import escudo_madryn from "@/assets/escudos/escudo_madryn.webp";
 import escudo_desamparados from "@/assets/escudos/escudo_desamparados.webp";
 import escudo_independiente from "@/assets/escudos/escudo_independiente.webp";
 import escudo_tijuana from "@/assets/escudos/escudo_tijuana.webp";
+import escudo_vinotinto from "@/assets/escudos/escudo_vinotinto.webp";
+import escudo_manta from "@/assets/escudos/escudo_manta.webp";
+import escudo_libertad from "@/assets/escudos/escudo_libertad.webp";
+import escudo_wanderers from "@/assets/escudos/escudo_wanderers.webp";
+import escudo_tacuarembo from "@/assets/escudos/escudo_tacuarembo.webp";
+import escudo_aguila from "@/assets/escudos/escudo_aguila.webp";
+import escudo_realesteli from "@/assets/escudos/escudo_realesteli.webp";
+import escudo_atleticomarte from "@/assets/escudos/escudo_atleticomarte.webp";
+import escudo_adrjicaral from "@/assets/escudos/escudo_adrjicaral.webp";
+import escudo_nacionalparaguay from "@/assets/escudos/escudo_nacionalparaguay.webp";
+import escudo_olimpo from "@/assets/escudos/escudo_olimpo.webp";
 import escudo_riestra from "@/assets/escudos/escudo_riestra.webp";
 import escudo_everton from "@/assets/escudos/escudo_everton.webp";
 import escudo_unionespanola from "@/assets/escudos/escudo_unionespanola.webp";
@@ -303,10 +321,17 @@ export const JUGADORES = {
     flores: jugador_flores,
     obando: jugador_obando,
     castet: jugador_castet,
+    moreno: jugador_moreno,
     blando: jugador_blando,
     zuliani: jugador_zuliani,
     funez: jugador_funez,
     miranda: jugador_miranda,
+    nardelli: jugador_nardelli,
+    ferrero: jugador_ferrero,
+    verges: jugador_verges,
+    ojeda: jugador_ojeda,
+    henry: jugador_henry,
+    alonso: jugador_alonso,
     pedroramirez: jugador_pedroramirez,
     ramirogonzalez: jugador_ramirogonzalez,
     juangarcia: jugador_juangarcia,
@@ -485,6 +510,17 @@ export const ESCUDOS = {
     desamparados: escudo_desamparados,
     independiente: escudo_independiente,
     tijuana: escudo_tijuana,
+    vinotinto: escudo_vinotinto,
+    manta: escudo_manta,
+    libertad: escudo_libertad,
+    wanderers: escudo_wanderers,
+    tacuarembo: escudo_tacuarembo,
+    aguila: escudo_aguila,
+    realesteli: escudo_realesteli,
+    atleticomarte: escudo_atleticomarte,
+    adrjicaral: escudo_adrjicaral,
+    nacionalparaguay: escudo_nacionalparaguay,
+    olimpo: escudo_olimpo,
     mont: escudo_mont,
     miamifc: escudo_miamifc,
     miamiunited: escudo_miamiunited,
